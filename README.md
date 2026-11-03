@@ -194,6 +194,50 @@ selv. `05.04` er den 4. maj her og den 5. april i USA, og det står i
 forklaringen. Står dag og måned ens — `11.11`, `02.02` — siger den det i
 stedet. Er dagen over den tolvte, kan den ikke læses forkert, og så tier noten.
 
+## Levetidsberegneren
+
+Resten af appen regner på en *antaget* levetid, man selv skyder på. Beregneren
+under **Antagelser og satser** giver et kvalificeret bud at skyde med, og
+skyderen starter dér i stedet for på et rundt hundrede.
+
+Tavlerne hentes med `tools/fetch_lifetables.py` og ligger i
+`data/lifetables.json` — 36 lande, 240 KB. Danmark kommer fra **Danmarks
+Statistik, tabel HISB8** (aldre 0–99, toårsperioder, det nationale tal). De
+øvrige kommer fra **Eurostat, demo_mlifetable** (aldre 0–95), så de kan
+sammenlignes indbyrdes. Begge er frit tilgængelige uden registrering.
+
+Af hver tavle bruges `lx` — hvor mange af 100.000 nyfødte der stadig lever ved
+hver alder. Middellevetiden er bare gennemsnittet af den kurve, men kurven selv
+kan svare på mere: hvad medianen er, hvor kvartilerne ligger, og hvad chancen
+er for at nå en hvilken som helst alder man taster ind.
+
+Tre ting kan skrues på:
+
+**Periode eller kohorte.** En periodetavle antager, at dødeligheden bliver
+stående, som den er i dag. Det gør den ikke. En fyrreårig møder først
+dødeligheden ved halvfjerds om tredive år, og til den tid er den lavere.
+Kohortetallet regner 1 % årlig bedring ind — en antagelse, der står ét sted i
+koden og er til at skrue på. Begge tal vises, så forskellen kan ses: for en
+nyfødt dansk dreng er det 80,3 mod 88,0 år, for en halvfemsårig næsten
+ingenting.
+
+**Livsstil.** Fire faktorer — rygning, motion, BMI og alkohol — hver med et
+risikoforhold fra et navngivet studie, som står i værktøjstippet. De ganges på
+dødeligheden i alle aldre. Fordi faktorerne hænger sammen indbyrdes, vises
+resultatet som et spænd: den samme udregning med og uden hensyn til, at de
+overlapper.
+
+**Halen.** Tavlen stopper ved 95 eller 99. Den forlænges med en konstant
+dødelighed, valgt så restlevetiden i sidste alderstrin bliver præcis den,
+tavlen selv angiver — så halen er tavlens eget tal og ikke et skøn.
+
+Testene efterprøver det hele mod tavlerne selv: kurven bygges kun af `lx`, og
+den skal give den `ex`, statistikkontoret har regnet ud hver for sig. Den
+stemmer på 0,1 år for alle 36 lande, begge køn, i hele aldersspændet.
+
+Det er ikke en forudsigelse om et menneske. Det er, hvad der i gennemsnit skete
+for folk med de træk i de år, tavlen dækker.
+
 ## Sådan regnes der
 
 * **Eksakt:** sekunder, minutter, timer, dage og uger er nøjagtige multipla af
@@ -225,6 +269,7 @@ utils/
   celebrations.py         festdagene — indlæser og tjekker datafilerne
   datepatterns.py         dage, hvor datoen selv går op (palindrom, sum, …)
   geoyear.py              Jordens historie lagt ned i ét kalenderår
+  lifetable.py            levetid regnet på officielle dødelighedstavler
   engine.py               udregningen
   timeline.py             kaskaden og den logaritmiske skala, tegnet som SVG
   units.py                enheder og naturkonstanter
@@ -234,12 +279,20 @@ utils/
   stardate.py             stjernedatoer
   notes.py                de lange forklaringer
   i18n.py                 brugerfladens tekster
+tools/
+  fetch_lifetables.py     henter dødelighedstavlerne fra DST og Eurostat
 data/
   celebrations/*.json     291 festdage, én fil pr. kategori
+  lifetables.json         dødelighedstavler for 36 lande
 tests/
-  test_engine.py          83 test af datoregningen
-  test_timeline.py        80 test af kaskaden og etiketterne
-  test_celebrations.py    100 test af festdagene og talmønstrene
+  test_engine.py           83 test af datoregningen
+  test_timeline.py         80 test af kaskaden og etiketterne
+  test_celebrations.py    135 test af festdagene og talmønstrene
+  test_lifetable.py       386 test af levetidsberegneren
+```
+
+```bash
+.venv/Scripts/python.exe tools/fetch_lifetables.py
 ```
 
 ```bash

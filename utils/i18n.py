@@ -283,6 +283,97 @@ T: dict[str, dict[str, str]] = {
               "the legends. The calendar days are off, because there are "
               "several thousand of them; switch them on with a bundle above.",
     },
+    # --- Levetidsberegneren ---
+    "calc_title": {"da": "Levetidsberegner", "en": "Life expectancy calculator"},
+    "calc_intro": {
+        "da": "Regnet på officielle dødelighedstavler i stedet for gættet. "
+              "Tallet flytter ikke noget af sig selv — det er et bud at "
+              "stille skyderen herunder efter.",
+        "en": "Worked out from official life tables instead of guessed. The "
+              "number changes nothing by itself — it is a suggestion for "
+              "where to put the slider below.",
+    },
+    "calc_country": {"da": "Land", "en": "Country"},
+    "calc_sex": {"da": "Køn", "en": "Sex"},
+    "calc_sex_M": {"da": "Mand", "en": "Male"},
+    "calc_sex_F": {"da": "Kvinde", "en": "Female"},
+    "calc_lifestyle": {"da": "Livsstil — valgfrit", "en": "Lifestyle — optional"},
+    "calc_period": {"da": "Hvis dødeligheden står stille", "en": "If mortality stands still"},
+    "calc_period_help": {
+        "da": "Periodetavlen: den antager, at dødeligheden ved hver alder "
+              "bliver præcis, som den er i dag. Det gør den ikke, så for en "
+              "ung er tallet systematisk for lavt.",
+        "en": "The period table assumes mortality at every age stays exactly "
+              "as it is today. It will not, so for a young person this is "
+              "systematically too low.",
+    },
+    "calc_cohort": {"da": "Med forventet bedring", "en": "With expected improvement"},
+    "calc_cohort_help": {
+        "da": "Kohortetallet: du møder først dødeligheden ved firs om mange "
+              "år, og til den tid er den lavere. Her er regnet med {pct} % "
+              "bedring om året — en antagelse, ikke en måling.",
+        "en": "The cohort figure: you will not meet the mortality of an "
+              "eighty-year-old for many years, and by then it will be lower. "
+              "This assumes {pct}% improvement a year — an assumption, not a "
+              "measurement.",
+    },
+    "calc_spread": {
+        "da": "Halvdelen når **{median} år**. Den midterste halvdel ligger "
+              "mellem **{low}** og **{high} år**.",
+        "en": "Half reach **{median}**. The middle half fall between "
+              "**{low}** and **{high}**.",
+    },
+    "calc_reach": {"da": "Chancen for at nå alderen", "en": "Chance of reaching age"},
+    "calc_reach_result": {
+        "da": "Chancen for at nå **{age} år** er **{pct} %**.",
+        "en": "The chance of reaching **{age}** is **{pct}%**.",
+    },
+    "calc_seeds": {
+        "da": "Skyderen nedenfor starter på **{years} år** — kohortetallet, "
+              "rundet af. Træk i den, hvis du hellere vil regne med noget "
+              "andet; resten af appen følger skyderen og ikke beregneren.",
+        "en": "The slider below starts at **{years}** — the cohort figure, "
+              "rounded. Drag it if you would rather reckon with something "
+              "else; the rest of the app follows the slider, not the "
+              "calculator.",
+    },
+    "calc_source": {"da": "Kilde", "en": "Source"},
+    "calc_fetched": {"da": "hentet {date}", "en": "fetched {date}"},
+    "calc_lifestyle_span": {
+        "da": "Med livsstilen: mellem **{low}** og **{high} år**. De to tal "
+              "er den samme udregning med og uden hensyn til, at faktorerne "
+              "overlapper hinanden.",
+        "en": "With the lifestyle: between **{low}** and **{high}**. The two "
+              "figures are the same calculation with and without allowing "
+              "for the factors overlapping each other.",
+    },
+    "calc_caveat": {
+        "da": "Det her er ikke en forudsigelse om dig. Det er, hvad der i "
+              "gennemsnit skete for folk med de træk i de år, tavlen dækker. "
+              "Risikoforholdene er fra befolkningsstudier, og de hænger "
+              "sammen indbyrdes — rygere motionerer mindre — så at gange dem "
+              "sammen overdriver.",
+        "en": "This is not a prediction about you. It is what happened on "
+              "average to people with those traits in the years the table "
+              "covers. The hazard ratios come from population studies and "
+              "they overlap with one another — smokers exercise less — so "
+              "multiplying them overstates the effect.",
+    },
+    "calc_refresh": {"da": "Hent friske tal", "en": "Fetch fresh figures"},
+    "calc_refresh_help": {
+        "da": "Henter dødelighedstavlerne forfra fra Danmarks Statistik og "
+              "Eurostat og skriver datafilen om. Tager et halvt minut.",
+        "en": "Fetches the life tables again from Statistics Denmark and "
+              "Eurostat and rewrites the data file. Takes half a minute.",
+    },
+    "calc_refreshed": {"da": "Hentet: {n} lande.", "en": "Fetched: {n} countries."},
+    "calc_refresh_failed": {"da": "Hentningen mislykkedes: {why}", "en": "The fetch failed: {why}"},
+    "calc_no_data": {
+        "da": "Der er ingen dødelighedstavler i data/lifetables.json. "
+              "Hent dem med knappen, eller kør tools/fetch_lifetables.py.",
+        "en": "There are no life tables in data/lifetables.json. Fetch them "
+              "with the button, or run tools/fetch_lifetables.py.",
+    },
     "bundles": {"da": "Pakker", "en": "Bundles"},
     "bundles_hint": {
         "da": "Ét klik på en pakke erstatter hele dit nuværende valg.",

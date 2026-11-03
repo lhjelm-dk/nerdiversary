@@ -8,7 +8,10 @@ from __future__ import annotations
 
 import hashlib
 import json
+import subprocess
+import sys
 from datetime import date, datetime, time, timedelta, timezone
+from pathlib import Path
 from zoneinfo import ZoneInfo, available_timezones
 
 import pandas as pd
@@ -19,6 +22,7 @@ from streamlit_calendar import calendar as fullcalendar
 from dateutil.relativedelta import relativedelta
 
 from utils import formatting as fmt
+from utils import lifetable as lt
 from utils import stardate as sd
 from utils import timeline as tl
 from utils.catalog import (
@@ -113,6 +117,200 @@ GROUP_COLORS: dict[str, str] = {
 
 
 # =========================================================================
+# Levetidsberegneren
+# =========================================================================
+
+
+def _fetch_lifetables() -> None:
+    """Hent doedelighedstavlerne forfra fra DST og Eurostat.
+
+    Hentningen ligger i et selvstaendigt script, og den koeres som sin egen
+    proces. Saa kan et netvaerk, der er nede, ikke vaelte appen — det bliver
+    en fejlbesked i stedet.
+    """
+    script = Path(__file__).resolve().parent / "tools" / "fetch_lifetables.py"
+    try:
+        done = subprocess.run(
+            [sys.executable, str(script)],
+            capture_output=True,
+            text=True,
+            timeout=300,
+        )
+    except (OSError, subprocess.SubprocessError) as problem:
+        st.session_state.lifetable_fetch = ("error", str(problem))
+        return
+
+    if done.returncode != 0:
+        why = done.stderr.strip().splitlines()[-1] if done.stderr.strip() else "?"
+        st.session_state.lifetable_fetch = ("error", why[:200])
+        return
+
+    # Datafilen er skrevet om, saa det indlaeste skal glemmes.
+    lt.load.cache_clear()
+    lt.mortality.cache_clear()
+    st.session_state.lifetable_fetch = ("ok", len(lt.load().countries))
+
+
+def life_expectancy_calculator(birth: date, lang: str) -> int | None:
+    """Et kvalificeret bud paa levetiden, regnet paa officielle tavler.
+
+    Returnerer kohortetallet rundet af, saa skyderen nedenunder kan starte
+    dér i stedet for paa et rundt hundrede. Det er med vilje en *startvaerdi*
+    og ikke en knap: skyderen ejer tallet bagefter, og resten af appen
+    foelger skyderen.
+    """
+    with st.container(border=True):
+        st.caption(t("calc_title", lang).upper())
+
+        note = st.session_state.pop("lifetable_fetch", None)
+        if note and note[0] == "ok":
+            st.success(
+                t("calc_refreshed", lang, n=note[1]), icon=":material/check_circle:"
+            )
+        elif note:
+            st.error(t("calc_refresh_failed", lang, why=note[1]))
+
+        catalogue = lt.load()
+        if not catalogue.countries:
+            st.info(t("calc_no_data", lang))
+            st.button(
+                t("calc_refresh", lang),
+                on_click=_fetch_lifetables,
+                help=t("calc_refresh_help", lang),
+                key="calc_refresh_empty",
+            )
+            return None
+
+        st.caption(t("calc_intro", lang))
+
+        countries = catalogue.countries
+        start = countries.index(catalogue.default) if catalogue.default in countries else 0
+        who = st.container(horizontal=True)
+        country = who.selectbox(
+            t("calc_country", lang),
+            countries,
+            index=start,
+            format_func=lambda code: catalogue.name(code, lang),
+            key="calc_country",
+        )
+        sex = who.radio(
+            t("calc_sex", lang),
+            lt.SEXES,
+            horizontal=True,
+            format_func=lambda code: t(f"calc_sex_{code}", lang),
+            key="calc_sex",
+        )
+
+        table = catalogue.get(country, sex)
+        age_now = relativedelta(date.today(), birth).years
+        if table is None or age_now < 0:
+            st.info(t("calc_no_data", lang))
+            return None
+
+        st.caption(t("calc_lifestyle", lang))
+        choices: dict[str, str] = {}
+        knobs = st.container(horizontal=True)
+        for factor in lt.FACTORS:
+            choices[factor.key] = knobs.selectbox(
+                factor.name(lang),
+                [level.key for level in factor.levels],
+                format_func=lambda key, chosen=factor: chosen.level(key).name(lang),
+                help=factor.source,
+                key=f"calc_{factor.key}",
+            )
+
+        hazard = lt.combined_hazard(choices)
+        period = lt.survival_curve(country, sex, age_now, hazard=hazard)
+        cohort = lt.survival_curve(
+            country, sex, age_now, improvement=lt.IMPROVEMENT, hazard=hazard
+        )
+        period_age = age_now + lt.expectancy(period)
+        cohort_age = age_now + lt.expectancy(cohort)
+
+        tiles = st.container(horizontal=True)
+        tiles.metric(
+            t("calc_period", lang),
+            fmt.fmt_num(period_age, lang, 1),
+            help=t("calc_period_help", lang),
+        )
+        tiles.metric(
+            t("calc_cohort", lang),
+            fmt.fmt_num(cohort_age, lang, 1),
+            help=t(
+                "calc_cohort_help",
+                lang,
+                pct=fmt.fmt_num(lt.IMPROVEMENT * 100, lang, 1),
+            ),
+        )
+
+        st.markdown(
+            t(
+                "calc_spread",
+                lang,
+                median=fmt.fmt_num(lt.age_at_quantile(cohort, age_now, 0.50), lang, 1),
+                low=fmt.fmt_num(lt.age_at_quantile(cohort, age_now, 0.25), lang, 1),
+                high=fmt.fmt_num(lt.age_at_quantile(cohort, age_now, 0.75), lang, 1),
+            )
+        )
+
+        # Faktorerne overlapper hinanden, saa produktet overdriver. Det
+        # uddaempede tal er den samme udregning med halv kraft, og de to
+        # spaender svaret ud i stedet for at foregive en praecision.
+        if abs(hazard - 1.0) > 1e-9:
+            softer = lt.survival_curve(
+                country,
+                sex,
+                age_now,
+                improvement=lt.IMPROVEMENT,
+                hazard=lt.damped(hazard),
+            )
+            span = sorted((cohort_age, age_now + lt.expectancy(softer)))
+            st.markdown(
+                t(
+                    "calc_lifestyle_span",
+                    lang,
+                    low=fmt.fmt_num(span[0], lang, 1),
+                    high=fmt.fmt_num(span[1], lang, 1),
+                )
+            )
+
+        target = st.slider(
+            t("calc_reach", lang),
+            min_value=age_now + 1,
+            max_value=110,
+            value=min(110, max(age_now + 1, 90)),
+            key="calc_target",
+        )
+        st.markdown(
+            t(
+                "calc_reach_result",
+                lang,
+                age=target,
+                pct=fmt.fmt_num(
+                    lt.chance_of_reaching(cohort, age_now, target) * 100, lang, 1
+                ),
+            )
+        )
+
+        suggested = int(min(120, max(60, round(cohort_age))))
+        st.markdown(t("calc_seeds", lang, years=suggested))
+
+        st.button(
+            t("calc_refresh", lang),
+            on_click=_fetch_lifetables,
+            help=t("calc_refresh_help", lang),
+            key="calc_refresh",
+        )
+
+        st.caption(
+            f"{t('calc_source', lang)}: {table.source} · "
+            f"{t('calc_fetched', lang, date=catalogue.fetched)}"
+        )
+        st.caption(t("calc_caveat", lang))
+        return suggested
+
+
+# =========================================================================
 # Sidepanel
 # =========================================================================
 
@@ -193,11 +391,15 @@ with st.sidebar:
         )
 
     with st.expander(t("assumptions", lang), icon=":material/tune:"):
+        # Beregnerens tal bliver skyderens udgangspunkt. Det virker kun
+        # foerste gang: naar brugeren selv har flyttet skyderen, er det
+        # deres tal, der gaelder, og beregneren rykker det ikke igen.
+        suggested_lifespan = life_expectancy_calculator(birth_date, lang)
         lifespan = st.slider(
             t("lifespan", lang),
             min_value=60,
             max_value=120,
-            value=100,
+            value=suggested_lifespan or 100,
             step=1,
             help=t("lifespan_help", lang),
             key="lifespan",
