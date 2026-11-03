@@ -26,9 +26,11 @@ from utils.catalog import (
     BUNDLES_BY_KEY,
     GROUPS,
     GROUPS_BY_KEY,
+    Bundle,
     milestones_in_group,
 )
 from utils.engine import (
+    SCOPES,
     Occasion,
     Profile,
     Rates,
@@ -40,6 +42,7 @@ from utils.engine import (
     all_milestones,
     build_label,
     bundle_keys,
+    bundle_scope,
     compute,
     explanation,
     duration_breakdown,
@@ -981,15 +984,33 @@ with tab_select:
     st.subheader(t("bundles", lang), anchor=False)
     st.caption(t("bundles_hint", lang))
 
-    bundle_rows = st.container(horizontal=True)
+    # Pakkerne staar i hylder, fordi de to slags maerkedage ikke svarer til
+    # hinanden. Et gigasekund findes kun, fordi netop DU blev foedt; den 4.
+    # maj falder samme dag for alle, og dér er det eneste personlige, hvor
+    # gammel du er den dag. Blandet i én raekke knapper var det ikke til at
+    # se, hvilken slags man var ved at vaelge.
+    #
+    # Hvilken hylde en pakke hoerer paa, udledes af enhederne i kataloget
+    # (``bundle_scope``) og staar ikke skrevet her. En ny pakke havner det
+    # rigtige sted af sig selv.
+    shelves: dict[str, list[Bundle]] = {scope: [] for scope in SCOPES}
     for bundle in BUNDLES:
-        bundle_rows.button(
-            bundle.title(lang),
-            on_click=apply_bundle,
-            args=(bundle.key,),
-            help=bundle.description(lang),
-            key=f"bundle_{bundle.key}",
-        )
+        shelves[bundle_scope(bundle)].append(bundle)
+
+    for scope, shelf in shelves.items():
+        if not shelf:
+            continue
+        st.markdown(f"**{t(f'bundles_{scope}', lang)}**")
+        st.caption(t(f"bundles_{scope}_help", lang))
+        bundle_rows = st.container(horizontal=True)
+        for bundle in shelf:
+            bundle_rows.button(
+                bundle.title(lang),
+                on_click=apply_bundle,
+                args=(bundle.key,),
+                help=bundle.description(lang),
+                key=f"bundle_{bundle.key}",
+            )
 
     applied = st.session_state.pop("last_bundle", None)
     if applied:

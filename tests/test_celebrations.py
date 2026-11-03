@@ -18,7 +18,7 @@ import pytest
 
 from utils import datepatterns as dp
 from utils import geoyear as gy
-from utils.catalog import BUNDLES, GROUPS, GROUPS_BY_KEY, MILESTONES
+from utils.catalog import BUNDLES, BUNDLES_BY_KEY, GROUPS, GROUPS_BY_KEY, MILESTONES, Bundle
 from utils.celebrations import (
     DATA_DIR,
     PREFIX,
@@ -30,8 +30,21 @@ from utils.celebrations import (
     parse_spec,
     spec_in_year,
 )
-from utils.engine import Profile, all_milestones, build_label, compute, milestone_instant
+from utils.engine import (
+    BIRTH_SCOPE,
+    BOTH_SCOPES,
+    CALENDAR_SCOPE,
+    SCOPES,
+    Profile,
+    all_milestones,
+    build_label,
+    bundle_keys,
+    bundle_scope,
+    compute,
+    milestone_instant,
+)
 from utils.geology import GEO_BY_KEY
+from utils.i18n import t
 from utils.units import CALENDAR_DAY_UNITS, EARTH_AGE_MA, ONE_OFF_UNITS
 
 CPH = ZoneInfo("Europe/Copenhagen")
@@ -638,3 +651,89 @@ def test_a_one_off_unit_is_always_inside_the_life_it_belongs_to():
     for occasion in compute(profile, lang="da", now=NOW):
         if occasion.milestone.unit in ONE_OFF_UNITS:
             assert profile.birth_utc <= occasion.when_utc <= horizon
+
+
+# -------------------------------------------------------------------------
+# Skellet mellem de to slags pakker
+# -------------------------------------------------------------------------
+#
+# Et gigasekund findes kun, fordi netop du blev foedt. Den 4. maj falder
+# samme dag for alle. Pakkerne staar i hver sin hylde efter det, og hylden
+# udledes af enhederne — ikke af en liste, nogen skal holde ved lige. Derfor
+# foerer testene her an paa, at udledningen holder.
+
+
+def test_every_bundle_lands_on_exactly_one_shelf():
+    for bundle in BUNDLES:
+        assert bundle_scope(bundle) in SCOPES, bundle.key
+
+
+@pytest.mark.parametrize("key", ["round", "nerdpack", "spacepack", "bodypack", "legends"])
+def test_a_bundle_counted_from_birth_says_so(key):
+    assert bundle_scope(BUNDLES_BY_KEY[key]) == BIRTH_SCOPE
+
+
+@pytest.mark.parametrize(
+    "key",
+    ["popbundle", "fictionbundle", "scifibundle", "scidaybundle",
+     "nerdhistbundle", "earthyearbundle", "patternbundle", "partybundle"],
+)
+def test_a_bundle_of_calendar_days_says_so(key):
+    assert bundle_scope(BUNDLES_BY_KEY[key]) == CALENDAR_SCOPE
+
+
+def test_the_classics_are_counted_from_birth():
+    """Ingen festdag er fremhaevet, saa stjernerne er alle sammen tal fra foedslen."""
+    assert bundle_scope(BUNDLES_BY_KEY["classics"]) == BIRTH_SCOPE
+    assert not [m for m in celebration_milestones() if m.star]
+
+
+def test_a_bundle_that_cuts_by_time_belongs_to_both():
+    """"Alt inden for ti aar" tager fra hele kataloget og er ikke én slags."""
+    assert bundle_scope(BUNDLES_BY_KEY["soon"]) == BOTH_SCOPES
+
+
+def test_the_shelf_follows_the_units_and_not_a_list():
+    """En opdigtet pakke med begge slags grupper skal lande paa "begge"."""
+    mixed = Bundle(
+        "blandet", "Blandet", "Mixed", "🔀", "", "", groups=("sec", "pop")
+    )
+    assert bundle_scope(mixed) == BOTH_SCOPES
+
+
+def test_a_calendar_bundle_really_only_holds_calendar_days():
+    """Hylden skal passe paa indholdet, ikke bare paa gruppenavnene."""
+    catalogue = {m.key: m for m in all_milestones()}
+    for bundle in BUNDLES:
+        if bundle_scope(bundle) != CALENDAR_SCOPE:
+            continue
+        units = {
+            catalogue[key].unit
+            for key in bundle_keys(bundle, profile_at(), NOW)
+        }
+        assert units and units <= CALENDAR_DAY_UNITS, bundle.key
+
+
+def test_a_birth_bundle_really_holds_nothing_from_the_calendar():
+    catalogue = {m.key: m for m in all_milestones()}
+    for bundle in BUNDLES:
+        if bundle_scope(bundle) != BIRTH_SCOPE:
+            continue
+        units = {
+            catalogue[key].unit
+            for key in bundle_keys(bundle, profile_at(), NOW)
+        }
+        assert units and not units & CALENDAR_DAY_UNITS, bundle.key
+
+
+def test_both_shelves_have_something_on_them():
+    """En tom hylde ville tegne en overskrift uden knapper under."""
+    for scope in (BIRTH_SCOPE, CALENDAR_SCOPE):
+        assert [b for b in BUNDLES if bundle_scope(b) == scope]
+
+
+@pytest.mark.parametrize("scope", SCOPES)
+@pytest.mark.parametrize("lang", ["da", "en"])
+def test_every_shelf_is_named_and_explained_in_both_languages(scope, lang):
+    for key in (f"bundles_{scope}", f"bundles_{scope}_help"):
+        assert t(key, lang) != key, f"{key} mangler i ordlisten"

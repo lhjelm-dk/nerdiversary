@@ -11,6 +11,7 @@ vaeguret: 1000 maaneder betyder "samme dag i maaneden, samme klokkeslaet".
 
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import dataclass, field
 from datetime import date, datetime, time, timedelta, timezone
 from zoneinfo import ZoneInfo
@@ -609,6 +610,50 @@ def bundle_keys(bundle: Bundle, profile: Profile, now: datetime) -> set[str]:
         return found
 
     return set()
+
+
+# Hvad en pakke bygger paa.
+BIRTH_SCOPE = "birth"          # Haenger paa foedselsoejeblikket.
+CALENDAR_SCOPE = "calendar"    # Falder paa samme dato for alle.
+BOTH_SCOPES = "both"           # Begge dele.
+
+SCOPES: tuple[str, ...] = (BIRTH_SCOPE, CALENDAR_SCOPE, BOTH_SCOPES)
+
+
+def _scope_of(milestones: Iterable[Milestone]) -> str:
+    kinds = {
+        CALENDAR_SCOPE if m.unit in CALENDAR_DAY_UNITS else BIRTH_SCOPE
+        for m in milestones
+    }
+    if not kinds:
+        return BIRTH_SCOPE
+    return kinds.pop() if len(kinds) == 1 else BOTH_SCOPES
+
+
+def bundle_scope(bundle: Bundle) -> str:
+    """Om pakken haenger paa din foedselsdag, paa kalenderen, eller paa begge.
+
+    Et gigasekund findes kun, fordi netop du blev foedt. Den 4. maj falder
+    samme dag for alle, og det personlige er kun, hvor gammel du er den dag.
+    Det er to forskellige slags maerkedage, og de hoerer ikke hjemme i den
+    samme raekke knapper.
+
+    Svaret regnes ud af enhederne i kataloget i stedet for at staa paa en
+    liste et sted. En ny gruppe havner derfor det rigtige sted af sig selv,
+    uden at nogen skal huske at foeje den til.
+    """
+    catalogue = all_milestones()
+
+    if bundle.groups:
+        wanted = set(bundle.groups)
+        return _scope_of(m for m in catalogue if m.group in wanted)
+
+    if bundle.stars_only:
+        return _scope_of(m for m in catalogue if m.star)
+
+    # En pakke, der skaerer efter tid ("alt inden for ti aar"), tager fra hele
+    # kataloget og hoerer derfor til begge steder.
+    return BOTH_SCOPES
 
 
 def next_occasions(

@@ -276,10 +276,12 @@ T: dict[str, dict[str, str]] = {
     },
     # --- Valg ---
     "select_hint": {
-        "da": "Alle grupper er slået til fra start, undtagen legenderne. "
-              "Fjern fluebenene ved det, du ikke gider fejre.",
-        "en": "Every group is on by default except the legends. Untick whatever "
-              "you cannot be bothered to celebrate.",
+        "da": "Grupperne, der regnes fra din fødsel, er slået til fra start — "
+              "undtagen legenderne. Festdagene er slået fra, fordi der er "
+              "flere tusind af dem; tænd dem med en pakke ovenfor.",
+        "en": "The groups counted from your birth are on by default — except "
+              "the legends. The calendar days are off, because there are "
+              "several thousand of them; switch them on with a bundle above.",
     },
     "bundles": {"da": "Pakker", "en": "Bundles"},
     "bundles_hint": {
@@ -289,6 +291,38 @@ T: dict[str, dict[str, str]] = {
     "bundle_applied": {
         "da": "{name} slået til — {n} mærkedage valgt.",
         "en": "{name} applied — {n} milestones selected.",
+    },
+    # Pakkerne staar i hylder efter, hvad de bygger paa. Hvilken hylde en
+    # pakke hoerer paa, udledes af enhederne i ``engine.bundle_scope``.
+    "bundles_birth": {
+        "da": "Regnet fra din fødsel",
+        "en": "Counted from your birth",
+    },
+    "bundles_birth_help": {
+        "da": "De findes kun, fordi netop du blev født. Flyt fødselsdatoen, "
+              "og hver eneste af dem flytter sig med.",
+        "en": "They exist only because you, specifically, were born. Move the "
+              "date of birth and every one of them moves with it.",
+    },
+    "bundles_calendar": {
+        "da": "Samme dato for alle",
+        "en": "The same date for everyone",
+    },
+    "bundles_calendar_help": {
+        "da": "Faste dage i kalenderen. De falder, hvor de falder — det "
+              "personlige er kun, hvor gammel du er den dag.",
+        "en": "Fixed days in the calendar. They fall where they fall — what "
+              "is personal is only how old you are on the day.",
+    },
+    "bundles_both": {
+        "da": "På tværs af begge",
+        "en": "Across both",
+    },
+    "bundles_both_help": {
+        "da": "Skærer efter tid i stedet for efter slags og tager fra hele "
+              "kataloget.",
+        "en": "Cuts by time rather than by kind, and draws on the whole "
+              "catalogue.",
     },
     "select_all": {"da": "Vælg alle", "en": "Select all"},
     "clear_all": {"da": "Ryd alle", "en": "Clear all"},
