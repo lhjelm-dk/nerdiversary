@@ -108,7 +108,7 @@ GROUPS: tuple[Group, ...] = (
     Group("sciday", "Videnskabens festdage", "Days of science", "🔭",
           default_on=False),
     Group("nerdhist", "Nørdehistorie", "Nerd history", "🕹️", default_on=False),
-    Group("scihist", "Videnskabens gennembrud", "Scientific breakthroughs", "🔬",
+    Group("scihist", "Videnskabens gennembrud", "Scientific breakthroughs", "💡",
           default_on=False),
     # Talmoensterdagene. De staar ikke skrevet ned noget sted, men bliver
     # regnet ud af ``utils.datepatterns`` — én gruppe pr. moenster, saa man kan
@@ -116,7 +116,7 @@ GROUPS: tuple[Group, ...] = (
     Group("palindrome", "Palindromdage", "Palindrome days", "🔁",
           default_on=False),
     Group("sequence", "Sekvensdage", "Sequence days", "🪜", default_on=False),
-    Group("repunit", "Repunitdage", "Repdigit days", "🔢", default_on=False),
+    Group("repunit", "Repunitdage", "Repdigit days", "🎰", default_on=False),
     Group("binday", "Binære dage", "Binary days", "💾", default_on=False),
     Group("pyth", "Pythagoræiske dage", "Pythagorean days", "📐",
           default_on=False),
@@ -208,6 +208,14 @@ BUNDLES: tuple[Bundle, ...] = (
         "Heartbeats, breaths, hours slept, meals and steps — plus how far "
         "through life you are.",
         groups=("body", "century"),
+    ),
+    Bundle(
+        "pairpack", "Jer to", "The two of you", "👥",
+        "Alt det, der kræver to fødselsdatoer: hvornår I er lige gamle i "
+        "forhold, og hvornår I har levet et bestemt antal år tilsammen.",
+        "Everything that needs two dates of birth: when your ages line up in "
+        "ratio, and when you have lived a given number of years between you.",
+        groups=("pair",),
     ),
     Bundle(
         "soon", "Alt inden for 10 år", "Everything within 10 years", "⏳",
