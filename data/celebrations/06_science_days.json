@@ -1,0 +1,134 @@
+{
+  "group": "sciday",
+  "note": "Aarligt tilbagevendende festdage for videnskab og matematik. De dage, hvor noget BLEV bevist, staar i 07_science_history.json.",
+  "days": [
+    {
+      "key": "pi",
+      "when": "03-14 13:59",
+      "da": "Pi-dagen",
+      "en": "Pi Day",
+      "why_da": "3.14 i amerikansk rækkefølge. Klokkeslættet her er 13.59, så de næste cifre også er med: 3,1415926. Fejres med tærte, fordi pi og pie lyder ens.",
+      "why_en": "3.14 in month-first order. The time here is 1:59 pm so the next digits come along too: 3.1415926. Celebrated with pie, because pi and pie sound alike."
+    },
+    {
+      "key": "pi_approx",
+      "when": "07-22",
+      "da": "Pi-approksimationsdagen",
+      "en": "Pi Approximation Day",
+      "why_da": "22/7 = 3,142857…, hvilket er tættere på pi end 3,14 er. Den dag, hvor brøken slår decimalen.",
+      "why_en": "22/7 = 3.142857…, which is closer to pi than 3.14 is. The day the fraction beats the decimal."
+    },
+    {
+      "key": "tau",
+      "when": "06-28",
+      "da": "Tau-dagen",
+      "en": "Tau Day",
+      "why_da": "Tau er 2π = 6,28, og en voksende skare matematikere mener, at det er den rigtige cirkelkonstant. Man spiser naturligvis to tærter.",
+      "why_en": "Tau is 2π = 6.28, and a growing band of mathematicians hold that it is the correct circle constant. You eat two pies, naturally."
+    },
+    {
+      "key": "euler",
+      "when": "02-07",
+      "da": "Eulers dag",
+      "en": "Euler's Day",
+      "why_da": "e ≈ 2,718, og 2.7 er datoen. Tallet bag den naturlige logaritme og bag enhver rente, der tilskrives uendeligt ofte.",
+      "why_en": "e ≈ 2.718, and 2.7 is the date. The number behind the natural logarithm and behind any interest compounded infinitely often."
+    },
+    {
+      "key": "fibonacci",
+      "when": "11-23",
+      "da": "Fibonacci-dagen",
+      "en": "Fibonacci Day",
+      "why_da": "11/23 er 1, 1, 2, 3 — rækkens begyndelse, hvor hvert tal er summen af de to foran.",
+      "why_en": "11/23 is 1, 1, 2, 3 — the start of the sequence, where each number is the sum of the two before it."
+    },
+    {
+      "key": "mole",
+      "when": "10-23 06:02",
+      "da": "Mol-dagen",
+      "en": "Mole Day",
+      "why_da": "Fejres mellem 06.02 og 18.02 den 23. oktober, fordi Avogadros tal er 6,02 × 10²³. Kemiens egen helligdag.",
+      "why_en": "Observed between 6:02 am and 6:02 pm on 23 October, because Avogadro's number is 6.02 × 10²³. Chemistry's own holiday."
+    },
+    {
+      "key": "newtonmas",
+      "when": "12-25",
+      "da": "Newtonmas",
+      "en": "Newtonmas",
+      "why_da": "Isaac Newton blev født 25. december 1642 efter den julianske kalender. Nørdernes alternativ til jul — man pynter træet med æbler.",
+      "why_en": "Isaac Newton was born on 25 December 1642 by the Julian calendar. The nerd alternative to Christmas — you decorate the tree with apples."
+    },
+    {
+      "key": "principia",
+      "when": "07-05",
+      "da": "Principia-dagen",
+      "en": "Principia Day",
+      "why_da": "Newtons Philosophiæ Naturalis Principia Mathematica udkom 5. juli 1687 og forklarede både det faldende æble og Månens bane med én ligning.",
+      "why_en": "Newton's Philosophiæ Naturalis Principia Mathematica appeared on 5 July 1687 and explained both the falling apple and the Moon's orbit with one equation."
+    },
+    {
+      "key": "darwin",
+      "when": "02-12",
+      "da": "Darwin Day",
+      "en": "Darwin Day",
+      "why_da": "Charles Darwins fødselsdag, 1809. Fejres verden over som en dag for videnskab og nysgerrighed.",
+      "why_en": "Charles Darwin's birthday, 1809. Marked around the world as a day for science and curiosity."
+    },
+    {
+      "key": "evolution",
+      "when": "11-24",
+      "da": "Evolutionsdagen",
+      "en": "Evolution Day",
+      "why_da": "Arternes oprindelse udkom 24. november 1859. Hele oplaget på 1.250 eksemplarer var væk samme dag.",
+      "why_en": "On the Origin of Species was published on 24 November 1859. The entire print run of 1,250 copies sold the same day."
+    },
+    {
+      "key": "dna",
+      "when": "04-25",
+      "da": "DNA-dagen",
+      "en": "DNA Day",
+      "why_da": "Den 25. april 1953 udkom artiklerne i Nature om dobbeltspiralen — Watson, Crick, Wilkins og Franklin, side om side i samme nummer.",
+      "why_en": "On 25 April 1953 the Nature papers on the double helix appeared — Watson, Crick, Wilkins and Franklin, side by side in the same issue."
+    },
+    {
+      "key": "yuri",
+      "when": "04-12",
+      "da": "Yuris Nat",
+      "en": "Yuri's Night",
+      "why_da": "Jurij Gagarin fløj i kredsløb om Jorden 12. april 1961 — og præcis tyve år senere, samme dato, lettede den første rumfærge. FN kalder den Dagen for Menneskets Rumflugt.",
+      "why_en": "Yuri Gagarin orbited the Earth on 12 April 1961 — and exactly twenty years later, to the day, the first Space Shuttle lifted off. The UN calls it the Day of Human Space Flight."
+    },
+    {
+      "key": "moon_day",
+      "when": "07-20",
+      "da": "Månedagen",
+      "en": "Moon Day",
+      "why_da": "Apollo 11 landede 20. juli 1969. Selve spadsereturen skete først natten til den 21. i europæisk tid — derfor står dagen forskelligt i forskellige kilder.",
+      "why_en": "Apollo 11 landed on 20 July 1969. The walk itself came in the small hours of the 21st in European time — which is why sources disagree about the day."
+    },
+    {
+      "key": "inventors",
+      "when": "02-11",
+      "da": "Opfindernes dag",
+      "en": "National Inventors' Day",
+      "why_da": "Thomas Edisons fødselsdag, 1847. Han endte med 1.093 patenter i eget navn.",
+      "why_en": "Thomas Edison's birthday, 1847. He ended up with 1,093 patents in his own name."
+    },
+    {
+      "key": "laser",
+      "when": "07-11",
+      "da": "Laserdagen",
+      "en": "Laser Day",
+      "why_da": "Ordet er en forkortelse: Light Amplification by Stimulated Emission of Radiation. Einstein forudsagde princippet i 1917, fyrre år før nogen byggede én.",
+      "why_en": "The word is an acronym: Light Amplification by Stimulated Emission of Radiation. Einstein predicted the principle in 1917, forty years before anybody built one."
+    },
+    {
+      "key": "maths",
+      "when": "nth:03:wed:1",
+      "da": "Verdens matematikdag",
+      "en": "World Maths Day",
+      "why_da": "Den første onsdag i marts regner skolebørn om kap over hele kloden.",
+      "why_en": "On the first Wednesday in March schoolchildren race each other at arithmetic across the globe."
+    }
+  ]
+}

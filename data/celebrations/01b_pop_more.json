@@ -1,0 +1,183 @@
+{
+  "group": "pop",
+  "note": "Resten af fandom-dagene, hentet fra Q42's nerd calendar og fra Love Thy Nerds liste. Samme gruppe som 01_pop.json.",
+  "days": [
+    {
+      "key": "scifi_day",
+      "when": "01-02",
+      "da": "Science Fiction-dagen",
+      "en": "Science Fiction Day",
+      "why_da": "Lagt på Isaac Asimovs fødselsdag. Han kendte ikke selv sin rigtige fødselsdato og valgte den 2. januar.",
+      "why_en": "Placed on Isaac Asimov's birthday. He did not know his own real birth date and settled on 2 January."
+    },
+    {
+      "key": "winter_een_mas",
+      "when": "01-25",
+      "da": "Winter-een-mas",
+      "en": "Winter-een-mas",
+      "why_da": "En måned helliget computerspil, opfundet i stribeserien Ctrl+Alt+Del. Den 25. januar er hoveddagen.",
+      "why_en": "A month devoted to video games, invented in the webcomic Ctrl+Alt+Del. 25 January is the main day."
+    },
+    {
+      "key": "opposite_day",
+      "when": "02-02",
+      "da": "Omvendt dag",
+      "en": "Opposite Day",
+      "why_da": "Alt betyder det modsatte. Hvilket betyder, at det ikke er omvendt dag i dag, hvilket betyder at det er.",
+      "why_en": "Everything means the opposite. Which means today is not Opposite Day, which means it is."
+    },
+    {
+      "key": "grammar",
+      "when": "03-04",
+      "da": "Grammatikkens dag",
+      "en": "National Grammar Day",
+      "why_da": "Datoen er valgt, fordi March forth lyder som „march frem“ — en sætning, der både er en dato og en befaling.",
+      "why_en": "The date was chosen because “March forth” is both a date and an order."
+    },
+    {
+      "key": "tolkien_reading",
+      "when": "03-25",
+      "da": "Tolkien-læsedagen",
+      "en": "Tolkien Reading Day",
+      "why_da": "Samme dag som Gondors nytår: den 25. marts gik Ringen i Dommedagsbjerget. Man læser højt.",
+      "why_en": "The same day as the Gondorian New Year: on 25 March the Ring went into Mount Doom. You read aloud."
+    },
+    {
+      "key": "tabletop",
+      "when": "04-11",
+      "da": "International TableTop Day",
+      "en": "International TableTop Day",
+      "why_da": "Brætspil på bordet hele dagen. Startet af Wil Wheaton i 2013.",
+      "why_en": "Board games on the table all day. Started by Wil Wheaton in 2013."
+    },
+    {
+      "key": "world_book",
+      "when": "04-23",
+      "da": "Verdens bogdag",
+      "en": "World Book Day",
+      "why_da": "UNESCO valgte datoen, fordi både Cervantes og Shakespeare døde den 23. april 1616 — dog ikke på samme dag, for Spanien og England brugte forskellige kalendere.",
+      "why_en": "UNESCO chose the date because both Cervantes and Shakespeare died on 23 April 1616 — though not on the same day, since Spain and England were using different calendars."
+    },
+    {
+      "key": "twilight_zone_day",
+      "when": "05-11",
+      "da": "Twilight Zone-dagen",
+      "en": "Twilight Zone Day",
+      "why_da": "En dag for det uforklarlige. Ingen ved præcis, hvorfor det blev den 11. maj, hvilket passer udmærket.",
+      "why_en": "A day for the unexplained. Nobody knows quite why it is 11 May, which is fitting."
+    },
+    {
+      "key": "yoda",
+      "when": "05-21",
+      "da": "Tal som Yoda-dagen",
+      "en": "Talk Like Yoda Day",
+      "why_da": "Omvendt ordstilling hele dagen, du skal bruge.",
+      "why_en": "Backwards the word order must be, all day."
+    },
+    {
+      "key": "picard",
+      "when": "06-16",
+      "da": "Kaptajn Picards dag",
+      "en": "Captain Picard Day",
+      "work": "Star Trek: The Next Generation",
+      "why_da": "Børnene om bord på Enterprise laver plancher og modeller af kaptajnen. Han hader det.",
+      "why_en": "The children aboard the Enterprise make posters and models of the captain. He hates it."
+    },
+    {
+      "key": "ufo",
+      "when": "07-02",
+      "da": "Verdens UFO-dag",
+      "en": "World UFO Day",
+      "why_da": "Lagt på den dag i 1947, hvor noget styrtede ned ved Roswell, New Mexico.",
+      "why_en": "Placed on the day in 1947 when something came down near Roswell, New Mexico."
+    },
+    {
+      "key": "geekness",
+      "when": "07-13",
+      "da": "Omfavn din nørdethed",
+      "en": "Embrace Your Geekness Day",
+      "why_da": "En dag, hvor man har lov til at tale uafbrudt om sin specialinteresse.",
+      "why_en": "A day on which you are allowed to talk about your special interest without stopping."
+    },
+    {
+      "key": "evoloterra",
+      "when": "07-20",
+      "da": "Evoloterra",
+      "en": "Evoloterra",
+      "why_da": "En foreslået højtid til minde om den aften, menneskeheden forlod Jorden. Der hører en ceremoni til, man læser højt ved stearinlys.",
+      "why_en": "A proposed festival marking the evening humanity left the Earth. It comes with a ceremony to be read aloud by candlelight."
+    },
+    {
+      "key": "optimus",
+      "when": "09-17",
+      "da": "Optimus Prime-dagen",
+      "en": "Optimus Prime Day",
+      "why_da": "Transformers blev sendt første gang i september 1984. Lastbilen har været chef siden.",
+      "why_en": "Transformers first aired in September 1984. The lorry has been in charge ever since."
+    },
+    {
+      "key": "escape_room",
+      "when": "10-01",
+      "da": "Escape Room-dagen",
+      "en": "Escape Room Day",
+      "why_da": "Den første rigtige escape room åbnede i Kyoto i 2007. Nu er der tusindvis.",
+      "why_en": "The first real escape room opened in Kyoto in 2007. Now there are thousands."
+    },
+    {
+      "key": "coffee",
+      "when": "10-01",
+      "da": "Den internationale kaffedag",
+      "en": "International Coffee Day",
+      "why_da": "Brændstoffet bag enhver deadline. Den står med i nørdekalenderen af gode grunde.",
+      "why_en": "The fuel behind every deadline. It is in the nerd calendar for good reason."
+    },
+    {
+      "key": "ninja",
+      "when": "12-05",
+      "da": "Ninjaens dag",
+      "en": "Day of the Ninja",
+      "why_da": "Opfundet i 2003 som modsvar til piratdagen i september. Man går i sort og siger ingenting.",
+      "why_en": "Invented in 2003 as an answer to the pirate day in September. You wear black and say nothing."
+    },
+    {
+      "key": "comic_sans",
+      "when": "nth:07:fri:1",
+      "da": "Comic Sans-dagen",
+      "en": "Comic Sans Day",
+      "why_da": "Den første fredag i juli. Skrifttypen blev tegnet til en hund i et Microsoft-program og endte på hospitalsskilte over hele verden.",
+      "why_en": "The first Friday in July. The typeface was drawn for a dog in a Microsoft program and ended up on hospital signs worldwide."
+    },
+    {
+      "key": "record_store",
+      "when": "nth:04:sat:3",
+      "da": "Pladebutikkernes dag",
+      "en": "Record Store Day",
+      "why_da": "Den tredje lørdag i april udkommer vinyludgivelser, der kun kan købes i en fysisk butik.",
+      "why_en": "On the third Saturday in April, vinyl releases appear that can only be bought in a physical shop."
+    },
+    {
+      "key": "beard",
+      "when": "nth:09:sat:1",
+      "da": "Verdens skægdag",
+      "en": "World Beard Day",
+      "why_da": "Den første lørdag i september. Reglerne siger, at den skægløse skal behandles med venlig overbærenhed.",
+      "why_en": "The first Saturday in September. The rules state that the beardless are to be treated with kindly forbearance."
+    },
+    {
+      "key": "stupid_question",
+      "when": "nth:09:fri:-1",
+      "da": "Stil et dumt spørgsmål-dagen",
+      "en": "Ask a Stupid Question Day",
+      "why_da": "Den sidste fredag i september. Indført af lærere, der var trætte af elever, som ikke turde spørge.",
+      "why_en": "The last Friday in September. Started by teachers tired of pupils who dared not ask."
+    },
+    {
+      "key": "earth_hour",
+      "when": "nth:03:sat:-1 20:30",
+      "da": "Earth Hour",
+      "en": "Earth Hour",
+      "why_da": "Den sidste lørdag i marts kl. 20.30 slukker byer over hele kloden lyset i en time.",
+      "why_en": "On the last Saturday in March at 8:30 pm, cities around the globe switch off the lights for an hour."
+    }
+  ]
+}

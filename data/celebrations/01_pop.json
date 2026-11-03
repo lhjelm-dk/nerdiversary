@@ -1,0 +1,165 @@
+{
+  "group": "pop",
+  "note": "Dage, folk faktisk fejrer ude i den virkelige verden. En fiktiv helligdag, ingen uden for vaerket holder, hoerer i 03_fiction.json.",
+  "days": [
+    {
+      "key": "starwars",
+      "when": "05-04",
+      "da": "Star Wars-dagen",
+      "en": "Star Wars Day",
+      "why_da": "„May the Fourth be with you.“ Hele helligdagen hviler på ét ordspil, og det er nok.",
+      "why_en": "“May the Fourth be with you.” The entire holiday rests on one pun, and that is enough."
+    },
+    {
+      "key": "revenge_fifth",
+      "when": "05-05",
+      "da": "Revenge of the Fifth",
+      "en": "Revenge of the Fifth",
+      "why_da": "Dagen efter, og den er den mørke sides. Revenge of the Sith blev Revenge of the Fifth.",
+      "why_en": "The day after, and it belongs to the dark side. Revenge of the Sith became Revenge of the Fifth."
+    },
+    {
+      "key": "towel",
+      "when": "05-25",
+      "da": "Håndklædedagen",
+      "en": "Towel Day",
+      "work": "The Hitchhiker's Guide to the Galaxy",
+      "why_da": "Bær et håndklæde hele dagen. En rumrejsende, der har styr på sit håndklæde, er en, man regner med. Dagen blev holdt første gang to uger efter Douglas Adams' død i 2001.",
+      "why_en": "Carry a towel all day. A space traveller who knows where their towel is commands respect. First observed two weeks after Douglas Adams died in 2001."
+    },
+    {
+      "key": "geekpride",
+      "when": "05-25",
+      "da": "Nørdernes stoltheds dag",
+      "en": "Geek Pride Day",
+      "why_da": "Datoen er ikke tilfældig: Star Wars havde premiere 25. maj 1977. Derfor falder den oven i håndklædedagen — den tættest befolkede dag i hele nørdekalenderen.",
+      "why_en": "The date is no accident: Star Wars opened on 25 May 1977. Which is why it lands on top of Towel Day — the most crowded square in the whole nerd calendar."
+    },
+    {
+      "key": "dolly",
+      "when": "09-25",
+      "da": "Dollys dag",
+      "en": "Dolly Day",
+      "why_da": "9/25 læses „9 to 5“, og så er det Dolly Partons dag. Tennessee gjorde den officiel, og New Orleans fulgte efter.",
+      "why_en": "9/25 reads as “9 to 5”, which makes it Dolly Parton's day. Tennessee made it official and New Orleans followed."
+    },
+    {
+      "key": "groundhog",
+      "when": "02-02",
+      "da": "Murmeldyrets dag",
+      "en": "Groundhog Day",
+      "why_da": "Et murmeldyr i Pennsylvania spår, om vinteren varer seks uger mere. Filmen fra 1993 gjorde navnet til et ord for en dag, der gentager sig selv.",
+      "why_en": "A groundhog in Pennsylvania predicts whether winter has six weeks left. The 1993 film turned the name into a word for a day that repeats itself."
+    },
+    {
+      "key": "bttf",
+      "when": "10-21",
+      "da": "Back to the Future-dagen",
+      "en": "Back to the Future Day",
+      "why_da": "Den 21. oktober 2015 kl. 16.29 var destinationen, Doc tastede ind. Fremtiden er overhalet nu, og vi har stadig ingen hoverboards.",
+      "why_en": "21 October 2015 at 4:29 pm was the destination Doc punched in. That future is behind us now, and we still have no hoverboards."
+    },
+    {
+      "key": "hobbit",
+      "when": "09-22",
+      "da": "Hobbitdagen",
+      "en": "Hobbit Day",
+      "work": "The Lord of the Rings",
+      "why_da": "Bilbos og Frodos fælles fødselsdag. Den rigtige måde at holde den er elleve måltider og ingen eventyr.",
+      "why_en": "Bilbo and Frodo share this birthday. The correct way to mark it is eleven meals and no adventures."
+    },
+    {
+      "key": "bloomsday",
+      "when": "06-16",
+      "da": "Bloomsday",
+      "en": "Bloomsday",
+      "work": "Ulysses",
+      "why_da": "Hele James Joyces Ulysses foregår på denne ene dag i 1904. I Dublin går man ruten igennem og spiser nyrer til morgenmad.",
+      "why_en": "The whole of Joyce's Ulysses takes place on this single day in 1904. In Dublin people walk the route and eat kidneys for breakfast."
+    },
+    {
+      "key": "n7",
+      "when": "11-07",
+      "da": "N7-dagen",
+      "en": "N7 Day",
+      "work": "Mass Effect",
+      "why_da": "11/07 er N7. Det er hele begrundelsen, og spillets fans holder den alvorligt.",
+      "why_en": "11/07 spells N7. That is the entire reasoning, and the fans take it seriously."
+    },
+    {
+      "key": "tardis",
+      "when": "11-23",
+      "da": "TARDIS-dagen",
+      "en": "TARDIS Day",
+      "work": "Doctor Who",
+      "why_da": "Doctor Who blev sendt første gang 23. november 1963 — dagen efter mordet på Kennedy, så næsten ingen så den.",
+      "why_en": "Doctor Who first aired on 23 November 1963 — the day after Kennedy was shot, so almost nobody watched."
+    },
+    {
+      "key": "startrek",
+      "when": "09-08",
+      "da": "Star Trek-dagen",
+      "en": "Star Trek Day",
+      "why_da": "Den 8. september 1966 sendte NBC den første episode. Serien blev aflyst efter tre sæsoner og blev alligevel det hele.",
+      "why_en": "On 8 September 1966 NBC aired the first episode. The show was cancelled after three seasons and became everything anyway."
+    },
+    {
+      "key": "firstcontact",
+      "when": "04-05",
+      "da": "Første kontakt-dagen",
+      "en": "First Contact Day",
+      "work": "Star Trek",
+      "why_da": "Den 5. april 2063 møder menneskeheden vulcanerne i Bozeman, Montana. Fejres i dag af fans, der har 37 år til gode.",
+      "why_en": "On 5 April 2063 humanity meets the Vulcans in Bozeman, Montana. Celebrated today by fans with 37 years still to wait."
+    },
+    {
+      "key": "alien",
+      "when": "04-26",
+      "da": "Alien-dagen",
+      "en": "Alien Day",
+      "work": "Aliens",
+      "why_da": "Månen hedder LV-426, så dagen er 4/26. Nørdekalenderens reneste form for logik.",
+      "why_en": "The moon is called LV-426, so the day is 4/26. The purest form of nerd-calendar logic."
+    },
+    {
+      "key": "mario",
+      "when": "03-10",
+      "da": "Mario-dagen",
+      "en": "MAR10 Day",
+      "why_da": "MAR10 ser ud som MARIO, hvis man kniber øjnene sammen. Nintendo gjorde den officiel i 2016.",
+      "why_en": "MAR10 looks like MARIO if you squint. Nintendo made it official in 2016."
+    },
+    {
+      "key": "pirate",
+      "when": "09-19",
+      "da": "Tal som en pirat-dagen",
+      "en": "Talk Like a Pirate Day",
+      "why_da": "To mænd fra Oregon opfandt den i 1995 under en squashkamp. Datoen er den enes ekskones fødselsdag, fordi den var let at huske.",
+      "why_en": "Two men in Oregon invented it during a racquetball game in 1995. The date is one of their ex-wives' birthday, because it was easy to remember."
+    },
+    {
+      "key": "batman",
+      "when": "nth:09:sat:3",
+      "da": "Batman-dagen",
+      "en": "Batman Day",
+      "why_da": "Den tredje lørdag i september. DC flyttede den rundt et par gange, før den landede her.",
+      "why_en": "The third Saturday in September. DC moved it around a few times before it settled here."
+    },
+    {
+      "key": "comicbook",
+      "when": "nth:05:sat:1",
+      "da": "Gratis tegneseriedag",
+      "en": "Free Comic Book Day",
+      "why_da": "Den første lørdag i maj giver tegneseriebutikker verden over hæfter væk. Opfundet i 2002 for at få folk ind ad døren.",
+      "why_en": "On the first Saturday in May comic shops around the world give issues away. Invented in 2002 to get people through the door."
+    },
+    {
+      "key": "sysadmin",
+      "when": "nth:07:fri:-1",
+      "da": "Systemadministratorens dag",
+      "en": "System Administrator Appreciation Day",
+      "why_da": "Den sidste fredag i juli. Den eneste dag om året, hvor man siger tak til den, der holder alting kørende.",
+      "why_en": "The last Friday in July. The one day a year anybody thanks the person keeping everything running."
+    }
+  ]
+}

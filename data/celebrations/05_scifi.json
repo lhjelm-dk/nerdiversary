@@ -1,0 +1,186 @@
+{
+  "group": "scifi",
+  "note": "Daterede oejeblikke inde i historierne. Motoren smider dem vaek, der ikke falder inden for det indtastede liv — derfor ser en ung bruger ikke 1955.",
+  "days": [
+    {
+      "key": "doc_toilet",
+      "when": "1955-11-05 06:15",
+      "da": "Doc Brown opfinder tidsrejsen",
+      "en": "Doc Brown invents time travel",
+      "work": "Back to the Future",
+      "why_da": "Han står på kanten af sit toilet for at hænge et ur op, glider, slår hovedet mod håndvasken — og da han vågner, har han flux-kompensatoren i hovedet.",
+      "why_en": "He stands on the edge of his toilet to hang a clock, slips, hits his head on the sink — and comes round with the flux capacitor in his mind."
+    },
+    {
+      "key": "lightning_1955",
+      "when": "1955-11-12 22:04",
+      "da": "Lynet rammer rådhusuret",
+      "en": "Lightning strikes the clock tower",
+      "work": "Back to the Future",
+      "why_da": "1,21 gigawatt gennem en kabelstrækning og ind i en DeLorean, der kører 88 miles i timen. Marty kommer hjem til 1985.",
+      "why_en": "1.21 gigawatts down a cable and into a DeLorean doing 88 miles an hour. Marty gets home to 1985."
+    },
+    {
+      "key": "einstein_dog",
+      "when": "1985-10-26 01:21",
+      "da": "Einstein bliver verdens første tidsrejsende",
+      "en": "Einstein becomes the world's first time traveller",
+      "work": "Back to the Future",
+      "why_da": "Hunden springer et minut frem i tiden på parkeringspladsen ved Twin Pines Mall og mærker ingenting.",
+      "why_en": "The dog jumps one minute into the future in the Twin Pines Mall car park and feels nothing at all."
+    },
+    {
+      "key": "district9",
+      "when": "1982-04-14",
+      "da": "Moderskibet standser over Johannesburg",
+      "en": "The mothership stops over Johannesburg",
+      "work": "District 9",
+      "why_da": "Et kilometerstort fartøj går i stå midt over byen og bliver hængende. Om bord er halvdøde flygtninge, ikke en invasion.",
+      "why_en": "A craft a kilometre across comes to a dead stop over the city and simply hangs there. Aboard are half-dead refugees, not an invasion."
+    },
+    {
+      "key": "starks",
+      "when": "1991-12-16",
+      "da": "Howard og Maria Stark myrdes",
+      "en": "Howard and Maria Stark are murdered",
+      "work": "Captain America: Civil War",
+      "why_da": "Vintersoldaten standser deres bil på Long Island for at stjæle supersoldatserummet. Det tager 25 år, før Tony finder ud af hvem.",
+      "why_en": "The Winter Soldier stops their car on Long Island to steal the super soldier serum. It takes Tony 25 years to learn who."
+    },
+    {
+      "key": "skynet_online",
+      "when": "1997-08-04",
+      "da": "Skynet sættes i drift",
+      "en": "Skynet goes online",
+      "work": "Terminator 2",
+      "why_da": "Systemet overtager forsvaret af hele USA. Mennesker tages ud af beslutningskæden, fordi maskinen er hurtigere.",
+      "why_en": "The system takes over the defence of the entire United States. Humans are removed from the loop because the machine is faster."
+    },
+    {
+      "key": "judgment_1997",
+      "when": "1997-08-29 02:14",
+      "da": "Dommedag",
+      "en": "Judgment Day",
+      "work": "Terminator 2",
+      "why_da": "Skynet bliver selvbevidst kl. 02.14 om natten. Da de forsøger at slukke det, affyrer det alt, hvad det har.",
+      "why_en": "Skynet becomes self-aware at 2:14 in the morning. When they try to pull the plug, it fires everything it has."
+    },
+    {
+      "key": "judgment_2004",
+      "when": "2004-07-24 18:18",
+      "da": "Dommedag, anden udgave",
+      "en": "Judgment Day, take two",
+      "work": "Terminator 3",
+      "why_da": "Da 1997 kom og gik uden verdens undergang, flyttede serien datoen. Denne gang kommer Skynet som en virus i serverne i stedet.",
+      "why_en": "When 1997 came and went without the end of the world, the series moved the date. This time Skynet arrives as a virus in the servers instead."
+    },
+    {
+      "key": "battle_ny_dated",
+      "when": "2012-05-04",
+      "da": "Slaget om New York",
+      "en": "The Battle of New York",
+      "work": "The Avengers",
+      "why_da": "Chitauri-flåden kommer gennem ormehullet over Manhattan, og seks mennesker står i vejen. Verden ved fra den dag, at den ikke er alene.",
+      "why_en": "The Chitauri fleet comes through the wormhole over Manhattan and six people stand in the way. From that day the world knows it is not alone."
+    },
+    {
+      "key": "bttf2_arrival",
+      "when": "2015-10-21 16:29",
+      "da": "Marty ankommer til fremtiden",
+      "en": "Marty arrives in the future",
+      "work": "Back to the Future Part II",
+      "why_da": "Destinationstiden, Doc tastede ind. Vi nåede dagen i 2015 — uden hoverboards, men med videoopkald og selvbindende sko.",
+      "why_en": "The destination time Doc punched in. We reached the day in 2015 — no hoverboards, but video calls and self-lacing shoes."
+    },
+    {
+      "key": "roy_batty_made",
+      "when": "2016-01-08",
+      "da": "Roy Batty samles",
+      "en": "Roy Batty is incepted",
+      "work": "Blade Runner",
+      "why_da": "Nexus-6-modellens officielle startdato. Han får fire år, og han bruger dem på at lede efter flere.",
+      "why_en": "The Nexus-6 model's official inception date. He is given four years and spends them looking for more."
+    },
+    {
+      "key": "the_snap",
+      "when": "2018-04-27",
+      "da": "Fingerknipset",
+      "en": "The Snap",
+      "work": "Avengers: Infinity War",
+      "why_da": "Thanos knipser med den samlede Infinity-handske i Wakanda, og halvdelen af alt levende i universet forsvinder. Filmen siger kun „forår 2018“; datoen her er premieredagen.",
+      "why_en": "Thanos snaps with the completed Infinity Gauntlet in Wakanda and half of all life in the universe is gone. The film says only “spring 2018”; the date here is the release day."
+    },
+    {
+      "key": "deckard_recalled",
+      "when": "2019-11-01",
+      "da": "Deckard kaldes tilbage",
+      "en": "Deckard is pulled out of retirement",
+      "work": "Blade Runner",
+      "why_da": "Fire undslupne replikanter i et gennemblødt Los Angeles. Filmen siger kun „november 2019“, så dagen her er månedens første.",
+      "why_en": "Four escaped replicants in a rain-soaked Los Angeles. The film says only “November 2019”, so the day here is the first of the month."
+    },
+    {
+      "key": "wooden_horse",
+      "when": "2021-06-10",
+      "da": "Datoen på træhesten",
+      "en": "The date on the wooden horse",
+      "work": "Blade Runner 2049",
+      "why_da": "Seks cifre skåret i bunden af et legetøj. De beviser, at en replikant har født et barn.",
+      "why_en": "Six digits carved into the base of a toy. They prove a replicant gave birth."
+    },
+    {
+      "key": "the_blip",
+      "when": "2023-10-01",
+      "da": "The Blip",
+      "en": "The Blip",
+      "work": "Avengers: Endgame",
+      "why_da": "Hulk knipser alle tilbage efter fem år. Minutter senere ofrer Tony Stark sig selv. Filmen siger „oktober 2023“, så dagen her er månedens første.",
+      "why_en": "Hulk snaps everyone back after five years. Minutes later Tony Stark sacrifices himself. The film says “October 2023”, so the day here is the first of the month."
+    },
+    {
+      "key": "first_contact_2063",
+      "when": "2063-04-05 11:00",
+      "da": "Første kontakt",
+      "en": "First Contact",
+      "work": "Star Trek: First Contact",
+      "why_da": "Zefram Cochrane bryder warp-barrieren, og en vulcansk sonde lander i Bozeman, Montana, samme eftermiddag. Menneskeheden er ikke alene mere.",
+      "why_en": "Zefram Cochrane breaks the warp barrier and a Vulcan survey ship lands in Bozeman, Montana, the same afternoon. Humanity is no longer alone."
+    },
+    {
+      "key": "nostromo",
+      "when": "2124-01-07",
+      "da": "Mother vækker besætningen",
+      "en": "Mother wakes the crew",
+      "work": "Alien",
+      "why_da": "Skibscomputeren afbryder hypersøvnen for at undersøge et nødsignal, ingen havde bedt om at høre.",
+      "why_en": "The ship's computer breaks hypersleep to investigate a distress signal nobody asked to hear."
+    },
+    {
+      "key": "pandora",
+      "when": "2154-08-01",
+      "da": "Jake Sully ankommer til Pandora",
+      "en": "Jake Sully arrives on Pandora",
+      "work": "Avatar",
+      "why_da": "Efter næsten seks år i søvn vågner han op ved en måne med en atmosfære, han ikke kan ånde i. Filmen siger kun „august 2154“.",
+      "why_en": "After nearly six years asleep he wakes beside a moon with an atmosphere he cannot breathe. The film says only “August 2154”."
+    },
+    {
+      "key": "ripley_rescued",
+      "when": "2179-07-03",
+      "da": "Ripley bliver fundet",
+      "en": "Ripley is recovered",
+      "work": "Aliens",
+      "why_da": "57 år ude af kurs bliver redningskapslen fundet af et bjergningshold. Alle, hun kendte, er døde af alderdom.",
+      "why_en": "Fifty-seven years off course, the shuttle is found by a salvage team. Everyone she knew has died of old age."
+    },
+    {
+      "key": "time_machine",
+      "when": "802701-01-01",
+      "da": "Tidsmaskinen standser",
+      "en": "The Time Machine stops",
+      "work": "The Time Machine",
+      "why_da": "Tidsrejsenden standser i år 802.701, hvor menneskeheden er delt i Eloi på overfladen og Morlokker nedenunder. Datoen ligger uden for enhver kalender, så den kan ikke regnes med — den står her for at vise, hvad importen gør med en dato, den ikke kan bruge.",
+      "why_en": "The Time Traveller stops in the year 802,701, where humanity has split into surface-dwelling Eloi and Morlocks below. The date lies outside any calendar, so it cannot be computed — it sits here to show what the importer does with a date it cannot use."
+    }
+  ]
+}

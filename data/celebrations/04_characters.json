@@ -1,0 +1,156 @@
+{
+  "group": "chars",
+  "note": "Foedselsdage paa folk, der ikke findes. Tegnefilmsfigurerne har dem fra deres foerste optraeden; de oevrige har dem fra vaerket selv.",
+  "days": [
+    {
+      "key": "roy_batty",
+      "when": "01-08",
+      "da": "Roy Batty",
+      "en": "Roy Batty",
+      "work": "Blade Runner",
+      "why_da": "Nexus-6-replikantens „inception date“ — den dag han blev samlet, ikke født. Han har fire år at leve i.",
+      "why_en": "The Nexus-6 replicant's inception date — the day he was assembled, not born. He has four years to live."
+    },
+    {
+      "key": "tintin",
+      "when": "01-10",
+      "da": "Tintin",
+      "en": "Tintin",
+      "work": "Tintin",
+      "why_da": "Hergés reporter trådte frem første gang i ungdomstillægget Le Petit Vingtième den 10. januar 1929, på vej til Sovjetunionen.",
+      "why_en": "Hergé's reporter first appeared in the youth supplement Le Petit Vingtième on 10 January 1929, bound for the Soviet Union."
+    },
+    {
+      "key": "buffy",
+      "when": "01-19",
+      "da": "Buffy Summers",
+      "en": "Buffy Summers",
+      "work": "Buffy the Vampire Slayer",
+      "why_da": "Fødselsdagene går aldrig godt for Buffy. Noget går altid galt, og det er seriens egen løbende joke.",
+      "why_en": "Birthdays never go well for Buffy. Something always goes wrong, and the show knows it."
+    },
+    {
+      "key": "dean",
+      "when": "01-24",
+      "da": "Dean Winchester",
+      "en": "Dean Winchester",
+      "work": "Supernatural",
+      "why_da": "Den ældste af de to brødre, født 1979 i Lawrence, Kansas.",
+      "why_en": "The elder of the two brothers, born 1979 in Lawrence, Kansas."
+    },
+    {
+      "key": "pris",
+      "when": "02-14",
+      "da": "Pris",
+      "en": "Pris",
+      "work": "Blade Runner",
+      "why_da": "Replikantens inception date falder på valentinsdag. Hun er bygget som „basic pleasure model“, så det er næppe tilfældigt.",
+      "why_en": "The replicant's inception date falls on Valentine's Day. She is built as a “basic pleasure model”, so it is unlikely to be chance."
+    },
+    {
+      "key": "scully",
+      "when": "02-23",
+      "da": "Dana Scully",
+      "en": "Dana Scully",
+      "work": "The X-Files",
+      "why_da": "Læge, fysiker og den, der bliver bedt om at modbevise det hele.",
+      "why_en": "Doctor, physicist, and the one assigned to disprove all of it."
+    },
+    {
+      "key": "number_six",
+      "when": "03-19",
+      "da": "Nummer Seks",
+      "en": "Number Six",
+      "work": "The Prisoner",
+      "why_da": "„I am not a number, I am a free man.“ Han har alligevel en fødselsdag.",
+      "why_en": "“I am not a number, I am a free man.” He has a birthday all the same."
+    },
+    {
+      "key": "sam",
+      "when": "05-02",
+      "da": "Sam Winchester",
+      "en": "Sam Winchester",
+      "work": "Supernatural",
+      "why_da": "Den yngste af brødrene, født 1983 — samme år som branden, der sætter hele serien i gang.",
+      "why_en": "The younger brother, born 1983 — the same year as the fire that sets the whole series going."
+    },
+    {
+      "key": "katniss",
+      "when": "05-08",
+      "da": "Katniss Everdeen",
+      "en": "Katniss Everdeen",
+      "work": "The Hunger Games",
+      "why_da": "Fra Distrikt 12. Hun er seksten, da hun melder sig i sin søsters sted.",
+      "why_en": "From District 12. She is sixteen when she volunteers in her sister's place."
+    },
+    {
+      "key": "donald",
+      "when": "06-09",
+      "da": "Anders And",
+      "en": "Donald Duck",
+      "why_da": "Hans officielle fødselsdag er dagen for premieren på The Wise Little Hen i 1934. Han var birolle og stjal filmen.",
+      "why_en": "His official birthday is the release of The Wise Little Hen in 1934. He had a bit part and stole the picture."
+    },
+    {
+      "key": "spongebob",
+      "when": "07-14",
+      "da": "SvampeBob Firkant",
+      "en": "SpongeBob SquarePants",
+      "work": "SpongeBob SquarePants",
+      "why_da": "Datoen står på hans bådkørekort: 14. juli 1986.",
+      "why_en": "The date is printed on his boating licence: 14 July 1986."
+    },
+    {
+      "key": "bugs",
+      "when": "07-27",
+      "da": "Snurre Snup",
+      "en": "Bugs Bunny",
+      "why_da": "A Wild Hare havde premiere 27. juli 1940. Det var dér, „What's up, doc?“ blev sagt første gang.",
+      "why_en": "A Wild Hare opened on 27 July 1940. That is where “What's up, doc?” was said for the first time."
+    },
+    {
+      "key": "harry",
+      "when": "07-31",
+      "da": "Harry Potter",
+      "en": "Harry Potter",
+      "work": "Harry Potter",
+      "why_da": "Født 1980, samme dag som J.K. Rowling selv.",
+      "why_en": "Born 1980, the same day of the year as J.K. Rowling herself."
+    },
+    {
+      "key": "percy",
+      "when": "08-18",
+      "da": "Percy Jackson",
+      "en": "Percy Jackson",
+      "work": "Percy Jackson and the Olympians",
+      "why_da": "Søn af Poseidon. Fødselsdagen falder om sommeren, mellem to halvgudelejre.",
+      "why_en": "Son of Poseidon. The birthday falls in summer, between two camp seasons."
+    },
+    {
+      "key": "rory",
+      "when": "10-08",
+      "da": "Rory Gilmore",
+      "en": "Rory Gilmore",
+      "work": "Gilmore Girls",
+      "why_da": "Født 1984, da hendes mor var seksten. Hele serien hænger på den oplysning.",
+      "why_en": "Born 1984, when her mother was sixteen. The whole series hangs on that fact."
+    },
+    {
+      "key": "mulder",
+      "when": "10-13",
+      "da": "Fox Mulder",
+      "en": "Fox Mulder",
+      "work": "The X-Files",
+      "why_da": "Født 1961. „I want to believe“ hang på hans kontorvæg i ni sæsoner.",
+      "why_en": "Born 1961. “I want to believe” hung on his office wall for nine seasons."
+    },
+    {
+      "key": "mickey",
+      "when": "11-18",
+      "da": "Mickey Mouse og Minnie Mouse",
+      "en": "Mickey and Minnie Mouse",
+      "why_da": "Begges officielle fødselsdag er premieren på Steamboat Willie den 18. november 1928 — den første tegnefilm med synkroniseret lyd, der virkelig slog igennem.",
+      "why_en": "Their shared official birthday is the premiere of Steamboat Willie on 18 November 1928 — the first cartoon with synchronised sound that really landed."
+    }
+  ]
+}

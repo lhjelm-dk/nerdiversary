@@ -1,0 +1,166 @@
+{
+  "group": "birthdays",
+  "note": "Foedselsdage paa rigtige mennesker, noerdekalenderen holder. De samme mennesker optraeder i gruppen Legender, men dér som levetider, man kan overhale.",
+  "days": [
+    {
+      "key": "asimov",
+      "when": "01-02",
+      "da": "Isaac Asimov",
+      "en": "Isaac Asimov",
+      "why_da": "Født 1920 — eller deromkring; han kendte ikke selv datoen og valgte den 2. januar. Dagen holdes også som Science Fiction-dagen. Han skrev eller redigerede over 500 bøger.",
+      "why_en": "Born 1920 — or thereabouts; he did not know the date himself and settled on 2 January. The day doubles as Science Fiction Day. He wrote or edited over 500 books."
+    },
+    {
+      "key": "tolkien",
+      "when": "01-03",
+      "da": "J.R.R. Tolkien",
+      "en": "J.R.R. Tolkien",
+      "why_da": "Født 1892 i Sydafrika. Han opfandt sprogene først og historierne bagefter, fordi et sprog har brug for et folk at tale det.",
+      "why_en": "Born 1892 in South Africa. He invented the languages first and the stories afterwards, because a language needs a people to speak it."
+    },
+    {
+      "key": "franklin",
+      "when": "01-17",
+      "da": "Benjamin Franklin",
+      "en": "Benjamin Franklin",
+      "why_da": "Født 1706. Lynafleder, bifokale briller, katetret og et land — og han tog aldrig patent på noget af det.",
+      "why_en": "Born 1706. The lightning rod, bifocals, the flexible catheter and a country — and he never patented any of it."
+    },
+    {
+      "key": "baer",
+      "when": "03-08",
+      "da": "Ralph Baer",
+      "en": "Ralph Baer",
+      "why_da": "Født 1922. Han fandt på at spille på fjernsynet og byggede Magnavox Odyssey — den første spillekonsol til hjemmet.",
+      "why_en": "Born 1922. He had the idea of playing games on the television and built the Magnavox Odyssey — the first home games console."
+    },
+    {
+      "key": "adams",
+      "when": "03-11",
+      "da": "Douglas Adams",
+      "en": "Douglas Adams",
+      "why_da": "Født 1952. Han fik idéen til Hitchhiker's Guide, mens han lå stangstiv i en mark i Innsbruck med en bog om at rejse billigt i Europa.",
+      "why_en": "Born 1952. He had the idea for the Hitchhiker's Guide while lying drunk in a field in Innsbruck with a book about travelling Europe cheaply."
+    },
+    {
+      "key": "einstein",
+      "when": "03-14",
+      "da": "Albert Einstein",
+      "en": "Albert Einstein",
+      "why_da": "Født 1879 — samme dato som Pi-dagen. Stephen Hawking døde 14. marts 2018, så dagen binder en pæn kosmisk knude.",
+      "why_en": "Born 1879 — the same date as Pi Day. Stephen Hawking died on 14 March 2018, so the day ties a neat cosmic knot."
+    },
+    {
+      "key": "nimoy",
+      "when": "03-26",
+      "da": "Leonard Nimoy",
+      "en": "Leonard Nimoy",
+      "why_da": "Født 1931. Vulcan-hilsenen fandt han selv på — den er en jødisk velsignelse, han havde set i synagogen som dreng.",
+      "why_en": "Born 1931. He came up with the Vulcan salute himself — it is a Jewish blessing he had seen in synagogue as a boy."
+    },
+    {
+      "key": "shakespeare",
+      "when": "04-23",
+      "da": "William Shakespeare",
+      "en": "William Shakespeare",
+      "why_da": "Døbt 26. april 1564, så fødselsdagen sættes traditionelt til den 23. Han døde samme dato i 1616.",
+      "why_en": "Baptised on 26 April 1564, so the birthday is traditionally put at the 23rd. He died on the same date in 1616."
+    },
+    {
+      "key": "colbert",
+      "when": "05-13",
+      "da": "Stephen Colbert",
+      "en": "Stephen Colbert",
+      "why_da": "Født 1964. Han kan hele Ringenes Herre udenad og har rettet Peter Jackson på et sæt.",
+      "why_en": "Born 1964. He knows the whole of The Lord of the Rings by heart and has corrected Peter Jackson on set."
+    },
+    {
+      "key": "lucas",
+      "when": "05-14",
+      "da": "George Lucas",
+      "en": "George Lucas",
+      "why_da": "Født 1944. Han beholdt rettighederne til legetøjet, fordi studiet ikke troede, der var penge i dem.",
+      "why_en": "Born 1944. He kept the merchandising rights because the studio did not believe there was money in them."
+    },
+    {
+      "key": "tesla",
+      "when": "07-10",
+      "da": "Nikola Tesla",
+      "en": "Nikola Tesla",
+      "why_da": "Født 1856 ved midnat under et tordenvejr, siger familiehistorien. Vekselstrømmen i stikkontakten er hans.",
+      "why_en": "Born 1856 at midnight during a thunderstorm, according to family legend. The alternating current in the wall is his."
+    },
+    {
+      "key": "turing",
+      "when": "06-23",
+      "da": "Alan Turing",
+      "en": "Alan Turing",
+      "why_da": "Født 23. juni 1912. Flere nørdekalendere sætter dagen i maj, men det er forkert — juni er den rigtige.",
+      "why_en": "Born 23 June 1912. Several nerd calendars put the day in May, but that is wrong — June is correct."
+    },
+    {
+      "key": "gygax",
+      "when": "07-27",
+      "da": "Gary Gygax",
+      "en": "Gary Gygax",
+      "why_da": "Født 1938. Medskaber af Dungeons & Dragons og dermed af hele forestillingen om, at man kan spille et spil uden et bræt.",
+      "why_en": "Born 1938. Co-creator of Dungeons & Dragons, and so of the whole notion that a game need not have a board."
+    },
+    {
+      "key": "wheaton",
+      "when": "07-29",
+      "da": "Wil Wheaton",
+      "en": "Wil Wheaton",
+      "why_da": "Født 1972. Wesley Crusher i Star Trek som teenager, og siden nørdekulturens egen advokat.",
+      "why_en": "Born 1972. Wesley Crusher in Star Trek as a teenager, and since then nerd culture's own advocate."
+    },
+    {
+      "key": "bradbury",
+      "when": "08-22",
+      "da": "Ray Bradbury",
+      "en": "Ray Bradbury",
+      "why_da": "Født 1920. Fahrenheit 451 skrev han på en lejet skrivemaskine i et bibliotekskælder for ti cent i halvtimen.",
+      "why_en": "Born 1920. He wrote Fahrenheit 451 on a rented typewriter in a library basement at ten cents the half hour."
+    },
+    {
+      "key": "curie",
+      "when": "11-07",
+      "da": "Marie Curie",
+      "en": "Marie Curie",
+      "why_da": "Født 1867. Det eneste menneske med nobelpriser i to forskellige naturvidenskaber. Hendes notesbøger stråler stadig.",
+      "why_en": "Born 1867. The only person with Nobel prizes in two different sciences. Her notebooks are still radioactive."
+    },
+    {
+      "key": "disney",
+      "when": "12-05",
+      "da": "Walt Disney",
+      "en": "Walt Disney",
+      "why_da": "Født 1901. Han mistede rettighederne til sin første figur, Oswald, og tegnede en mus i stedet.",
+      "why_en": "Born 1901. He lost the rights to his first character, Oswald, and drew a mouse instead."
+    },
+    {
+      "key": "hopper",
+      "when": "12-09",
+      "da": "Grace Hopper",
+      "en": "Grace Hopper",
+      "why_da": "Født 1906. Hun byggede den første compiler og fandt den møl i en relæ, der gav ordet „bug“ sin betydning.",
+      "why_en": "Born 1906. She built the first compiler, and found the moth in a relay that gave the word “bug” its meaning."
+    },
+    {
+      "key": "lovelace_born",
+      "when": "12-10",
+      "da": "Ada Lovelace",
+      "en": "Ada Lovelace",
+      "why_da": "Født 1815, datter af lord Byron. Hun skrev verdens første program og forudså, at maskinen kunne regne på mere end tal — den kunne komponere musik.",
+      "why_en": "Born 1815, Lord Byron's daughter. She wrote the world's first program and foresaw that the machine could work on more than numbers — it could compose music."
+    },
+    {
+      "key": "stan_lee",
+      "when": "12-28",
+      "da": "Stan Lee",
+      "en": "Stan Lee",
+      "why_da": "Født 1922. Han brugte sit pseudonym til tegneserierne, fordi han sparede sit rigtige navn, Stanley Lieber, til den roman han ville skrive.",
+      "why_en": "Born 1922. He used a pen name for the comics because he was saving his real name, Stanley Lieber, for the novel he meant to write."
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "group": "scihist",
+  "note": "De dage, hvor noget blev bevist, maalt eller sat i kredsloeb. Ét oejeblik hver, saa de kun hoerer med, hvis de falder inden for det indtastede liv.",
+  "days": [
+    {
+      "key": "darwin_born",
+      "when": "1809-02-12",
+      "da": "Charles Darwin bliver født",
+      "en": "Charles Darwin is born",
+      "medium": "event",
+      "why_da": "Samme dag som Abraham Lincoln, på hver sin side af Atlanten.",
+      "why_en": "The same day as Abraham Lincoln, on opposite sides of the Atlantic."
+    },
+    {
+      "key": "origin",
+      "when": "1859-11-24",
+      "da": "Arternes oprindelse udkommer",
+      "en": "On the Origin of Species is published",
+      "medium": "book",
+      "why_da": "Darwin havde siddet på idéen i tyve år, før Alfred Russel Wallace sendte ham et brev med den samme tanke og tvang ham til at udgive.",
+      "why_en": "Darwin sat on the idea for twenty years, until Alfred Russel Wallace sent him a letter containing the same thought and forced his hand."
+    },
+    {
+      "key": "first_telephone",
+      "when": "1876-03-10",
+      "da": "Det første telefonopkald",
+      "en": "The first telephone call",
+      "medium": "event",
+      "why_da": "Alexander Graham Bell til sin assistent i værelset ved siden af: „Mr. Watson, come here, I want to see you.“",
+      "why_en": "Alexander Graham Bell to his assistant in the next room: “Mr. Watson, come here, I want to see you.”"
+    },
+    {
+      "key": "eddington",
+      "when": "1919-05-29",
+      "da": "Relativitetsteorien bevises",
+      "en": "General relativity is proved",
+      "medium": "event",
+      "why_da": "Under en total solformørkelse måler to ekspeditioner — én i Brasilien, én ved Vestafrika — hvordan stjernelys bøjer af omkring Solen. Afbøjningen var præcis den, Einstein havde regnet ud, og dobbelt så stor som Newton tillod.",
+      "why_en": "During a total solar eclipse two expeditions — one in Brazil, one off West Africa — measure how starlight bends around the Sun. The deflection was exactly what Einstein had calculated, and twice what Newton allowed."
+    },
+    {
+      "key": "relativity_announced",
+      "when": "1919-11-06",
+      "da": "Verden får det at vide",
+      "en": "The world is told",
+      "medium": "event",
+      "why_da": "Resultatet fremlægges for Royal Society i London. Dagen efter stod Einstein på forsiderne, og han var verdensberømt resten af sit liv.",
+      "why_en": "The result is presented to the Royal Society in London. The next morning Einstein was on the front pages, and he stayed world-famous for the rest of his life."
+    },
+    {
+      "key": "hubble_galaxy",
+      "when": "1924-12-30",
+      "da": "Universet bliver større",
+      "en": "The universe gets bigger",
+      "medium": "event",
+      "why_da": "Edwin Hubble fremlægger beviset for, at Andromeda-„tågen“ er en hel anden galakse. Indtil den dag troede man, at Mælkevejen var hele universet.",
+      "why_en": "Edwin Hubble presents the evidence that the Andromeda “nebula” is an entirely separate galaxy. Until that day the Milky Way was thought to be the whole universe."
+    },
+    {
+      "key": "dna_paper",
+      "when": "1953-04-25",
+      "da": "Dobbeltspiralen offentliggøres",
+      "en": "The double helix is published",
+      "medium": "event",
+      "why_da": "Tre artikler i samme nummer af Nature. Watson og Cricks er på én side, og den bygger på Rosalind Franklins røntgenbillede, som de havde set uden hendes vidende.",
+      "why_en": "Three papers in the same issue of Nature. Watson and Crick's runs to a single page, and it rests on Rosalind Franklin's X-ray image, which they had seen without her knowledge."
+    },
+    {
+      "key": "sputnik",
+      "when": "1957-10-04",
+      "da": "Sputnik 1 opsendes",
+      "en": "Sputnik 1 is launched",
+      "medium": "event",
+      "why_da": "En 58 cm metalkugle med fire antenner, der bippede i 21 dage. Den satte rumkapløbet i gang og skræmte en hel verdensdel.",
+      "why_en": "A 58 cm metal sphere with four antennae that beeped for 21 days. It started the space race and frightened an entire continent."
+    },
+    {
+      "key": "gagarin",
+      "when": "1961-04-12",
+      "da": "Det første menneske i rummet",
+      "en": "The first human in space",
+      "medium": "event",
+      "why_da": "Jurij Gagarin rundede Jorden én gang i 108 minutter. Han var 27 år og havde ingen kontrol over kapslen — man vidste ikke, om et menneske kunne tænke i vægtløshed.",
+      "why_en": "Yuri Gagarin went round the Earth once in 108 minutes. He was 27 and had no control of the capsule — nobody knew whether a human could think in weightlessness."
+    },
+    {
+      "key": "cmb",
+      "when": "1964-05-20",
+      "da": "Big Bangs ekko høres",
+      "en": "The echo of the Big Bang is heard",
+      "medium": "event",
+      "why_da": "Arno Penzias og Robert Wilson rensede en kæmpe hornantenne i New Jersey for al tænkelig støj, og der blev en jævn hvislen tilbage, de ikke kunne komme af med. Det var universets baggrundsstråling — lyset fra 380.000 år efter begyndelsen.",
+      "why_en": "Arno Penzias and Robert Wilson cleaned every conceivable source of noise out of a giant horn antenna in New Jersey, and a uniform hiss was left that they could not get rid of. It was the cosmic microwave background — light from 380,000 years after the beginning."
+    },
+    {
+      "key": "moon_landing",
+      "when": "1969-07-20 20:17",
+      "da": "Apollo 11 lander",
+      "en": "Apollo 11 lands",
+      "medium": "event",
+      "why_da": "Månelandingsfartøjet sætter sig i Stilhedens Hav med brændstof til under tyve sekunder tilbage. Armstrong gik ud godt seks timer senere — natten til den 21. i dansk tid.",
+      "why_en": "The lunar module settles in the Sea of Tranquillity with under twenty seconds of fuel left. Armstrong stepped out a good six hours later — in the small hours of the 21st, European time."
+    },
+    {
+      "key": "shepard_golf",
+      "when": "1971-02-06",
+      "da": "Et golfslag på Månen",
+      "en": "A golf shot on the Moon",
+      "medium": "event",
+      "why_da": "Alan Shepard havde smuglet et klubhoved og to bolde med på Apollo 14. I rumdragt kunne han kun svinge med én arm.",
+      "why_en": "Alan Shepard had smuggled a club head and two balls aboard Apollo 14. In a pressure suit he could only swing one-handed."
+    },
+    {
+      "key": "hubble_telescope",
+      "when": "1990-04-25",
+      "da": "Hubble-teleskopet sættes i kredsløb",
+      "en": "The Hubble telescope is deployed",
+      "medium": "event",
+      "why_da": "Spejlet var slebet forkert med en brøkdel af en hårsbredde, og de første billeder var slørede. Det tog tre år og en rumvandring at give det briller.",
+      "why_en": "The mirror had been ground wrong by a fraction of a hair's breadth and the first pictures were blurred. It took three years and a spacewalk to give it glasses."
+    },
+    {
+      "key": "deep_blue",
+      "when": "1996-02-10",
+      "da": "Deep Blue slår Kasparov",
+      "en": "Deep Blue beats Kasparov",
+      "medium": "event",
+      "why_da": "Første gang en computer vandt et skakparti mod en regerende verdensmester under turneringsvilkår. Kasparov vandt matchen alligevel — men ikke den næste.",
+      "why_en": "The first time a computer won a chess game against a reigning world champion under tournament conditions. Kasparov still won the match — but not the next one."
+    },
+    {
+      "key": "dolly_sheep",
+      "when": "1997-02-22",
+      "da": "Fåret Dolly offentliggøres",
+      "en": "Dolly the cloned sheep is announced",
+      "medium": "event",
+      "why_da": "Det første pattedyr klonet fra en voksen celle. Cellen kom fra et yver, og derfor blev hun opkaldt efter Dolly Parton.",
+      "why_en": "The first mammal cloned from an adult cell. The cell came from a mammary gland, which is why she was named after Dolly Parton."
+    },
+    {
+      "key": "falcon1",
+      "when": "2008-09-28",
+      "da": "Falcon 1 når kredsløb",
+      "en": "Falcon 1 reaches orbit",
+      "medium": "event",
+      "why_da": "Første gang en privatbygget raket med flydende brændstof nåede kredsløb. De tre første forsøg var mislykket, og SpaceX havde penge til netop dette.",
+      "why_en": "The first privately built liquid-fuelled rocket to reach orbit. The three previous attempts had failed, and SpaceX had money for exactly this one."
+    },
+    {
+      "key": "ligo_detect",
+      "when": "2015-09-14 09:50",
+      "da": "Tyngdebølgerne rammer Jorden",
+      "en": "The gravitational waves reach Earth",
+      "medium": "event",
+      "why_da": "To sorte huller smeltede sammen for 1,3 milliarder år siden, og rystelsen nåede hertil denne morgen. LIGO målte en bevægelse mindre end en tusindedel af en protons bredde.",
+      "why_en": "Two black holes merged 1.3 billion years ago and the tremor arrived this morning. LIGO measured a movement smaller than a thousandth of the width of a proton."
+    },
+    {
+      "key": "ligo_announce",
+      "when": "2016-02-11",
+      "da": "Tyngdebølgerne offentliggøres",
+      "en": "The gravitational waves are announced",
+      "medium": "event",
+      "why_da": "Fem måneders kontrolregning senere træder LIGO frem. Det var den sidste store ubeviste del af Einsteins almene relativitetsteori — hundrede år efter han skrev den ned.",
+      "why_en": "Five months of checking later, LIGO goes public. It was the last major unproved piece of Einstein's general relativity — a hundred years after he wrote it down."
+    }
+  ]
+}

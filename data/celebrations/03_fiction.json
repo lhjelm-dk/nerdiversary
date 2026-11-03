@@ -1,0 +1,492 @@
+{
+  "group": "fiction",
+  "note": "Helligdage og aarsdage, der kun findes inde i vaerket. Samlet efter Atlas Obscuras kalender over fiktive helligdage.",
+  "days": [
+    {
+      "key": "hal9000",
+      "when": "01-12",
+      "da": "HAL 9000 tændes",
+      "en": "HAL 9000 is activated",
+      "work": "2001: A Space Odyssey",
+      "why_da": "Computeren bliver sat i drift i Urbana, Illinois. Den går først galt senere.",
+      "why_en": "The computer goes online in Urbana, Illinois. Things only go wrong later."
+    },
+    {
+      "key": "galentine",
+      "when": "02-13",
+      "da": "Galentine's Day",
+      "en": "Galentine's Day",
+      "work": "Parks and Recreation",
+      "why_da": "Dagen før valentinsdag, og den er for veninderne. Leslie Knope opfandt den, og så begyndte folk at holde den i virkeligheden.",
+      "why_en": "The day before Valentine's, and it belongs to the ladies. Leslie Knope invented it, and then people started keeping it for real."
+    },
+    {
+      "key": "squidward",
+      "when": "02-15",
+      "da": "Annoy Squidward Day",
+      "en": "Annoy Squidward Day",
+      "work": "SpongeBob SquarePants",
+      "why_da": "SvampeBob og Patrick fejrer den ved at gøre præcis det, der står i navnet.",
+      "why_en": "SpongeBob and Patrick observe it by doing precisely what it says on the tin."
+    },
+    {
+      "key": "laura_palmer",
+      "when": "02-24",
+      "da": "Mordet på Laura Palmer",
+      "en": "The murder of Laura Palmer",
+      "work": "Twin Peaks",
+      "why_da": "Liget bliver fundet svøbt i plastik ved søen, og en hel by viser sig at have hemmeligheder.",
+      "why_en": "The body is found wrapped in plastic by the lake, and a whole town turns out to have secrets."
+    },
+    {
+      "key": "babylon5",
+      "when": "03-09",
+      "da": "Babylon 5 sættes i drift",
+      "en": "Babylon 5 Launch Day",
+      "work": "Babylon 5",
+      "why_da": "Rumstationen åbner som sidste, bedste håb om fred.",
+      "why_en": "The station opens as the last, best hope for peace."
+    },
+    {
+      "key": "frankenstein",
+      "when": "03-11",
+      "da": "Frankensteins dag",
+      "en": "Frankenstein Day",
+      "work": "Frankenstein",
+      "why_da": "Mary Shelleys roman udkom denne dag i 1818, anonymt, da hun var tyve år.",
+      "why_en": "Mary Shelley's novel was published on this day in 1818, anonymously, when she was twenty."
+    },
+    {
+      "key": "colonial",
+      "when": "03-18",
+      "da": "Kolonidagen",
+      "en": "Colonial Day",
+      "work": "Battlestar Galactica",
+      "why_da": "De tolv kolonier mindes den dag, de blev ét.",
+      "why_en": "The Twelve Colonies mark the day they became one."
+    },
+    {
+      "key": "purge",
+      "when": "03-21",
+      "da": "The Purge begynder",
+      "en": "The Purge begins",
+      "work": "The Purge",
+      "why_da": "Tolv timer, hvor alt er lovligt. Den eneste helligdag i hele kalenderen, man ikke skal ønske sig.",
+      "why_en": "Twelve hours in which everything is legal. The one holiday in this calendar nobody should wish for."
+    },
+    {
+      "key": "breakfast_club",
+      "when": "03-24",
+      "da": "Breakfast Club-dagen",
+      "en": "Breakfast Club Day",
+      "work": "The Breakfast Club",
+      "why_da": "Fem elever møder ind til eftersidning og går hjem som noget andet.",
+      "why_en": "Five students report for detention and go home as something else."
+    },
+    {
+      "key": "gondor",
+      "when": "03-25",
+      "da": "Gondors nytår",
+      "en": "Gondorian New Year",
+      "work": "The Lord of the Rings",
+      "why_da": "Ringen gik i Dommedagsbjerget denne dag, så Gondor flyttede hele sit årsskifte hertil.",
+      "why_en": "The Ring went into Mount Doom on this day, so Gondor moved the turn of its year here."
+    },
+    {
+      "key": "nineteen84",
+      "when": "04-04",
+      "da": "1984-dagen",
+      "en": "1984 Day",
+      "work": "Nineteen Eighty-Four",
+      "why_da": "Winston Smith skriver den første dato i sin dagbog. Det er dagen, han begynder at tænke selv.",
+      "why_en": "Winston Smith writes the first date in his diary. It is the day he starts thinking for himself."
+    },
+    {
+      "key": "rex_manning",
+      "when": "04-08",
+      "da": "Rex Manning-dagen",
+      "en": "Rex Manning Day",
+      "work": "Empire Records",
+      "why_da": "Popstjernen kommer i pladebutikken og skriver autografer. Hele filmen foregår den dag.",
+      "why_en": "The pop star comes to the record shop to sign autographs. The whole film happens that day."
+    },
+    {
+      "key": "robanukah",
+      "when": "04-20",
+      "da": "Robanukah begynder",
+      "en": "Robanukah begins",
+      "work": "Futurama",
+      "why_da": "Benders robotjødiske højtid varer to uger, og han har selv opfundet reglerne undervejs.",
+      "why_en": "Bender's robot-Jewish festival runs two weeks, and he invents the rules as he goes."
+    },
+    {
+      "key": "hogwarts",
+      "when": "05-02",
+      "da": "Slaget om Hogwarts",
+      "en": "The Battle of Hogwarts",
+      "work": "Harry Potter",
+      "why_da": "Det hele slutter her, i 1998, på skolens grund.",
+      "why_en": "It all ends here, in 1998, on the school grounds."
+    },
+    {
+      "key": "battle_ny",
+      "when": "05-04",
+      "da": "Slaget om New York",
+      "en": "The Battle of New York",
+      "work": "The Avengers",
+      "why_da": "Loke åbner et ormehul over Manhattan, og verden finder ud af, at den ikke er alene.",
+      "why_en": "Loki opens a wormhole over Manhattan and the world learns it is not alone."
+    },
+    {
+      "key": "cinco_cuatro",
+      "when": "05-04",
+      "da": "Cinco de Cuatro",
+      "en": "Cinco de Cuatro",
+      "work": "Arrested Development",
+      "why_da": "Lucille Bluth flyttede Cinco de Mayo en dag frem for at ødelægge den. Det lykkedes.",
+      "why_en": "Lucille Bluth moved Cinco de Mayo a day earlier in order to ruin it. She succeeded."
+    },
+    {
+      "key": "whacking",
+      "when": "05-10",
+      "da": "Whacking Day",
+      "en": "Whacking Day",
+      "work": "The Simpsons",
+      "why_da": "Springfield driver slanger ud på gaden og slår dem med køller. Byen opdager til sidst, at traditionen er opfundet.",
+      "why_en": "Springfield drives snakes into the street and clubs them. The town eventually discovers the tradition was made up."
+    },
+    {
+      "key": "miracle_monday",
+      "when": "05-15",
+      "da": "Miracle Monday",
+      "en": "Miracle Monday",
+      "work": "Superman",
+      "why_da": "Dagen hvor Superman besejrede en dæmon uden at slå. Fejres i fremtiden til minde om det.",
+      "why_en": "The day Superman defeated a demon without throwing a punch. The future keeps the date in memory of it."
+    },
+    {
+      "key": "eliza",
+      "when": "05-20",
+      "da": "Eliza Doolittle-dagen",
+      "en": "Eliza Doolittle Day",
+      "work": "My Fair Lady",
+      "why_da": "Eliza synger om den dag, kongen skal takke hende. Den dag er den 20. maj.",
+      "why_en": "Eliza sings about the day the king will thank her. That day is the 20th of May."
+    },
+    {
+      "key": "sherlock",
+      "when": "05-22",
+      "da": "Sherlock Holmes-dagen",
+      "en": "Sherlock Holmes Day",
+      "work": "Sherlock Holmes",
+      "why_da": "Arthur Conan Doyles fødselsdag, 1859. Detektiven selv har ingen, for Doyle gav ham aldrig én.",
+      "why_en": "Arthur Conan Doyle's birthday, 1859. The detective himself has none, because Doyle never gave him one."
+    },
+    {
+      "key": "glorious25",
+      "when": "05-25",
+      "da": "Den Glorværdige 25. maj",
+      "en": "The Glorious 25th of May",
+      "work": "Discworld",
+      "why_da": "Ankh-Morpork mindes de faldne ved en barrikade med en kvist lilac. Terry Pratchetts fans bærer den stadig.",
+      "why_en": "Ankh-Morpork remembers the fallen at a barricade with a sprig of lilac. Pratchett's readers still wear it."
+    },
+    {
+      "key": "winterfair",
+      "when": "06-01",
+      "da": "Winterfair",
+      "en": "Winterfair",
+      "work": "The Vorkosigan Saga",
+      "why_da": "Barrayars store midvinterfest — og det tidspunkt, man gifter sig, hvis man er Vorkosigan.",
+      "why_en": "Barrayar's great midwinter festival — and when you get married, if you are a Vorkosigan."
+    },
+    {
+      "key": "ferris",
+      "when": "06-05",
+      "da": "Ferris Buellers fridag",
+      "en": "Ferris Bueller's Day Off",
+      "work": "Ferris Bueller's Day Off",
+      "why_da": "Én pjækkedag i Chicago, ni forklaringer og en Ferrari, der ikke overlever.",
+      "why_en": "One day off school in Chicago, nine excuses and a Ferrari that does not survive."
+    },
+    {
+      "key": "summerween",
+      "when": "06-22",
+      "da": "Summerween",
+      "en": "Summerween",
+      "work": "Gravity Falls",
+      "why_da": "Gravity Falls kan ikke vente til oktober, så byen holder halloween om sommeren i stedet.",
+      "why_en": "Gravity Falls cannot wait until October, so the town holds Halloween in the summer instead."
+    },
+    {
+      "key": "longest_night",
+      "when": "06-23",
+      "da": "Longest Night",
+      "en": "Longest Night",
+      "work": "Kushiel's Legacy",
+      "why_da": "Terre d'Anges fejrer årets længste nat med maskebal, der varer til solopgang.",
+      "why_en": "Terre d'Ange marks the year's longest night with a masque that runs until sunrise."
+    },
+    {
+      "key": "half_christmas",
+      "when": "06-25",
+      "da": "Halvjul",
+      "en": "Half-Christmas",
+      "work": "Workaholics",
+      "why_da": "Præcis et halvt år fra juleaften. Begrundelse nok.",
+      "why_en": "Exactly half a year from Christmas. Reason enough."
+    },
+    {
+      "key": "wayne",
+      "when": "06-26",
+      "da": "Mordet på Thomas og Martha Wayne",
+      "en": "The murder of Thomas and Martha Wayne",
+      "work": "Batman",
+      "why_da": "To skud i en gyde i Gotham, og en dreng bliver til noget andet.",
+      "why_en": "Two shots in a Gotham alley, and a boy turns into something else."
+    },
+    {
+      "key": "lunar_indep",
+      "when": "07-04",
+      "da": "Månens uafhængighedsdag",
+      "en": "Lunar Independence Day",
+      "work": "The Moon Is a Harsh Mistress",
+      "why_da": "Månekolonien erklærer sig fri af Jorden — på samme dato som den amerikanske, og med vilje.",
+      "why_en": "The lunar colony declares itself free of Earth — on the American date, and deliberately so."
+    },
+    {
+      "key": "klordny",
+      "when": "08-15",
+      "da": "Klordny",
+      "en": "Klordny",
+      "work": "Legion of Super-Heroes",
+      "why_da": "En uges fest på planeten Winath i det 30. århundrede.",
+      "why_en": "A week-long festival on the planet Winath in the 30th century."
+    },
+    {
+      "key": "judgement",
+      "when": "08-29",
+      "da": "Dommedag",
+      "en": "Judgement Day",
+      "work": "Terminator 2",
+      "why_da": "Skynet bliver selvbevidst kl. 02.14 og affyrer alt, hvad det har. Datoen kom og gik i 1997 uden at der skete noget.",
+      "why_en": "Skynet becomes self-aware at 2:14 am and fires everything it has. The date came and went in 1997 without incident."
+    },
+    {
+      "key": "atlas_shrugged",
+      "when": "09-02",
+      "da": "Atlas Shrugged-dagen",
+      "en": "Atlas Shrugged Day",
+      "work": "Atlas Shrugged",
+      "why_da": "Romanens første sætning falder denne dag: „Hvem er John Galt?“",
+      "why_en": "The novel's first line falls on this day: “Who is John Galt?”"
+    },
+    {
+      "key": "breakaway",
+      "when": "09-13",
+      "da": "Breakaway",
+      "en": "Breakaway",
+      "work": "Space: 1999",
+      "why_da": "En eksplosion i atomaffaldet slår Månen ud af kurs og sender den ud af solsystemet med 311 mennesker på.",
+      "why_en": "An explosion in the nuclear waste dump knocks the Moon out of orbit and sends it out of the solar system with 311 people aboard."
+    },
+    {
+      "key": "unification",
+      "when": "09-20",
+      "da": "Foreningsdagen",
+      "en": "Unification Day",
+      "work": "Firefly",
+      "why_da": "Alliancen fejrer sin sejr. De, der tabte, bruger dagen på slagsmål i baren.",
+      "why_en": "The Alliance celebrates its victory. The side that lost spends the day starting bar fights."
+    },
+    {
+      "key": "oceanic815",
+      "when": "09-22",
+      "da": "Oceanic 815 styrter ned",
+      "en": "The crash of Oceanic Flight 815",
+      "work": "Lost",
+      "why_da": "Flyet brækker over midten over Stillehavet, og de overlevende lander et sted, der ikke står på kortet.",
+      "why_en": "The plane breaks apart over the Pacific and the survivors land somewhere that is not on the map."
+    },
+    {
+      "key": "federation",
+      "when": "10-11",
+      "da": "Føderationsdagen",
+      "en": "Federation Day",
+      "work": "Star Trek",
+      "why_da": "Den Forenede Føderation af Planeter bliver stiftet i San Francisco i 2161.",
+      "why_en": "The United Federation of Planets is founded in San Francisco in 2161."
+    },
+    {
+      "key": "sudden_departure",
+      "when": "10-14",
+      "da": "Den Pludselige Bortgang",
+      "en": "The Sudden Departure",
+      "work": "The Leftovers",
+      "why_da": "To procent af alle mennesker forsvinder på et øjeblik, uden forklaring, og kommer aldrig tilbage.",
+      "why_en": "Two percent of all people vanish in an instant, with no explanation, and never come back."
+    },
+    {
+      "key": "grouch",
+      "when": "10-15",
+      "da": "Den Sure Dag",
+      "en": "National Grouch Day",
+      "work": "Sesame Street",
+      "why_da": "Oscar den Grønne opfordrer alle til at være i dårligt humør hele dagen.",
+      "why_en": "Oscar the Grouch encourages everyone to be in a foul mood all day."
+    },
+    {
+      "key": "durin",
+      "when": "10-19",
+      "da": "Durins dag",
+      "en": "Durin's Day",
+      "work": "The Hobbit",
+      "why_da": "Dværgenes nytår: den sidste nymåne før vinteren. Kun den dag kan solen vise nøglehullet i Det Ensomme Bjerg.",
+      "why_en": "The dwarves' new year: the last new moon before winter. Only on that day will the setting sun show the keyhole in the Lonely Mountain."
+    },
+    {
+      "key": "prixin",
+      "when": "10-26",
+      "da": "Prixin",
+      "en": "Prixin",
+      "work": "Star Trek: Voyager",
+      "why_da": "Talaxianernes familiefest. Neelix laver mad til hele skibet.",
+      "why_en": "The Talaxian festival of family. Neelix cooks for the entire ship."
+    },
+    {
+      "key": "vendetta",
+      "when": "11-05",
+      "da": "Den femte november",
+      "en": "The Fifth of November",
+      "work": "V for Vendetta",
+      "why_da": "„Remember, remember the fifth of November.“ Guy Fawkes' krudtsammensværgelse fra 1605, lånt af en maske og givet tilbage til verden.",
+      "why_en": "“Remember, remember the fifth of November.” Guy Fawkes' Gunpowder Plot of 1605, borrowed by a mask and handed back to the world."
+    },
+    {
+      "key": "hill_valley",
+      "when": "11-12",
+      "da": "Lynet rammer Hill Valley",
+      "en": "The Hill Valley lightning strike",
+      "work": "Back to the Future",
+      "why_da": "Lynet slår ned i rådhusuret kl. 22.04 og sender 1,21 gigawatt gennem DeLorean'en.",
+      "why_en": "Lightning hits the clock tower at 10:04 pm and sends 1.21 gigawatts through the DeLorean."
+    },
+    {
+      "key": "odd_couple",
+      "when": "11-13",
+      "da": "Odd Couple-dagen",
+      "en": "Odd Couple Day",
+      "work": "The Odd Couple",
+      "why_da": "Dagen Felix Ungers kone smider ham ud, og han flytter ind hos Oscar Madison.",
+      "why_en": "The day Felix Unger's wife throws him out and he moves in with Oscar Madison."
+    },
+    {
+      "key": "life_day",
+      "when": "11-17",
+      "da": "Life Day",
+      "en": "Life Day",
+      "work": "Star Wars",
+      "why_da": "Wookieernes højtid, kendt fra Star Wars Holiday Special fra 1978 — det program, George Lucas helst ville have glemt.",
+      "why_en": "The Wookiee holiday, known from the 1978 Star Wars Holiday Special — the programme George Lucas most wanted forgotten."
+    },
+    {
+      "key": "samantha",
+      "when": "11-27",
+      "da": "Samantha Mulder bortføres",
+      "en": "The abduction of Samantha Mulder",
+      "work": "The X-Files",
+      "why_da": "Fox Mulders søster forsvinder fra soveværelset i 1973. Det er grunden til alt, hvad han siden gør.",
+      "why_en": "Fox Mulder's sister disappears from her bedroom in 1973. It is the reason for everything he does afterwards."
+    },
+    {
+      "key": "pancake",
+      "when": "11-29",
+      "da": "St. Pancake Day",
+      "en": "St. Pancake Day",
+      "work": "Jack, Jacky and the Juniors",
+      "why_da": "Pandekager, og ingen yderligere forklaring.",
+      "why_en": "Pancakes, and no further explanation offered."
+    },
+    {
+      "key": "winter_veil",
+      "when": "12-16",
+      "da": "Feast of Winter Veil",
+      "en": "Feast of Winter Veil",
+      "work": "World of Warcraft",
+      "why_da": "Azeroth får sne, gaver og en Great-Father Winter. Den varer til nytår.",
+      "why_en": "Azeroth gets snow, presents and a Great-Father Winter. It runs until the new year."
+    },
+    {
+      "key": "merlinpeen",
+      "when": "12-22",
+      "da": "Merlinpeen",
+      "en": "Merlinpeen",
+      "work": "30 Rock",
+      "why_da": "En højtid Kenneth opfandt, så han kunne få fri. Den har sin egen sang.",
+      "why_en": "A holiday Kenneth invented so he could get the day off. It has its own song."
+    },
+    {
+      "key": "festivus",
+      "when": "12-23",
+      "da": "Festivus",
+      "en": "Festivus",
+      "work": "Seinfeld",
+      "why_da": "En stang i stedet for et træ, luftning af årets klager og brydekamp til sidst. „A Festivus for the rest of us.“",
+      "why_en": "A pole instead of a tree, the Airing of Grievances, and the Feats of Strength to finish. “A Festivus for the rest of us.”"
+    },
+    {
+      "key": "hogswatch",
+      "when": "12-25",
+      "da": "Hogswatch",
+      "en": "Hogswatch",
+      "work": "Discworld",
+      "why_da": "Discworlds jul. Hogfather kommer med gaver i en slæde trukket af fire vildsvin.",
+      "why_en": "The Discworld's Christmas. The Hogfather brings presents in a sleigh pulled by four wild boars."
+    },
+    {
+      "key": "refrigerator",
+      "when": "12-25",
+      "da": "Køleskabsdagen",
+      "en": "Refrigerator Day",
+      "work": "Dinosaurs",
+      "why_da": "Dinosaurerne fejrer opfindelsen af køleskabet, for det var den, der gjorde civilisationen mulig.",
+      "why_en": "The dinosaurs celebrate the invention of the refrigerator, because that is what made civilisation possible."
+    },
+    {
+      "key": "smekday",
+      "when": "12-25",
+      "da": "Smekday",
+      "en": "Smekday",
+      "work": "The True Meaning of Smekday",
+      "why_da": "Dagen Boov'erne overtog Jorden og omdøbte den til Smekland.",
+      "why_en": "The day the Boov took over Earth and renamed it Smekland."
+    },
+    {
+      "key": "decemberween",
+      "when": "12-25",
+      "da": "Decemberween",
+      "en": "Decemberween",
+      "work": "Homestar Runner",
+      "why_da": "Fejres 55 dage efter halloween. Det passer ikke helt, og det er en del af pointen.",
+      "why_en": "Observed 55 days after Hallowe'en. The arithmetic does not quite work, which is part of the point."
+    },
+    {
+      "key": "holiday11",
+      "when": "12-25",
+      "da": "Helligdag nummer 11",
+      "en": "Holiday Number 11",
+      "work": "Quark",
+      "why_da": "I fremtiden er helligdagene nummereret. Nummer 11 er den, der ligner jul.",
+      "why_en": "In the future the holidays are numbered. Number 11 is the one that resembles Christmas."
+    },
+    {
+      "key": "alliance",
+      "when": "12-30",
+      "da": "Alliancedagen",
+      "en": "International Alliance Day",
+      "work": "Babylon 5",
+      "why_da": "Den Interstellare Alliance bliver stiftet, og Sheridan bliver dens første præsident.",
+      "why_en": "The Interstellar Alliance is founded, with Sheridan as its first president."
+    }
+  ]
+}

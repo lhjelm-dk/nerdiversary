@@ -1,0 +1,13 @@
+# Det virtuelle miljoe. Genskabes med requirements.txt og fylder 14 MB.
+.venv/
+
+# Pythons bytekode
+__pycache__/
+*.py[cod]
+
+# pytests cache
+.pytest_cache/
+
+# Claude Codes lokale indstillinger. launch.json er med med vilje:
+# den er det, der starter appen.
+.claude/settings.local.json

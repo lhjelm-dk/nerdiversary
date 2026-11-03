@@ -1,0 +1,54 @@
+{
+  "group": "dkday",
+  "note": "Danske maerkedage, hvor tallene rimer, plus de to rigtige: fars dag og mors dag.",
+  "days": [
+    {
+      "key": "bager",
+      "when": "11-11",
+      "da": "Bagerens fødselsdag",
+      "en": "The baker's birthday",
+      "why_da": "Elleve i elleve. Siger man det højt, lyder det som „ælte i ælte“, og dermed er sagen afgjort. Den mest fejrede af de skæve danske dage — bagerier landet over kører stadig faste tilbud på wienerbrød og rundstykker netop denne dag.",
+      "why_en": "Eleven on the eleventh. Said out loud in Danish it sounds like “knead in knead”, and that settles it. The most widely observed of the Danish joke days — bakeries across the country still run offers on pastries that morning."
+    },
+    {
+      "key": "speedway",
+      "when": "02-02",
+      "da": "Speedwaykørerens fødselsdag",
+      "en": "The speedway rider's birthday",
+      "why_da": "Anden i anden — altså i andet gear. Opkaldt efter den legendariske speedwaykører Ole Olsen. Eller efter anden fra andedammen, alt efter hvem man spørger.",
+      "why_en": "The second in the second — which in Danish also means “in second gear”. Named for the legendary speedway rider Ole Olsen. Or for the duck in the pond, depending on who you ask."
+    },
+    {
+      "key": "jdag",
+      "when": "nth:11:fri:1 20:59",
+      "da": "J-dag",
+      "en": "J-Day",
+      "why_da": "Den første fredag i november kl. 20.59 frigiver Tuborg årets julebryg. Den uofficielle helligdag, hvor gaderne fyldes med nissehuer, blå lastbiler og ølentusiaster.",
+      "why_en": "On the first Friday in November at 8:59 pm Tuborg releases the year's Christmas brew. The unofficial Danish holiday of elf hats, blue lorries and beer enthusiasts."
+    },
+    {
+      "key": "bagedag",
+      "when": "09-05",
+      "da": "Den Store Bagedag",
+      "en": "The Great Danish Baking Day",
+      "why_da": "Den rimer ikke på tallene, men bagelystne danskere fejrer den alligevel med mel og sukker over hele landet.",
+      "why_en": "This one does not rhyme with the numbers, but Danes with an urge to bake mark it anyway, with flour and sugar from coast to coast."
+    },
+    {
+      "key": "fars_dag",
+      "when": "06-05",
+      "da": "Fars dag",
+      "en": "Danish Father's Day",
+      "why_da": "Den 5. juni, samme dag som grundlovsdag. Danmark lagde fars dag oven i den frie halve dag, så der var tid til den.",
+      "why_en": "The 5th of June, the same day as Denmark's Constitution Day. Father's Day was laid on top of the half day off, so there was time for it."
+    },
+    {
+      "key": "mors_dag",
+      "when": "nth:05:sun:2",
+      "da": "Mors dag",
+      "en": "Danish Mother's Day",
+      "why_da": "Den anden søndag i maj. Indført i Danmark i 1929, efter amerikansk forbillede.",
+      "why_en": "The second Sunday in May. Adopted in Denmark in 1929, following the American example."
+    }
+  ]
+}
