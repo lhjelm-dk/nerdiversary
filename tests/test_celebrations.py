@@ -11,6 +11,7 @@ Koer dem med:
 from __future__ import annotations
 
 import json
+import pathlib
 from datetime import date, datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
@@ -814,3 +815,26 @@ def test_no_two_pattern_days_look_alike():
 def test_a_pattern_label_carries_the_whole_year():
     label = {m.when: m.label_da for m in dp.pattern_milestones()}['2005-03-04']
     assert '04.03.2005' in label
+
+
+def test_the_app_never_draws_a_checkbox_for_every_milestone():
+    """Streamlit laver ét widget pr. felt, og kataloget er paa knap tre tusind.
+
+    Tegnes de alle, bliver koerslen aldrig faerdig, og saa naar ingen vaerdi
+    fra brugerfladen frem til serveren: sproget kan ikke skiftes, pakke-
+    knapperne svarer ikke, og intet af det giver en fejlbesked. Det skete, da
+    festdagsgrupperne kom frem i listen, og det tog lang tid at finde, fordi
+    appen saa helt rask ud.
+
+    Maalt: 2.772 felter = doed brugerflade. 1.041 = alt virker.
+    """
+    import re
+
+    source = (pathlib.Path(__file__).resolve().parent.parent / "streamlit_app.py").read_text(
+        encoding="utf-8"
+    )
+    limit = int(re.search(r"GROUP_CHECKBOX_LIMIT = (\d+)", source).group(1))
+
+    by_group = milestones_by_group()
+    drawn = sum(min(limit, len(by_group.get(group.key, []))) for group in GROUPS)
+    assert drawn <= 1200, f"brugerfladen ville tegne {drawn} afkrydsningsfelter"

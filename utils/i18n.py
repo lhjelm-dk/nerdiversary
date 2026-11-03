@@ -415,6 +415,18 @@ T: dict[str, dict[str, str]] = {
         "en": "Cuts by time rather than by kind, and draws on the whole "
               "catalogue.",
     },
+    "select_more": {
+        "da": "… og {n} til i gruppen. Knapperne ovenfor tager dem alle; "
+              "søgefeltet finder de enkelte.",
+        "en": "… and {n} more in this group. The buttons above take all of "
+              "them; the search box finds individual ones.",
+    },
+    "select_capped": {
+        "da": "Viser de første {shown} af {total} fund. Skriv mere for at "
+              "indsnævre.",
+        "en": "Showing the first {shown} of {total} matches. Type more to "
+              "narrow it down.",
+    },
     "select_all": {"da": "Vælg alle", "en": "Select all"},
     "clear_all": {"da": "Ryd alle", "en": "Clear all"},
     "group_all": {"da": "Alle i gruppen", "en": "All in group"},

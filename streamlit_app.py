@@ -76,6 +76,18 @@ DEFAULT_BIRTH_DATE = date(2018, 6, 3)
 DEFAULT_BIRTH_TIME = time(7, 10, 0)
 
 # Farver til kalenderen — én pr. gruppe, valgt så de kan skelnes fra hinanden.
+# Hvor mange afkrydsningsfelter der tegnes ad gangen.
+#
+# Det er ikke pynt. Streamlit laver ét widget pr. felt, og kataloget er paa
+# naesten tre tusind maerkedage — Sumdage alene er 1.095. Tegnes de alle,
+# bliver koerslen aldrig faerdig, og saa naar ingen af brugerfladens vaerdier
+# frem til serveren: sproget kan ikke skiftes, knapperne svarer ikke.
+#
+# Grupperne kan stadig slaas til og fra under ét, og soegefeltet finder de
+# enkelte. Det er kun den lange liste af felter, der skaeres.
+GROUP_CHECKBOX_LIMIT = 60
+SEARCH_CHECKBOX_LIMIT = 150
+
 GROUP_COLORS: dict[str, str] = {
     "sec": "#3b7dd8",
     "minhour": "#4aa3a2",
@@ -1286,8 +1298,18 @@ with tab_select:
                 args=([m.key for m in matches], False),
                 key="btn_match_none",
             )
+            shown = matches[:SEARCH_CHECKBOX_LIMIT]
+            if len(shown) < len(matches):
+                st.caption(
+                    t(
+                        "select_capped",
+                        lang,
+                        shown=len(shown),
+                        total=len(matches),
+                    )
+                )
             columns = st.columns(3)
-            for index, milestone in enumerate(matches):
+            for index, milestone in enumerate(shown):
                 with columns[index % 3]:
                     emoji = GROUPS_BY_KEY[milestone.group].emoji
                     st.checkbox(
@@ -1337,10 +1359,15 @@ with tab_select:
                         args=(group.key, False),
                         key=f"none_{group.key}",
                     )
+                    shown = members[:GROUP_CHECKBOX_LIMIT]
                     columns = st.columns(3)
-                    for index, milestone in enumerate(members):
+                    for index, milestone in enumerate(shown):
                         with columns[index % 3]:
                             draw_checkbox(milestone)
+                    if len(shown) < len(members):
+                        st.caption(
+                            t("select_more", lang, n=len(members) - len(shown))
+                        )
 
 
 # --- Eksport -------------------------------------------------------------
