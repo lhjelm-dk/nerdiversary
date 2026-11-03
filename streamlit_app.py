@@ -503,13 +503,17 @@ def _remember(key: str) -> None:
 
 
 def _set_keys(keys, value: bool) -> None:
-    """Sæt en hel flok på én gang — både i sættet og i de tegnede felter."""
-    for key in keys:
-        st.session_state[_cb(key)] = value
-        if value:
-            st.session_state.chosen.add(key)
-        else:
-            st.session_state.chosen.discard(key)
+    """Sæt en hel flok på én gang.
+
+    Kun det varige sæt røres. Felternes egen tilstand sættes, når de bliver
+    tegnet — og mange af dem bliver slet ikke tegnet, fordi budgettet er
+    brugt (se ``CHECKBOX_BUDGET``). Skrev vi deres nøgler her, ville vi
+    efterlade tilstand for widgets, der ikke findes.
+    """
+    if value:
+        st.session_state.chosen.update(keys)
+    else:
+        st.session_state.chosen.difference_update(keys)
 
 
 selected_keys = {m.key for m in CATALOGUE if m.key in chosen}
@@ -1192,14 +1196,24 @@ def matches_search(milestone, needle: str) -> bool:
 def draw_checkbox(milestone) -> None:
     """Ét afkrydsningsfelt, bundet til det varige valg.
 
-    ``value`` bruges kun, naar nøglen er vaek — altsaa naar feltet var skjult
-    af en soegning i forrige koersel. Ellers er widgetens egen tilstand og
-    saettet det samme, fordi ``_remember`` holder dem sammen.
+    Feltets tilstand sættes HER, i session state, lige før widgeten laves —
+    og ikke med ``value``. Det er ikke en smagssag.
+
+    Giver man en widget både ``value`` og en nøgle, der allerede står i
+    session state, advarer Streamlit. Advarslen kommer med et helt stakspor,
+    og den kommer én gang pr. felt. Med hundredvis af felter tog den
+    opskrivning længere tid end alt andet i appen til sammen, og kørslen
+    blev aldrig færdig: listen, kalenderen og tidslinjen stod tomme, uden at
+    der kom en fejl.
+
+    Sættet ``chosen`` er kilden. ``_remember`` fører svaret den anden vej,
+    når nogen klikker.
     """
+    box = _cb(milestone.key)
+    st.session_state[box] = milestone.key in st.session_state.chosen
     st.checkbox(
         build_label(milestone, profile, lang),
-        value=milestone.key in st.session_state.chosen,
-        key=_cb(milestone.key),
+        key=box,
         on_change=_remember,
         args=(milestone.key,),
         help=explanation(milestone, lang) or None,
@@ -1322,11 +1336,16 @@ with tab_select:
             columns = st.columns(3)
             for index, milestone in enumerate(shown):
                 with columns[index % 3]:
+                    # Samme mønster som ``draw_checkbox``: tilstanden sættes i
+                    # session state før widgeten og ikke med ``value``. Her er
+                    # etiketten den eneste forskel — gruppens emoji sættes
+                    # foran, fordi søgningen ophæver grupperingen.
+                    box = _cb(milestone.key)
+                    st.session_state[box] = milestone.key in st.session_state.chosen
                     emoji = GROUPS_BY_KEY[milestone.group].emoji
                     st.checkbox(
                         f"{emoji} {build_label(milestone, profile, lang)}",
-                        value=milestone.key in st.session_state.chosen,
-                        key=_cb(milestone.key),
+                        key=box,
                         on_change=_remember,
                         args=(milestone.key,),
                         help=explanation(milestone, lang) or None,

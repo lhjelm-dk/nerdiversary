@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import json
 import pathlib
+import re
 from datetime import date, datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
@@ -985,3 +986,27 @@ def test_nothing_counts_from_a_year_that_has_not_happened_yet():
         assert spec.kind != "once", f"{milestone.key} er en engangsdato"
         early = datetime(milestone.since - 1, 6, 1, 12, tzinfo=CPH)
         assert build_label(milestone, profile_at(), "da", early) == milestone.label_da
+
+
+def test_no_widget_gets_both_a_value_and_a_key():
+    """Streamlit advarer — med et helt stakspor — og det er dyrt.
+
+    Giver man en widget baade ``value`` og en ``key``, der allerede staar i
+    session state, logger Streamlit en advarsel med fuld stak. Én gang pr.
+    widget. Med hundredvis af afkrydsningsfelter tog den opskrivning laengere
+    tid end alt andet i appen til sammen, og koerslen blev aldrig faerdig:
+    liste, kalender og tidslinje stod tomme uden en eneste fejl.
+
+    Den rigtige vej er at saette ``st.session_state[key]`` lige foer widgeten
+    og lade ``value`` vaere.
+    """
+    source = (
+        pathlib.Path(__file__).resolve().parent.parent / "streamlit_app.py"
+    ).read_text(encoding="utf-8")
+
+    # Et widget-kald slutter, hvor parentesen lukkes igen.
+    opener = r"st\.(?:checkbox|radio|selectbox|multiselect)\("
+    for call in re.split(opener, source)[1:]:
+        body = call[: call.find("\n    )")]
+        if "key=_cb(" in body or "key=box" in body:
+            assert "value=" not in body, f"både value og key: {body[:90]!r}"
