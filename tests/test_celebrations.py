@@ -797,3 +797,20 @@ def test_the_lookup_covers_the_whole_catalogue_and_nothing_twice():
     found = [m.key for members in by_group.values() for m in members]
     assert len(found) == len(all_milestones())
     assert len(set(found)) == len(found)
+
+
+def test_no_two_pattern_days_look_alike():
+    """Etiketten skal kunne skelne de tre aarhundreder fra hinanden.
+
+    Den brugte foer det tocifrede aarstal, saa 04.03.05 stod tre gange i
+    listen — 1905, 2005 og 2105 — og lignede en fejl, selv om det var tre
+    forskellige dage.
+    """
+    for lang in ('da', 'en'):
+        labels = [m.label_override(lang) for m in dp.pattern_milestones()]
+        assert len(labels) == len(set(labels))
+
+
+def test_a_pattern_label_carries_the_whole_year():
+    label = {m.when: m.label_da for m in dp.pattern_milestones()}['2005-03-04']
+    assert '04.03.2005' in label

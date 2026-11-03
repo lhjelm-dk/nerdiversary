@@ -49,6 +49,17 @@ class Hit:
         """Datoen som 11.12.13 — den form, moensteret kan ses i."""
         return f"{self.day:02d}.{self.month:02d}.{self.year % 100:02d}"
 
+    @property
+    def long(self) -> str:
+        """Datoen med helt aarstal: 11.12.2013.
+
+        Etiketten skal bruge denne og ikke ``short``. Der regnes paa tre
+        aarhundreder, saa den samme korte form rammer tre gange — 04.03.05 er
+        baade 1905, 2005 og 2105 — og tre ens linjer i en liste ligner en fejl,
+        ogsaa naar de er tre forskellige dage.
+        """
+        return f"{self.day:02d}.{self.month:02d}.{self.year}"
+
 
 def _real(year: int, month: int, day: int) -> bool:
     """Findes datoen? Den 31. februar goer ikke, hvor paent moensteret saa er."""
@@ -330,8 +341,8 @@ def pattern_milestones() -> tuple[Milestone, ...]:
                         unit="date_abs",
                         amount=0.0,
                         when=f"{hit.year}-{hit.month:02d}-{hit.day:02d}",
-                        label_da=f"{family.da}: {hit.short}",
-                        label_en=f"{family.en}: {hit.short}",
+                        label_da=f"{family.da}: {hit.long}",
+                        label_en=f"{family.en}: {hit.long}",
                         why_da=hit.da,
                         why_en=hit.en,
                     )
