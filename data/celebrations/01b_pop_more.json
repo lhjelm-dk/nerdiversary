@@ -8,7 +8,8 @@
       "da": "Science Fiction-dagen",
       "en": "Science Fiction Day",
       "why_da": "Lagt på Isaac Asimovs fødselsdag. Han kendte ikke selv sin rigtige fødselsdato og valgte den 2. januar.",
-      "why_en": "Placed on Isaac Asimov's birthday. He did not know his own real birth date and settled on 2 January."
+      "why_en": "Placed on Isaac Asimov's birthday. He did not know his own real birth date and settled on 2 January.",
+      "since": 1920
     },
     {
       "key": "winter_een_mas",
@@ -40,7 +41,8 @@
       "da": "Tolkien-læsedagen",
       "en": "Tolkien Reading Day",
       "why_da": "Samme dag som Gondors nytår: den 25. marts gik Ringen i Dommedagsbjerget. Man læser højt.",
-      "why_en": "The same day as the Gondorian New Year: on 25 March the Ring went into Mount Doom. You read aloud."
+      "why_en": "The same day as the Gondorian New Year: on 25 March the Ring went into Mount Doom. You read aloud.",
+      "since": 2003
     },
     {
       "key": "tabletop",
@@ -48,7 +50,8 @@
       "da": "International TableTop Day",
       "en": "International TableTop Day",
       "why_da": "Brætspil på bordet hele dagen. Startet af Wil Wheaton i 2013.",
-      "why_en": "Board games on the table all day. Started by Wil Wheaton in 2013."
+      "why_en": "Board games on the table all day. Started by Wil Wheaton in 2013.",
+      "since": 2013
     },
     {
       "key": "world_book",
@@ -89,7 +92,8 @@
       "da": "Verdens UFO-dag",
       "en": "World UFO Day",
       "why_da": "Lagt på den dag i 1947, hvor noget styrtede ned ved Roswell, New Mexico.",
-      "why_en": "Placed on the day in 1947 when something came down near Roswell, New Mexico."
+      "why_en": "Placed on the day in 1947 when something came down near Roswell, New Mexico.",
+      "since": 1947
     },
     {
       "key": "geekness",
@@ -113,7 +117,8 @@
       "da": "Optimus Prime-dagen",
       "en": "Optimus Prime Day",
       "why_da": "Transformers blev sendt første gang i september 1984. Lastbilen har været chef siden.",
-      "why_en": "Transformers first aired in September 1984. The lorry has been in charge ever since."
+      "why_en": "Transformers first aired in September 1984. The lorry has been in charge ever since.",
+      "since": 1984
     },
     {
       "key": "escape_room",
@@ -121,7 +126,8 @@
       "da": "Escape Room-dagen",
       "en": "Escape Room Day",
       "why_da": "Den første rigtige escape room åbnede i Kyoto i 2007. Nu er der tusindvis.",
-      "why_en": "The first real escape room opened in Kyoto in 2007. Now there are thousands."
+      "why_en": "The first real escape room opened in Kyoto in 2007. Now there are thousands.",
+      "since": 2007
     },
     {
       "key": "coffee",
@@ -137,7 +143,8 @@
       "da": "Ninjaens dag",
       "en": "Day of the Ninja",
       "why_da": "Opfundet i 2003 som modsvar til piratdagen i september. Man går i sort og siger ingenting.",
-      "why_en": "Invented in 2003 as an answer to the pirate day in September. You wear black and say nothing."
+      "why_en": "Invented in 2003 as an answer to the pirate day in September. You wear black and say nothing.",
+      "since": 2003
     },
     {
       "key": "comic_sans",
@@ -153,7 +160,8 @@
       "da": "Pladebutikkernes dag",
       "en": "Record Store Day",
       "why_da": "Den tredje lørdag i april udkommer vinyludgivelser, der kun kan købes i en fysisk butik.",
-      "why_en": "On the third Saturday in April, vinyl releases appear that can only be bought in a physical shop."
+      "why_en": "On the third Saturday in April, vinyl releases appear that can only be bought in a physical shop.",
+      "since": 2007
     },
     {
       "key": "beard",
@@ -177,7 +185,8 @@
       "da": "Earth Hour",
       "en": "Earth Hour",
       "why_da": "Den sidste lørdag i marts kl. 20.30 slukker byer over hele kloden lyset i en time.",
-      "why_en": "On the last Saturday in March at 8:30 pm, cities around the globe switch off the lights for an hour."
+      "why_en": "On the last Saturday in March at 8:30 pm, cities around the globe switch off the lights for an hour.",
+      "since": 2007
     }
   ]
 }

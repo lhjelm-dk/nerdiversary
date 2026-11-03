@@ -53,6 +53,10 @@ class Milestone:
     # paa — de har en dato. Den staar her, som den stod i datafilen, og bliver
     # laest af ``utils.celebrations.parse_spec``.
     when: str = ""
+    # Aaret, dagen taeller fra. Saettes paa de aarlige dage, der mindes noget
+    # dateret, saa etiketten kan sige, hvilket aar i raekken det er: Maanedagen
+    # i 2069 er 100-aaret. Nul betyder, at der ikke er noget at taelle fra.
+    since: int = 0
     why_da: str = ""
     why_en: str = ""
     label_da: str | None = None
@@ -134,6 +138,11 @@ GROUPS: tuple[Group, ...] = (
     # milliarder aar ned i *dit* liv; her klemmes de ned i et kalenderaar, som
     # alle har det samme af (se ``utils.geoyear``).
     Group("geoyear", "Jordens år", "Earth's year", "🌍", default_on=False),
+    # Runde aarsdage for alt det daterede. De udledes i
+    # ``utils.celebrations.round_anniversaries`` og staar ikke skrevet
+    # nogen steder.
+    Group("anniversary", "Runde årsdage", "Round anniversaries", "🎊",
+          default_on=False),
 )
 
 GROUPS_BY_KEY: dict[str, Group] = {g.key: g for g in GROUPS}
@@ -272,6 +281,15 @@ BUNDLES: tuple[Bundle, ...] = (
         groups=("nerdhist",),
     ),
     Bundle(
+        "annivbundle", "Runde årsdage", "Round anniversaries", "🎊",
+        "50-året for Alien, 100-året for månelandingen, 150-året for det "
+        "første telefonopkald. Kun dem, der falder i dit liv.",
+        "Fifty years since Alien, a hundred since the Moon landing, a hundred "
+        "and fifty since the first telephone call. Only the ones inside your "
+        "life.",
+        groups=("anniversary",),
+    ),
+    Bundle(
         "earthyearbundle", "Jordens år", "Earth's year", "🌍",
         "Jordens 4,54 milliarder år lagt ned i ét kalenderår: 1. januar er "
         "dannelsen, 31. december er i dag. Dinosaurerne dør anden juledag.",
@@ -298,7 +316,8 @@ BUNDLES: tuple[Bundle, ...] = (
         "Every written celebration day at once: pop culture, Danish, fiction, "
         "characters, science fiction, science and nerd history.",
         groups=("pop", "dkday", "techday", "birthdays", "fiction", "chars",
-                "scifi", "sciday", "scihist", "nerdhist", "geoyear"),
+                "scifi", "sciday", "scihist", "nerdhist", "geoyear",
+                "anniversary"),
     ),
 )
 

@@ -21,6 +21,7 @@ from utils import datepatterns as dp
 from utils import geoyear as gy
 from utils.catalog import BUNDLES, BUNDLES_BY_KEY, GROUPS, GROUPS_BY_KEY, MILESTONES, Bundle
 from utils.celebrations import (
+    ANNIVERSARIES,
     DATA_DIR,
     PREFIX,
     SpecError,
@@ -29,6 +30,7 @@ from utils.celebrations import (
     load_days,
     load_dir,
     parse_spec,
+    round_anniversaries,
     spec_in_year,
 )
 from utils.engine import (
@@ -868,8 +870,118 @@ def test_the_app_never_draws_a_checkbox_for_every_milestone():
     source = (pathlib.Path(__file__).resolve().parent.parent / "streamlit_app.py").read_text(
         encoding="utf-8"
     )
+    budget = int(re.search(r"CHECKBOX_BUDGET = (\d+)", source).group(1))
     limit = int(re.search(r"GROUP_CHECKBOX_LIMIT = (\d+)", source).group(1))
+    assert budget <= 900, "budgettet er sat for tæt på grænsen"
 
+    # Samme regnestykke som brugerfladen: grupperne traekker paa budgettet i
+    # raekkefoelge, og ingen enkelt gruppe tager mere end loftet.
     by_group = milestones_by_group()
-    drawn = sum(min(limit, len(by_group.get(group.key, []))) for group in GROUPS)
-    assert drawn <= 1200, f"brugerfladen ville tegne {drawn} afkrydsningsfelter"
+    left, drawn = budget, 0
+    for group in GROUPS:
+        take = min(limit, len(by_group.get(group.key, [])), left)
+        left -= take
+        drawn += take
+    assert drawn <= budget, f"brugerfladen ville tegne {drawn} afkrydsningsfelter"
+
+
+# -------------------------------------------------------------------------
+# De runde aarsdage
+# -------------------------------------------------------------------------
+#
+# En engangsdato hoerer kun med, hvis selve oejeblikket faldt inden for dit
+# liv. Maanelandingen naaede derfor ingen, der er foedt efter 1969 — og det
+# er forkert, for 100-aarsdagen i 2069 naar mange af dem.
+
+
+def test_the_moon_landing_has_a_hundredth_anniversary():
+    """Spoergsmaalet der satte det hele i gang."""
+    by_key = {m.key: m for m in round_anniversaries()}
+    hundred = by_key[f"{PREFIX}anniv_moon_landing_100"]
+    assert hundred.when == "2069-07-20"
+    assert "100-året" in hundred.label_da
+    assert "100 years on" in hundred.label_en
+    assert "20. juli 1969" in hundred.why_da
+
+
+def test_someone_born_long_after_an_event_still_gets_its_anniversaries():
+    """Det er hele pointen: du skal ikke have levet i 1969."""
+    born = profile_at(1990)
+    keys = {o.milestone.key for o in compute(born, lang="da", now=NOW)}
+    assert f"{PREFIX}moon_landing" not in keys          # selve dagen naaede du ikke
+    assert f"{PREFIX}anniv_moon_landing_100" in keys    # men aarsdagen gør du
+
+
+def test_an_anniversary_falls_the_right_number_of_years_later():
+    for milestone in round_anniversaries():
+        years = int(milestone.key.rsplit("_", 1)[1])
+        assert years in ANNIVERSARIES
+        spec = parse_spec(milestone.when)
+        stem = milestone.key[len(PREFIX) + len("anniv_") : -(len(str(years)) + 1)]
+        original = {m.key: m for m in load_days().milestones}[f"{PREFIX}{stem}"]
+        source = parse_spec(original.when)
+        assert spec.year - source.year == years
+        assert (spec.month, spec.day) == (source.month, source.day)
+
+
+def test_only_the_written_days_get_anniversaries():
+    """50-aaret for en palindromdag betyder ingenting."""
+    stems = {m.key for m in load_days().milestones}
+    for milestone in round_anniversaries():
+        years = milestone.key.rsplit("_", 1)[1]
+        stem = milestone.key[len(PREFIX) + len("anniv_") : -(len(years) + 1)]
+        assert f"{PREFIX}{stem}" in stems
+
+
+def test_no_anniversary_of_a_recurring_day():
+    """Den 4. maj kommer igen hvert aar. Den har ingen 50-aarsdag."""
+    recurring = {
+        m.key for m in load_days().milestones if parse_spec(m.when).kind != "once"
+    }
+    for milestone in round_anniversaries():
+        years = milestone.key.rsplit("_", 1)[1]
+        stem = milestone.key[len(PREFIX) + len("anniv_") : -(len(years) + 1)]
+        assert f"{PREFIX}{stem}" not in recurring
+
+
+def test_the_anniversaries_are_all_in_one_group_and_switched_off():
+    groups = {m.group for m in round_anniversaries()}
+    assert groups == {"anniversary"}
+    assert not GROUPS_BY_KEY["anniversary"].default_on
+
+
+# --- Taellingen paa de aarlige dage --------------------------------------
+
+
+def test_moon_day_knows_which_anniversary_it_is():
+    """Den 20. juli 2069 er ikke bare Maanedagen. Den er 100-aaret."""
+    moon = {m.key: m for m in celebration_milestones()}[f"{PREFIX}moon_day"]
+    assert moon.since == 1969
+
+    in_2069 = datetime(2069, 7, 20, 12, tzinfo=CPH)
+    assert "100-året" in build_label(moon, profile_at(), "da", in_2069)
+    assert "100 years on" in build_label(moon, profile_at(), "en", in_2069)
+
+
+def test_a_day_without_a_year_to_count_from_says_nothing_extra():
+    plain = {m.key: m for m in celebration_milestones()}[f"{PREFIX}bager"]
+    assert plain.since == 0
+    when = datetime(2030, 11, 11, 12, tzinfo=CPH)
+    assert build_label(plain, profile_at(), "da", when) == plain.label_da
+
+
+def test_the_count_is_left_out_when_nobody_asked_when():
+    """Afkrydsningslisten kender ingen dato, og saa skal der ikke staa et tal."""
+    moon = {m.key: m for m in celebration_milestones()}[f"{PREFIX}moon_day"]
+    assert build_label(moon, profile_at(), "da") == moon.label_da
+
+
+def test_nothing_counts_from_a_year_that_has_not_happened_yet():
+    """First Contact Day taeller fra 2063. I 2030 er der intet aar i raekken."""
+    for milestone in celebration_milestones():
+        if not milestone.since:
+            continue
+        spec = parse_spec(milestone.when)
+        assert spec.kind != "once", f"{milestone.key} er en engangsdato"
+        early = datetime(milestone.since - 1, 6, 1, 12, tzinfo=CPH)
+        assert build_label(milestone, profile_at(), "da", early) == milestone.label_da

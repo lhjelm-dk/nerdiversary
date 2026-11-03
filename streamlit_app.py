@@ -76,15 +76,25 @@ DEFAULT_BIRTH_DATE = date(2018, 6, 3)
 DEFAULT_BIRTH_TIME = time(7, 10, 0)
 
 # Farver til kalenderen — én pr. gruppe, valgt så de kan skelnes fra hinanden.
-# Hvor mange afkrydsningsfelter der tegnes ad gangen.
+# Hvor mange afkrydsningsfelter brugerfladen maa tegne i alt.
 #
 # Det er ikke pynt. Streamlit laver ét widget pr. felt, og kataloget er paa
-# naesten tre tusind maerkedage — Sumdage alene er 1.095. Tegnes de alle,
-# bliver koerslen aldrig faerdig, og saa naar ingen af brugerfladens vaerdier
-# frem til serveren: sproget kan ikke skiftes, knapperne svarer ikke.
+# over halvandet tusind maerkedage. Tegnes de alle, bliver koerslen aldrig
+# faerdig, og saa naar ingen af brugerfladens vaerdier frem til serveren:
+# sproget kan ikke skiftes, knapperne svarer ikke, og der kommer ingen fejl.
+#
+# Maalt: ved 1.041 felter virker alt. Ved 1.100 er den marginal — den klarer
+# det foerste klik og gaar saa i staa. Ved 2.772 er den doed fra start.
+# Budgettet er sat med rigelig luft under det.
+#
+# Et loft pr. gruppe er ikke nok i sig selv: kataloget vokser, og saa vokser
+# summen med det. Derfor er der et samlet budget, som grupperne traekker paa
+# i raekkefoelge. De foerste er dem, der er slaaet til fra start — altsaa dem,
+# man faktisk arbejder i. Resten viser en smagsproeve og et tal.
 #
 # Grupperne kan stadig slaas til og fra under ét, og soegefeltet finder de
-# enkelte. Det er kun den lange liste af felter, der skaeres.
+# enkelte.
+CHECKBOX_BUDGET = 700
 GROUP_CHECKBOX_LIMIT = 60
 SEARCH_CHECKBOX_LIMIT = 150
 
@@ -125,6 +135,7 @@ GROUP_COLORS: dict[str, str] = {
     "techday": "#0097a7",
     "birthdays": "#d81b60",
     "geoyear": "#8d6e63",
+    "anniversary": "#ad7c1f",
 }
 
 
@@ -1326,6 +1337,7 @@ with tab_select:
         # for alle. Med seksogtredive grupper var raekkefoelgen ellers kun
         # den, de tilfaeldigvis staar i i kataloget.
         scopes = group_scopes()
+        budget = CHECKBOX_BUDGET
         shelves: dict[str, list] = {scope: [] for scope in SCOPES}
         for group in GROUPS:
             if group_members(group.key):
@@ -1359,7 +1371,9 @@ with tab_select:
                         args=(group.key, False),
                         key=f"none_{group.key}",
                     )
-                    shown = members[:GROUP_CHECKBOX_LIMIT]
+                    take = min(GROUP_CHECKBOX_LIMIT, len(members), budget)
+                    budget -= take
+                    shown = members[:take]
                     columns = st.columns(3)
                     for index, milestone in enumerate(shown):
                         with columns[index % 3]:

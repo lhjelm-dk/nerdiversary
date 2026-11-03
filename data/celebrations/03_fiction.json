@@ -126,7 +126,8 @@
       "en": "The Battle of Hogwarts",
       "work": "Harry Potter",
       "why_da": "Det hele slutter her, i 1998, på skolens grund.",
-      "why_en": "It all ends here, in 1998, on the school grounds."
+      "why_en": "It all ends here, in 1998, on the school grounds.",
+      "since": 1998
     },
     {
       "key": "battle_ny",
@@ -360,7 +361,8 @@
       "en": "The Fifth of November",
       "work": "V for Vendetta",
       "why_da": "„Remember, remember the fifth of November.“ Guy Fawkes' krudtsammensværgelse fra 1605, lånt af en maske og givet tilbage til verden.",
-      "why_en": "“Remember, remember the fifth of November.” Guy Fawkes' Gunpowder Plot of 1605, borrowed by a mask and handed back to the world."
+      "why_en": "“Remember, remember the fifth of November.” Guy Fawkes' Gunpowder Plot of 1605, borrowed by a mask and handed back to the world.",
+      "since": 1605
     },
     {
       "key": "hill_valley",

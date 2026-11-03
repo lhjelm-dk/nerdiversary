@@ -168,6 +168,17 @@ læser mappen, tjekker hver post og lægger den i sin gruppe. En post, der ikke
 kan læses, forsvinder ikke i stilhed — den havner i `Import.skipped` med en
 grund.
 
+**Runde årsdage** — 624 dage, udledt af de 104 begivenheder i filerne, der
+har et årstal på. En fast dato hører kun med, hvis selve øjeblikket faldt
+inden for dit liv, så månelandingen når ingen, der er født efter 1969 — og
+det er forkert, for 100-årsdagen i 2069 når mange af dem. Derfor får hver
+dateret begivenhed sin 25-, 50-, 75-, 100-, 150- og 200-årsdag.
+
+De årlige dage tæller med: et `since`-årstal i datafilen gør, at Månedagen
+den 20. juli 2069 selv siger, at den er 100-året. Tallet kan først regnes
+ud, når man ved hvilken forekomst det er, så det sker i `build_label()` og
+ikke i filen.
+
 **Regnet ud** — 439 dage, som ingen har skrevet ned, fordi en regel finder
 dem. `utils/datepatterns.py` har ni familier: palindromdage, sekvensdage
 (01.02.03), repunitdage (11.11.11), binære dage, pythagoræiske dage
@@ -191,6 +202,9 @@ Fire slags datoangivelser:
 | `11-05 20:59` | hvert år, på klokkeslættet |
 | `nth:11:fri:1` | den første fredag i november (`-1` = den sidste) |
 | `1969-07-21` | én gang, den dag |
+
+En post med `"since": 1969` tæller fra det år. En engangsdato får automatisk
+sine runde årsdage.
 
 En tilbagevendende dag vises som den næste gang, den falder. En fast dato
 hører kun med, hvis den ligger inden for det indtastede liv: DOOM's udgivelse

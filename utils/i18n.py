@@ -374,6 +374,7 @@ T: dict[str, dict[str, str]] = {
         "en": "There are no life tables in data/lifetables.json. Fetch them "
               "with the button, or run tools/fetch_lifetables.py.",
     },
+    "label_since": {"da": "{label} — {n}-året", "en": "{label} — {n} years on"},
     "bundles": {"da": "Pakker", "en": "Bundles"},
     "bundles_hint": {
         "da": "Ét klik på en pakke erstatter hele dit nuværende valg.",

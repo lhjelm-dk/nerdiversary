@@ -8,7 +8,8 @@
       "da": "Star Wars-dagen",
       "en": "Star Wars Day",
       "why_da": "„May the Fourth be with you.“ Hele helligdagen hviler på ét ordspil, og det er nok.",
-      "why_en": "“May the Fourth be with you.” The entire holiday rests on one pun, and that is enough."
+      "why_en": "“May the Fourth be with you.” The entire holiday rests on one pun, and that is enough.",
+      "since": 1977
     },
     {
       "key": "revenge_fifth",
@@ -25,7 +26,8 @@
       "en": "Towel Day",
       "work": "The Hitchhiker's Guide to the Galaxy",
       "why_da": "Bær et håndklæde hele dagen. En rumrejsende, der har styr på sit håndklæde, er en, man regner med. Dagen blev holdt første gang to uger efter Douglas Adams' død i 2001.",
-      "why_en": "Carry a towel all day. A space traveller who knows where their towel is commands respect. First observed two weeks after Douglas Adams died in 2001."
+      "why_en": "Carry a towel all day. A space traveller who knows where their towel is commands respect. First observed two weeks after Douglas Adams died in 2001.",
+      "since": 2001
     },
     {
       "key": "geekpride",
@@ -57,7 +59,8 @@
       "da": "Back to the Future-dagen",
       "en": "Back to the Future Day",
       "why_da": "Den 21. oktober 2015 kl. 16.29 var destinationen, Doc tastede ind. Fremtiden er overhalet nu, og vi har stadig ingen hoverboards.",
-      "why_en": "21 October 2015 at 4:29 pm was the destination Doc punched in. That future is behind us now, and we still have no hoverboards."
+      "why_en": "21 October 2015 at 4:29 pm was the destination Doc punched in. That future is behind us now, and we still have no hoverboards.",
+      "since": 1985
     },
     {
       "key": "hobbit",
@@ -75,7 +78,8 @@
       "en": "Bloomsday",
       "work": "Ulysses",
       "why_da": "Hele James Joyces Ulysses foregår på denne ene dag i 1904. I Dublin går man ruten igennem og spiser nyrer til morgenmad.",
-      "why_en": "The whole of Joyce's Ulysses takes place on this single day in 1904. In Dublin people walk the route and eat kidneys for breakfast."
+      "why_en": "The whole of Joyce's Ulysses takes place on this single day in 1904. In Dublin people walk the route and eat kidneys for breakfast.",
+      "since": 1904
     },
     {
       "key": "n7",
@@ -84,7 +88,8 @@
       "en": "N7 Day",
       "work": "Mass Effect",
       "why_da": "11/07 er N7. Det er hele begrundelsen, og spillets fans holder den alvorligt.",
-      "why_en": "11/07 spells N7. That is the entire reasoning, and the fans take it seriously."
+      "why_en": "11/07 spells N7. That is the entire reasoning, and the fans take it seriously.",
+      "since": 2007
     },
     {
       "key": "tardis",
@@ -93,7 +98,8 @@
       "en": "TARDIS Day",
       "work": "Doctor Who",
       "why_da": "Doctor Who blev sendt første gang 23. november 1963 — dagen efter mordet på Kennedy, så næsten ingen så den.",
-      "why_en": "Doctor Who first aired on 23 November 1963 — the day after Kennedy was shot, so almost nobody watched."
+      "why_en": "Doctor Who first aired on 23 November 1963 — the day after Kennedy was shot, so almost nobody watched.",
+      "since": 1963
     },
     {
       "key": "startrek",
@@ -101,7 +107,8 @@
       "da": "Star Trek-dagen",
       "en": "Star Trek Day",
       "why_da": "Den 8. september 1966 sendte NBC den første episode. Serien blev aflyst efter tre sæsoner og blev alligevel det hele.",
-      "why_en": "On 8 September 1966 NBC aired the first episode. The show was cancelled after three seasons and became everything anyway."
+      "why_en": "On 8 September 1966 NBC aired the first episode. The show was cancelled after three seasons and became everything anyway.",
+      "since": 1966
     },
     {
       "key": "firstcontact",
@@ -119,7 +126,8 @@
       "en": "Alien Day",
       "work": "Aliens",
       "why_da": "Månen hedder LV-426, så dagen er 4/26. Nørdekalenderens reneste form for logik.",
-      "why_en": "The moon is called LV-426, so the day is 4/26. The purest form of nerd-calendar logic."
+      "why_en": "The moon is called LV-426, so the day is 4/26. The purest form of nerd-calendar logic.",
+      "since": 1979
     },
     {
       "key": "mario",
@@ -127,7 +135,8 @@
       "da": "Mario-dagen",
       "en": "MAR10 Day",
       "why_da": "MAR10 ser ud som MARIO, hvis man kniber øjnene sammen. Nintendo gjorde den officiel i 2016.",
-      "why_en": "MAR10 looks like MARIO if you squint. Nintendo made it official in 2016."
+      "why_en": "MAR10 looks like MARIO if you squint. Nintendo made it official in 2016.",
+      "since": 1981
     },
     {
       "key": "pirate",
@@ -135,7 +144,8 @@
       "da": "Tal som en pirat-dagen",
       "en": "Talk Like a Pirate Day",
       "why_da": "To mænd fra Oregon opfandt den i 1995 under en squashkamp. Datoen er den enes ekskones fødselsdag, fordi den var let at huske.",
-      "why_en": "Two men in Oregon invented it during a racquetball game in 1995. The date is one of their ex-wives' birthday, because it was easy to remember."
+      "why_en": "Two men in Oregon invented it during a racquetball game in 1995. The date is one of their ex-wives' birthday, because it was easy to remember.",
+      "since": 1995
     },
     {
       "key": "batman",
@@ -143,7 +153,8 @@
       "da": "Batman-dagen",
       "en": "Batman Day",
       "why_da": "Den tredje lørdag i september. DC flyttede den rundt et par gange, før den landede her.",
-      "why_en": "The third Saturday in September. DC moved it around a few times before it settled here."
+      "why_en": "The third Saturday in September. DC moved it around a few times before it settled here.",
+      "since": 1939
     },
     {
       "key": "comicbook",
@@ -151,7 +162,8 @@
       "da": "Gratis tegneseriedag",
       "en": "Free Comic Book Day",
       "why_da": "Den første lørdag i maj giver tegneseriebutikker verden over hæfter væk. Opfundet i 2002 for at få folk ind ad døren.",
-      "why_en": "On the first Saturday in May comic shops around the world give issues away. Invented in 2002 to get people through the door."
+      "why_en": "On the first Saturday in May comic shops around the world give issues away. Invented in 2002 to get people through the door.",
+      "since": 2002
     },
     {
       "key": "sysadmin",
@@ -159,7 +171,8 @@
       "da": "Systemadministratorens dag",
       "en": "System Administrator Appreciation Day",
       "why_da": "Den sidste fredag i juli. Den eneste dag om året, hvor man siger tak til den, der holder alting kørende.",
-      "why_en": "The last Friday in July. The one day a year anybody thanks the person keeping everything running."
+      "why_en": "The last Friday in July. The one day a year anybody thanks the person keeping everything running.",
+      "since": 2000
     }
   ]
 }

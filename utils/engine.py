@@ -22,6 +22,7 @@ from . import formatting as fmt
 from . import stardate as sd
 from .catalog import GROUPS_BY_KEY, MILESTONES, Bundle, Group, Milestone
 from .celebrations import SpecError, celebration_milestones, parse_spec, spec_in_year
+from .i18n import t
 from .legends import legend_milestones
 from .units import (
     CALENDAR_DAY_UNITS,
@@ -351,11 +352,32 @@ def _pair_label(milestone: Milestone, profile: Profile, lang: str) -> str:
     return f"Tilsammen {total}" if lang == "da" else f"{total} between you"
 
 
-def build_label(milestone: Milestone, profile: Profile, lang: str) -> str:
+def _counted(label: str, milestone: Milestone, when: datetime | None, lang: str) -> str:
+    """Saet aaret i raekken paa, naar dagen taeller fra noget dateret.
+
+    Maanedagen den 20. juli er den samme dag hvert aar, men i 2069 er den
+    100-aaret for landingen, og dét er hele pointen med at holde den. Tallet
+    kan foerst regnes ud, naar man ved, hvilken forekomst der er tale om, saa
+    det sker her og ikke i datafilen.
+    """
+    if not milestone.since or when is None:
+        return label
+    count = when.year - milestone.since
+    if count <= 0:
+        return label
+    return t("label_since", lang, label=label, n=count)
+
+
+def build_label(
+    milestone: Milestone,
+    profile: Profile,
+    lang: str,
+    when: datetime | None = None,
+) -> str:
     """Etiketten, maerkedagen vises under."""
     override = milestone.label_override(lang)
     if override:
-        return override
+        return _counted(override, milestone, when, lang)
 
     unit = milestone.unit
     amount = milestone.amount
@@ -571,12 +593,16 @@ def compute(
         elif when_utc > horizon:
             continue
 
+        # Etiketten skal kende tidspunktet: en dag, der taeller fra noget,
+        # siger hvilket aar i raekken det er, og det afhaenger af aarstallet
+        # i den lokale tid.
+        when_local = when_utc.astimezone(profile.tz)
         occasions.append(
             Occasion(
                 milestone=milestone,
                 when_utc=when_utc,
-                when_local=when_utc.astimezone(profile.tz),
-                label=build_label(milestone, profile, lang),
+                when_local=when_local,
+                label=build_label(milestone, profile, lang, when_local),
                 group=GROUPS_BY_KEY[milestone.group],
             )
         )

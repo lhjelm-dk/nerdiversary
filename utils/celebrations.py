@@ -311,6 +311,7 @@ def _milestone(group: str, entry: dict, source: str) -> Milestone:
         unit=spec.unit,
         amount=0.0,
         when=str(entry.get("when", "")).strip(),
+        since=int(entry.get("since") or 0),
         label_da=da,
         label_en=en,
         why_da=why_da,
@@ -365,6 +366,68 @@ def load_days() -> Import:
     return load_dir()
 
 
+# -------------------------------------------------------------------------
+# De runde aarsdage
+# -------------------------------------------------------------------------
+
+# Hvilke aarstal folk faktisk holder. Der er ingen grund til at markere, at
+# der er gaaet 37 aar siden noget.
+ANNIVERSARIES: tuple[int, ...] = (25, 50, 75, 100, 150, 200)
+
+_MONTHS_DA = (
+    "januar", "februar", "marts", "april", "maj", "juni",
+    "juli", "august", "september", "oktober", "november", "december",
+)
+_MONTHS_EN = (
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December",
+)
+
+
+def round_anniversaries() -> tuple[Milestone, ...]:
+    """De runde aarsdage for alt, der har en dato med aarstal paa.
+
+    En engangsdato bliver kun til en maerkedag, hvis selve oejeblikket faldt
+    inden for dit liv. Maanelandingen hoerer derfor ingen til, der er foedt
+    efter 1969 — og det er forkert, for 100-aarsdagen i 2069 naar mange af
+    dem. Her laves de aarsdage, saa de kan staa for sig selv.
+
+    Kun de skrevne dage faar aarsdage. En palindromdag eller en graense i
+    Jordens historie er ogsaa en fast dato, men 50-aaret for 22.02.2022
+    betyder ingenting.
+    """
+    out: list[Milestone] = []
+    for milestone in load_days().milestones:
+        spec = parse_spec(milestone.when)
+        if spec.kind != "once":
+            continue
+
+        for years in ANNIVERSARIES:
+            year = spec.year + years
+            if year > date.max.year:
+                continue
+            if spec_in_year(DaySpec("once", spec.month, spec.day, year), year) is None:
+                continue        # 29. februar i et aar uden skuddag.
+
+            stem = milestone.key[len(PREFIX):]
+            date_da = f"{spec.day}. {_MONTHS_DA[spec.month - 1]} {spec.year}"
+            date_en = f"{spec.day} {_MONTHS_EN[spec.month - 1]} {spec.year}"
+            out.append(
+                Milestone(
+                    key=f"{PREFIX}anniv_{stem}_{years}",
+                    group="anniversary",
+                    unit="date_abs",
+                    amount=0.0,
+                    when=f"{year}-{spec.month:02d}-{spec.day:02d}",
+                    label_da=f"{years}-året · {milestone.label_da}",
+                    label_en=f"{years} years on · {milestone.label_en}",
+                    why_da=f"{years} år efter den {date_da}. {milestone.why_da}",
+                    why_en=f"{years} years after {date_en}. {milestone.why_en}",
+                )
+            )
+    return tuple(out)
+
+
 @lru_cache(maxsize=1)
 def celebration_milestones() -> tuple[Milestone, ...]:
     """Alle festdage: de skrevne fra filerne og de udregnede fra reglerne.
@@ -372,5 +435,10 @@ def celebration_milestones() -> tuple[Milestone, ...]:
     Det er dén, ``utils.engine`` kalder. Den bliver husket, fordi hele
     kataloget bliver slaaet op igen for hver eneste udregning.
     """
-    return load_days().milestones + pattern_milestones() + geoyear_milestones()
+    return (
+        load_days().milestones
+        + round_anniversaries()
+        + pattern_milestones()
+        + geoyear_milestones()
+    )
 

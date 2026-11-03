@@ -8,7 +8,8 @@
       "da": "Hewlett-Packard stiftes",
       "en": "Hewlett-Packard is founded",
       "why_da": "1939, i en garage i Palo Alto. Hvem af dem der skulle stå først i navnet blev afgjort ved møntkast.",
-      "why_en": "1939, in a garage in Palo Alto. Whose name came first was decided by a coin toss."
+      "why_en": "1939, in a garage in Palo Alto. Whose name came first was decided by a coin toss.",
+      "since": 1939
     },
     {
       "key": "c64",
@@ -16,7 +17,8 @@
       "da": "Commodore 64 vises frem",
       "en": "The Commodore 64 is unveiled",
       "why_da": "CES 1982. Den blev den bedst sælgende computermodel nogensinde — omkring 17 millioner stk.",
-      "why_en": "CES 1982. It went on to become the best-selling single computer model ever — around 17 million units."
+      "why_en": "CES 1982. It went on to become the best-selling single computer model ever — around 17 million units.",
+      "since": 1982
     },
     {
       "key": "iphone",
@@ -24,7 +26,8 @@
       "da": "iPhone præsenteres",
       "en": "The iPhone is announced",
       "why_da": "2007. Steve Jobs sagde, han havde tre produkter med, og så viste han én ting.",
-      "why_en": "2007. Steve Jobs said he had three products to show, and then showed one thing."
+      "why_en": "2007. Steve Jobs said he had three products to show, and then showed one thing.",
+      "since": 2007
     },
     {
       "key": "wikipedia",
@@ -32,7 +35,8 @@
       "da": "Wikipedia-dagen",
       "en": "Wikipedia Day",
       "why_da": "2001. Den begyndte som en sidevogn til et redaktionelt leksikon, der skulle have været det rigtige projekt.",
-      "why_en": "2001. It began as a side project to an edited encyclopedia that was supposed to be the real one."
+      "why_en": "2001. It began as a side project to an edited encyclopedia that was supposed to be the real one.",
+      "since": 2001
     },
     {
       "key": "macintosh",
@@ -40,7 +44,8 @@
       "da": "Macintosh-dagen",
       "en": "Macintosh Day",
       "why_da": "Den første Mac kom i handlen 24. januar 1984, to dage efter Ridley Scotts 1984-reklame blev vist i Super Bowl. Nogle kalendere lægger dagen den 25.",
-      "why_en": "The first Mac went on sale on 24 January 1984, two days after Ridley Scott's “1984” advert ran in the Super Bowl. Some calendars put the day on the 25th."
+      "why_en": "The first Mac went on sale on 24 January 1984, two days after Ridley Scott's “1984” advert ran in the Super Bowl. Some calendars put the day on the 25th.",
+      "since": 1984
     },
     {
       "key": "privacy",
@@ -56,7 +61,8 @@
       "da": "Den internationale LEGO-dag",
       "en": "International Lego Day",
       "why_da": "Patentet på klodsen med de otte knopper blev indleveret 28. januar 1958 kl. 13.58. En klods fra den dag passer stadig på en, der er støbt i dag.",
-      "why_en": "The patent for the eight-stud brick was filed on 28 January 1958 at 1:58 pm. A brick from that day still fits one moulded today."
+      "why_en": "The patent for the eight-stud brick was filed on 28 January 1958 at 1:58 pm. A brick from that day still fits one moulded today.",
+      "since": 1958
     },
     {
       "key": "www_birth",
@@ -64,7 +70,8 @@
       "da": "World Wide Web fødes",
       "en": "The World Wide Web is born",
       "why_da": "Tim Berners-Lee afleverede sit forslag til CERN 12. marts 1989. Chefen skrev „vague but exciting“ i margenen.",
-      "why_en": "Tim Berners-Lee handed his proposal to CERN on 12 March 1989. His boss wrote “vague but exciting” in the margin."
+      "why_en": "Tim Berners-Lee handed his proposal to CERN on 12 March 1989. His boss wrote “vague but exciting” in the margin.",
+      "since": 1989
     },
     {
       "key": "backup",
@@ -96,7 +103,8 @@
       "da": "Morse-dagen",
       "en": "Morse Code Day",
       "why_da": "Samuel Morses fødselsdag, 1791. Han var portrætmaler indtil han var fyrre.",
-      "why_en": "Samuel Morse's birthday, 1791. He was a portrait painter until he was forty."
+      "why_en": "Samuel Morse's birthday, 1791. He was a portrait painter until he was forty.",
+      "since": 1791
     },
     {
       "key": "www_free",
@@ -104,7 +112,8 @@
       "da": "Webben bliver fri",
       "en": "The Web is set free",
       "why_da": "CERN lagde kildekoden til WorldWideWeb i det offentlige domæne 30. april 1993. Uden den beslutning havde internettet set anderledes ud.",
-      "why_en": "CERN placed the WorldWideWeb source code in the public domain on 30 April 1993. Without that decision the internet would look different."
+      "why_en": "CERN placed the WorldWideWeb source code in the public domain on 30 April 1993. Without that decision the internet would look different.",
+      "since": 1993
     },
     {
       "key": "telecom",
@@ -112,7 +121,8 @@
       "da": "Telekommunikationsdagen",
       "en": "World Telecommunication Day",
       "why_da": "Den Internationale Telegrafunion blev stiftet 17. maj 1865 — en af verdens ældste internationale organisationer.",
-      "why_en": "The International Telegraph Union was founded on 17 May 1865 — one of the oldest international organisations in the world."
+      "why_en": "The International Telegraph Union was founded on 17 May 1865 — one of the oldest international organisations in the world.",
+      "since": 1865
     },
     {
       "key": "paper_airplane",
@@ -128,7 +138,8 @@
       "da": "Kuglepennens dag",
       "en": "Ballpoint Pen Day",
       "why_da": "László Bíró fik patentet 10. juni 1943. Hans anden opfindelse var en automatgearkasse, som General Motors købte og lagde i skuffen.",
-      "why_en": "László Bíró was granted the patent on 10 June 1943. His other invention was an automatic gearbox, which General Motors bought and shelved."
+      "why_en": "László Bíró was granted the patent on 10 June 1943. His other invention was an automatic gearbox, which General Motors bought and shelved.",
+      "since": 1943
     },
     {
       "key": "webmaster_lunch",
@@ -160,7 +171,8 @@
       "da": "Verdens første hjemmeside",
       "en": "The world's first website",
       "why_da": "info.cern.ch gik i luften 6. august 1991. Den forklarede, hvad World Wide Web var, og hvordan man selv kunne lave en side.",
-      "why_en": "info.cern.ch went live on 6 August 1991. It explained what the World Wide Web was and how to make a page of your own."
+      "why_en": "info.cern.ch went live on 6 August 1991. It explained what the World Wide Web was and how to make a page of your own.",
+      "since": 1991
     },
     {
       "key": "ibm_pc",
@@ -168,7 +180,8 @@
       "da": "IBM PC-dagen",
       "en": "IBM PC Day",
       "why_da": "IBM Model 5150 kom 12. august 1981. IBM lod BIOS'en være åben nok til at andre kunne bygge kopier — og dermed opstod hele pc-industrien ved et uheld.",
-      "why_en": "The IBM Model 5150 arrived on 12 August 1981. IBM left the BIOS open enough for others to build clones — and the whole PC industry happened by accident."
+      "why_en": "The IBM Model 5150 arrived on 12 August 1981. IBM left the BIOS open enough for others to build clones — and the whole PC industry happened by accident.",
+      "since": 1981
     },
     {
       "key": "ie_debut",
@@ -176,7 +189,8 @@
       "da": "Internet Explorer udkommer",
       "en": "Internet Explorer debuts",
       "why_da": "16. august 1995, som en del af Windows 95 Plus!. Den levede i 27 år.",
-      "why_en": "16 August 1995, as part of the Windows 95 Plus! pack. It lasted 27 years."
+      "why_en": "16 August 1995, as part of the Windows 95 Plus! pack. It lasted 27 years.",
+      "since": 1995
     },
     {
       "key": "photo",
@@ -184,7 +198,8 @@
       "da": "Verdens fotodag",
       "en": "World Photo Day",
       "why_da": "Den franske stat købte daguerreotypiet 19. august 1839 og forærede det til verden som en fri opfindelse.",
-      "why_en": "The French state bought the daguerreotype on 19 August 1839 and gave it to the world as a free invention."
+      "why_en": "The French state bought the daguerreotype on 19 August 1839 and gave it to the world as a free invention.",
+      "since": 1839
     },
     {
       "key": "google_day",
@@ -192,7 +207,8 @@
       "da": "Googles mærkedag",
       "en": "Google Commemoration Day",
       "why_da": "Google Inc. blev registreret 7. september 1998. Firmaet selv fejrer sin fødselsdag den 27. — de har flyttet den flere gange.",
-      "why_en": "Google Inc. was incorporated on 7 September 1998. The company itself celebrates on the 27th — it has moved the date more than once."
+      "why_en": "Google Inc. was incorporated on 7 September 1998. The company itself celebrates on the 27th — it has moved the date more than once.",
+      "since": 1998
     },
     {
       "key": "programmer",
@@ -240,7 +256,8 @@
       "da": "Internetdagen",
       "en": "Internet Day",
       "why_da": "Den første besked på ARPANET blev sendt 29. oktober 1969. Den skulle have været „LOGIN“, men systemet brød ned efter „LO“.",
-      "why_en": "The first message on ARPANET was sent on 29 October 1969. It was meant to be “LOGIN”, but the system crashed after “LO”."
+      "why_en": "The first message on ARPANET was sent on 29 October 1969. It was meant to be “LOGIN”, but the system crashed after “LO”.",
+      "since": 1969
     },
     {
       "key": "pong_release",
@@ -248,7 +265,8 @@
       "da": "Pong udkommer",
       "en": "Pong is released",
       "why_da": "29. november 1972. Den første automat gik i stå, fordi møntboksen var stoppet helt op med kvarter.",
-      "why_en": "29 November 1972. The first machine broke down because the coin box was jammed solid with quarters."
+      "why_en": "29 November 1972. The first machine broke down because the coin box was jammed solid with quarters.",
+      "since": 1972
     },
     {
       "key": "computer_security",

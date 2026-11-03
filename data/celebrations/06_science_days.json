@@ -56,7 +56,8 @@
       "da": "Newtonmas",
       "en": "Newtonmas",
       "why_da": "Isaac Newton blev født 25. december 1642 efter den julianske kalender. Nørdernes alternativ til jul — man pynter træet med æbler.",
-      "why_en": "Isaac Newton was born on 25 December 1642 by the Julian calendar. The nerd alternative to Christmas — you decorate the tree with apples."
+      "why_en": "Isaac Newton was born on 25 December 1642 by the Julian calendar. The nerd alternative to Christmas — you decorate the tree with apples.",
+      "since": 1642
     },
     {
       "key": "principia",
@@ -64,7 +65,8 @@
       "da": "Principia-dagen",
       "en": "Principia Day",
       "why_da": "Newtons Philosophiæ Naturalis Principia Mathematica udkom 5. juli 1687 og forklarede både det faldende æble og Månens bane med én ligning.",
-      "why_en": "Newton's Philosophiæ Naturalis Principia Mathematica appeared on 5 July 1687 and explained both the falling apple and the Moon's orbit with one equation."
+      "why_en": "Newton's Philosophiæ Naturalis Principia Mathematica appeared on 5 July 1687 and explained both the falling apple and the Moon's orbit with one equation.",
+      "since": 1687
     },
     {
       "key": "darwin",
@@ -72,7 +74,8 @@
       "da": "Darwin Day",
       "en": "Darwin Day",
       "why_da": "Charles Darwins fødselsdag, 1809. Fejres verden over som en dag for videnskab og nysgerrighed.",
-      "why_en": "Charles Darwin's birthday, 1809. Marked around the world as a day for science and curiosity."
+      "why_en": "Charles Darwin's birthday, 1809. Marked around the world as a day for science and curiosity.",
+      "since": 1809
     },
     {
       "key": "evolution",
@@ -80,7 +83,8 @@
       "da": "Evolutionsdagen",
       "en": "Evolution Day",
       "why_da": "Arternes oprindelse udkom 24. november 1859. Hele oplaget på 1.250 eksemplarer var væk samme dag.",
-      "why_en": "On the Origin of Species was published on 24 November 1859. The entire print run of 1,250 copies sold the same day."
+      "why_en": "On the Origin of Species was published on 24 November 1859. The entire print run of 1,250 copies sold the same day.",
+      "since": 1859
     },
     {
       "key": "dna",
@@ -88,7 +92,8 @@
       "da": "DNA-dagen",
       "en": "DNA Day",
       "why_da": "Den 25. april 1953 udkom artiklerne i Nature om dobbeltspiralen — Watson, Crick, Wilkins og Franklin, side om side i samme nummer.",
-      "why_en": "On 25 April 1953 the Nature papers on the double helix appeared — Watson, Crick, Wilkins and Franklin, side by side in the same issue."
+      "why_en": "On 25 April 1953 the Nature papers on the double helix appeared — Watson, Crick, Wilkins and Franklin, side by side in the same issue.",
+      "since": 1953
     },
     {
       "key": "yuri",
@@ -96,7 +101,8 @@
       "da": "Yuris Nat",
       "en": "Yuri's Night",
       "why_da": "Jurij Gagarin fløj i kredsløb om Jorden 12. april 1961 — og præcis tyve år senere, samme dato, lettede den første rumfærge. FN kalder den Dagen for Menneskets Rumflugt.",
-      "why_en": "Yuri Gagarin orbited the Earth on 12 April 1961 — and exactly twenty years later, to the day, the first Space Shuttle lifted off. The UN calls it the Day of Human Space Flight."
+      "why_en": "Yuri Gagarin orbited the Earth on 12 April 1961 — and exactly twenty years later, to the day, the first Space Shuttle lifted off. The UN calls it the Day of Human Space Flight.",
+      "since": 1961
     },
     {
       "key": "moon_day",
@@ -104,7 +110,8 @@
       "da": "Månedagen",
       "en": "Moon Day",
       "why_da": "Apollo 11 landede 20. juli 1969. Selve spadsereturen skete først natten til den 21. i europæisk tid — derfor står dagen forskelligt i forskellige kilder.",
-      "why_en": "Apollo 11 landed on 20 July 1969. The walk itself came in the small hours of the 21st in European time — which is why sources disagree about the day."
+      "why_en": "Apollo 11 landed on 20 July 1969. The walk itself came in the small hours of the 21st in European time — which is why sources disagree about the day.",
+      "since": 1969
     },
     {
       "key": "inventors",
@@ -112,7 +119,8 @@
       "da": "Opfindernes dag",
       "en": "National Inventors' Day",
       "why_da": "Thomas Edisons fødselsdag, 1847. Han endte med 1.093 patenter i eget navn.",
-      "why_en": "Thomas Edison's birthday, 1847. He ended up with 1,093 patents in his own name."
+      "why_en": "Thomas Edison's birthday, 1847. He ended up with 1,093 patents in his own name.",
+      "since": 1847
     },
     {
       "key": "laser",
