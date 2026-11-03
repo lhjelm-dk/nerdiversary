@@ -1283,6 +1283,3 @@ MILESTONES: tuple[Milestone, ...] = tuple(
 
 MILESTONES_BY_KEY: dict[str, Milestone] = {m.key: m for m in MILESTONES}
 
-
-def milestones_in_group(group_key: str) -> list[Milestone]:
-    return [m for m in MILESTONES if m.group == group_key]

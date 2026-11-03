@@ -656,6 +656,47 @@ def bundle_scope(bundle: Bundle) -> str:
     return BOTH_SCOPES
 
 
+def milestones_by_group() -> dict[str, list[Milestone]]:
+    """Hele kataloget sorteret i grupper — ogsaa legenderne og festdagene.
+
+    Opslaget hoerer til her og ikke i ``catalog``, fordi kun motoren kender
+    hele kataloget. ``catalog.MILESTONES`` er de haandskrevne maerkedage;
+    legenderne og festdagene bliver bygget, og et opslag, der kun kigger i
+    ``MILESTONES``, svarer derfor tomt for en gruppe som Palindromdage uden
+    at sige fra.
+    """
+    out: dict[str, list[Milestone]] = {}
+    for milestone in all_milestones():
+        out.setdefault(milestone.group, []).append(milestone)
+    return out
+
+
+def group_scopes() -> dict[str, str]:
+    """Hylden for hver gruppe i kataloget, regnet ud i ét gennemloeb.
+
+    Samme skel som ``bundle_scope`` og udledt paa samme maade: af enhederne.
+    Den samler alle grupper paa én gang, fordi brugerfladen skal bruge dem
+    alle sammen samtidig og kataloget er langt.
+    """
+    kinds: dict[str, set[str]] = {}
+    for milestone in all_milestones():
+        kind = (
+            CALENDAR_SCOPE
+            if milestone.unit in CALENDAR_DAY_UNITS
+            else BIRTH_SCOPE
+        )
+        kinds.setdefault(milestone.group, set()).add(kind)
+    return {
+        group: (next(iter(kind)) if len(kind) == 1 else BOTH_SCOPES)
+        for group, kind in kinds.items()
+    }
+
+
+def group_scope(group_key: str) -> str:
+    """Om gruppens maerkedage regnes fra foedslen eller ligger paa kalenderen."""
+    return group_scopes().get(group_key, BIRTH_SCOPE)
+
+
 def next_occasions(
     occasions: list[Occasion], now: datetime, count: int = 1
 ) -> list[Occasion]:

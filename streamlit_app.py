@@ -27,7 +27,6 @@ from utils.catalog import (
     GROUPS,
     GROUPS_BY_KEY,
     Bundle,
-    milestones_in_group,
 )
 from utils.engine import (
     SCOPES,
@@ -44,6 +43,8 @@ from utils.engine import (
     bundle_keys,
     bundle_scope,
     compute,
+    group_scopes,
+    milestones_by_group,
     explanation,
     duration_breakdown,
     last_occasions,
@@ -1000,7 +1001,7 @@ with tab_select:
     for scope, shelf in shelves.items():
         if not shelf:
             continue
-        st.markdown(f"**{t(f'bundles_{scope}', lang)}**")
+        st.markdown(f"**{t(f'scope_{scope}', lang)}**")
         st.caption(t(f"bundles_{scope}_help", lang))
         bundle_rows = st.container(horizontal=True)
         for bundle in shelf:
@@ -1047,14 +1048,13 @@ with tab_select:
         key="select_query",
     )
 
-    legend_lookup = {m.key: m for m in legend_milestones()}
+    # Opslaget skal kunne se hele kataloget. Gjorde det ikke det, stod en
+    # gruppe i filteret foroven uden at kunne foldes ud hernede — og det er
+    # praecis, hvad der skete for baade legenderne og festdagene.
+    members_by_group = milestones_by_group()
 
     def group_members(group_key: str) -> list:
-        return (
-            list(legend_lookup.values())
-            if group_key == "legend"
-            else milestones_in_group(group_key)
-        )
+        return members_by_group.get(group_key, [])
 
     needle = select_query.strip().lower()
 
@@ -1097,29 +1097,48 @@ with tab_select:
                         help=explanation(milestone, lang) or None,
                     )
     else:
+        # Gruppelisten deles efter samme skel som pakkerne ovenfor: det, der
+        # kun findes fordi DU blev foedt, og det, der falder paa samme dato
+        # for alle. Med seksogtredive grupper var raekkefoelgen ellers kun
+        # den, de tilfaeldigvis staar i i kataloget.
+        scopes = group_scopes()
+        shelves: dict[str, list] = {scope: [] for scope in SCOPES}
         for group in GROUPS:
-            members = group_members(group.key)
-            if not members:
+            if group_members(group.key):
+                shelves[scopes.get(group.key, "birth")].append(group)
+
+        for scope, shelf in shelves.items():
+            if not shelf:
                 continue
-            on_count = sum(1 for m in members if m.key in chosen)
-            with st.expander(f"{group.title(lang)}  ({on_count}/{len(members)})"):
-                toggles = st.container(horizontal=True)
-                toggles.button(
-                    t("group_all", lang),
-                    on_click=set_group,
-                    args=(group.key, True),
-                    key=f"all_{group.key}",
-                )
-                toggles.button(
-                    t("group_none", lang),
-                    on_click=set_group,
-                    args=(group.key, False),
-                    key=f"none_{group.key}",
-                )
-                columns = st.columns(3)
-                for index, milestone in enumerate(members):
-                    with columns[index % 3]:
-                        draw_checkbox(milestone)
+            on_shelf = [m for group in shelf for m in group_members(group.key)]
+            picked = sum(1 for m in on_shelf if m.key in chosen)
+            st.markdown(
+                f"**{t(f'scope_{scope}', lang)}** — "
+                f"{t('selected_count', lang, n=picked, total=len(on_shelf))}"
+            )
+            for group in shelf:
+                members = group_members(group.key)
+                on_count = sum(1 for m in members if m.key in chosen)
+                with st.expander(
+                    f"{group.title(lang)}  ({on_count}/{len(members)})"
+                ):
+                    toggles = st.container(horizontal=True)
+                    toggles.button(
+                        t("group_all", lang),
+                        on_click=set_group,
+                        args=(group.key, True),
+                        key=f"all_{group.key}",
+                    )
+                    toggles.button(
+                        t("group_none", lang),
+                        on_click=set_group,
+                        args=(group.key, False),
+                        key=f"none_{group.key}",
+                    )
+                    columns = st.columns(3)
+                    for index, milestone in enumerate(members):
+                        with columns[index % 3]:
+                            draw_checkbox(milestone)
 
 
 # --- Eksport -------------------------------------------------------------

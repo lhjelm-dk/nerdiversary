@@ -294,7 +294,7 @@ T: dict[str, dict[str, str]] = {
     },
     # Pakkerne staar i hylder efter, hvad de bygger paa. Hvilken hylde en
     # pakke hoerer paa, udledes af enhederne i ``engine.bundle_scope``.
-    "bundles_birth": {
+    "scope_birth": {
         "da": "Regnet fra din fødsel",
         "en": "Counted from your birth",
     },
@@ -304,7 +304,7 @@ T: dict[str, dict[str, str]] = {
         "en": "They exist only because you, specifically, were born. Move the "
               "date of birth and every one of them moves with it.",
     },
-    "bundles_calendar": {
+    "scope_calendar": {
         "da": "Samme dato for alle",
         "en": "The same date for everyone",
     },
@@ -314,7 +314,7 @@ T: dict[str, dict[str, str]] = {
         "en": "Fixed days in the calendar. They fall where they fall — what "
               "is personal is only how old you are on the day.",
     },
-    "bundles_both": {
+    "scope_both": {
         "da": "På tværs af begge",
         "en": "Across both",
     },

@@ -41,7 +41,9 @@ from utils.engine import (
     bundle_keys,
     bundle_scope,
     compute,
+    group_scopes,
     milestone_instant,
+    milestones_by_group,
 )
 from utils.geology import GEO_BY_KEY
 from utils.i18n import t
@@ -735,5 +737,63 @@ def test_both_shelves_have_something_on_them():
 @pytest.mark.parametrize("scope", SCOPES)
 @pytest.mark.parametrize("lang", ["da", "en"])
 def test_every_shelf_is_named_and_explained_in_both_languages(scope, lang):
-    for key in (f"bundles_{scope}", f"bundles_{scope}_help"):
+    for key in (f"scope_{scope}", f"bundles_{scope}_help"):
         assert t(key, lang) != key, f"{key} mangler i ordlisten"
+
+
+def test_every_group_in_the_catalogue_lands_on_a_shelf():
+    scopes = group_scopes()
+    assert set(scopes) == {m.group for m in all_milestones()}
+    assert set(scopes.values()) <= set(SCOPES)
+
+
+def test_a_group_of_feast_days_is_on_the_calendar_shelf():
+    scopes = group_scopes()
+    for milestone in celebration_milestones():
+        assert scopes[milestone.group] == CALENDAR_SCOPE, milestone.group
+
+
+def test_a_group_from_the_catalogue_is_on_the_birth_shelf():
+    scopes = group_scopes()
+    for milestone in MILESTONES:
+        assert scopes[milestone.group] == BIRTH_SCOPE, milestone.group
+
+
+def test_the_two_shelves_divide_every_group_between_them():
+    """Ingen gruppe maa falde mellem to stole, og ingen maa staa begge steder."""
+    scopes = group_scopes()
+    birth = {g for g, scope in scopes.items() if scope == BIRTH_SCOPE}
+    calendar = {g for g, scope in scopes.items() if scope == CALENDAR_SCOPE}
+    assert not birth & calendar
+    assert birth | calendar == set(scopes)
+    assert len(birth) >= 10 and len(calendar) >= 10
+
+
+def test_a_bundle_never_contradicts_the_groups_it_covers():
+    """Hylden over pakkerne og hylden over grupperne skal sige det samme."""
+    scopes = group_scopes()
+    for bundle in BUNDLES:
+        if not bundle.groups:
+            continue
+        kinds = {scopes[key] for key in bundle.groups}
+        expected = next(iter(kinds)) if len(kinds) == 1 else BOTH_SCOPES
+        assert bundle_scope(bundle) == expected, bundle.key
+
+
+def test_every_group_the_app_offers_has_milestones_in_it():
+    """En gruppe uden poster kan ikke foldes ud, og saa kan man ikke vaelge den.
+
+    Det var praecis dét, der skete: festdagsgrupperne stod i filteret
+    foroven, men forsvandt fra afkrydsningslisten, fordi opslaget kun kiggede
+    i MILESTONES og hverken kunne se legenderne eller festdagene.
+    """
+    by_group = milestones_by_group()
+    for group in GROUPS:
+        assert by_group.get(group.key), f'{group.key} har ingen maerkedage'
+
+
+def test_the_lookup_covers_the_whole_catalogue_and_nothing_twice():
+    by_group = milestones_by_group()
+    found = [m.key for members in by_group.values() for m in members]
+    assert len(found) == len(all_milestones())
+    assert len(set(found)) == len(found)
