@@ -282,10 +282,12 @@ BUNDLES: tuple[Bundle, ...] = (
     ),
     Bundle(
         "patternbundle", "Talmønsterpakken", "Number pattern pack", "🔢",
-        "Dagene, hvor datoen selv går op: 22.02.2022, 11.12.13, 11.11.11, "
-        "4² + 3² = 5². Ingen har bestemt dem — en regel finder dem.",
+        "Dagene, hvor datoen selv går op: 22.02.2022, 11.12.13, 11.11.11 — "
+        "og 06.07.42, hvor seks gange syv er toogfyrre. Ingen har bestemt "
+        "dem; en regel finder dem.",
         "The days where the date itself works out: 22.02.2022, 11.12.13, "
-        "11.11.11, 4² + 3² = 5². Nobody chose them — a rule finds them.",
+        "11.11.11 — and 06.07.42, where six times seven is forty-two. Nobody "
+        "chose them; a rule finds them.",
         groups=("palindrome", "sequence", "repunit", "binday", "pyth",
                 "sqrtday", "fibday", "product", "sumday"),
     ),

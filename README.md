@@ -168,10 +168,17 @@ læser mappen, tjekker hver post og lægger den i sin gruppe. En post, der ikke
 kan læses, forsvinder ikke i stilhed — den havner i `Import.skipped` med en
 grund.
 
-**Regnet ud** — 2.086 dage, som ingen har skrevet ned, fordi en regel finder
+**Regnet ud** — 439 dage, som ingen har skrevet ned, fordi en regel finder
 dem. `utils/datepatterns.py` har ni familier: palindromdage, sekvensdage
 (01.02.03), repunitdage (11.11.11), binære dage, pythagoræiske dage
-(4² + 3² = 5²), kvadratrodsdage, Fibonacci-datoer, produktdage og sumdage.
+(4² + 3² = 5²), kvadratrodsdage, Fibonacci-datoer, produktdage (06.07.42 —
+seks gange syv er toogfyrre) og sumdage (12.12.24).
+
+Produkt- og sumdagene er skåret med vilje. Uden et krav om, at de to tal
+hører sammen, går de op over fem hundrede gange i et århundrede — flere gange
+om måneden — og en mærkedag, der falder så tit, er ingen mærkedag. Nu skal
+dagen og måneden være nabotal (produkt) eller det samme tal (sum). Det tog de
+to familier fra 1.731 til 84.
 `utils/geoyear.py` lægger Jordens 4,54 milliarder år ned i ét kalenderår, hvor
 1. januar er dannelsen og 31. december er i dag — dinosaurerne dør den 26.
 december, og civilisationen fylder årets sidste 81 sekunder.

@@ -295,7 +295,7 @@ def test_the_log_scale_copes_with_a_day_in_your_first_month(calendar_entries):
     """
     assert calendar_entries, "der var ingen kalenderdage at tegne"
     earliest = min((e.when - BIRTH).total_seconds() for e in calendar_entries)
-    assert 0 < earliest < 1e6, "ingen festdag faldt i den foerste halve snes dage"
+    assert 0 < earliest < 1e7, "ingen festdag faldt i det foerste aar"
 
     drawing = tl.render_log(calendar_entries, BIRTH, NOW, TOTAL, "da")
     assert drawing.svg.startswith("<svg") and drawing.svg.endswith("</svg>")

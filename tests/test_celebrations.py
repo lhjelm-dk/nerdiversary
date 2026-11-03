@@ -562,18 +562,53 @@ def test_a_product_day_multiplies_and_a_sum_day_adds(century):
         assert hit.day + hit.month == hit.year % 100
 
 
-def test_the_last_sum_day_of_a_century_is_new_years_eve():
-    """31 + 12 = 43, og derefter kan summen ikke naa aarstallet mere."""
-    last = max(dp.sums(2000), key=lambda hit: (hit.year, hit.month, hit.day))
-    assert (last.day, last.month, last.year) == (31, 12, 2043)
+def test_there_are_twelve_sum_days_a_century_one_for_each_month():
+    """Dagen og maaneden skal vaere det samme tal, saa der er ét pr. maaned.
+
+    Uden det krav gaar summen op over tre hundrede gange i et aarhundrede,
+    flere gange om maaneden, og en maerkedag, der falder saa tit, er ingen
+    maerkedag.
+    """
+    found = list(dp.sums(2000))
+    assert len(found) == 12
+    assert [hit.day for hit in found] == list(range(1, 13))
+    for hit in found:
+        assert hit.day == hit.month
+        assert hit.day + hit.month == hit.year % 100
+    last = found[-1]
+    assert (last.day, last.month, last.year) == (12, 12, 2024)
+
+
+def test_a_product_day_is_two_neighbours_multiplied():
+    """Kvadraterne er med vilje holdt ude: de er kvadratrodsdagene."""
+    found = list(dp.products(2000))
+    assert len(found) == 16
+    for hit in found:
+        assert abs(hit.day - hit.month) == 1
+        assert hit.day * hit.month == hit.year % 100
+    assert not [hit for hit in found if hit.day == hit.month]
+
+
+def test_the_answer_to_everything_has_its_own_day():
+    """6 x 7 = 42, og det er vaerd at sige hoejt."""
+    forty_two = [hit for hit in dp.products(2000) if hit.year == 2042]
+    assert len(forty_two) == 2
+    assert {(hit.day, hit.month) for hit in forty_two} == {(6, 7), (7, 6)}
+    assert all("42 er svaret" in hit.da for hit in forty_two)
 
 
 def test_a_date_may_belong_to_more_than_one_family():
-    """05.05.25 er baade en kvadratrodsdag og en produktdag. Begge er sande."""
-    groups = {
-        m.group for m in dp.pattern_milestones() if m.when == "2025-05-05"
-    }
-    assert {"sqrtday", "product"} <= groups
+    """01.01.02 er baade en sumdag og en Fibonacci-dato. Begge er sande.
+
+    Produktdagene er derimod skaaret, saa de IKKE overlapper
+    kvadratrodsdagene: 05.05.25 er kun det ene, for den samme dag skal ikke
+    staa to steder under to navne.
+    """
+    groups = {m.group for m in dp.pattern_milestones() if m.when == "2002-01-01"}
+    assert {"sumday", "fibday"} <= groups
+
+    squares = {m.group for m in dp.pattern_milestones() if m.when == "2025-05-05"}
+    assert squares == {"sqrtday"}
 
 
 # -------------------------------------------------------------------------
@@ -643,7 +678,7 @@ def test_the_catalogue_still_works_with_nothing_chosen():
 def test_the_whole_catalogue_can_be_computed_in_both_languages():
     for lang in ("da", "en"):
         occasions = compute(profile_at(1980), lang=lang, now=NOW)
-        assert len(occasions) > 1_000
+        assert len(occasions) > 500
         moments = [o.when_utc for o in occasions]
         assert moments == sorted(moments)
 

@@ -277,11 +277,11 @@ T: dict[str, dict[str, str]] = {
     # --- Valg ---
     "select_hint": {
         "da": "Grupperne, der regnes fra din fødsel, er slået til fra start — "
-              "undtagen legenderne. Festdagene er slået fra, fordi der er "
-              "flere tusind af dem; tænd dem med en pakke ovenfor.",
+              "undtagen legenderne. Festdagene er slået fra, fordi de er "
+              "mange gange flere; tænd dem med en pakke ovenfor.",
         "en": "The groups counted from your birth are on by default — except "
-              "the legends. The calendar days are off, because there are "
-              "several thousand of them; switch them on with a bundle above.",
+              "the legends. The calendar days are off, because there are many "
+              "times more of them; switch them on with a bundle above.",
     },
     # --- Levetidsberegneren ---
     "calc_title": {"da": "Levetidsberegner", "en": "Life expectancy calculator"},

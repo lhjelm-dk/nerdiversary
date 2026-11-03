@@ -185,43 +185,65 @@ def binaries(century: int) -> Iterator[Hit]:
 
 
 def products(century: int) -> Iterator[Hit]:
-    """Datoer, hvor dagen gange maaneden giver aaret: 05.05.25."""
-    for month in range(1, 13):
-        for day in range(1, 32):
+    """Datoer, hvor dagen gange maaneden giver aaret — og de to er nabotal.
+
+    Uden det sidste krav er der over to hundrede om aaret hundrede, og de
+    fleste af dem er to tilfaeldige tal, der tilfaeldigvis rammer: 15 × 4 =
+    60 siger ingenting. Med nabotal bliver regnestykket til en raekke, man
+    kan se: 6, 7, 42.
+
+    Kvadraterne (5 × 5 = 25) er med vilje holdt udenfor. De er de samme dage
+    som kvadratrodsdagene, og den samme dag skal ikke staa to steder med to
+    navne.
+    """
+    for first in range(2, 10):
+        second = first + 1
+        for day, month in ((first, second), (second, first)):
             short = day * month
-            if not 1 <= short <= 99:
-                continue
             year = century + short
-            if not _real(year, month, day):
+            if not 1 <= short <= 99 or not _real(year, month, day):
                 continue
+            extra = (
+                " Og 42 er svaret på Det Store Spørgsmål om Livet, Universet "
+                "og Alting."
+                if short == 42
+                else ""
+            )
+            extra_en = (
+                " And 42 is the Answer to the Ultimate Question of Life, the "
+                "Universe and Everything."
+                if short == 42
+                else ""
+            )
             yield Hit(
                 year, month, day,
-                f"Dagen gange måneden giver året: {day} × {month} = {short}.",
-                f"The day times the month gives the year: "
-                f"{day} × {month} = {short}.",
+                f"Dagen og måneden er nabotal, og ganget sammen giver de året: "
+                f"{day} × {month} = {short}." + extra,
+                f"The day and the month are neighbours, and multiplied they "
+                f"give the year: {day} × {month} = {short}." + extra_en,
             )
 
 
 def sums(century: int) -> Iterator[Hit]:
-    """Datoer, hvor dagen plus maaneden giver aaret: 12.12.24.
+    """Datoer, hvor dagen og maaneden er det samme tal, og summen er aaret.
 
-    Den sidste i et aarhundrede er nytaarsaftensdag: 31.12.43, hvor 31 + 12
-    giver 43. Derefter kan summen ikke naa aarstallet mere.
+    Uden kravet om, at de to er ens, gaar det op over tre hundrede gange i et
+    aarhundrede — flere gange om maaneden. En maerkedag, der falder saa tit,
+    er ingen maerkedag. Med kravet er der tolv: 01.01.02, 02.02.04 og saa
+    fremdeles op til 12.12.24, og regnestykket er det samme tal to gange.
     """
-    for month in range(1, 13):
-        for day in range(1, 32):
-            short = day + month
-            if not 1 <= short <= 99:
-                continue
-            year = century + short
-            if not _real(year, month, day):
-                continue
-            yield Hit(
-                year, month, day,
-                f"Dagen plus måneden giver året: {day} + {month} = {short}.",
-                f"The day plus the month gives the year: "
-                f"{day} + {month} = {short}.",
-            )
+    for number in range(1, 13):
+        short = number * 2
+        year = century + short
+        if not _real(year, number, number):
+            continue
+        yield Hit(
+            year, number, number,
+            f"Dagen og måneden er det samme tal, og lagt sammen giver de "
+            f"året: {number} + {number} = {short}.",
+            f"The day and the month are the same number, and added together "
+            f"they give the year: {number} + {number} = {short}.",
+        )
 
 
 def pythagoreans(century: int) -> Iterator[Hit]:
