@@ -122,11 +122,27 @@ T: dict[str, dict[str, str]] = {
     "tab_notes": {"da": "Noter", "en": "Notes"},
     # --- Tabel ---
     "filters": {"da": "Filtre", "en": "Filters"},
+    # Filterraekken svarer paa ÉT spoergsmaal: hvilket udsnit kigger du paa.
+    # Hvad der overhovedet er med, bestemmes i Vaelg-fanen.
     "filters_scope": {
-        "da": "Filtre — gælder liste, kalender og eksport",
-        "en": "Filters — apply to list, calendar and export",
+        "da": "Udsnit — hvad du kigger på lige nu",
+        "en": "View — what you are looking at right now",
     },
     "filter_groups": {"da": "Grupper", "en": "Groups"},
+    "filter_groups_help": {
+        "da": "Den samme vælger står i Vælg mærkedage. Slukker du en gruppe "
+              "her, forsvinder den fra listen, kalenderen, tidslinjen og "
+              "eksporten — men du mister ikke dine flueben, og den kommer "
+              "tilbage som den var, når du tænder den igen.",
+        "en": "The same picker sits in Choose milestones. Switch a group off "
+              "here and it leaves the list, the calendar, the timeline and "
+              "the export — but you do not lose your ticks, and it comes "
+              "back as it was when you switch it on again.",
+    },
+    "groups_none_placeholder": {
+        "da": "Ingen grupper — intet vises",
+        "en": "No groups — nothing shown",
+    },
     "filter_window": {"da": "Tidsrum", "en": "Time window"},
     "window_all": {"da": "Alt", "en": "Everything"},
     "window_1": {"da": "Næste år", "en": "Next year"},
@@ -276,12 +292,14 @@ T: dict[str, dict[str, str]] = {
     },
     # --- Valg ---
     "select_hint": {
-        "da": "Grupperne, der regnes fra din fødsel, er slået til fra start — "
-              "undtagen legenderne. Festdagene er slået fra, fordi de er "
-              "mange gange flere; tænd dem med en pakke ovenfor.",
-        "en": "The groups counted from your birth are on by default — except "
-              "the legends. The calendar days are off, because there are many "
-              "times more of them; switch them on with a bundle above.",
+        "da": "Her bestemmes, hvad der overhovedet er med. Grupperne, der "
+              "regnes fra din fødsel, er slået til fra start — undtagen "
+              "legenderne. Festdagene er slået fra, fordi de er mange gange "
+              "flere; tænd dem med en pakke ovenfor.",
+        "en": "This is where you decide what is in at all. The groups counted "
+              "from your birth are on by default — except the legends. The "
+              "calendar days are off, because there are many times more of "
+              "them; switch them on with a bundle above.",
     },
     # --- Levetidsberegneren ---
     "calc_title": {"da": "Levetidsberegner", "en": "Life expectancy calculator"},
@@ -377,12 +395,16 @@ T: dict[str, dict[str, str]] = {
     "label_since": {"da": "{label} — {n}-året", "en": "{label} — {n} years on"},
     "bundles": {"da": "Pakker", "en": "Bundles"},
     "bundles_hint": {
-        "da": "Ét klik på en pakke erstatter hele dit nuværende valg.",
-        "en": "One click on a bundle replaces your whole current selection.",
+        "da": "En pakke lægger sine mærkedage oven i dem, du har i forvejen. "
+              "Tryk på flere, og byg din egen. Vil du starte forfra, er der "
+              "Ryd alle nedenfor.",
+        "en": "A bundle adds its milestones to the ones you already have. "
+              "Press several and build your own. To start over there is "
+              "Clear all below.",
     },
     "bundle_applied": {
-        "da": "{name} slået til — {n} mærkedage valgt.",
-        "en": "{name} applied — {n} milestones selected.",
+        "da": "{name}: {n} mærkedage, hvoraf {added} var nye.",
+        "en": "{name}: {n} milestones, {added} of them new.",
     },
     # Pakkerne staar i hylder efter, hvad de bygger paa. Hvilken hylde en
     # pakke hoerer paa, udledes af enhederne i ``engine.bundle_scope``.
@@ -433,30 +455,45 @@ T: dict[str, dict[str, str]] = {
               "one: somebody actually turns up. ③ The ones that barely exist "
               "outside a list — nobody keeps them, but they are fun to know.",
     },
-    "level_hidden": {
-        "da": "Tabellen viser kun til og med {level}. Skru op på Niveau i "
-              "filterrækken foroven for at se resten.",
-        "en": "The table shows up to {level} only. Turn Level up in the "
-              "filter row above to see the rest.",
+    # Hvad der er skruet ned ad, staar skrevet under tabellens taeller.
+    # Foer kunne den staa tom af fire grunde uden at sige hvilken.
+    "narrowed_level": {"da": "niveau {level}", "en": "level {level}"},
+    "narrowed_groups": {
+        "da": "{n} af {total} grupper",
+        "en": "{n} of {total} groups",
+    },
+    "narrowed_search": {"da": "søgning: „{needle}“", "en": "search: “{needle}”"},
+    "narrowed_only_chosen": {"da": "kun de valgte", "en": "only the chosen"},
+    "only_chosen": {"da": "Vis kun det, jeg har valgt", "en": "Show only what I chose"},
+    "only_chosen_help": {
+        "da": "Skjuler alt, der ikke er sat flueben ved, så du kan se din "
+              "kalender som en liste frem for at lede efter krydserne i "
+              "hele kataloget.",
+        "en": "Hides everything without a tick, so you can read your calendar "
+              "as a list instead of hunting for the ticks through the whole "
+              "catalogue.",
     },
     "select_all": {"da": "Vælg alle", "en": "Select all"},
     "clear_all": {"da": "Ryd alle", "en": "Clear all"},
-    "select_groups": {"da": "Afgræns til grupper", "en": "Narrow to groups"},
-    "select_groups_placeholder": {
-        "da": "Alle grupper",
-        "en": "All groups",
+    "select_groups": {"da": "Grupper", "en": "Groups"},
+    "select_groups_help": {
+        "da": "Den samme vælger som i Udsnit foroven — ændrer du den ét sted, "
+              "følger den anden med.",
+        "en": "The same picker as in View above — change it in one place and "
+              "the other follows.",
     },
     "select_showing": {
-        "da": "{n} af {total} mærkedage i tabellen — {picked} af dem valgt.",
-        "en": "{n} of {total} milestones in the table — {picked} of them on.",
+        "da": "Tabellen viser {n} mærkedage · {picked} af dem er med",
+        "en": "The table shows {n} milestones · {picked} of them are on",
     },
     "shown_all": {"da": "Vælg alle i tabellen", "en": "Select all in table"},
     "shown_none": {"da": "Fravælg alle i tabellen", "en": "Clear all in table"},
     "col_pick": {"da": "Med", "en": "On"},
     "col_why": {"da": "Forklaring", "en": "Explanation"},
     "selected_count": {
-        "da": "{n} af {total} mærkedage valgt",
-        "en": "{n} of {total} milestones selected",
+        "da": "**{n}** mærkedage er med i din kalender, ud af {total} i kataloget",
+        "en": "**{n}** milestones are in your calendar, out of {total} in the "
+              "catalogue",
     },
     "select_search": {"da": "Søg i kataloget", "en": "Search the catalogue"},
     "select_search_placeholder": {

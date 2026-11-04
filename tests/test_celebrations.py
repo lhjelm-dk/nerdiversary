@@ -1069,25 +1069,40 @@ def test_no_widget_gets_both_a_value_and_a_key():
 
     # Noeglerne, appen selv skriver — baade ``st.session_state[x] = ...`` og
     # ``st.session_state.setdefault(x, ...)``.
+    def same_key(expr: str) -> str:
+        """``_cb(key)`` og ``_cb(milestone.key)`` er den samme noegle.
+
+        Uden det her slap netop den fejl, testen blev skrevet til, igennem:
+        de to steder skrev udtrykket forskelligt, selv om de peger paa samme
+        felt.
+        """
+        expr = expr.strip()
+        return expr.split("(", 1)[0] + "(" if "(" in expr else expr
+
     managed = {
-        match.strip()
+        same_key(match)
         for match in re.findall(r"st\.session_state\[([^\]]+)\]\s*=[^=]", source)
     }
     managed |= {
-        match.strip()
+        same_key(match)
         for match in re.findall(r"st\.session_state\.setdefault\(([^,]+),", source)
     }
     assert managed, "fandt ingen nøgler, appen selv skriver — er mønsteret ændret?"
 
     # Et widget-kald slutter, hvor parentesen lukkes igen.
+    # Ogsaa kald paa en beholder — ``row.multiselect(...)`` — og ikke kun
+    # paa ``st``. Gruppevaelgeren tegnes paa en vandret beholder og slap
+    # udenom, da moensteret kun kiggede efter st-kald.
     opener = (
-        r"st\.(?:checkbox|radio|selectbox|multiselect|slider|text_input"
-        r"|number_input|toggle|date_input|time_input|data_editor)\("
+        r"\b\w+\.(?:checkbox|radio|selectbox|multiselect|slider|select_slider"
+        r"|text_input|number_input|toggle|date_input|time_input|data_editor)\("
     )
     for call in re.split(opener, source)[1:]:
-        body = call[: call.find("\n    )")]
+        # Kaldet slutter ved den foerste lukkeparentes paa egen linje.
+        end = re.search(r"\n\s*\)", call)
+        body = call[: end.start()] if end else call[:400]
         found = re.search(r"\bkey=([^,\n]+)", body)
-        if found and found.group(1).strip() in managed:
+        if found and same_key(found.group(1)) in managed:
             assert "value=" not in body, f"både value og key: {body[:90]!r}"
 
 
@@ -1385,3 +1400,117 @@ def test_the_invented_worcestershire_day_says_that_it_is_invented():
     spec = parse_spec(day.when)
     assert spec_in_year(spec, 2027) is None
     assert spec_in_year(spec, 2028) == date(2028, 2, 29)
+
+
+# -------------------------------------------------------------------------
+# Den ene gruppevaelger, der staar to steder
+# -------------------------------------------------------------------------
+#
+# Gruppevalget laa foer i to uafhaengige flervaelgere, der hed naesten det
+# samme: "Grupper" i filterraekken og "Afgraens til grupper" i Vaelg-fanen.
+# De moedtes aldrig i koden, saa man kunne saette den ene til Sekunder og den
+# anden til Popkultur og faa en tom liste ved siden af en fuld tabel.
+#
+# Nu er sandheden ét saet i session state, og hver vaelger er kun et vindue
+# ind til det.
+
+
+def app_source() -> str:
+    return (
+        pathlib.Path(__file__).resolve().parent.parent / "streamlit_app.py"
+    ).read_text(encoding="utf-8")
+
+
+def test_both_group_pickers_come_from_the_same_function():
+    import ast
+
+    tree = ast.parse(app_source())
+    calls = [
+        node
+        for node in ast.walk(tree)
+        if isinstance(node, ast.Call)
+        and isinstance(node.func, ast.Name)
+        and node.func.id == "draw_group_picker"
+    ]
+    assert len(calls) == 2, f"{len(calls)} gruppevælgere — der skal være to"
+
+    keys = sorted(ast.unparse(call.args[1]).strip("'\"") for call in calls)
+    assert keys == ["filter_groups", "select_groups"], keys
+
+
+def test_the_group_picker_never_carries_its_own_default():
+    """``default`` ville goere widgeten til sin egen kilde.
+
+    Saa ville de to vaelgere kunne komme ud af trit igen — og Streamlit ville
+    oven i koebet advare, fordi noeglen allerede staar i session state.
+    """
+    source = app_source()
+    start = source.index("def draw_group_picker")
+    body = source[start : source.index("\n\n\n", start)]
+    assert "default=" not in body
+    assert "on_change=_sync_groups" in body
+    assert "st.session_state[widget_key] =" in body
+
+
+def test_the_filtering_reads_the_set_and_not_a_widget():
+    """Begge steder, der filtrerer paa grupper, skal laese det samme saet."""
+    source = app_source()
+    assert source.count("st.session_state.groups_on") >= 2
+    # Den gamle, uafhaengige vaelger maa ikke komme tilbage.
+    assert "key=\"select_groups\"," not in source
+    assert "options=group_options" not in source
+
+
+def test_the_level_lives_in_the_choose_tab():
+    """Niveauet hoerer til, hvor man bestemmer hvad der er med.
+
+    Laa det i filterraekken, loej raekkens egen overskrift: den sagde, at den
+    kun gjaldt liste, kalender og eksport, mens niveauet ogsaa styrede
+    valgtabellen.
+    """
+    source = app_source()
+    after_tab = source[source.index("with tab_select:"):]
+    assert 'key="level_widget"' in after_tab, "skydeknappen er ikke i Vælg-fanen"
+    before_tabs = source[: source.index("tab_list, tab_cal")]
+    assert 'key="level_widget"' not in before_tabs
+
+
+def test_a_value_read_before_its_widget_is_driven_from_a_separate_key():
+    """Ellers kan de to komme ud af trit — og det gjorde de.
+
+    Niveauet laeses i toppen af kørslen, fordi liste, kalender og tidslinje
+    skal filtrere paa det, laenge foer Vaelg-fanen tegner skydeknappen.
+    Skifter man sprog, skifter knappens etiket, og saa nulstiller Streamlit
+    den til foerste trin — men vaerdien er allerede laest. Skydeknappen stod
+    paa ① Kendte, mens tabellen filtrerede paa ②, og de blev ved med at vaere
+    uenige, indtil man roerte noget.
+
+    Kuren er den samme som ved grupperne: et saet i session state er kilden,
+    widgetens tilstand saettes fra det lige foer den tegnes, og et klik
+    foeres tilbage med en tilbagekaldelse.
+    """
+    source = app_source()
+
+    # Vaerdien, resten af appen filtrerer paa, maa ikke vaere en widgetnoegle.
+    assert "level_cap = int(st.session_state.level_cap)" in source
+    assert 'key="level_cap"' not in source
+
+    # Og widgeten skal saettes fra den, lige foer den tegnes.
+    start = source.index('st.session_state["level_widget"] = level_cap')
+    window = source[start : start + 400]
+    assert "st.select_slider(" in window
+    assert "on_change=_sync_level" in window
+    assert "value=" not in window, "både value og en styret nøgle"
+
+
+def test_a_bundle_adds_instead_of_replacing():
+    """Et klik maa ikke stille slette alt, man havde sat op.
+
+    Pakken erstattede foer hele valget. Man kunne hverken kombinere to
+    pakker eller fortryde.
+    """
+    source = app_source()
+    start = source.index("def apply_bundle")
+    body = source[start : source.index("\n\n\n", start)]
+    assert "_set_keys(wanted, True)" in body
+    assert "False)" not in body, "pakken slukker stadig for noget"

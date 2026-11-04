@@ -405,8 +405,13 @@ with st.sidebar:
             help=t("lifespan_help", lang),
             key="lifespan",
         )
+        # Hundrede er standarden, fordi det er den graense, resten af appen
+        # allerede regner med: den antagne levetid staar paa hundrede, og
+        # Jordens historie og tidslinjen skalerer efter den. Stod den paa
+        # hundrede og halvtreds, regnede appen halvtreds aar ud over et liv,
+        # som den selv ikke tror paa — og tidslinjen fik en tom hale.
         max_age = st.slider(
-            t("max_age", lang), min_value=80, max_value=150, value=150, step=5, key="max_age"
+            t("max_age", lang), min_value=80, max_value=150, value=100, step=5, key="max_age"
         )
         bpm = st.number_input(t("bpm", lang), 30.0, 140.0, 70.0, 1.0, key="bpm")
         breaths = st.number_input(t("breaths", lang), 6.0, 30.0, 16.0, 1.0, key="breaths")
@@ -481,6 +486,74 @@ def _set_keys(keys, value: bool) -> None:
 
 selected_keys = {m.key for m in CATALOGUE if m.key in chosen}
 occasions = compute(profile, keys=selected_keys, lang=lang, max_age_years=float(max_age))
+
+
+# =========================================================================
+# De to kontroller, der staar to steder
+# =========================================================================
+#
+# Gruppevalget og niveauet hoerer logisk til i Vaelg-fanen — de afgoer, hvad
+# der overhovedet er med. Men man vil ogsaa kunne naa dem uden at skifte
+# faneblad, og derfor staar gruppevalget BEGGE steder.
+#
+# To widgets kan ikke dele én noegle i Streamlit. Derfor er sandheden et sæt
+# i session state, og hver widget er kun et vindue ind til det: tilstanden
+# saettes fra saettet, lige foer widgeten tegnes, og ``_sync_groups`` foerer
+# svaret tilbage, naar nogen aendrer den ene. Saa kan de to aldrig komme til
+# at modsige hinanden — og det kunne de foer, hvor de var to uafhaengige
+# filtre, der hed naesten det samme.
+GROUP_KEYS: tuple[str, ...] = tuple(g.key for g in GROUPS)
+groups_on: set[str] = st.session_state.setdefault("groups_on", set(GROUP_KEYS))
+# En ny gruppe i kataloget er taendt fra start, som den altid har vaeret.
+groups_on |= {key for key in GROUP_KEYS if key not in st.session_state.setdefault(
+    "groups_seen", set())}
+st.session_state.groups_seen.update(GROUP_KEYS)
+
+
+def _sync_groups(widget_key: str) -> None:
+    """Flyt den ene gruppevælgers svar over i det, begge læser fra."""
+    st.session_state.groups_on = set(st.session_state[widget_key])
+
+
+def draw_group_picker(parent, widget_key: str, label: str, help_text: str):
+    """Tegn en gruppevælger, der deler tilstand med den anden.
+
+    Tilstanden sættes her og ikke med ``default``. Gav vi begge dele, ville
+    Streamlit advare med et helt stakspor — se ``_apply_table_edits``.
+    """
+    st.session_state[widget_key] = [
+        key for key in GROUP_KEYS if key in st.session_state.groups_on
+    ]
+    return parent.multiselect(
+        label,
+        options=list(GROUP_KEYS),
+        format_func=lambda key: GROUPS_BY_KEY[key].title(lang),
+        key=widget_key,
+        on_change=_sync_groups,
+        args=(widget_key,),
+        help=help_text,
+        placeholder=t("groups_none_placeholder", lang),
+    )
+
+
+# Niveauet laeses her, fordi listen, kalenderen og tidslinjen skal filtrere
+# paa det, laenge foer Vaelg-fanen naar at tegne selve skydeknappen.
+#
+# Og netop derfor maa sandheden ikke bo i widgeten. Skifter man sprog,
+# skifter skydeknappens etiket, og saa nulstiller Streamlit den til foerste
+# trin — men vaerdien her er allerede laest. Resultatet var en skydeknap,
+# der stod paa ① Kendte, mens tabellen filtrerede paa ②, og de to blev ved
+# med at vaere uenige, til man roerte noget.
+#
+# Saettet er kilden, praecis som ved grupperne: widgetens tilstand saettes
+# fra det, lige foer den tegnes, og ``_sync_level`` foerer svaret tilbage.
+st.session_state.setdefault("level_cap", 2)
+level_cap = int(st.session_state.level_cap)
+
+
+def _sync_level() -> None:
+    """Flyt skydeknappens svar over i det, hele appen læser fra."""
+    st.session_state.level_cap = int(st.session_state.level_widget)
 
 
 # =========================================================================
@@ -620,16 +693,21 @@ now_local = now_utc.astimezone(tz)
 # De ligger OVER fanebladene med vilje. De styrer baade Liste, Kalender og
 # Eksport, og da de foer laa inde i Liste-fanen, kunne man ikke se, at det var
 # dem, der afgjorde, hvad der endte i kalenderfilen.
+#
+# Her staar kun det, der handler om UDSNITTET: hvilket stykke af dit liv du
+# kigger paa lige nu. Hvad der overhovedet er med, bestemmes i Vaelg-fanen.
+# De to spoergsmaal var foer blandet sammen over to raekker og et faneblad,
+# og saa kunne listen staa tom af tre forskellige grunde uden at sige hvilken.
+#
+# Gruppevalget er det eneste, der staar begge steder, fordi man skal kunne
+# daempe en hel gruppe uden at skifte faneblad. Det er den SAMME vaelger —
+# se ``draw_group_picker``.
 
 with st.container(border=True):
     st.caption(t("filters_scope", lang).upper())
     row = st.container(horizontal=True)
-    group_choices = row.multiselect(
-        t("filter_groups", lang),
-        options=[g.key for g in GROUPS],
-        format_func=lambda key: next(g.title(lang) for g in GROUPS if g.key == key),
-        default=[g.key for g in GROUPS],
-        key="filter_groups",
+    group_choices = draw_group_picker(
+        row, "filter_groups", t("filter_groups", lang), t("filter_groups_help", lang)
     )
     row.selectbox(
         t("filter_window", lang),
@@ -638,21 +716,6 @@ with st.container(border=True):
         key="filter_window",
     )
     window = st.session_state.filter_window
-
-    # Niveauet: hvor mange der holder dagen. Se ``Milestone.level``.
-    #
-    # Det er den eneste skrue, der skaerer paa tvaers af alle grupper, og
-    # derfor den eneste, der kan bringe to tusind maerkedage ned i noget,
-    # et menneske kan overskue — uden at man foerst skal vide, hvilke
-    # grupper man ikke vil have.
-    level_cap = row.select_slider(
-        t("filter_level", lang),
-        options=[1, 2, 3],
-        value=2,
-        format_func=lambda n: t(f"level_{n}", lang),
-        help=t("filter_level_help", lang),
-        key="filter_level",
-    )
 
     second_row = st.container(horizontal=True)
     when_filter = second_row.segmented_control(
@@ -1148,12 +1211,22 @@ def set_all(value: bool) -> None:
 
 
 def apply_bundle(bundle_key: str) -> None:
-    """Slå en færdigpakket udvælgelse til — den erstatter det hidtidige valg."""
+    """Slå en færdigpakket udvælgelse til — oven i det, der er valgt i forvejen.
+
+    Pakken erstattede før hele valget, og det var en ubehagelig knap: ét
+    klik slettede stille alt, man havde sat op, og der var ingen fortrydelse.
+    Man kunne heller ikke få Klassikere OG Popkultur — det andet klik smed
+    det første væk.
+
+    Nu lægger den til. Vil man starte forfra, er "Ryd alle" lige ved siden af
+    og siger netop det, den gør.
+    """
     bundle = BUNDLES_BY_KEY[bundle_key]
     wanted = bundle_keys(bundle, profile, datetime.now(timezone.utc))
-    _set_keys([m.key for m in CATALOGUE if m.key not in wanted], False)
+    before = len(st.session_state.chosen)
     _set_keys(wanted, True)
-    st.session_state.last_bundle = (bundle.name(lang), len(wanted))
+    added = len(st.session_state.chosen) - before
+    st.session_state.last_bundle = (bundle.name(lang), len(wanted), added)
 
 
 def matches_search(milestone, needle: str) -> bool:
@@ -1251,8 +1324,9 @@ with tab_select:
 
     applied = st.session_state.pop("last_bundle", None)
     if applied:
+        name, total, added = applied
         st.success(
-            t("bundle_applied", lang, name=applied[0], n=applied[1]),
+            t("bundle_applied", lang, name=name, n=total, added=added),
             icon=":material/check_circle:",
         )
 
@@ -1276,43 +1350,44 @@ with tab_select:
     st.caption(
         t("selected_count", lang, n=len(selected_keys), total=len(CATALOGUE))
     )
-    if level_cap < 3:
-        st.caption(t("level_hidden", lang, level=t(f"level_{level_cap}", lang)))
 
-    # --- De to filtre ----------------------------------------------------
+    st.divider()
+
+    # --- Niveauet --------------------------------------------------------
     #
-    # Gruppevalget og soegefeltet afgraenser den SAMME tabel. Derfor betyder
-    # de to knapper nedenfor altid det samme — "det du kan se" — uanset om
-    # man er naaet dertil gennem en gruppe, en soegning eller begge.
+    # Den staar HER og ikke i filterraekken foroven. Niveauet handler om,
+    # hvad der overhovedet er med i kalenderen — ikke om hvilket udsnit af
+    # tiden man kigger paa — og det er netop skellet mellem de to steder.
+    # Da den laa foroven, sagde filterraekkens egen overskrift, at den kun
+    # gjaldt liste, kalender og eksport, mens den i virkeligheden ogsaa
+    # styrede tabellen hernede.
+    #
+    # Vaerdien blev laest langt foer, ved ``level_cap``, fordi listen og
+    # kalenderen skal filtrere paa den, inden dette faneblad bliver tegnet.
+    st.session_state["level_widget"] = level_cap
+    st.select_slider(
+        t("filter_level", lang),
+        options=[1, 2, 3],
+        format_func=lambda n: t(f"level_{n}", lang),
+        help=t("filter_level_help", lang),
+        key="level_widget",
+        on_change=_sync_level,
+    )
+
+    # --- De to afgraensninger --------------------------------------------
+    #
+    # Gruppevaelgeren er den SAMME som i filterraekken foroven — samme saet,
+    # to vinduer ind til det. Foer var de to uafhaengige filtre, der hed
+    # naesten det samme, og man kunne saette den ene til Sekunder og den
+    # anden til Popkultur og faa en tom liste ved siden af en fuld tabel.
     #
     # Opslaget skal kunne se hele kataloget. Gjorde det ikke det, stod en
     # gruppe i filteret foroven uden at kunne vaelges hernede — og det er
     # praecis, hvad der skete for baade legenderne og festdagene.
-    members_by_group = milestones_by_group()
-    scopes = group_scopes()
-
-    group_options: list[str] = []
-    group_titles: dict[str, str] = {}
-    for scope in SCOPES:
-        scope_name = t(f"scope_{scope}", lang)
-        for group in GROUPS:
-            members = members_by_group.get(group.key, [])
-            if not members or scopes.get(group.key, "birth") != scope:
-                continue
-            on_count = sum(1 for m in members if m.key in chosen)
-            group_options.append(group.key)
-            group_titles[group.key] = (
-                f"{group.title(lang)} ({on_count}/{len(members)})"
-                f"  ·  {scope_name}"
-            )
-
     narrow = st.container(horizontal=True)
-    picked_groups = narrow.multiselect(
-        t("select_groups", lang),
-        options=group_options,
-        format_func=lambda key: group_titles[key],
-        placeholder=t("select_groups_placeholder", lang),
-        key="select_groups",
+    draw_group_picker(
+        narrow, "select_groups", t("select_groups", lang),
+        t("select_groups_help", lang),
     )
     select_query = narrow.text_input(
         t("select_search", lang),
@@ -1320,31 +1395,52 @@ with tab_select:
         help=t("select_search_help", lang),
         key="select_query",
     )
+    only_chosen = st.toggle(
+        t("only_chosen", lang),
+        key="only_chosen",
+        help=t("only_chosen_help", lang),
+    )
 
-    # Niveauet fra filterraekken foroven gaelder ogsaa her. Ellers kunne man
-    # saette flueben ved en maerkedag, der aldrig dukkede op i listen.
-    pool = [m for m in CATALOGUE if m.level <= level_cap]
-    if picked_groups:
-        wanted_groups = set(picked_groups)
-        pool = [m for m in pool if m.group in wanted_groups]
+    pool = [
+        m
+        for m in CATALOGUE
+        if m.level <= level_cap and m.group in st.session_state.groups_on
+    ]
+    if only_chosen:
+        pool = [m for m in pool if m.key in chosen]
     needle = select_query.strip().lower()
     if needle:
         pool = [m for m in pool if matches_search(m, needle)]
 
+    # Hvad der er skruet ned ad, staar skrevet. Tabellen kunne foer staa tom
+    # af fire forskellige grunde uden at sige hvilken, og saa var der ikke
+    # andet at goere end at proeve sig frem.
+    narrowed: list[str] = []
+    if level_cap < 3:
+        narrowed.append(t("narrowed_level", lang, level=t(f"level_{level_cap}", lang)))
+    if len(st.session_state.groups_on) < len(GROUP_KEYS):
+        narrowed.append(
+            t("narrowed_groups", lang, n=len(st.session_state.groups_on),
+              total=len(GROUP_KEYS))
+        )
+    if needle:
+        narrowed.append(t("narrowed_search", lang, needle=select_query.strip()))
+    if only_chosen:
+        narrowed.append(t("narrowed_only_chosen", lang))
+
     if not pool:
-        st.info(t("select_no_matches", lang), icon=":material/search_off:")
+        st.info(
+            t("select_no_matches", lang)
+            + ("  " + " · ".join(narrowed) if narrowed else ""),
+            icon=":material/search_off:",
+        )
     else:
         shown_keys = [m.key for m in pool]
         picked_here = sum(1 for key in shown_keys if key in chosen)
-        st.caption(
-            t(
-                "select_showing",
-                lang,
-                n=len(pool),
-                total=len(CATALOGUE),
-                picked=picked_here,
-            )
-        )
+        line = t("select_showing", lang, n=len(pool), picked=picked_here)
+        if narrowed:
+            line = f"{line}  ·  {' · '.join(narrowed)}"
+        st.caption(line)
         sweep = st.container(horizontal=True)
         sweep.button(
             t("shown_all", lang),

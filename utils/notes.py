@@ -521,6 +521,154 @@ construction.
 """,
     },
     # ------------------------------------------------------------------
+    "calendar": {
+        "da": """\
+### Festdagene — hvor de kommer fra
+
+Størstedelen af kataloget regnes **fra dit fødselsøjeblik**: et gigasekund,
+10.000 døgn, 1.000 måneder. Dem findes der en formel for.
+
+Festdagene er noget andet. De ligger fast på kalenderen — den 4. maj, den
+11.11., den første fredag i november — og det eneste personlige ved dem er,
+hvor gammel du er, når de falder. De kan ikke regnes; nogen har bestemt dem.
+
+**Hvor de står.** De skrevne dage ligger i `data/celebrations/` som almindelige
+tekstfiler, én pr. kategori, og kan rettes uden at røre et eneste stykke kode.
+En post, der ikke kan læses, forsvinder ikke i stilhed — den bliver sprunget
+over med en begrundelse, så en tastefejl er til at finde.
+
+**Kilderne.** Popkulturens dage og de fiktive helligdage er samlet fra Atlas
+Obscuras kalender over fiktive helligdage og fra lovethynerd.com's nørdekalender.
+De pastafarianske kommer fra pastafariancalendar.com, som har en helligdag for
+hver eneste dag i året — alle 365 er med. De skæve dage verden over er efterprøvet
+enkeltvis mod kilder uden for programmet.
+
+**Én dag er opdigtet.** Tjek-holdbarheden-på-din-worcestershiresauce-dagen den
+29. februar findes ikke. Den står i kataloget, fordi den burde findes, og den
+siger det selv i sin egen forklaring. Den er den eneste af slagsen.
+
+**De dage, der flytter sig.** Nogle hænger i påskens snor: store bededag er den
+fjerde fredag efter påske, Kristi legemsfest den tresindstyvende dag efter,
+luilak lørdagen før pinse. Påsken regnes med kirkeårets egen computus, så de
+følger med af sig selv. Andre hænger i ugedagen — tredje lørdag i januar,
+sidste mandag i maj — og flytter sig dermed også.
+
+**Datoformatet.** En dato som 05.04 er den 4. maj i europæisk rækkefølge og
+den 5. april i amerikansk. Det er en reel fælde i et katalog samlet fra
+engelsksprogede kilder, så de dage, der *kan* læses forkert, siger det selv i
+deres forklaring. De dage, hvor dagen er over den tolvte, kan kun læses én vej
+og siger ingenting.
+""",
+        "en": """\
+### The calendar days — where they come from
+
+Most of the catalogue is counted **from the moment you were born**: a
+gigasecond, 10,000 days, 1,000 months. Those have a formula.
+
+The calendar days are something else. They sit fixed on the calendar — the
+4th of May, 11/11, the first Friday in November — and the only personal thing
+about them is how old you are when they fall. They cannot be computed;
+somebody decided them.
+
+**Where they live.** The written days sit in `data/celebrations/` as ordinary
+text files, one per category, and can be edited without touching a line of
+code. An entry that cannot be read does not vanish quietly — it is skipped
+with a reason, so a typo is findable.
+
+**The sources.** The pop-culture days and the fictional holidays were gathered
+from Atlas Obscura's calendar of the world's fictional holidays and from
+lovethynerd.com's nerd calendar. The Pastafarian ones come from
+pastafariancalendar.com, which has a holy day for every single day of the
+year — all 365 are here. The world's odd days were each checked against
+sources outside this program.
+
+**One day is invented.** Check the Date on Your Worcestershire Sauce Day, on
+29 February, does not exist. It is in the catalogue because it ought to exist,
+and it says so in its own explanation. It is the only one of its kind.
+
+**The days that move.** Some hang on Easter's string: Store Bededag is the
+fourth Friday after Easter, Corpus Christi the sixtieth day after, Luilak the
+Saturday before Pentecost. Easter is worked out with the church calendar's own
+computus, so they follow along by themselves. Others hang on a weekday — third
+Saturday in January, last Monday in May — and move for that reason.
+
+**The date format.** A date like 05.04 is 4 May in day-first order and 5 April
+in month-first order. That is a real trap in a catalogue gathered from
+English-language sources, so the days that *can* be read wrongly say so in
+their own explanation. Days where the day is past the twelfth can only be read
+one way and say nothing.
+""",
+    },
+    # ------------------------------------------------------------------
+    "levels": {
+        "da": """\
+### De tre niveauer
+
+Kataloget er på godt to tusind mærkedage. Det er flere, end nogen kan bruge på
+én gang, og det er grunden til, at hver mærkedag har et **niveau**.
+
+Niveauet er med vilje **ikke** en dom om, hvor god dagen er. Det er en
+egenskab ved dagen selv: hvor mange der holder den.
+
+**① Den kender folk.** Du kan nævne den i en frokostpause, og nogen nikker.
+Star Wars-dagen, pi-dagen, gigasekundet, murmeldyrets dag.
+
+**② Den har et rigtigt publikum, bare et lille et.** Nogen møder faktisk op.
+Håndklædedagen, mol-dagen, VM i mosesnorkling, N7-dagen.
+
+**③ Den findes nærmest kun på en liste.** Ingen fejrer den, men den er sjov at
+vide. Repunitdage, de fleste figurfødselsdage, de tre hundrede pastafarianske
+dage, hele Jordens år.
+
+Skruen står i **Vælg mærkedage**, fordi niveauet handler om, hvad der
+overhovedet er med — ikke om hvilket udsnit af tiden du kigger på. Den skærer
+på tværs af alle grupper og er derfor det eneste, der kan bringe to tusind
+mærkedage ned i noget, man kan overskue, uden at man først skal vide, hvilke
+grupper man ikke vil have.
+
+**Hvordan niveauet bliver sat.** De skrevne festdage har fået deres i hånden og
+kan rettes i datafilerne. De udregnede familier får deres af reglen, der laver
+dem: talmønstre og Jordens år er altid ③, fordi ingen fejrer en repunitdag — en
+regel fandt den. En rund årsdag ligger et hak under dagen, den tæller fra:
+100-året for månelandingen bliver markeret, 25-året for en spiludgivelse ikke.
+De mærkedage, der regnes fra din fødsel, følger stjernen: en fremhævet
+klassiker er ①, resten ②.
+""",
+        "en": """\
+### The three levels
+
+The catalogue runs to a good two thousand milestones. That is more than anyone
+can use at once, and it is why every milestone carries a **level**.
+
+The level is deliberately **not** a judgement about how good the day is. It is
+a property of the day itself: how many people keep it.
+
+**① People know it.** Mention it over lunch and somebody nods. Star Wars Day,
+Pi Day, the gigasecond, Groundhog Day.
+
+**② It has a real audience, just a small one.** Somebody actually turns up.
+Towel Day, Mole Day, the Bog Snorkelling Championships, N7 Day.
+
+**③ It barely exists outside a list.** Nobody keeps it, but it is fun to know.
+Repdigit days, most characters' birthdays, the three hundred Pastafarian days,
+the whole of Earth's year.
+
+The slider sits in **Choose milestones**, because the level is about what is in
+at all — not about which slice of time you are looking at. It cuts across every
+group, which makes it the only thing that can bring two thousand milestones
+down to something readable without your first having to know which groups you
+do not want.
+
+**How the level is set.** The written calendar days got theirs by hand and can
+be changed in the data files. The computed families get theirs from the rule
+that makes them: number patterns and Earth's year are always ③, because nobody
+celebrates a repdigit day — a rule found it. A round anniversary sits one step
+below the day it counts from: the centenary of the Moon landing gets marked,
+the twenty-fifth anniversary of a game release does not. The milestones counted
+from your birth follow the star: a highlighted classic is ①, the rest ②.
+""",
+    },
+    # ------------------------------------------------------------------
     "accuracy": {
         "da": """\
 ### Hvor præcis er den her?
@@ -548,6 +696,16 @@ de ældste brugere, og nul for alle født efter 2016.
 kilometer omkring Solen er markeret med ⚠. De afhænger af en sats, du selv
 kan skrue på i sidepanelet, og de skal tages som et godt gæt — ikke som en
 måling.
+
+**Levetiden.** Beregneren i sidepanelet regner på officielle dødelighedstavler
+— Danmarks Statistik og Eurostat — og ikke på en tommelfingerregel. Men en
+dødelighedstavle er et øjebliksbillede af, hvordan dødeligheden så ud i det år,
+den blev målt, ikke en spådom om din årgang. Tallet er et gennemsnit for alle
+med dit køn, din alder og dit land; det siger intet om dig. Faktorerne for
+rygning, motion, BMI og alkohol er hentet fra offentliggjorte studier og lagt
+oven på hinanden med en dæmpning, fordi de overlapper. Over 99 år er halen
+lukket med en konstant dødelighed — der er for få mennesker tilbage i tavlerne
+til at sige mere — og derfor er appen for optimistisk om de allerældste.
 
 **Den geologiske tidslinje** forudsætter en levetid, du selv vælger, og er
 altså pr. definition et tankeeksperiment.
@@ -578,6 +736,16 @@ for the oldest users, and zero for anyone born after 2016.
 kilometres around the Sun are marked with ⚠. They depend on a rate you can
 adjust in the sidebar, and should be read as a good guess, not a measurement.
 
+**The lifespan.** The calculator in the sidebar works from official mortality
+tables — Statistics Denmark and Eurostat — not from a rule of thumb. But a
+mortality table is a snapshot of how mortality looked in the year it was
+measured, not a forecast for your cohort. The figure is an average across
+everyone of your sex, age and country; it says nothing about you. The factors
+for smoking, activity, BMI and alcohol come from published studies and are
+laid on top of each other with a damping, because they overlap. Above 99 the
+tail is closed with a constant hazard — there are too few people left in the
+tables to say more — which makes the app too optimistic about the very oldest.
+
 **The geological timeline** assumes a lifespan you choose yourself, and is by
 definition a thought experiment.
 """,
@@ -599,5 +767,8 @@ NOTE_TITLES: dict[str, dict[str, str]] = {
     "leapseconds": {"da": "Skudsekunder", "en": "Leap seconds"},
     "geology": {"da": "Dit liv som Jordens historie", "en": "Your life as Earth's history"},
     "constants": {"da": "Konstanterne", "en": "The constants"},
+    "calendar": {"da": "Festdagene — hvor de kommer fra",
+                 "en": "The calendar days — where they come from"},
+    "levels": {"da": "De tre niveauer", "en": "The three levels"},
     "accuracy": {"da": "Hvor præcis er den her?", "en": "How accurate is this?"},
 }
