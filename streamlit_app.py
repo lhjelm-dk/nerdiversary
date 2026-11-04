@@ -610,6 +610,14 @@ def live_panel() -> None:
         )
 
         technical = st.container(horizontal=True)
+        # Unix-tiden lige nu hoerer til i den tikkende del og ingen andre
+        # steder: den er kun interessant, mens den loeber. Teksten til den
+        # laa i ordlisten uden at blive brugt.
+        technical.metric(
+            t("unix_now", lang),
+            fmt.fmt_int(int(now.timestamp()), lang),
+            help=t("unix_now_help", lang),
+        )
         technical.metric(t("unix_birth", lang), fmt.fmt_int(profile.unix_birth, lang))
         technical.metric(
             t("leap_seconds", lang),
@@ -810,6 +818,11 @@ def to_frame(items: list[Occasion]) -> pd.DataFrame:
                     "—" if occasion.is_absolute else occasion.age_text(profile, lang)
                 ),
                 t("col_countdown", lang): occasion.countdown(now_local, lang),
+                # Stjernedatoen havde sin egen tekst i ordlisten, men var
+                # faldet ud af tabellen undervejs. Den er her igen, fordi den
+                # er præcis den slags oplysning, appen findes for — og fordi
+                # en ubrugt tekst er en halvfærdig tanke.
+                t("col_stardate", lang): sd.format_tng(occasion.when_local),
                 t("col_note", lang): explanation(occasion.milestone, lang),
             }
         )
@@ -849,6 +862,9 @@ with tab_list:
                 t("col_milestone", lang): st.column_config.TextColumn(width="medium"),
                 t("col_estimate", lang): st.column_config.TextColumn(
                     width="small", help=t("estimate_help", lang)
+                ),
+                t("col_stardate", lang): st.column_config.TextColumn(
+                    width="small", help=t("stardate_help", lang)
                 ),
                 t("col_note", lang): st.column_config.TextColumn(width="large"),
             },

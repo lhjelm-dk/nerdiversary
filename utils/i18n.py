@@ -11,16 +11,7 @@ T: dict[str, dict[str, str]] = {
         "da": "Dine næste skæve mærkedage — regnet på sekundet",
         "en": "Your next special celebrations — calculated to the second",
     },
-    "intro": {
-        "da": "Indtast fødselsdato og -tidspunkt i sidepanelet. Så finder appen "
-              "de skæve mærkedage, du ellers ville gå glip af — og lægger dem i "
-              "din kalender.",
-        "en": "Enter your birth date and time in the sidebar. The app finds the "
-              "offbeat milestones you would otherwise miss — and puts them in "
-              "your calendar.",
-    },
     # --- Sidepanel ---
-    "language": {"da": "Sprog", "en": "Language"},
     "who": {"da": "Hvem", "en": "Who"},
     "name_label": {"da": "Navn", "en": "Name"},
     "name_placeholder": {"da": "valgfrit", "en": "optional"},
@@ -49,7 +40,6 @@ T: dict[str, dict[str, str]] = {
     "steps": {"da": "Skridt pr. døgn", "en": "Steps per day"},
     "max_age": {"da": "Regn højst til alder", "en": "Compute up to age"},
     # --- Levende tællere ---
-    "live_header": {"da": "Lige nu", "en": "Right now"},
     "age_seconds": {"da": "Din alder i sekunder", "en": "Your age in seconds"},
     "age_days": {"da": "Din alder i dage", "en": "Your age in days"},
     "age_hours": {"da": "Din alder i timer", "en": "Your age in hours"},
@@ -76,6 +66,12 @@ T: dict[str, dict[str, str]] = {
         "en": "Calendar years, not tropical years. 8.00 means you turned 8 today.",
     },
     "unix_now": {"da": "Unix-tid lige nu", "en": "Unix time right now"},
+    "unix_now_help": {
+        "da": "Sekunder siden 1. januar 1970 kl. 00.00 UTC. Den tæller videre, "
+              "mens du kigger.",
+        "en": "Seconds since 1 January 1970 at 00:00 UTC. It keeps counting "
+              "while you watch.",
+    },
     "unix_birth": {"da": "Dit fødselstidsstempel", "en": "Your birth timestamp"},
     "leap_seconds": {"da": "Skudsekunder siden fødslen", "en": "Leap seconds since birth"},
     "leap_help": {
@@ -104,8 +100,6 @@ T: dict[str, dict[str, str]] = {
     },
     # --- Næste mærkedag ---
     "next_up": {"da": "Næste mærkedag", "en": "Next milestone"},
-    "countdown": {"da": "Nedtælling", "en": "Countdown"},
-    "progress": {"da": "Fremdrift", "en": "Progress"},
     "nothing_ahead": {
         "da": "Ingen valgte mærkedage ligger i fremtiden. Prøv at vælge flere grupper.",
         "en": "None of the selected milestones lie ahead. Try selecting more groups.",
@@ -121,7 +115,6 @@ T: dict[str, dict[str, str]] = {
     "tab_export": {"da": "Eksport", "en": "Export"},
     "tab_notes": {"da": "Noter", "en": "Notes"},
     # --- Tabel ---
-    "filters": {"da": "Filtre", "en": "Filters"},
     # Filterraekken svarer paa ÉT spoergsmaal: hvilket udsnit kigger du paa.
     # Hvad der overhovedet er med, bestemmes i Vaelg-fanen.
     "filters_scope": {
@@ -195,8 +188,6 @@ T: dict[str, dict[str, str]] = {
     "cal_month": {"da": "Måned", "en": "Month"},
     "cal_year": {"da": "År", "en": "Year"},
     "cal_list": {"da": "Liste", "en": "Agenda"},
-    "jump_next": {"da": "Spring til næste mærkedag", "en": "Jump to next milestone"},
-    "jump_prev": {"da": "Spring til forrige", "en": "Jump to previous"},
     "calendar_empty": {
         "da": "Ingen valgte mærkedage at vise.",
         "en": "No selected milestones to show.",

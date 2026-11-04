@@ -1514,3 +1514,50 @@ def test_a_bundle_adds_instead_of_replacing():
     body = source[start : source.index("\n\n\n", start)]
     assert "_set_keys(wanted, True)" in body
     assert "False)" not in body, "pakken slukker stadig for noget"
+
+
+def test_no_text_is_written_without_being_shown():
+    """En ubrugt tekst er en halvfaerdig tanke.
+
+    Der laa ti af dem, og de var ikke bare stoej: ``col_stardate`` hoerte
+    til en stjernedatokolonne, der var faldet ud af tabellen undervejs, og
+    ``unix_now`` til et ur, der aldrig blev taendt. Ordlisten var det
+    eneste sted, det stod skrevet, at de manglede.
+
+    Testen finder dem ved at laese koden, ikke ved at koere den — og den
+    kender de fire moenstre, hvor noeglen bliver sat sammen undervejs
+    (``t(f"level_{n}", lang)`` og slaegtninge).
+    """
+    root = pathlib.Path(__file__).resolve().parent.parent
+    written = set(
+        re.findall(
+            r'^    "([a-z0-9_]+)":',
+            (root / "utils" / "i18n.py").read_text(encoding="utf-8"),
+            re.M,
+        )
+    )
+    assert len(written) > 150, "fandt næsten ingen tekster — er filen ændret?"
+
+    code = "\n".join(
+        path.read_text(encoding="utf-8")
+        for path in [root / "streamlit_app.py"] + sorted((root / "utils").glob("*.py"))
+    )
+    shown = set(re.findall(r"""t\(\s*["']([a-z0-9_]+)["']""", code))
+    # De noegler, der bliver sat sammen undervejs: t(f"level_{n}", lang).
+    stems = re.findall(r"""t\(\s*f["']([a-z0-9_]+)\{""", code)
+
+    unused = sorted(
+        key
+        for key in written
+        if key not in shown and not any(key.startswith(stem) for stem in stems)
+    )
+    assert not unused, "tekster, ingen viser: " + ", ".join(unused)
+
+
+def test_every_text_exists_in_both_languages():
+    from utils.i18n import LANGUAGES, T
+
+    for key, entry in T.items():
+        assert set(entry) >= set(LANGUAGES), f"{key} mangler et sprog"
+        for code in LANGUAGES:
+            assert entry[code].strip(), f"{key} er tom på {code}"
