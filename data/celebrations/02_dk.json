@@ -20,6 +20,7 @@
     },
     {
       "key": "jdag",
+      "tier": 1,
       "when": "nth:11:fri:1 20:59",
       "da": "J-dag",
       "en": "J-Day",
@@ -36,6 +37,7 @@
     },
     {
       "key": "fars_dag",
+      "tier": 1,
       "when": "06-05",
       "da": "Fars dag",
       "en": "Danish Father's Day",
@@ -44,6 +46,7 @@
     },
     {
       "key": "mors_dag",
+      "tier": 1,
       "when": "nth:05:sun:2",
       "da": "Mors dag",
       "en": "Danish Mother's Day",

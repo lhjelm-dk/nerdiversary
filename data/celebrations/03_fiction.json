@@ -4,6 +4,7 @@
   "days": [
     {
       "key": "hal9000",
+      "tier": 3,
       "when": "01-12",
       "da": "HAL 9000 tændes",
       "en": "HAL 9000 is activated",
@@ -22,6 +23,7 @@
     },
     {
       "key": "squidward",
+      "tier": 3,
       "when": "02-15",
       "da": "Annoy Squidward Day",
       "en": "Annoy Squidward Day",
@@ -31,6 +33,7 @@
     },
     {
       "key": "laura_palmer",
+      "tier": 3,
       "when": "02-24",
       "da": "Mordet på Laura Palmer",
       "en": "The murder of Laura Palmer",
@@ -40,6 +43,7 @@
     },
     {
       "key": "babylon5",
+      "tier": 3,
       "when": "03-09",
       "da": "Babylon 5 sættes i drift",
       "en": "Babylon 5 Launch Day",
@@ -49,6 +53,7 @@
     },
     {
       "key": "frankenstein",
+      "tier": 3,
       "when": "03-11",
       "da": "Frankensteins dag",
       "en": "Frankenstein Day",
@@ -58,6 +63,7 @@
     },
     {
       "key": "colonial",
+      "tier": 3,
       "when": "03-18",
       "da": "Kolonidagen",
       "en": "Colonial Day",
@@ -67,6 +73,7 @@
     },
     {
       "key": "purge",
+      "tier": 3,
       "when": "03-21",
       "da": "The Purge begynder",
       "en": "The Purge begins",
@@ -76,6 +83,7 @@
     },
     {
       "key": "breakfast_club",
+      "tier": 3,
       "when": "03-24",
       "da": "Breakfast Club-dagen",
       "en": "Breakfast Club Day",
@@ -103,6 +111,7 @@
     },
     {
       "key": "rex_manning",
+      "tier": 3,
       "when": "04-08",
       "da": "Rex Manning-dagen",
       "en": "Rex Manning Day",
@@ -112,6 +121,7 @@
     },
     {
       "key": "robanukah",
+      "tier": 3,
       "when": "04-20",
       "da": "Robanukah begynder",
       "en": "Robanukah begins",
@@ -131,6 +141,7 @@
     },
     {
       "key": "battle_ny",
+      "tier": 3,
       "when": "05-04",
       "da": "Slaget om New York",
       "en": "The Battle of New York",
@@ -140,6 +151,7 @@
     },
     {
       "key": "cinco_cuatro",
+      "tier": 3,
       "when": "05-04",
       "da": "Cinco de Cuatro",
       "en": "Cinco de Cuatro",
@@ -149,6 +161,7 @@
     },
     {
       "key": "whacking",
+      "tier": 3,
       "when": "05-10",
       "da": "Whacking Day",
       "en": "Whacking Day",
@@ -158,6 +171,7 @@
     },
     {
       "key": "miracle_monday",
+      "tier": 3,
       "when": "05-15",
       "da": "Miracle Monday",
       "en": "Miracle Monday",
@@ -167,6 +181,7 @@
     },
     {
       "key": "eliza",
+      "tier": 3,
       "when": "05-20",
       "da": "Eliza Doolittle-dagen",
       "en": "Eliza Doolittle Day",
@@ -185,6 +200,7 @@
     },
     {
       "key": "glorious25",
+      "tier": 3,
       "when": "05-25",
       "da": "Den Glorværdige 25. maj",
       "en": "The Glorious 25th of May",
@@ -194,6 +210,7 @@
     },
     {
       "key": "winterfair",
+      "tier": 3,
       "when": "06-01",
       "da": "Winterfair",
       "en": "Winterfair",
@@ -203,6 +220,7 @@
     },
     {
       "key": "ferris",
+      "tier": 3,
       "when": "06-05",
       "da": "Ferris Buellers fridag",
       "en": "Ferris Bueller's Day Off",
@@ -212,6 +230,7 @@
     },
     {
       "key": "summerween",
+      "tier": 3,
       "when": "06-22",
       "da": "Summerween",
       "en": "Summerween",
@@ -221,6 +240,7 @@
     },
     {
       "key": "longest_night",
+      "tier": 3,
       "when": "06-23",
       "da": "Longest Night",
       "en": "Longest Night",
@@ -230,6 +250,7 @@
     },
     {
       "key": "half_christmas",
+      "tier": 3,
       "when": "06-25",
       "da": "Halvjul",
       "en": "Half-Christmas",
@@ -239,6 +260,7 @@
     },
     {
       "key": "wayne",
+      "tier": 3,
       "when": "06-26",
       "da": "Mordet på Thomas og Martha Wayne",
       "en": "The murder of Thomas and Martha Wayne",
@@ -248,6 +270,7 @@
     },
     {
       "key": "lunar_indep",
+      "tier": 3,
       "when": "07-04",
       "da": "Månens uafhængighedsdag",
       "en": "Lunar Independence Day",
@@ -257,6 +280,7 @@
     },
     {
       "key": "klordny",
+      "tier": 3,
       "when": "08-15",
       "da": "Klordny",
       "en": "Klordny",
@@ -266,6 +290,7 @@
     },
     {
       "key": "judgement",
+      "tier": 3,
       "when": "08-29",
       "da": "Dommedag",
       "en": "Judgement Day",
@@ -275,6 +300,7 @@
     },
     {
       "key": "atlas_shrugged",
+      "tier": 3,
       "when": "09-02",
       "da": "Atlas Shrugged-dagen",
       "en": "Atlas Shrugged Day",
@@ -284,6 +310,7 @@
     },
     {
       "key": "breakaway",
+      "tier": 3,
       "when": "09-13",
       "da": "Breakaway",
       "en": "Breakaway",
@@ -293,6 +320,7 @@
     },
     {
       "key": "unification",
+      "tier": 3,
       "when": "09-20",
       "da": "Foreningsdagen",
       "en": "Unification Day",
@@ -302,6 +330,7 @@
     },
     {
       "key": "oceanic815",
+      "tier": 3,
       "when": "09-22",
       "da": "Oceanic 815 styrter ned",
       "en": "The crash of Oceanic Flight 815",
@@ -311,6 +340,7 @@
     },
     {
       "key": "federation",
+      "tier": 3,
       "when": "10-11",
       "da": "Føderationsdagen",
       "en": "Federation Day",
@@ -320,6 +350,7 @@
     },
     {
       "key": "sudden_departure",
+      "tier": 3,
       "when": "10-14",
       "da": "Den Pludselige Bortgang",
       "en": "The Sudden Departure",
@@ -329,6 +360,7 @@
     },
     {
       "key": "grouch",
+      "tier": 3,
       "when": "10-15",
       "da": "Den Sure Dag",
       "en": "National Grouch Day",
@@ -338,6 +370,7 @@
     },
     {
       "key": "durin",
+      "tier": 3,
       "when": "10-19",
       "da": "Durins dag",
       "en": "Durin's Day",
@@ -347,6 +380,7 @@
     },
     {
       "key": "prixin",
+      "tier": 3,
       "when": "10-26",
       "da": "Prixin",
       "en": "Prixin",
@@ -375,6 +409,7 @@
     },
     {
       "key": "odd_couple",
+      "tier": 3,
       "when": "11-13",
       "da": "Odd Couple-dagen",
       "en": "Odd Couple Day",
@@ -393,6 +428,7 @@
     },
     {
       "key": "samantha",
+      "tier": 3,
       "when": "11-27",
       "da": "Samantha Mulder bortføres",
       "en": "The abduction of Samantha Mulder",
@@ -402,6 +438,7 @@
     },
     {
       "key": "pancake",
+      "tier": 3,
       "when": "11-29",
       "da": "St. Pancake Day",
       "en": "St. Pancake Day",
@@ -411,6 +448,7 @@
     },
     {
       "key": "winter_veil",
+      "tier": 3,
       "when": "12-16",
       "da": "Feast of Winter Veil",
       "en": "Feast of Winter Veil",
@@ -420,6 +458,7 @@
     },
     {
       "key": "merlinpeen",
+      "tier": 3,
       "when": "12-22",
       "da": "Merlinpeen",
       "en": "Merlinpeen",
@@ -429,6 +468,7 @@
     },
     {
       "key": "festivus",
+      "tier": 1,
       "when": "12-23",
       "da": "Festivus",
       "en": "Festivus",
@@ -447,6 +487,7 @@
     },
     {
       "key": "refrigerator",
+      "tier": 3,
       "when": "12-25",
       "da": "Køleskabsdagen",
       "en": "Refrigerator Day",
@@ -456,6 +497,7 @@
     },
     {
       "key": "smekday",
+      "tier": 3,
       "when": "12-25",
       "da": "Smekday",
       "en": "Smekday",
@@ -474,6 +516,7 @@
     },
     {
       "key": "holiday11",
+      "tier": 3,
       "when": "12-25",
       "da": "Helligdag nummer 11",
       "en": "Holiday Number 11",
@@ -483,6 +526,7 @@
     },
     {
       "key": "alliance",
+      "tier": 3,
       "when": "12-30",
       "da": "Alliancedagen",
       "en": "International Alliance Day",

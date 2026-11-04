@@ -22,6 +22,7 @@
     },
     {
       "key": "first_telephone",
+      "tier": 1,
       "when": "1876-03-10",
       "da": "Det første telefonopkald",
       "en": "The first telephone call",
@@ -67,6 +68,7 @@
     },
     {
       "key": "sputnik",
+      "tier": 1,
       "when": "1957-10-04",
       "da": "Sputnik 1 opsendes",
       "en": "Sputnik 1 is launched",
@@ -76,6 +78,7 @@
     },
     {
       "key": "gagarin",
+      "tier": 1,
       "when": "1961-04-12",
       "da": "Det første menneske i rummet",
       "en": "The first human in space",
@@ -94,6 +97,7 @@
     },
     {
       "key": "moon_landing",
+      "tier": 1,
       "when": "1969-07-20 20:17",
       "da": "Apollo 11 lander",
       "en": "Apollo 11 lands",
@@ -130,6 +134,7 @@
     },
     {
       "key": "dolly_sheep",
+      "tier": 1,
       "when": "1997-02-22",
       "da": "Fåret Dolly offentliggøres",
       "en": "Dolly the cloned sheep is announced",

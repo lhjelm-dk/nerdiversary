@@ -13,6 +13,7 @@
     },
     {
       "key": "winter_een_mas",
+      "tier": 3,
       "when": "01-25",
       "da": "Winter-een-mas",
       "en": "Winter-een-mas",
@@ -21,6 +22,7 @@
     },
     {
       "key": "opposite_day",
+      "tier": 3,
       "when": "02-02",
       "da": "Omvendt dag",
       "en": "Opposite Day",
@@ -46,6 +48,7 @@
     },
     {
       "key": "tabletop",
+      "tier": 3,
       "when": "04-11",
       "da": "International TableTop Day",
       "en": "International TableTop Day",
@@ -55,6 +58,7 @@
     },
     {
       "key": "world_book",
+      "tier": 1,
       "when": "04-23",
       "da": "Verdens bogdag",
       "en": "World Book Day",
@@ -63,6 +67,7 @@
     },
     {
       "key": "twilight_zone_day",
+      "tier": 3,
       "when": "05-11",
       "da": "Twilight Zone-dagen",
       "en": "Twilight Zone Day",
@@ -71,6 +76,7 @@
     },
     {
       "key": "yoda",
+      "tier": 3,
       "when": "05-21",
       "da": "Tal som Yoda-dagen",
       "en": "Talk Like Yoda Day",
@@ -79,6 +85,7 @@
     },
     {
       "key": "picard",
+      "tier": 3,
       "when": "06-16",
       "da": "Kaptajn Picards dag",
       "en": "Captain Picard Day",
@@ -97,6 +104,7 @@
     },
     {
       "key": "geekness",
+      "tier": 3,
       "when": "07-13",
       "da": "Omfavn din nørdethed",
       "en": "Embrace Your Geekness Day",
@@ -105,6 +113,7 @@
     },
     {
       "key": "evoloterra",
+      "tier": 3,
       "when": "07-20",
       "da": "Evoloterra",
       "en": "Evoloterra",
@@ -113,6 +122,7 @@
     },
     {
       "key": "optimus",
+      "tier": 3,
       "when": "09-17",
       "da": "Optimus Prime-dagen",
       "en": "Optimus Prime Day",
@@ -122,6 +132,7 @@
     },
     {
       "key": "escape_room",
+      "tier": 3,
       "when": "10-01",
       "da": "Escape Room-dagen",
       "en": "Escape Room Day",
@@ -131,6 +142,7 @@
     },
     {
       "key": "coffee",
+      "tier": 1,
       "when": "10-01",
       "da": "Den internationale kaffedag",
       "en": "International Coffee Day",
@@ -139,6 +151,7 @@
     },
     {
       "key": "ninja",
+      "tier": 3,
       "when": "12-05",
       "da": "Ninjaens dag",
       "en": "Day of the Ninja",
@@ -148,6 +161,7 @@
     },
     {
       "key": "comic_sans",
+      "tier": 3,
       "when": "nth:07:fri:1",
       "da": "Comic Sans-dagen",
       "en": "Comic Sans Day",
@@ -156,6 +170,7 @@
     },
     {
       "key": "record_store",
+      "tier": 1,
       "when": "nth:04:sat:3",
       "da": "Pladebutikkernes dag",
       "en": "Record Store Day",
@@ -165,6 +180,7 @@
     },
     {
       "key": "beard",
+      "tier": 3,
       "when": "nth:09:sat:1",
       "da": "Verdens skægdag",
       "en": "World Beard Day",
@@ -173,6 +189,7 @@
     },
     {
       "key": "stupid_question",
+      "tier": 3,
       "when": "nth:09:fri:-1",
       "da": "Stil et dumt spørgsmål-dagen",
       "en": "Ask a Stupid Question Day",
@@ -181,6 +198,7 @@
     },
     {
       "key": "earth_hour",
+      "tier": 1,
       "when": "nth:03:sat:-1 20:30",
       "da": "Earth Hour",
       "en": "Earth Hour",

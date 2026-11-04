@@ -141,6 +141,9 @@ def geoyear_milestones() -> tuple[Milestone, ...]:
                     f"{_span(point, 'en')}. "
                     f"{event.description('en')}"
                 ),
+                # Ingen fejrer den 26. december, fordi dinosaurerne doede.
+                # Dagene her er en maalestok, ikke en kalender.
+                tier=3,
             )
         )
     return tuple(out)

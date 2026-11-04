@@ -416,6 +416,29 @@ T: dict[str, dict[str, str]] = {
         "en": "Cuts by time rather than by kind, and draws on the whole "
               "catalogue.",
     },
+    # --- Niveauerne ---
+    #
+    # Ikke en smagsdom om, hvor god dagen er, men hvor mange der holder den.
+    "filter_level": {"da": "Niveau", "en": "Level"},
+    "level_1": {"da": "① Kendte", "en": "① Well known"},
+    "level_2": {"da": "② Også de små", "en": "② Niche ones too"},
+    "level_3": {"da": "③ Alt", "en": "③ Everything"},
+    "filter_level_help": {
+        "da": "① Dem folk kender — du kan nævne dagen i en frokostpause, og "
+              "nogen nikker. ② Dem med et rigtigt publikum, bare et lille "
+              "et: nogen møder faktisk op. ③ Dem, der nærmest kun findes på "
+              "en liste — ingen fejrer dem, men de er sjove at vide.",
+        "en": "① The ones people know — mention the day over lunch and "
+              "somebody nods. ② The ones with a real audience, just a small "
+              "one: somebody actually turns up. ③ The ones that barely exist "
+              "outside a list — nobody keeps them, but they are fun to know.",
+    },
+    "level_hidden": {
+        "da": "Tabellen viser kun til og med {level}. Skru op på Niveau i "
+              "filterrækken foroven for at se resten.",
+        "en": "The table shows up to {level} only. Turn Level up in the "
+              "filter row above to see the rest.",
+    },
     "select_all": {"da": "Vælg alle", "en": "Select all"},
     "clear_all": {"da": "Ryd alle", "en": "Clear all"},
     "select_groups": {"da": "Afgræns til grupper", "en": "Narrow to groups"},

@@ -4,6 +4,7 @@
   "days": [
     {
       "key": "doc_toilet",
+      "tier": 3,
       "when": "1955-11-05 06:15",
       "da": "Doc Brown opfinder tidsrejsen",
       "en": "Doc Brown invents time travel",
@@ -22,6 +23,7 @@
     },
     {
       "key": "einstein_dog",
+      "tier": 3,
       "when": "1985-10-26 01:21",
       "da": "Einstein bliver verdens første tidsrejsende",
       "en": "Einstein becomes the world's first time traveller",
@@ -31,6 +33,7 @@
     },
     {
       "key": "district9",
+      "tier": 3,
       "when": "1982-04-14",
       "da": "Moderskibet standser over Johannesburg",
       "en": "The mothership stops over Johannesburg",
@@ -40,6 +43,7 @@
     },
     {
       "key": "starks",
+      "tier": 3,
       "when": "1991-12-16",
       "da": "Howard og Maria Stark myrdes",
       "en": "Howard and Maria Stark are murdered",
@@ -67,6 +71,7 @@
     },
     {
       "key": "judgment_2004",
+      "tier": 3,
       "when": "2004-07-24 18:18",
       "da": "Dommedag, anden udgave",
       "en": "Judgment Day, take two",
@@ -76,6 +81,7 @@
     },
     {
       "key": "battle_ny_dated",
+      "tier": 3,
       "when": "2012-05-04",
       "da": "Slaget om New York",
       "en": "The Battle of New York",
@@ -94,6 +100,7 @@
     },
     {
       "key": "roy_batty_made",
+      "tier": 3,
       "when": "2016-01-08",
       "da": "Roy Batty samles",
       "en": "Roy Batty is incepted",
@@ -103,6 +110,7 @@
     },
     {
       "key": "the_snap",
+      "tier": 3,
       "when": "2018-04-27",
       "da": "Fingerknipset",
       "en": "The Snap",
@@ -112,6 +120,7 @@
     },
     {
       "key": "deckard_recalled",
+      "tier": 3,
       "when": "2019-11-01",
       "da": "Deckard kaldes tilbage",
       "en": "Deckard is pulled out of retirement",
@@ -121,6 +130,7 @@
     },
     {
       "key": "wooden_horse",
+      "tier": 3,
       "when": "2021-06-10",
       "da": "Datoen på træhesten",
       "en": "The date on the wooden horse",
@@ -130,6 +140,7 @@
     },
     {
       "key": "the_blip",
+      "tier": 3,
       "when": "2023-10-01",
       "da": "The Blip",
       "en": "The Blip",
@@ -139,6 +150,7 @@
     },
     {
       "key": "first_contact_2063",
+      "tier": 3,
       "when": "2063-04-05 11:00",
       "da": "Første kontakt",
       "en": "First Contact",
@@ -148,6 +160,7 @@
     },
     {
       "key": "nostromo",
+      "tier": 3,
       "when": "2124-01-07",
       "da": "Mother vækker besætningen",
       "en": "Mother wakes the crew",
@@ -157,6 +170,7 @@
     },
     {
       "key": "pandora",
+      "tier": 3,
       "when": "2154-08-01",
       "da": "Jake Sully ankommer til Pandora",
       "en": "Jake Sully arrives on Pandora",
@@ -166,6 +180,7 @@
     },
     {
       "key": "ripley_rescued",
+      "tier": 3,
       "when": "2179-07-03",
       "da": "Ripley bliver fundet",
       "en": "Ripley is recovered",

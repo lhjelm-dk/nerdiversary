@@ -638,6 +638,22 @@ with st.container(border=True):
         key="filter_window",
     )
     window = st.session_state.filter_window
+
+    # Niveauet: hvor mange der holder dagen. Se ``Milestone.level``.
+    #
+    # Det er den eneste skrue, der skaerer paa tvaers af alle grupper, og
+    # derfor den eneste, der kan bringe to tusind maerkedage ned i noget,
+    # et menneske kan overskue — uden at man foerst skal vide, hvilke
+    # grupper man ikke vil have.
+    level_cap = row.select_slider(
+        t("filter_level", lang),
+        options=[1, 2, 3],
+        value=2,
+        format_func=lambda n: t(f"level_{n}", lang),
+        help=t("filter_level_help", lang),
+        key="filter_level",
+    )
+
     second_row = st.container(horizontal=True)
     when_filter = second_row.segmented_control(
         t("when", lang),
@@ -676,7 +692,12 @@ def apply_scope_filters(items: list[Occasion]) -> list[Occasion]:
     hele "du er her"; men gruppevalget og fritekstsøgningen skal naturligvis
     gælde den også.
     """
-    out = [o for o in items if o.milestone.group in set(group_choices)]
+    out = [
+        o
+        for o in items
+        if o.milestone.group in set(group_choices)
+        and o.milestone.level <= level_cap
+    ]
     if query.strip():
         needle = query.strip().lower()
         out = [
@@ -1255,6 +1276,8 @@ with tab_select:
     st.caption(
         t("selected_count", lang, n=len(selected_keys), total=len(CATALOGUE))
     )
+    if level_cap < 3:
+        st.caption(t("level_hidden", lang, level=t(f"level_{level_cap}", lang)))
 
     # --- De to filtre ----------------------------------------------------
     #
@@ -1298,7 +1321,9 @@ with tab_select:
         key="select_query",
     )
 
-    pool = list(CATALOGUE)
+    # Niveauet fra filterraekken foroven gaelder ogsaa her. Ellers kunne man
+    # saette flueben ved en maerkedag, der aldrig dukkede op i listen.
+    pool = [m for m in CATALOGUE if m.level <= level_cap]
     if picked_groups:
         wanted_groups = set(picked_groups)
         pool = [m for m in pool if m.group in wanted_groups]

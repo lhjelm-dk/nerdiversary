@@ -367,6 +367,8 @@ def pattern_milestones() -> tuple[Milestone, ...]:
                         label_en=f"{family.en}: {hit.long}",
                         why_da=hit.da,
                         why_en=hit.en,
+                        # Ingen holder en repunitdag. En regel fandt den.
+                        tier=3,
                     )
                 )
     return tuple(out)

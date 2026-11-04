@@ -22,6 +22,7 @@
     },
     {
       "key": "iphone",
+      "tier": 1,
       "when": "01-09",
       "da": "iPhone præsenteres",
       "en": "The iPhone is announced",
@@ -31,6 +32,7 @@
     },
     {
       "key": "wikipedia",
+      "tier": 1,
       "when": "01-15",
       "da": "Wikipedia-dagen",
       "en": "Wikipedia Day",
@@ -40,6 +42,7 @@
     },
     {
       "key": "macintosh",
+      "tier": 1,
       "when": "01-24",
       "da": "Macintosh-dagen",
       "en": "Macintosh Day",
@@ -49,6 +52,7 @@
     },
     {
       "key": "privacy",
+      "tier": 3,
       "when": "01-28",
       "da": "Databeskyttelsesdagen",
       "en": "Data Protection Day",
@@ -57,6 +61,7 @@
     },
     {
       "key": "lego",
+      "tier": 1,
       "when": "01-28",
       "da": "Den internationale LEGO-dag",
       "en": "International Lego Day",
@@ -66,6 +71,7 @@
     },
     {
       "key": "www_birth",
+      "tier": 1,
       "when": "03-12",
       "da": "World Wide Web fødes",
       "en": "The World Wide Web is born",
@@ -75,6 +81,7 @@
     },
     {
       "key": "backup",
+      "tier": 3,
       "when": "03-31",
       "da": "Verdens backup-dag",
       "en": "World Backup Day",
@@ -83,6 +90,7 @@
     },
     {
       "key": "day404",
+      "tier": 3,
       "when": "04-04",
       "da": "404-dagen",
       "en": "404 Day",
@@ -91,6 +99,7 @@
     },
     {
       "key": "css_naked",
+      "tier": 3,
       "when": "04-09",
       "da": "CSS Naked Day",
       "en": "CSS Naked Day",
@@ -99,6 +108,7 @@
     },
     {
       "key": "morse",
+      "tier": 3,
       "when": "04-27",
       "da": "Morse-dagen",
       "en": "Morse Code Day",
@@ -117,6 +127,7 @@
     },
     {
       "key": "telecom",
+      "tier": 3,
       "when": "05-17",
       "da": "Telekommunikationsdagen",
       "en": "World Telecommunication Day",
@@ -126,6 +137,7 @@
     },
     {
       "key": "paper_airplane",
+      "tier": 3,
       "when": "05-26",
       "da": "Papirflyverdagen",
       "en": "National Paper Airplane Day",
@@ -134,6 +146,7 @@
     },
     {
       "key": "ballpoint",
+      "tier": 3,
       "when": "06-10",
       "da": "Kuglepennens dag",
       "en": "Ballpoint Pen Day",
@@ -143,6 +156,7 @@
     },
     {
       "key": "webmaster_lunch",
+      "tier": 3,
       "when": "07-06",
       "da": "Tag din webmaster med til frokost",
       "en": "Take Your Webmaster to Lunch Day",
@@ -151,6 +165,7 @@
     },
     {
       "key": "ripping",
+      "tier": 3,
       "when": "07-14",
       "da": "Happy Ripping Day",
       "en": "Happy Ripping Day",
@@ -159,6 +174,7 @@
     },
     {
       "key": "emoji",
+      "tier": 3,
       "when": "07-17",
       "da": "Verdens emoji-dag",
       "en": "World Emoji Day",
@@ -176,6 +192,7 @@
     },
     {
       "key": "ibm_pc",
+      "tier": 1,
       "when": "08-12",
       "da": "IBM PC-dagen",
       "en": "IBM PC Day",
@@ -185,6 +202,7 @@
     },
     {
       "key": "ie_debut",
+      "tier": 3,
       "when": "08-16",
       "da": "Internet Explorer udkommer",
       "en": "Internet Explorer debuts",
@@ -194,6 +212,7 @@
     },
     {
       "key": "photo",
+      "tier": 3,
       "when": "08-19",
       "da": "Verdens fotodag",
       "en": "World Photo Day",
@@ -203,6 +222,7 @@
     },
     {
       "key": "google_day",
+      "tier": 3,
       "when": "09-07",
       "da": "Googles mærkedag",
       "en": "Google Commemoration Day",
@@ -220,6 +240,7 @@
     },
     {
       "key": "techie",
+      "tier": 3,
       "when": "10-03",
       "da": "Teknikerens dag",
       "en": "Techie Appreciation Day",
@@ -228,6 +249,7 @@
     },
     {
       "key": "standards",
+      "tier": 3,
       "when": "10-14",
       "da": "Verdens standarddag",
       "en": "World Standards Day",
@@ -244,6 +266,7 @@
     },
     {
       "key": "caps_lock",
+      "tier": 3,
       "when": "10-22",
       "da": "Den internationale Caps Lock-dag",
       "en": "International Caps Lock Day",
@@ -252,6 +275,7 @@
     },
     {
       "key": "internet_day",
+      "tier": 3,
       "when": "10-29",
       "da": "Internetdagen",
       "en": "Internet Day",
@@ -270,6 +294,7 @@
     },
     {
       "key": "computer_security",
+      "tier": 3,
       "when": "11-30",
       "da": "Computersikkerhedsdagen",
       "en": "Computer Security Day",

@@ -1,0 +1,2627 @@
+{
+  "group": "fsm",
+  "note": "Det Flyvende Spaghettimonsters kalender, hentet fra pastafariancalendar.com med tools/fetch_pastafarian.py. Kilden har en helligdag for HVER eneste dag i aaret, og det er en del af vitsen. De kanoniske helligdage og et udvalg af de bedste har faaet en forklaring skrevet i haanden og staar paa niveau 1 og 2; resten baerer kildens eget navn og staar paa niveau 3.",
+  "days": [
+    {
+      "key": "fsm_another_friggin_year_day",
+      "tier": 3,
+      "when": "01-01",
+      "name": "Another Friggin Year Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_celebrate_surviving_2025_day",
+      "tier": 3,
+      "when": "01-02",
+      "name": "Celebrate Surviving 2025 Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_macaroni_art_day",
+      "tier": 3,
+      "when": "01-03",
+      "name": "Macaroni Art Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_spaghetti_day",
+      "tier": 3,
+      "when": "01-04",
+      "name": "Spaghetti Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_international_sarcasm_day",
+      "tier": 3,
+      "when": "01-05",
+      "name": "International Sarcasm Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_british_comedy_quotes_day",
+      "tier": 3,
+      "when": "01-06",
+      "name": "British Comedy Quotes Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_say_no_to_knickers_day",
+      "tier": 3,
+      "when": "01-07",
+      "name": "Say No to Knickers Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_hawking",
+      "tier": 2,
+      "when": "01-08",
+      "da": "Mindedagen for Stephen Hawking",
+      "en": "Stephen Hawking Remembrance Day",
+      "why_da": "Hawking blev født den 8. januar 1942 — tre hundrede år på dagen efter Galileis død, som han selv holdt af at påpege. Han døde den 14. marts, som er pi-dagen og Einsteins fødselsdag.",
+      "why_en": "Hawking was born on 8 January 1942 — three hundred years to the day after Galileo died, as he liked to point out. He died on 14 March, which is Pi Day and Einstein's birthday.",
+      "since": 1942
+    },
+    {
+      "key": "fsm_extra_cuddles_day",
+      "tier": 3,
+      "when": "01-09",
+      "name": "Extra Cuddles Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_peculiar_people_day",
+      "tier": 3,
+      "when": "01-10",
+      "name": "Peculiar People Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_spam",
+      "tier": 2,
+      "when": "01-11",
+      "da": "Spam spam spam spam-dagen",
+      "en": "Spam Spam Spam Spam Day",
+      "why_da": "Monty Python-sketchen om en cafe, hvor alt på menuen indeholder spam, og et bord vikinger synger om det. Derfra har uønsket post sit navn.",
+      "why_en": "The Monty Python sketch about a cafe where everything on the menu comes with spam, and a table of Vikings sings about it. That is where unwanted mail got its name."
+    },
+    {
+      "key": "fsm_penne_for_your_thoughts_day",
+      "tier": 3,
+      "when": "01-12",
+      "name": "Penne for Your Thoughts Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_sceptics",
+      "tier": 3,
+      "when": "01-13",
+      "da": "Skeptikernes dag",
+      "en": "Sceptics Day",
+      "why_da": "Hvis du tror på den, har du misforstået den.",
+      "why_en": "If you believe in it, you have missed the point."
+    },
+    {
+      "key": "fsm_colander",
+      "tier": 2,
+      "when": "01-14",
+      "da": "Bær et dørslag-dagen",
+      "en": "Wear a Colander Day",
+      "why_da": "Som dørslagsdagen i oktober, bare tidligere på året. Kalenderen har 365 helligdage og er ikke bange for at gentage sig selv.",
+      "why_en": "Like the headgear day in October, only earlier in the year. The calendar has 365 holy days and is not afraid to repeat itself."
+    },
+    {
+      "key": "fsm_unicorn_hunting_day",
+      "tier": 3,
+      "when": "01-15",
+      "name": "Unicorn Hunting Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_nothingness",
+      "tier": 3,
+      "when": "01-16",
+      "da": "Intethedens dag",
+      "en": "Nothingness Appreciation Day",
+      "why_da": "Holdes ved ikke at gøre noget. Det er den eneste helligdag i kataloget, man ikke kan glemme.",
+      "why_en": "Kept by doing nothing. It is the one holy day in the catalogue you cannot forget."
+    },
+    {
+      "key": "fsm_international_no_farting_day",
+      "tier": 3,
+      "when": "01-17",
+      "name": "International No Farting Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_juggling_day",
+      "tier": 3,
+      "when": "01-18",
+      "name": "Juggling Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_procrastination",
+      "tier": 3,
+      "when": "01-19",
+      "da": "Udsættelsens dag er i morgen",
+      "en": "Procrastination Day Tomorrow",
+      "why_da": "Den 19. januar. Dagen efter står der ikke noget om udsættelse, og det er lige netop pointen.",
+      "why_en": "19 January. The following day says nothing about procrastination, and that is exactly the point."
+    },
+    {
+      "key": "fsm_marx_brothers_quote_day",
+      "tier": 3,
+      "when": "01-20",
+      "name": "Marx Brothers Quote Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_ravioli_day",
+      "tier": 3,
+      "when": "01-21",
+      "name": "Ravioli Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_laugh_at_life_day",
+      "tier": 3,
+      "when": "01-22",
+      "name": "Laugh at Life Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_cunning_linguine_day",
+      "tier": 3,
+      "when": "01-23",
+      "name": "Cunning Linguine Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_invent_a_god",
+      "tier": 3,
+      "when": "01-24",
+      "da": "Find selv på en gud-dagen",
+      "en": "Invent a God Day",
+      "why_da": "Den dag, hele religionen selv stammer fra, sat på kalenderen. Reglerne er, at din gud skal kunne fremsættes lige så ubeviseligt som alle de andre.",
+      "why_en": "The day the entire religion itself came from, placed on the calendar. The rule is that your god must be as unprovable as all the others."
+    },
+    {
+      "key": "fsm_burns_night",
+      "tier": 3,
+      "when": "01-25",
+      "name": "Burns Night",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_rum_rebellion_day",
+      "tier": 3,
+      "when": "01-26",
+      "name": "Rum Rebellion Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_llama_day",
+      "tier": 3,
+      "when": "01-27",
+      "name": "Llama Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_apocalypse",
+      "tier": 3,
+      "when": "01-28",
+      "da": "Dommedag",
+      "en": "The Apocalypse",
+      "why_da": "Kalenderen har også en dommedag den 7. september, med tilføjelsen „hvis den i januar var en fuser“. Det er den slags religion, det her er.",
+      "why_en": "The calendar also has an apocalypse on 7 September, with the note “if the one in January was a dud”. That is the kind of religion this is."
+    },
+    {
+      "key": "fsm_happy_hedgehog_day",
+      "tier": 3,
+      "when": "01-29",
+      "name": "Happy Hedgehog Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_exercise_your_brain_day",
+      "tier": 3,
+      "when": "01-30",
+      "name": "Exercise Your Brain Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_honey_badger_avoidance_day",
+      "tier": 3,
+      "when": "01-31",
+      "name": "Honey Badger Avoidance Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_first_of_fettuccine_february",
+      "tier": 3,
+      "when": "02-01",
+      "name": "First of Fettuccine February",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_groundhog_day",
+      "tier": 3,
+      "when": "02-02",
+      "name": "Groundhog Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_groundhog_day_0203",
+      "tier": 3,
+      "when": "02-03",
+      "name": "Groundhog Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_annoy_the_neighbours_day",
+      "tier": 3,
+      "when": "02-04",
+      "name": "Annoy the Neighbours Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_pirate_garb_day",
+      "tier": 3,
+      "when": "02-05",
+      "name": "Pirate Garb Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_self_stimulation_day",
+      "tier": 3,
+      "when": "02-06",
+      "name": "Self Stimulation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_just_another_day_day",
+      "tier": 3,
+      "when": "02-07",
+      "name": "Just Another Day Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_get_naked_day",
+      "tier": 3,
+      "when": "02-08",
+      "name": "Get Naked Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_out_an_alien_lizard_day",
+      "tier": 3,
+      "when": "02-09",
+      "name": "Out an Alien Lizard Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_paradoxically_non_paradoxical_day",
+      "tier": 3,
+      "when": "02-10",
+      "name": "Paradoxically Non-paradoxical Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_bounce_on_the_bed_day",
+      "tier": 3,
+      "when": "02-11",
+      "name": "Bounce on the Bed Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_darwin_day",
+      "tier": 3,
+      "when": "02-12",
+      "name": "Darwin Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_tortellini_day",
+      "tier": 3,
+      "when": "02-13",
+      "name": "Tortellini Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_pretend_to_be_romantic_day",
+      "tier": 3,
+      "when": "02-14",
+      "name": "Pretend to be Romantic Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_drink_more_wine_day",
+      "tier": 3,
+      "when": "02-15",
+      "name": "Drink More Wine Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_platypus_pondering_day",
+      "tier": 3,
+      "when": "02-16",
+      "name": "Platypus Pondering Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_hopping_day",
+      "tier": 3,
+      "when": "02-17",
+      "name": "Hopping Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_navel_appreciation_day",
+      "tier": 3,
+      "when": "02-18",
+      "name": "Navel Appreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_lentil_sauce_day",
+      "tier": 3,
+      "when": "02-19",
+      "name": "Lentil Sauce Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_don_t_think_about_elephants_day",
+      "tier": 3,
+      "when": "02-20",
+      "name": "Don’t Think About Elephants Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_seize_a_sausage_day",
+      "tier": 3,
+      "when": "02-21",
+      "name": "Seize a Sausage Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_happy_birthday_michael_piotrowicz",
+      "tier": 3,
+      "when": "02-22",
+      "name": "Happy Birthday Michael Piotrowicz",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_celebrate_vaccines_day_polio_in_particul",
+      "tier": 3,
+      "when": "02-23",
+      "name": "Celebrate Vaccines Day (Polio in particular)",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_beard_day",
+      "tier": 3,
+      "when": "02-24",
+      "name": "Beard Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_octopus_enjoyment_day",
+      "tier": 3,
+      "when": "02-25",
+      "name": "Octopus Enjoyment Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_mourn_lost_socks_day",
+      "tier": 3,
+      "when": "02-26",
+      "name": "Mourn Lost Socks Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_silly_hat_day",
+      "tier": 3,
+      "when": "02-27",
+      "name": "Silly Hat Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_evil_clown_day",
+      "tier": 3,
+      "when": "02-28",
+      "name": "Evil Clown Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_narwhal_day",
+      "tier": 3,
+      "when": "03-01",
+      "name": "Narwhal Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_tagliatelle_day",
+      "tier": 3,
+      "when": "03-02",
+      "name": "Tagliatelle Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_mulled_wine_day",
+      "tier": 3,
+      "when": "03-03",
+      "name": "Mulled Wine Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_march_forth_and_demand_something",
+      "tier": 3,
+      "when": "03-04",
+      "name": "March Forth and Demand Something",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_momofuku",
+      "tier": 2,
+      "when": "03-05",
+      "da": "Momofuku Andos fødselsdag",
+      "en": "Momofuku Ando's Birthday",
+      "why_da": "Manden, der fandt på instantnudlerne i 1958 og kopnudlerne i 1971. I en japansk afstemning om århundredets bedste japanske opfindelse slog instantnudlerne både karaoke og walkmanen.",
+      "why_en": "The man who invented instant noodles in 1958 and cup noodles in 1971. In a Japanese poll on the country's finest invention of the century, instant noodles beat both karaoke and the Walkman.",
+      "since": 1910
+    },
+    {
+      "key": "fsm_start_of_borrowed",
+      "tier": 3,
+      "when": "03-06",
+      "name": "Start of Borrowed",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_contradiction_day_no_it_s_not",
+      "tier": 3,
+      "when": "03-07",
+      "name": "Contradiction Day (No it’s not!)",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_annie_bonny_s_birthday",
+      "tier": 3,
+      "when": "03-08",
+      "name": "Annie Bonny’s Birthday",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_erotic_dancing_day",
+      "tier": 3,
+      "when": "03-09",
+      "name": "Erotic Dancing Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_wooden_leg_polishing_day",
+      "tier": 3,
+      "when": "03-10",
+      "name": "Wooden Leg Polishing Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_douglas_adams_birthday",
+      "tier": 3,
+      "when": "03-11",
+      "name": "Douglas Adams Birthday",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_cuddle_a_policeman_day",
+      "tier": 3,
+      "when": "03-12",
+      "name": "Cuddle a Policeman Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_cthulhu",
+      "tier": 3,
+      "when": "03-13",
+      "da": "Cthulhu-eftertankens dag",
+      "en": "Cthulhu Contemplation Day",
+      "why_da": "I sin hus i R'lyeh venter den døde Cthulhu drømmende. Pastafarianismen har ikke noget imod et andet monster i kalenderen.",
+      "why_en": "In his house at R'lyeh dead Cthulhu waits dreaming. Pastafarianism has no objection to another monster in the calendar."
+    },
+    {
+      "key": "fsm_pi_day",
+      "tier": 3,
+      "when": "03-14",
+      "name": "𝛑 Pi Day 𝛑",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_aardvark_appreciation_day",
+      "tier": 3,
+      "when": "03-15",
+      "name": "Aardvark Appreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_kinky_underwear_day",
+      "tier": 3,
+      "when": "03-16",
+      "name": "Kinky Underwear Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_st_patricks_day_excuse",
+      "tier": 3,
+      "when": "03-17",
+      "name": "St. Patricks Day Excuse",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_exorcist_day_make_the_spirits_disappear",
+      "tier": 3,
+      "when": "03-18",
+      "name": "Exorcist Day (make the spirits disappear)",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_shut_yer_yap_day_silent_contemplation",
+      "tier": 3,
+      "when": "03-19",
+      "name": "Shut yer yap day! (silent contemplation)",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_ravioli_rapture",
+      "tier": 3,
+      "when": "03-20",
+      "name": "Ravioli Rapture",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_philosophical_day",
+      "tier": 3,
+      "when": "03-21",
+      "name": "Philosophical Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_pretend_to_be_sober_day",
+      "tier": 3,
+      "when": "03-22",
+      "name": "Pretend to be Sober Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_pansexual_quantum_toaster_day",
+      "tier": 3,
+      "when": "03-23",
+      "name": "Pansexual Quantum Toaster Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_slightly_silly_day",
+      "tier": 3,
+      "when": "03-24",
+      "name": "Slightly Silly Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_rhino_appreciation_day",
+      "tier": 3,
+      "when": "03-25",
+      "name": "Rhino Appreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_make_up_your_own_holiday_day",
+      "tier": 3,
+      "when": "03-26",
+      "name": "Make Up Your Own Holiday Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_paella_day",
+      "tier": 3,
+      "when": "03-27",
+      "name": "Paella Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_start_of_meatball_appreciation_week",
+      "tier": 3,
+      "when": "03-28",
+      "name": "Start of Meatball Appreciation Week",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_cocktail_hour_every_hour_day",
+      "tier": 3,
+      "when": "03-29",
+      "name": "Cocktail Hour Every Hour Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_poke_things_with_a_pointy_stick_day",
+      "tier": 3,
+      "when": "03-30",
+      "name": "Poke Things with a Pointy Stick Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_survived_another_month_day",
+      "tier": 3,
+      "when": "03-31",
+      "name": "Survived Another Month Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_spaghetti_harvest",
+      "tier": 2,
+      "when": "04-01",
+      "da": "Spaghettihøsten",
+      "en": "Spaghetti Harvest Day",
+      "why_da": "BBC sendte den 1. april 1957 et indslag om schweiziske bønder, der høstede spaghetti fra træer. Seerne ringede ind og spurgte, hvordan man selv dyrker et spaghettitræ. Svaret var: læg en kvist i tomatsauce og håb det bedste.",
+      "why_en": "On 1 April 1957 the BBC broadcast a report on Swiss farmers harvesting spaghetti from trees. Viewers rang in to ask how to grow a spaghetti tree of their own. The answer given was: place a sprig in tomato sauce and hope for the best.",
+      "since": 1957
+    },
+    {
+      "key": "fsm_existential_angst_day",
+      "tier": 3,
+      "when": "04-02",
+      "name": "Existential Angst Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_doris_day",
+      "tier": 3,
+      "when": "04-03",
+      "name": "Doris Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_feast_of_no_saints_day",
+      "tier": 3,
+      "when": "04-04",
+      "name": "Feast of No Saints Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_pizza_day",
+      "tier": 3,
+      "when": "04-05",
+      "name": "Pizza Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_beware_of_lizard_men_day",
+      "tier": 3,
+      "when": "04-06",
+      "name": "Beware of Lizard-men Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_find_your_inner_wombat_day",
+      "tier": 3,
+      "when": "04-07",
+      "name": "Find your Inner Wombat Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_red_wine_day",
+      "tier": 3,
+      "when": "04-08",
+      "name": "Red Wine Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_cook_couscous_day",
+      "tier": 3,
+      "when": "04-09",
+      "name": "Cook Couscous Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_general_debauchery_day",
+      "tier": 3,
+      "when": "04-10",
+      "name": "General Debauchery Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_terribly_sensible_day",
+      "tier": 3,
+      "when": "04-11",
+      "name": "Terribly Sensible Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_naughty_noodle_day",
+      "tier": 3,
+      "when": "04-12",
+      "name": "Naughty Noodle Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_believe_in_fairies_day",
+      "tier": 3,
+      "when": "04-13",
+      "name": "Believe in Fairies Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_look_up_at_the_sky_day",
+      "tier": 3,
+      "when": "04-14",
+      "name": "Look up at the Sky Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_bananas_with_everything_day",
+      "tier": 3,
+      "when": "04-15",
+      "name": "Bananas with Everything Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_sea_monkey_soup_day",
+      "tier": 3,
+      "when": "04-16",
+      "name": "Sea Monkey Soup Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_haiku_day",
+      "tier": 3,
+      "when": "04-17",
+      "name": "Haiku Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_nihilism_day",
+      "tier": 3,
+      "when": "04-18",
+      "name": "Nihilism Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_pastover",
+      "tier": 1,
+      "when": "04-19",
+      "da": "Pastover",
+      "en": "Pastover",
+      "why_da": "Pastafarianismens påske og en af de store helligdage. Den holdes med pasta, og hele pointen med navnet er, at det er et ordspil. Det er nok.",
+      "why_en": "Pastafarianism's Easter and one of the major holy days. It is kept with pasta, and the entire point of the name is that it is a pun. That is enough."
+    },
+    {
+      "key": "fsm_intergalactic_alien_solidarity_day",
+      "tier": 3,
+      "when": "04-20",
+      "name": "Intergalactic Alien Solidarity Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_boring_people_baiting_day",
+      "tier": 3,
+      "when": "04-21",
+      "name": "Boring People Baiting Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_earth_day",
+      "tier": 3,
+      "when": "04-22",
+      "name": "Earth Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_cynical_bastards_day",
+      "tier": 3,
+      "when": "04-23",
+      "name": "Cynical Bastards Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_hairball_awareness_day",
+      "tier": 3,
+      "when": "04-24",
+      "name": "Hairball Awareness Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_world_penguin_day",
+      "tier": 3,
+      "when": "04-25",
+      "name": "World Penguin Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_get_organized_day",
+      "tier": 3,
+      "when": "04-26",
+      "name": "Get Organized Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_86400",
+      "tier": 2,
+      "when": "04-27",
+      "da": "86.400-sekunders-dagen",
+      "en": "86,400 Seconds Day",
+      "why_da": "Tallet er et helt døgn gjort op i sekunder: 60 × 60 × 24. Hver eneste dag er en 86.400-sekunders-dag, og det er netop derfor, nogen har syntes, at én af dem skulle hedde det.",
+      "why_en": "The number is a full day counted in seconds: 60 × 60 × 24. Every single day is an 86,400-second day, which is precisely why somebody felt one of them ought to be called it."
+    },
+    {
+      "key": "fsm_blueberry_pie_day",
+      "tier": 3,
+      "when": "04-28",
+      "name": "Blueberry Pie Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_achieve_enlightenment_day",
+      "tier": 3,
+      "when": "04-29",
+      "name": "Achieve Enlightenment Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_celebrate_hitlers_death_day",
+      "tier": 3,
+      "when": "04-30",
+      "name": "Celebrate Hitlers Death Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_no_pants_day",
+      "tier": 3,
+      "when": "05-01",
+      "name": "No Pants Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_scurvy_awareness_day",
+      "tier": 3,
+      "when": "05-02",
+      "name": "Scurvy Awareness Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_pussy_appreciation_day",
+      "tier": 3,
+      "when": "05-03",
+      "name": "Pussy Appreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_space_pirates_day",
+      "tier": 3,
+      "when": "05-04",
+      "name": "Space Pirates Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_ramendan_start",
+      "tier": 1,
+      "when": "05-05",
+      "da": "Ramendan begynder",
+      "en": "Ramendan begins",
+      "why_da": "En måned, hvor den troende spiser nudler. Ikke undlader at spise — spiser. Faste er ikke rigtig i pastafarianismens ånd.",
+      "why_en": "A month in which the faithful eat noodles. Not abstain from eating — eat. Fasting is not really in the Pastafarian spirit."
+    },
+    {
+      "key": "fsm_bruces_appreciation_day",
+      "tier": 3,
+      "when": "05-06",
+      "name": "Bruces Appreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_curmudgeons_day",
+      "tier": 3,
+      "when": "05-07",
+      "name": "Curmudgeons Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_mates_day",
+      "tier": 3,
+      "when": "05-08",
+      "name": "Mates Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_wear_odd_socks_day",
+      "tier": 3,
+      "when": "05-09",
+      "name": "Wear Odd Socks Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_mutant_awareness_day",
+      "tier": 3,
+      "when": "05-10",
+      "name": "Mutant Awareness Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_salvador_dali_day",
+      "tier": 3,
+      "when": "05-11",
+      "name": "Salvador Dali Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_quokka_day",
+      "tier": 3,
+      "when": "05-12",
+      "name": "Quokka Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_buttocks_day",
+      "tier": 3,
+      "when": "05-13",
+      "name": "Buttocks Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_monty_python_day",
+      "tier": 3,
+      "when": "05-14",
+      "name": "Monty Python Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_time_travellers",
+      "tier": 3,
+      "when": "05-15",
+      "da": "Velkommen, tidsrejsende — i går",
+      "en": "Welcome Time Travellers Yesterday",
+      "why_da": "Modtagelsen blev holdt dagen før. Enhver rigtig tidsrejsende kunne have nået den.",
+      "why_en": "The reception was held the day before. Any genuine time traveller could have made it."
+    },
+    {
+      "key": "fsm_advanced_tree_hugging_arborial_sex_day",
+      "tier": 3,
+      "when": "05-16",
+      "name": "Advanced Tree Hugging & Arborial Sex Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_single_malt_whisky_day",
+      "tier": 3,
+      "when": "05-17",
+      "name": "Single Malt Whisky Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_teapot",
+      "tier": 2,
+      "when": "05-18",
+      "da": "Russells tepotte-dagen",
+      "en": "Russell's Teapot Day",
+      "why_da": "Bertrand Russell forestillede sig en tepotte i kredsløb mellem Jorden og Mars, for lille til at noget teleskop kan se den. Man kan ikke modbevise den. Pointen er, at bevisbyrden ligger hos den, der påstår, ikke hos den, der tvivler — og det er hele spaghettimonsterets argument i én sætning.",
+      "why_en": "Bertrand Russell imagined a teapot orbiting between Earth and Mars, too small for any telescope to see. You cannot disprove it. The point is that the burden of proof lies with whoever asserts, not whoever doubts — which is the whole Spaghetti Monster argument in a single sentence."
+    },
+    {
+      "key": "fsm_world_pasta_championship_day",
+      "tier": 3,
+      "when": "05-19",
+      "name": "World Pasta Championship Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_find_a_new_fetish_day",
+      "tier": 3,
+      "when": "05-20",
+      "name": "Find a New Fetish Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_ponder_pointlessness_day",
+      "tier": 3,
+      "when": "05-21",
+      "name": "Ponder Pointlessness Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_biological_diversity_day",
+      "tier": 3,
+      "when": "05-22",
+      "name": "Biological Diversity Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_appreciate_reptiles_day",
+      "tier": 3,
+      "when": "05-23",
+      "name": "Appreciate Reptiles Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_mollusc_day",
+      "tier": 3,
+      "when": "05-24",
+      "name": "Mollusc Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_towel_day",
+      "tier": 3,
+      "when": "05-25",
+      "name": "Towel Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_totally_random_day",
+      "tier": 3,
+      "when": "05-26",
+      "name": "Totally Random Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_weasel_tossing_day",
+      "tier": 3,
+      "when": "05-27",
+      "name": "Weasel Tossing Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_amnesty_international_day",
+      "tier": 3,
+      "when": "05-28",
+      "name": "Amnesty International Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_consensual_bum_biting_day",
+      "tier": 3,
+      "when": "05-29",
+      "name": "Consensual Bum Biting Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_random_act_of_kindness_day",
+      "tier": 3,
+      "when": "05-30",
+      "name": "Random Act of Kindness Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_insect_appreciation_day",
+      "tier": 3,
+      "when": "05-31",
+      "name": "Insect Appreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_go_barefoot_day",
+      "tier": 3,
+      "when": "06-01",
+      "name": "Go Barefoot Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_laugh_like_a_bad_guy_day",
+      "tier": 3,
+      "when": "06-02",
+      "name": "Laugh Like a Bad Guy Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_drink_like_a_pirate_day",
+      "tier": 3,
+      "when": "06-03",
+      "name": "Drink Like a Pirate Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_ramendan_end",
+      "tier": 2,
+      "when": "06-04",
+      "da": "Ramendan slutter",
+      "en": "Ramendan ends",
+      "why_da": "Nudelmåneden er forbi. Man må nu spise andet, men behøver ikke.",
+      "why_en": "The noodle month is over. You may now eat other things, but you need not."
+    },
+    {
+      "key": "fsm_doughnut_day",
+      "tier": 3,
+      "when": "06-05",
+      "name": "Doughnut Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_interpretive_dance_day",
+      "tier": 3,
+      "when": "06-06",
+      "name": "Interpretive Dance Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_captain_jack_sparrow_impersonation_day",
+      "tier": 3,
+      "when": "06-07",
+      "name": "Captain Jack Sparrow Impersonation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_be_annoyingly_cheerful_day",
+      "tier": 3,
+      "when": "06-08",
+      "name": "Be Annoyingly Cheerful Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_bathe_in_marinara_day",
+      "tier": 3,
+      "when": "06-09",
+      "name": "Bathe in Marinara Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_flirting_day",
+      "tier": 3,
+      "when": "06-10",
+      "name": "Flirting Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_fish_day",
+      "tier": 3,
+      "when": "06-11",
+      "name": "Fish Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_be_more_paranoid_day",
+      "tier": 3,
+      "when": "06-12",
+      "name": "Be More Paranoid Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_green_day",
+      "tier": 3,
+      "when": "06-13",
+      "name": "Green Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_bourbon_day",
+      "tier": 3,
+      "when": "06-14",
+      "name": "Bourbon Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_bad_joke_day",
+      "tier": 3,
+      "when": "06-15",
+      "name": "Bad Joke Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_world_meat_free_day",
+      "tier": 3,
+      "when": "06-16",
+      "name": "World Meat-free Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_contact_an_old_friend_day",
+      "tier": 3,
+      "when": "06-17",
+      "name": "Contact an Old Friend Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_andim_day",
+      "tier": 3,
+      "when": "06-18",
+      "name": "Andim Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_martini_day",
+      "tier": 3,
+      "when": "06-19",
+      "name": "Martini Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_world_juggling_day",
+      "tier": 3,
+      "when": "06-20",
+      "name": "World Juggling Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_go_skateboarding_day",
+      "tier": 3,
+      "when": "06-21",
+      "name": "Go Skateboarding Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_marinara_sauce_day",
+      "tier": 3,
+      "when": "06-22",
+      "name": "Marinara Sauce Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_parrot_pondering_day",
+      "tier": 3,
+      "when": "06-23",
+      "name": "Parrot Pondering Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_sexual_fantasy_day",
+      "tier": 3,
+      "when": "06-24",
+      "name": "Sexual Fantasy Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_seamen_day",
+      "tier": 3,
+      "when": "06-25",
+      "name": "Seamen Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_carbonara_day",
+      "tier": 3,
+      "when": "06-26",
+      "name": "Carbonara Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_blue_footed_booby_day",
+      "tier": 3,
+      "when": "06-27",
+      "name": "Blue-Footed Booby Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_tickle_day",
+      "tier": 3,
+      "when": "06-28",
+      "name": "Tickle Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_appreciate_herbs_day",
+      "tier": 3,
+      "when": "06-29",
+      "name": "Appreciate Herbs Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_just_another_day_day_0630",
+      "tier": 3,
+      "when": "06-30",
+      "name": "Just Another Day Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_any_bloody_excuse_day",
+      "tier": 3,
+      "when": "07-01",
+      "name": "Any Bloody Excuse Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_pesto_sauce_day",
+      "tier": 3,
+      "when": "07-02",
+      "name": "Pesto Sauce Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_whip_someone_with_a_wet_noodle_day",
+      "tier": 3,
+      "when": "07-03",
+      "name": "Whip Someone with a Wet Noodle Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_build_a_pasta_sculture_day",
+      "tier": 3,
+      "when": "07-04",
+      "name": "Build a Pasta Sculture Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_shouting_day",
+      "tier": 3,
+      "when": "07-05",
+      "name": "SHOUTING DAY!",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_macaroni_day",
+      "tier": 3,
+      "when": "07-06",
+      "name": "Macaroni Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_count_the_holes_in_your_collander_day",
+      "tier": 3,
+      "when": "07-07",
+      "name": "Count the Holes in your Collander Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_meatball_appreciation_day",
+      "tier": 3,
+      "when": "07-08",
+      "name": "Meatball Appreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_invent_a_word_day",
+      "tier": 3,
+      "when": "07-09",
+      "name": "Invent a Word Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_pi_a_colada_day",
+      "tier": 3,
+      "when": "07-10",
+      "name": "Piña Colada Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_world_rum_day",
+      "tier": 3,
+      "when": "07-11",
+      "name": "World Rum Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_surrealism_day",
+      "tier": 3,
+      "when": "07-12",
+      "name": "Surrealism Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_spot_the_loony_day",
+      "tier": 3,
+      "when": "07-13",
+      "name": "Spot the Loony Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_goat_appreciation_day",
+      "tier": 3,
+      "when": "07-14",
+      "name": "Goat Appreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_ferret_down_your_trousers_day",
+      "tier": 3,
+      "when": "07-15",
+      "name": "Ferret Down Your Trousers Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_skip",
+      "tier": 3,
+      "when": "07-16",
+      "da": "Spring-denne-dag-over-dagen",
+      "en": "Skip This Day Day",
+      "why_da": "Kan ikke holdes uden at blive brudt, og kan ikke brydes uden at blive holdt.",
+      "why_en": "Cannot be kept without being broken, and cannot be broken without being kept."
+    },
+    {
+      "key": "fsm_skinny_dipping_day",
+      "tier": 3,
+      "when": "07-17",
+      "name": "Skinny Dipping Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_henderson",
+      "tier": 1,
+      "when": "07-18",
+      "da": "Bobby Hendersons fødselsdag",
+      "en": "Bobby Henderson's Birthday",
+      "why_da": "Manden, hele religionen kom af. Som 24-årig nyuddannet fysiker skrev han i 2005 til Kansas' skoleråd, der ville sidestille intelligent design med evolution i biologitimerne: underviser man i én alternativ skabelsesteori, må man også undervise i hans — at universet blev skabt af et flyvende spaghettimonster. Rådet svarede ikke, så han lagde brevet på nettet. Hvilken dag han sendte det, står ingen steder.",
+      "why_en": "The man the whole religion came from. A 24-year-old physics graduate, he wrote in 2005 to the Kansas school board, which wanted intelligent design taught alongside evolution in biology class: if you teach one alternative creation theory, you must teach his too — that the universe was made by a flying spaghetti monster. The board did not reply, so he put the letter online. What day he sent it is not recorded anywhere."
+    },
+    {
+      "key": "fsm_daiquiri_day",
+      "tier": 3,
+      "when": "07-19",
+      "name": "Daiquiri Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_interstellar_lasagne_day",
+      "tier": 3,
+      "when": "07-20",
+      "name": "Interstellar Lasagne Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_primavera_sauce_day",
+      "tier": 3,
+      "when": "07-21",
+      "name": "Primavera Sauce Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_contemplate_the_cosmos_day",
+      "tier": 3,
+      "when": "07-22",
+      "name": "Contemplate the Cosmos Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_free_hugs_day",
+      "tier": 3,
+      "when": "07-23",
+      "name": "Free Hugs Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_expensive_hugs_day",
+      "tier": 3,
+      "when": "07-24",
+      "name": "Expensive Hugs Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_hot_fudge_sundae_day",
+      "tier": 3,
+      "when": "07-25",
+      "name": "Hot Fudge Sundae Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_white_wine_day",
+      "tier": 3,
+      "when": "07-26",
+      "name": "White Wine Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_say_no_to_negativity_day",
+      "tier": 3,
+      "when": "07-27",
+      "name": "Say No to Negativity Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_try_a_new_cheese_day",
+      "tier": 3,
+      "when": "07-28",
+      "name": "Try a New Cheese Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_international_beer_day",
+      "tier": 3,
+      "when": "07-29",
+      "name": "International Beer Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_parmesan_day",
+      "tier": 3,
+      "when": "07-30",
+      "name": "Parmesan Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_dress_up_day",
+      "tier": 3,
+      "when": "07-31",
+      "name": "Dress Up Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_cartoon_day",
+      "tier": 3,
+      "when": "08-01",
+      "name": "Cartoon Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_vermicelli_day",
+      "tier": 3,
+      "when": "08-02",
+      "name": "Vermicelli Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_postmodernism_day",
+      "tier": 3,
+      "when": "08-03",
+      "name": "Postmodernism Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_dancing_in_your_underwear_day",
+      "tier": 3,
+      "when": "08-04",
+      "name": "Dancing in Your Underwear Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_putanesca_sauce_day",
+      "tier": 3,
+      "when": "08-05",
+      "name": "Putanesca Sauce Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_squirrel_spotting_day",
+      "tier": 3,
+      "when": "08-06",
+      "name": "Squirrel Spotting Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_intergalactic_intercourse_day",
+      "tier": 3,
+      "when": "08-07",
+      "name": "Intergalactic Intercourse Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_international_goat_day",
+      "tier": 3,
+      "when": "08-08",
+      "name": "International Goat Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_invisible_pixie_spotting_day",
+      "tier": 3,
+      "when": "08-09",
+      "name": "Invisible Pixie Spotting Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_lazy_day",
+      "tier": 3,
+      "when": "08-10",
+      "name": "Lazy Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_rum_quaffing_day",
+      "tier": 3,
+      "when": "08-11",
+      "name": "Rum Quaffing Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_vegetable_sauce_day",
+      "tier": 3,
+      "when": "08-12",
+      "name": "Vegetable Sauce Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_self_love_day",
+      "tier": 3,
+      "when": "08-13",
+      "name": "Self Love Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_think_about_infinity_day",
+      "tier": 3,
+      "when": "08-14",
+      "name": "Think about Infinity Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_condom_day",
+      "tier": 3,
+      "when": "08-15",
+      "name": "Condom Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_wave_at_the_surveillance_cameras_day",
+      "tier": 3,
+      "when": "08-16",
+      "name": "Wave At The Surveillance Cameras Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_gnocchi_gnawing_day",
+      "tier": 3,
+      "when": "08-17",
+      "name": "Gnocchi Gnawing day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_poetry_day",
+      "tier": 3,
+      "when": "08-18",
+      "name": "Poetry Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_kiss_someone_day",
+      "tier": 3,
+      "when": "08-19",
+      "name": "Kiss Someone Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_expensive_rum_day",
+      "tier": 3,
+      "when": "08-20",
+      "name": "Expensive Rum Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_apologise_day",
+      "tier": 3,
+      "when": "08-21",
+      "name": "Apologise Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_tarantula_teasing_day",
+      "tier": 3,
+      "when": "08-22",
+      "name": "Tarantula Teasing Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_appreciate_what_you_ve_got_day",
+      "tier": 3,
+      "when": "08-23",
+      "name": "Appreciate What You’ve Got Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_pluto",
+      "tier": 2,
+      "when": "08-24",
+      "da": "Sorg over Plutos degradering",
+      "en": "Pluto Demotion Grieving Day",
+      "why_da": "Den 24. august 2006 vedtog Den Internationale Astronomiske Union en definition af en planet, som Pluto ikke levede op til: den har ikke ryddet sin egen bane. Delstaten Illinois erklærede senere, at Pluto alligevel er en planet, når den er over Illinois.",
+      "why_en": "On 24 August 2006 the International Astronomical Union adopted a definition of a planet that Pluto failed: it has not cleared its own orbit. The state of Illinois later declared that Pluto is a planet anyway whenever it passes over Illinois.",
+      "since": 2006
+    },
+    {
+      "key": "fsm_whiskey_sour_day",
+      "tier": 3,
+      "when": "08-25",
+      "name": "Whiskey Sour Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_women_s_equality_day",
+      "tier": 3,
+      "when": "08-26",
+      "name": "Women’s Equality Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_udon_day",
+      "tier": 3,
+      "when": "08-27",
+      "name": "Udon Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_more_rum_day",
+      "tier": 3,
+      "when": "08-28",
+      "name": "More Rum Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_blobfish_day",
+      "tier": 3,
+      "when": "08-29",
+      "name": "Blobfish Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_candle_in_a_winebottle_day",
+      "tier": 3,
+      "when": "08-30",
+      "name": "Candle in a Winebottle Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_sea_shanty_day",
+      "tier": 3,
+      "when": "08-31",
+      "name": "Sea Shanty Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_hobbit_remembrance_day",
+      "tier": 3,
+      "when": "09-01",
+      "name": "Hobbit Remembrance Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_nipple_appreciation_day",
+      "tier": 3,
+      "when": "09-02",
+      "name": "Nipple Appreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_say_no_to_haggis_day",
+      "tier": 3,
+      "when": "09-03",
+      "name": "Say No to Haggis Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_rock_appreciation_day",
+      "tier": 3,
+      "when": "09-04",
+      "name": "Rock Appreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_gargling_day",
+      "tier": 3,
+      "when": "09-05",
+      "name": "Gargling Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_diablo_sauce_day",
+      "tier": 3,
+      "when": "09-06",
+      "name": "Diablo Sauce Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_apocalypse_again",
+      "tier": 3,
+      "when": "09-07",
+      "da": "Dommedag igen",
+      "en": "The Apocalypse Again",
+      "why_da": "„Hvis den i januar var en fuser.“ Ingen af dem er indtruffet endnu, men året er ikke omme.",
+      "why_en": "“If the one in January was a dud.” Neither has happened yet, but the year is not over."
+    },
+    {
+      "key": "fsm_vicarious_sex_day",
+      "tier": 3,
+      "when": "09-08",
+      "name": "Vicarious Sex Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_be_irritatingly_nice_day",
+      "tier": 3,
+      "when": "09-09",
+      "name": "Be Irritatingly Nice Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_albatross_appreciation_day",
+      "tier": 3,
+      "when": "09-10",
+      "name": "Albatross Appreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_tinfoil",
+      "tier": 3,
+      "when": "09-11",
+      "da": "Sølvpapirshattens dag",
+      "en": "Tinfoil Hat Day",
+      "why_da": "En gruppe fra MIT målte i 2005 faktisk efter, om sølvpapirshatte skærmer mod radiobølger. Svaret var nej: ved visse frekvenser forstærker hatten dem.",
+      "why_en": "A group at MIT actually measured in 2005 whether tinfoil hats shield against radio waves. The answer was no: at certain frequencies the hat amplifies them."
+    },
+    {
+      "key": "fsm_nakedness_appreciation_day",
+      "tier": 3,
+      "when": "09-12",
+      "name": "Nakedness Appreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_mosquito_avoidance_day",
+      "tier": 3,
+      "when": "09-13",
+      "name": "Mosquito Avoidance Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_despair_for_the_human_race_day",
+      "tier": 3,
+      "when": "09-14",
+      "name": "Despair for the Human Race Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_irish_coffee_day",
+      "tier": 3,
+      "when": "09-15",
+      "name": "Irish Coffee Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_cynicism_appreciation_day",
+      "tier": 3,
+      "when": "09-16",
+      "name": "Cynicism Appreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_wear_purple_day",
+      "tier": 3,
+      "when": "09-17",
+      "name": "Wear Purple Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_amoeba_assimilation_day",
+      "tier": 3,
+      "when": "09-18",
+      "name": "Amoeba Assimilation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_international_talk_like_a_pirate_day",
+      "tier": 3,
+      "when": "09-19",
+      "name": "International Talk Like a Pirate Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_sophia_loren_appreciation_day",
+      "tier": 3,
+      "when": "09-20",
+      "name": "Sophia Loren Appreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_adopt_a_new_phobia_day",
+      "tier": 3,
+      "when": "09-21",
+      "name": "Adopt a New Phobia day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_believe_the_impossible_day",
+      "tier": 3,
+      "when": "09-22",
+      "name": "Believe the Impossible Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_walk_the_plank_day",
+      "tier": 3,
+      "when": "09-23",
+      "name": "Walk the Plank Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_cocktail_day",
+      "tier": 3,
+      "when": "09-24",
+      "name": "Cocktail Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_albino_appreciation_day",
+      "tier": 3,
+      "when": "09-25",
+      "name": "Albino Appreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_scrub_the_poop_deck_day",
+      "tier": 3,
+      "when": "09-26",
+      "name": "Scrub the Poop Deck Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_insult_a_narcissist_day",
+      "tier": 3,
+      "when": "09-27",
+      "name": "Insult a Narcissist Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_fictional_character_day",
+      "tier": 3,
+      "when": "09-28",
+      "name": "Fictional Character Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_double_entendre_day",
+      "tier": 3,
+      "when": "09-29",
+      "name": "Double Entendre Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_ridiculous_excuses_day",
+      "tier": 3,
+      "when": "09-30",
+      "name": "Ridiculous Excuses Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_agnolotti_appreciation_day",
+      "tier": 3,
+      "when": "10-01",
+      "name": "Agnolotti Appreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_noodle_day",
+      "tier": 3,
+      "when": "10-02",
+      "name": "Noodle Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_eccentricity_appreciation_day",
+      "tier": 3,
+      "when": "10-03",
+      "name": "Eccentricity Appreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_fortified_wines_day",
+      "tier": 3,
+      "when": "10-04",
+      "name": "Fortified Wines Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_slightly_naughty_day",
+      "tier": 3,
+      "when": "10-05",
+      "name": "Slightly Naughty Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_happy_hour_all_day_day",
+      "tier": 3,
+      "when": "10-06",
+      "name": "Happy Hour All Day Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_quob_day",
+      "tier": 3,
+      "when": "10-07",
+      "name": "Quob Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_tell_massive_lies_day",
+      "tier": 3,
+      "when": "10-08",
+      "name": "Tell Massive Lies Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_knot_day",
+      "tier": 3,
+      "when": "10-09",
+      "name": "Knot Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_rub_things_on_your_lover_day",
+      "tier": 3,
+      "when": "10-10",
+      "name": "Rub Things on Your Lover Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_no_falling_down_day",
+      "tier": 3,
+      "when": "10-11",
+      "name": "No Falling Down Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_headgear",
+      "tier": 1,
+      "when": "10-12",
+      "da": "Den internationale dørslagsdag",
+      "en": "International Pastafarian Headgear Day",
+      "why_da": "Dørslaget på hovedet er pastafarianismens religiøse hovedbeklædning, og flere lande har måttet tage stilling til, om man må bære det på sit kørekortfoto. Nogle har sagt ja. Det er dagen, hvor man bærer det.",
+      "why_en": "The colander on the head is Pastafarianism's religious headgear, and several countries have had to rule on whether you may wear one in your driving-licence photo. Some have said yes. This is the day you wear it."
+    },
+    {
+      "key": "fsm_very_saucy_day",
+      "tier": 3,
+      "when": "10-13",
+      "name": "Very Saucy Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_try_a_new_beer_day",
+      "tier": 3,
+      "when": "10-14",
+      "name": "Try a New Beer Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_yet_another_noodle_day",
+      "tier": 3,
+      "when": "10-15",
+      "name": "Yet Another Noodle Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_blue_whale_contemplation_day",
+      "tier": 3,
+      "when": "10-16",
+      "name": "Blue Whale Contemplation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_bottom_nibbling_day",
+      "tier": 3,
+      "when": "10-17",
+      "name": "Bottom Nibbling Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_irony",
+      "tier": 3,
+      "when": "10-18",
+      "da": "Ironiens dag",
+      "en": "Irony Day",
+      "why_da": "Står på en kalender, der er lavet for at gøre grin med kalendere over helligdage.",
+      "why_en": "Listed on a calendar made to poke fun at calendars of holy days."
+    },
+    {
+      "key": "fsm_try_not_to_die_day",
+      "tier": 3,
+      "when": "10-19",
+      "name": "Try Not to Die Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_to_excess_and_no_further_day",
+      "tier": 3,
+      "when": "10-20",
+      "name": "To Excess and No Further Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_try_thinking_day",
+      "tier": 3,
+      "when": "10-21",
+      "name": "Try Thinking Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_intergalactic_peeing_competition",
+      "tier": 3,
+      "when": "10-22",
+      "name": "Intergalactic Peeing Competition",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_strip_for_your_lover_day",
+      "tier": 3,
+      "when": "10-23",
+      "name": "Strip for your Lover Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_cider_appreciation_day",
+      "tier": 3,
+      "when": "10-24",
+      "name": "Cider Appreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_world_pasta_day",
+      "tier": 3,
+      "when": "10-25",
+      "name": "World Pasta Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_onomatopoeia",
+      "tier": 3,
+      "when": "10-26",
+      "da": "Lydordenes dag",
+      "en": "Onomatopoeia Day",
+      "why_da": "Ord, der lyder som det, de betyder. På dansk: plask, knirke, hviske. Ordet onomatopoietikon lyder i øvrigt ikke som noget som helst.",
+      "why_en": "Words that sound like what they mean. Splash, creak, whisper. The word onomatopoeia, incidentally, sounds like nothing at all."
+    },
+    {
+      "key": "fsm_silly_walks",
+      "tier": 2,
+      "when": "10-27",
+      "da": "Fjollede gangarters dag",
+      "en": "Silly Walks Day",
+      "why_da": "Ministeriet for Fjollede Gangarter, Monty Python, 1970. John Cleese har senere sagt, at sketchen var ubehagelig at optage, fordi den gjorde ondt i benene.",
+      "why_en": "The Ministry of Silly Walks, Monty Python, 1970. John Cleese has since said the sketch was unpleasant to film, because it hurt his legs."
+    },
+    {
+      "key": "fsm_extra_kinky_day",
+      "tier": 3,
+      "when": "10-28",
+      "name": "Extra Kinky Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_nut_day",
+      "tier": 3,
+      "when": "10-29",
+      "name": "Nut Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_furry_animal_fondling_day",
+      "tier": 3,
+      "when": "10-30",
+      "name": "Furry Animal Fondling Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_fright_night",
+      "tier": 3,
+      "when": "10-31",
+      "name": "Fright Night",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_gnome_awareness_day",
+      "tier": 3,
+      "when": "11-01",
+      "name": "Gnome Awareness Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_dia_de_los_muertos",
+      "tier": 3,
+      "when": "11-02",
+      "name": "Dia de los muertos",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_small_furry_creatures_appreciation_day",
+      "tier": 3,
+      "when": "11-03",
+      "name": "Small Furry Creatures Appreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_listen_to_sea_shanties_and_dance_like_a_",
+      "tier": 3,
+      "when": "11-04",
+      "name": "Listen to Sea Shanties and Dance Like A Pirate",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_oral_sex_day",
+      "tier": 3,
+      "when": "11-05",
+      "name": "Oral Sex Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_learn_a_new_swear_word_day",
+      "tier": 3,
+      "when": "11-06",
+      "name": "Learn a new swear word day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_tentacle_day",
+      "tier": 3,
+      "when": "11-07",
+      "name": "Tentacle Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_appreciate_your_loved_ones_day",
+      "tier": 3,
+      "when": "11-08",
+      "name": "Appreciate Your Loved Ones Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_change_your_underwear_day",
+      "tier": 3,
+      "when": "11-09",
+      "name": "Change Your Underwear Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_look_on_the_bright_side_of_life_day",
+      "tier": 3,
+      "when": "11-10",
+      "name": "Look on the Bright Side of Life Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_eleven",
+      "tier": 2,
+      "when": "11-11",
+      "da": "Skru op til elleve-dagen",
+      "en": "Turn it up to Eleven Day",
+      "why_da": "Fra This Is Spinal Tap: guitaristens forstærker går til elleve i stedet for ti. Hvorfor ikke bare gøre ti højere? Fordi den her går til elleve.",
+      "why_en": "From This Is Spinal Tap: the guitarist's amplifier goes to eleven instead of ten. Why not make ten louder? Because this one goes to eleven."
+    },
+    {
+      "key": "fsm_drunk_creation",
+      "tier": 2,
+      "when": "11-12",
+      "da": "Eftertanke over en beruset skabelse",
+      "en": "Drunk Creation Contemplation Day",
+      "why_da": "Det hører til læren, at monsteret var fuldt, da det skabte verden. Det forklarer en hel del, og det er ikke tænkt som en undskyldning.",
+      "why_en": "Doctrine holds that the Monster was drunk when it made the world. That explains a good deal, and it is not meant as an excuse."
+    },
+    {
+      "key": "fsm_talk_to_birds_day",
+      "tier": 3,
+      "when": "11-13",
+      "name": "Talk to Birds Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_laugh_like_a_lunatic_day",
+      "tier": 3,
+      "when": "11-14",
+      "name": "Laugh like a Lunatic Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_awkwardly_honest_day",
+      "tier": 3,
+      "when": "11-15",
+      "name": "Awkwardly Honest Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_dodo_grieving_day",
+      "tier": 3,
+      "when": "11-16",
+      "name": "Dodo Grieving Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_al_dente_day",
+      "tier": 3,
+      "when": "11-17",
+      "name": "Al Dente Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_embrace_chaos_day",
+      "tier": 3,
+      "when": "11-18",
+      "name": "Embrace Chaos Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_world_toilet_day",
+      "tier": 3,
+      "when": "11-19",
+      "name": "World Toilet Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_say_no_to_cannibalism_day",
+      "tier": 3,
+      "when": "11-20",
+      "name": "Say no to Cannibalism Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_register_a_complaint_day",
+      "tier": 3,
+      "when": "11-21",
+      "name": "Register a Complaint Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_blackbeard_memorial_day",
+      "tier": 3,
+      "when": "11-22",
+      "name": "Blackbeard Memorial Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_woofenoot",
+      "tier": 3,
+      "when": "11-23",
+      "name": "Woofenoot",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_undead_understanding_day",
+      "tier": 3,
+      "when": "11-24",
+      "name": "Undead Understanding Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_gazpacho_soup_day",
+      "tier": 3,
+      "when": "11-25",
+      "name": "Gazpacho Soup Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_racist_depreciation_day",
+      "tier": 3,
+      "when": "11-26",
+      "name": "Racist Depreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_air_guitar_day",
+      "tier": 3,
+      "when": "11-27",
+      "name": "Air Guitar Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_blue_cheese_day",
+      "tier": 3,
+      "when": "11-28",
+      "name": "Blue Cheese Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_cutlass_sharpening_day",
+      "tier": 3,
+      "when": "11-29",
+      "name": "Cutlass Sharpening Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_moustache_appreciation_day",
+      "tier": 3,
+      "when": "11-30",
+      "name": "Moustache Appreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_marijuana_sauce_day",
+      "tier": 3,
+      "when": "12-01",
+      "name": "Marijuana Sauce Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_grog_guzzling_day",
+      "tier": 3,
+      "when": "12-02",
+      "name": "Grog Guzzling Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_vibrator_day",
+      "tier": 3,
+      "when": "12-03",
+      "name": "Vibrator Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_chocolate_anything_day",
+      "tier": 3,
+      "when": "12-04",
+      "name": "Chocolate Anything Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_remember_the_spanish_inquisition_day",
+      "tier": 3,
+      "when": "12-05",
+      "name": "Remember the Spanish Inquisition Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_insult_a_religious_fanatic_day",
+      "tier": 3,
+      "when": "12-06",
+      "name": "Insult a Religious Fanatic Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_holiday_from_death_day",
+      "tier": 3,
+      "when": "12-07",
+      "name": "Holiday from Death Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_garlic_bread_day",
+      "tier": 3,
+      "when": "12-08",
+      "name": "Garlic Bread Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_blank",
+      "tier": 3,
+      "when": "12-09",
+      "da": "Denne dag er med vilje efterladt tom",
+      "en": "This Day Deliberately Left Blank",
+      "why_da": "En kalender med en helligdag hver eneste dag er nødt til at have én, der ikke er noget. Sætningen er lånt fra de tomme sider i tekniske manualer, som netop derved holder op med at være tomme.",
+      "why_en": "A calendar with a holy day every single day has to have one that is nothing. The phrase is borrowed from the blank pages in technical manuals, which thereby stop being blank."
+    },
+    {
+      "key": "fsm_international_human_rights_day",
+      "tier": 3,
+      "when": "12-10",
+      "name": "International Human Rights Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_shareware_piracy_day",
+      "tier": 3,
+      "when": "12-11",
+      "name": "Shareware Piracy Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_ice_cream_day",
+      "tier": 3,
+      "when": "12-12",
+      "name": "Ice Cream Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_monkey_appreciation_day",
+      "tier": 3,
+      "when": "12-13",
+      "name": "Monkey Appreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_cat_herding_day",
+      "tier": 3,
+      "when": "12-14",
+      "name": "Cat Herding Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_stupid_inventions_day",
+      "tier": 3,
+      "when": "12-15",
+      "name": "Stupid Inventions Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_beethoven_s_birthday",
+      "tier": 3,
+      "when": "12-16",
+      "name": "Beethoven’s Birthday",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_sloth_day_if_we_can_be_bothered",
+      "tier": 3,
+      "when": "12-17",
+      "name": "Sloth Day (if we can be bothered?)",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_unusual_musical_instruments_day",
+      "tier": 3,
+      "when": "12-18",
+      "name": "Unusual Musical Instruments Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_robot_awareness_day",
+      "tier": 3,
+      "when": "12-19",
+      "name": "Robot Awareness Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_mikhail_iosilevich_solidarity_day",
+      "tier": 3,
+      "when": "12-20",
+      "name": "Mikhail Iosilevich solidarity Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_saturnalia_and_solstice",
+      "tier": 3,
+      "when": "12-21",
+      "name": "Saturnalia and Solstice",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_marco_polo_day",
+      "tier": 3,
+      "when": "12-22",
+      "name": "Marco Polo Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_festivus",
+      "tier": 3,
+      "when": "12-23",
+      "name": "Festivus",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_orgies_for_world_peace_day",
+      "tier": 3,
+      "when": "12-24",
+      "name": "Orgies For World Peace Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_holiday",
+      "tier": 1,
+      "when": "12-25",
+      "da": "Holiday",
+      "en": "Holiday",
+      "why_da": "Vinterhelligdagen hedder bare Holiday. Navnet er med vilje det tommeste, man kunne finde på, så ingen kan tage anstød — og så er det selvfølgelig præcis det, der gør det til en pointe.",
+      "why_en": "The winter holy day is simply called Holiday. The name is deliberately the emptiest one available, so that nobody can take offence — which is, of course, exactly what makes it a point."
+    },
+    {
+      "key": "fsm_appreciate_boxes_day",
+      "tier": 3,
+      "when": "12-26",
+      "name": "Appreciate Boxes Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_only_5_pasta_eating_days_left_in_2026",
+      "tier": 3,
+      "when": "12-27",
+      "name": "Only 5 pasta eating days left in 2026",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_excelsior_day",
+      "tier": 3,
+      "when": "12-28",
+      "name": "Excelsior Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_backwards",
+      "tier": 3,
+      "when": "12-29",
+      "da": "Yad sdrawkcab",
+      "en": "Yad sdrawkcab",
+      "why_da": "Baglænsdagen, skrevet baglæns. Kilden staver den endda selv forkert baglæns, og det har vi ladet stå.",
+      "why_en": "Backwards Day, written backwards. The source even gets its own reversal slightly wrong, and we have let that stand."
+    },
+    {
+      "key": "fsm_get_drunk_early_for_hogmanay",
+      "tier": 3,
+      "when": "12-30",
+      "name": "Get Drunk Early for Hogmanay",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_hug_many_day",
+      "tier": 3,
+      "when": "12-31",
+      "name": "Hug Many Day",
+      "medium": "fsm"
+    }
+  ]
+}

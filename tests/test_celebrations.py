@@ -20,12 +20,21 @@ import pytest
 
 from utils import datepatterns as dp
 from utils import geoyear as gy
-from utils.catalog import BUNDLES, BUNDLES_BY_KEY, GROUPS, GROUPS_BY_KEY, MILESTONES, Bundle
+from utils.catalog import (
+    BUNDLES,
+    BUNDLES_BY_KEY,
+    GROUPS,
+    GROUPS_BY_KEY,
+    MILESTONES,
+    Bundle,
+    Milestone,
+)
 from utils.celebrations import (
     ANNIVERSARIES,
     DATA_DIR,
     PREFIX,
     SpecError,
+    _tier,
     celebration_milestones,
     easter_sunday,
     format_note,
@@ -1210,3 +1219,143 @@ def test_the_wacky_days_land_where_the_sources_say():
     for key, (year, day) in expected.items():
         assert key in by_key, f"{key} mangler i gruppen"
         assert spec_in_year(parse_spec(by_key[key].when), year) == day, key
+
+
+# -------------------------------------------------------------------------
+# Niveauerne
+# -------------------------------------------------------------------------
+#
+# Niveauet er ikke en smagsdom om, hvor god dagen er, men en egenskab ved
+# dagen selv: hvor mange der holder den. Det er den ene skrue, der skaerer
+# paa tvaers af alle grupper.
+
+
+def test_every_milestone_has_a_level_between_one_and_three():
+    for milestone in all_milestones():
+        assert milestone.level in (1, 2, 3), f"{milestone.key} = {milestone.level}"
+
+
+def test_an_unmarked_milestone_follows_its_star():
+    """Feltet maa ikke flytte noget, der allerede stod rigtigt.
+
+    Appen havde i forvejen ét skel: stjernen paa de fremhaevede klassikere.
+    Niveauerne goer det finere, men en maerkedag uden et skrevet niveau skal
+    blive, hvor den var.
+    """
+    assert Milestone("a", "sec", "sec", 1, star=True).level == 1
+    assert Milestone("b", "sec", "sec", 1).level == 2
+    # Et skrevet niveau slaar stjernen.
+    assert Milestone("c", "sec", "sec", 1, star=True, tier=3).level == 3
+
+
+def test_the_levels_narrow_and_never_widen():
+    """Hvert trin op maa kun laegge til, aldrig bytte om.
+
+    Det er hele pointen med en skrue frem for seksogtredive flueben: skruer
+    man op, forsvinder intet af det, man allerede kunne se.
+    """
+    catalogue = all_milestones()
+    seen: set[str] = set()
+    counts = []
+    for cap in (1, 2, 3):
+        visible = {m.key for m in catalogue if m.level <= cap}
+        assert seen <= visible, "en mærkedag forsvandt, da niveauet gik op"
+        seen = visible
+        counts.append(len(visible))
+    assert counts[0] < counts[1] < counts[2], counts
+    assert counts[2] == len(catalogue)
+
+
+def test_the_first_level_stays_small_enough_to_read():
+    """Niveau 1 skal kunne overskues. Ellers loeser skruen ingenting."""
+    first = [m for m in all_milestones() if m.level == 1]
+    assert 40 <= len(first) <= 250, len(first)
+
+
+def test_the_computed_days_are_never_on_the_first_level():
+    """Ingen fejrer en repunitdag eller den 26. december i Jordens aar.
+
+    De er fundet af en regel, ikke bestemt af et menneske, og hoerer derfor
+    paa tredje niveau. Runde aarsdage er undtagelsen: de kan naa andet, men
+    kun naar dagen, de taeller fra, selv er én, alle kender.
+    """
+    for milestone in dp.pattern_milestones():
+        assert milestone.level == 3, milestone.key
+    for milestone in gy.geoyear_milestones():
+        assert milestone.level == 3, milestone.key
+    for milestone in round_anniversaries():
+        assert milestone.level in (2, 3), milestone.key
+
+
+def test_a_round_anniversary_sits_one_step_below_its_own_day():
+    """100-aaret for maanelandingen markeres; 25-aaret for et spil ikke."""
+    by_key = {m.key: m for m in load_days().milestones}
+    for anniversary in round_anniversaries():
+        stem = anniversary.key[len(PREFIX):].rsplit("_", 1)[0]
+        source = by_key.get(f"{PREFIX}{stem[len('anniv_'):]}")
+        if source is None:
+            continue
+        assert anniversary.level == (2 if source.level == 1 else 3), (
+            f"{anniversary.key} står på {anniversary.level}, "
+            f"men {source.key} står på {source.level}"
+        )
+
+
+def test_a_broken_level_in_a_data_file_is_reported():
+    for bad in ("0", "4", "to", -1, 2.5, None):
+        with pytest.raises(SpecError):
+            _tier({"tier": bad})
+
+
+def test_a_missing_level_means_the_middle():
+    assert _tier({}) == 2
+
+
+# -------------------------------------------------------------------------
+# Det Flyvende Spaghettimonster
+# -------------------------------------------------------------------------
+
+
+def test_the_pastafarian_calendar_covers_every_day_of_the_year():
+    """Kilden har en helligdag for HVER dag, og det er en del af vitsen.
+
+    Skudddagen er ikke med — kilden har 365, ikke 366.
+    """
+    days = [m for m in load_days().milestones if m.group == "fsm"]
+    assert len(days) == 365, len(days)
+    dates = {m.when for m in days}
+    assert len(dates) == 365, "to helligdage deler dato"
+    spec_days = {spec_in_year(parse_spec(m.when), 2027) for m in days}
+    assert len(spec_days) == 365
+    assert min(spec_days) == date(2027, 1, 1)
+    assert max(spec_days) == date(2027, 12, 31)
+
+
+def test_the_pastafarian_days_mostly_hide_on_the_third_level():
+    """Tre hundrede vitser maa ikke staa i vejen for resten af kataloget."""
+    days = [m for m in load_days().milestones if m.group == "fsm"]
+    assert sum(1 for m in days if m.level == 1) <= 10
+    assert sum(1 for m in days if m.level == 3) >= 330
+
+
+def test_the_hand_written_pastafarian_days_kept_their_own_words():
+    """De kanoniske helligdage har en rigtig forklaring, ikke standardlinjen."""
+    by_key = {m.key: m for m in load_days().milestones}
+    for key in ("fsm_pastover", "fsm_ramendan_start", "fsm_holiday",
+                "fsm_headgear", "fsm_henderson", "fsm_teapot"):
+        milestone = by_key[f"{PREFIX}{key}"]
+        assert "pastafarianske kalender" not in milestone.why_da, key
+        assert len(milestone.why_da) > 60, key
+
+
+def test_the_invented_worcestershire_day_says_that_it_is_invented():
+    """En opdigtet maerkedag maa aldrig kunne forveksles med en rigtig."""
+    by_key = {m.key: m for m in load_days().milestones}
+    day = by_key[f"{PREFIX}worcestershire"]
+    assert day.level == 3, "en dag, ingen holder, hører på tredje niveau"
+    assert "selv fundet på" in day.why_da
+    assert "made this one up" in day.why_en
+    # Den 29. februar findes kun i skudaar — det er hele pointen.
+    spec = parse_spec(day.when)
+    assert spec_in_year(spec, 2027) is None
+    assert spec_in_year(spec, 2028) == date(2028, 2, 29)

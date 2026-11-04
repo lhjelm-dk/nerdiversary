@@ -4,6 +4,7 @@
   "days": [
     {
       "key": "roy_batty",
+      "tier": 3,
       "when": "01-08",
       "da": "Roy Batty",
       "en": "Roy Batty",
@@ -13,6 +14,7 @@
     },
     {
       "key": "tintin",
+      "tier": 3,
       "when": "01-10",
       "da": "Tintin",
       "en": "Tintin",
@@ -22,6 +24,7 @@
     },
     {
       "key": "buffy",
+      "tier": 3,
       "when": "01-19",
       "da": "Buffy Summers",
       "en": "Buffy Summers",
@@ -31,6 +34,7 @@
     },
     {
       "key": "dean",
+      "tier": 3,
       "when": "01-24",
       "da": "Dean Winchester",
       "en": "Dean Winchester",
@@ -40,6 +44,7 @@
     },
     {
       "key": "pris",
+      "tier": 3,
       "when": "02-14",
       "da": "Pris",
       "en": "Pris",
@@ -49,6 +54,7 @@
     },
     {
       "key": "scully",
+      "tier": 3,
       "when": "02-23",
       "da": "Dana Scully",
       "en": "Dana Scully",
@@ -58,6 +64,7 @@
     },
     {
       "key": "number_six",
+      "tier": 3,
       "when": "03-19",
       "da": "Nummer Seks",
       "en": "Number Six",
@@ -67,6 +74,7 @@
     },
     {
       "key": "sam",
+      "tier": 3,
       "when": "05-02",
       "da": "Sam Winchester",
       "en": "Sam Winchester",
@@ -76,6 +84,7 @@
     },
     {
       "key": "katniss",
+      "tier": 3,
       "when": "05-08",
       "da": "Katniss Everdeen",
       "en": "Katniss Everdeen",
@@ -85,6 +94,7 @@
     },
     {
       "key": "donald",
+      "tier": 3,
       "when": "06-09",
       "da": "Anders And",
       "en": "Donald Duck",
@@ -93,6 +103,7 @@
     },
     {
       "key": "spongebob",
+      "tier": 3,
       "when": "07-14",
       "da": "SvampeBob Firkant",
       "en": "SpongeBob SquarePants",
@@ -102,6 +113,7 @@
     },
     {
       "key": "bugs",
+      "tier": 3,
       "when": "07-27",
       "da": "Snurre Snup",
       "en": "Bugs Bunny",
@@ -110,6 +122,7 @@
     },
     {
       "key": "harry",
+      "tier": 3,
       "when": "07-31",
       "da": "Harry Potter",
       "en": "Harry Potter",
@@ -119,6 +132,7 @@
     },
     {
       "key": "percy",
+      "tier": 3,
       "when": "08-18",
       "da": "Percy Jackson",
       "en": "Percy Jackson",
@@ -128,6 +142,7 @@
     },
     {
       "key": "rory",
+      "tier": 3,
       "when": "10-08",
       "da": "Rory Gilmore",
       "en": "Rory Gilmore",
@@ -137,6 +152,7 @@
     },
     {
       "key": "mulder",
+      "tier": 3,
       "when": "10-13",
       "da": "Fox Mulder",
       "en": "Fox Mulder",
@@ -146,6 +162,7 @@
     },
     {
       "key": "mickey",
+      "tier": 3,
       "when": "11-18",
       "da": "Mickey Mouse og Minnie Mouse",
       "en": "Mickey and Minnie Mouse",

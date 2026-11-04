@@ -70,6 +70,12 @@ _MEDIUM_WHY: dict[str, tuple[str, str]] = {
     "game": ("Udgivelsesdagen.", "The day it was released."),
     "tech": ("Dagen den kom på markedet.", "The day it went on sale."),
     "event": ("Det skete den dag.", "It happened on this day."),
+    "fsm": (
+        "Fra den pastafarianske kalender, som har en helligdag for hver "
+        "eneste dag i året.",
+        "From the Pastafarian calendar, which has a holy day for every "
+        "single day of the year.",
+    ),
 }
 
 
@@ -366,7 +372,31 @@ def _milestone(group: str, entry: dict, source: str) -> Milestone:
         label_en=en,
         why_da=why_da,
         why_en=why_en,
+        tier=_tier(entry),
     )
+
+
+def _tier(entry: dict) -> int:
+    """Niveauet: 1, 2 eller 3. Se ``Milestone.level``.
+
+    Staar det ikke i posten, er dagen niveau 2 — der er nogen, der holder
+    den, men ikke mange. Det er den rigtige standard for en skreven festdag:
+    havde ingen holdt den, var den ikke blevet skrevet ned, og havde alle
+    holdt den, var den ikke skaev.
+    """
+    raw = entry.get("tier", 2)
+    # Et komma gemt i niveauet maa ikke rundes stiltiende ned: 2,5 bliver
+    # til 2 med ``int()``, og saa staar der noget andet i filen, end der
+    # virker. Derfor tages kun et heltal eller en streng af cifre.
+    if isinstance(raw, bool) or not isinstance(raw, (int, str)):
+        raise SpecError(f"niveauet {raw!r} er ikke et helt tal")
+    if isinstance(raw, str):
+        if not raw.strip().isdigit():
+            raise SpecError(f"niveauet {raw!r} er ikke et helt tal")
+        raw = int(raw)
+    if raw not in (1, 2, 3):
+        raise SpecError(f"niveauet skal være 1, 2 eller 3 — ikke {raw!r}")
+    return raw
 
 
 def load_dir(directory: Path | str = DATA_DIR) -> Import:
@@ -473,6 +503,11 @@ def round_anniversaries() -> tuple[Milestone, ...]:
                     label_en=f"{years} years on · {milestone.label_en}",
                     why_da=f"{years} år efter den {date_da}. {milestone.why_da}",
                     why_en=f"{years} years after {date_en}. {milestone.why_en}",
+                    # En rund aarsdag er altid et hak mindre kendt end dagen
+                    # selv: 100-aaret for maanelandingen bliver markeret,
+                    # 25-aaret for en spiludgivelse ikke. Kun aarsdagene for
+                    # de dage, alle kender, naar op paa andet niveau.
+                    tier=2 if milestone.level == 1 else 3,
                 )
             )
     return tuple(out)

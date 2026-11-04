@@ -4,6 +4,7 @@
   "days": [
     {
       "key": "starwars",
+      "tier": 1,
       "when": "05-04",
       "da": "Star Wars-dagen",
       "en": "Star Wars Day",
@@ -21,6 +22,7 @@
     },
     {
       "key": "towel",
+      "tier": 1,
       "when": "05-25",
       "da": "Håndklædedagen",
       "en": "Towel Day",
@@ -47,6 +49,7 @@
     },
     {
       "key": "groundhog",
+      "tier": 1,
       "when": "02-02",
       "da": "Murmeldyrets dag",
       "en": "Groundhog Day",
@@ -55,6 +58,7 @@
     },
     {
       "key": "bttf",
+      "tier": 1,
       "when": "10-21",
       "da": "Back to the Future-dagen",
       "en": "Back to the Future Day",
@@ -64,6 +68,7 @@
     },
     {
       "key": "hobbit",
+      "tier": 1,
       "when": "09-22",
       "da": "Hobbitdagen",
       "en": "Hobbit Day",
@@ -103,6 +108,7 @@
     },
     {
       "key": "startrek",
+      "tier": 1,
       "when": "09-08",
       "da": "Star Trek-dagen",
       "en": "Star Trek Day",
@@ -131,6 +137,7 @@
     },
     {
       "key": "mario",
+      "tier": 1,
       "when": "03-10",
       "da": "Mario-dagen",
       "en": "MAR10 Day",
@@ -140,6 +147,7 @@
     },
     {
       "key": "pirate",
+      "tier": 1,
       "when": "09-19",
       "da": "Tal som en pirat-dagen",
       "en": "Talk Like a Pirate Day",
@@ -149,6 +157,7 @@
     },
     {
       "key": "batman",
+      "tier": 1,
       "when": "nth:09:sat:3",
       "da": "Batman-dagen",
       "en": "Batman Day",

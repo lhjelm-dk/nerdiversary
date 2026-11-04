@@ -4,6 +4,7 @@
   "days": [
     {
       "key": "pi",
+      "tier": 1,
       "when": "03-14 13:59",
       "da": "Pi-dagen",
       "en": "Pi Day",
@@ -52,6 +53,7 @@
     },
     {
       "key": "newtonmas",
+      "tier": 1,
       "when": "12-25",
       "da": "Newtonmas",
       "en": "Newtonmas",
@@ -70,6 +72,7 @@
     },
     {
       "key": "darwin",
+      "tier": 1,
       "when": "02-12",
       "da": "Darwin Day",
       "en": "Darwin Day",
@@ -88,6 +91,7 @@
     },
     {
       "key": "dna",
+      "tier": 1,
       "when": "04-25",
       "da": "DNA-dagen",
       "en": "DNA Day",
@@ -106,6 +110,7 @@
     },
     {
       "key": "moon_day",
+      "tier": 1,
       "when": "07-20",
       "da": "Månedagen",
       "en": "Moon Day",

@@ -64,6 +64,31 @@ class Milestone:
     star: bool = False          # Fremhaevet klassiker.
     live: bool = False          # Faar et levende sekundur i appen.
     silent: bool = False        # Skal staa helt uden forklaring, ogsaa automatisk.
+    # Hvor mange der holder dagen. Nul betyder "ikke sat" — se ``level``.
+    tier: int = 0
+
+    @property
+    def level(self) -> int:
+        """Niveau 1, 2 eller 3: hvor mange der holder dagen.
+
+        Det er med vilje ikke en smagsdom om, hvor god dagen er, men en
+        egenskab ved dagen selv — om der findes en fest, en by, en forening:
+
+        1. **Den kender folk.** Du kan naevne den i en frokostpause, og
+           nogen nikker. Star Wars-dagen, pi-dagen, gigasekundet.
+        2. **Den har et rigtigt publikum, bare et lille et.** Nogen moeder
+           faktisk op. Haandklaededagen, mol-dagen, mosesnorkling.
+        3. **Den findes naesten kun paa en liste.** Ingen fejrer den, men
+           den er sjov at vide. Repunitdage, de fleste figurfoedselsdage.
+
+        Er niveauet ikke sat, afgoer stjernen det: en fremhaevet klassiker
+        er niveau 1, og alt andet lander paa midten. Det er noejagtig den
+        inddeling, appen havde i forvejen — niveauerne goer den bare
+        finere, og ingen maerkedag skifter plads, fordi feltet blev til.
+        """
+        if self.tier:
+            return self.tier
+        return 1 if self.star else 2
 
     @property
     def estimate(self) -> bool:
@@ -107,6 +132,10 @@ GROUPS: tuple[Group, ...] = (
     # en helligdag opstaaet af en hoerefejl, en by der kaster appelsiner, en
     # dag for at mislykkes.
     Group("wacky", "Verdens skæve dage", "The world's odd days", "🤪",
+          default_on=False),
+    # Kilden har en helligdag for hver eneste dag i aaret. Her staar de
+    # kanoniske og et udvalg af resten.
+    Group("fsm", "Pastafarianske helligdage", "Pastafarian holy days", "🍝",
           default_on=False),
     Group("fiction", "Fiktive helligdage", "Fictional holidays", "🎬",
           default_on=False),
@@ -323,14 +352,23 @@ BUNDLES: tuple[Bundle, ...] = (
         groups=("wacky",),
     ),
     Bundle(
+        "fsmbundle", "Spaghettimonsteret", "The Spaghetti Monster", "🍝",
+        "Hele den pastafarianske kalender — og den har en helligdag for hver "
+        "eneste dag i året. Pastover, Ramendan, dørslaget og 361 til.",
+        "The entire Pastafarian calendar — and it has a holy day for every "
+        "single day of the year. Pastover, Ramendan, the colander and 361 "
+        "more.",
+        groups=("fsm",),
+    ),
+    Bundle(
         "partybundle", "Hele festkalenderen", "The whole party calendar", "🎉",
         "Alle de skrevne festdage på én gang: popkultur, dansk, fiktion, "
         "figurer, science fiction, videnskab og nørdehistorie.",
         "Every written celebration day at once: pop culture, Danish, fiction, "
         "characters, science fiction, science and nerd history.",
-        groups=("pop", "dkday", "wacky", "techday", "birthdays", "fiction",
-                "chars", "scifi", "sciday", "scihist", "nerdhist", "geoyear",
-                "anniversary"),
+        groups=("pop", "dkday", "wacky", "fsm", "techday", "birthdays",
+                "fiction", "chars", "scifi", "sciday", "scihist", "nerdhist",
+                "geoyear", "anniversary"),
     ),
 )
 

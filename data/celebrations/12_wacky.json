@@ -4,6 +4,7 @@
   "days": [
     {
       "key": "waffle",
+      "tier": 1,
       "when": "03-25",
       "da": "Vaffeldagen",
       "en": "Waffle Day",
@@ -12,6 +13,7 @@
     },
     {
       "key": "hveder",
+      "tier": 1,
       "when": "easter:+25",
       "da": "Store hvededag",
       "en": "Great Wheat Bun Day",
@@ -28,6 +30,7 @@
     },
     {
       "key": "cheeseroll",
+      "tier": 1,
       "when": "nth:05:mon:-1",
       "da": "Osterullet ned ad Cooper's Hill",
       "en": "Cooper's Hill Cheese Rolling",
@@ -71,6 +74,7 @@
     },
     {
       "key": "beerday",
+      "tier": 1,
       "when": "03-01",
       "da": "Øldagen",
       "en": "Beer Day",
@@ -88,6 +92,7 @@
     },
     {
       "key": "tomatina",
+      "tier": 1,
       "when": "nth:08:wed:-1",
       "da": "La Tomatina",
       "en": "La Tomatina",
@@ -112,7 +117,18 @@
       "why_en": "England, Shrove Tuesday. 415 yards with a frying pan in hand, and the pancake must be tossed at both the start and the finish. The tradition is dated to 1445. Since 1950 the town of Liberal, Kansas has run the same race on the same day and compared times."
     },
     {
+      "key": "baltic_porter",
+      "tier": 2,
+      "when": "nth:01:sat:3",
+      "da": "Baltisk porter-dagen",
+      "en": "Baltic Porter Day",
+      "why_da": "Tredje lørdag i januar, fundet på i Polen i 2015 og holdt hvert år siden 2016 — i 2024 i femten lande på tre kontinenter. Ølstilen er en engelsk porter, der rejste rundt om Østersøen og blev gæret koldt som en lager i stedet. I Polen har man i generationer bare kaldt den porter; ordet „baltisk“ kom først til i 1990'erne, og det var en englænder, der fandt på det.",
+      "why_en": "The third Saturday in January, dreamt up in Poland in 2015 and kept every year since 2016 — in 2024 across fifteen countries on three continents. The style is an English porter that travelled round the Baltic and ended up fermented cold like a lager instead. In Poland it has simply been called porter for generations; the word “Baltic” only arrived in the 1990s, and an Englishman coined it.",
+      "since": 2016
+    },
+    {
       "key": "uphellyaa",
+      "tier": 1,
       "when": "nth:01:tue:-1",
       "da": "Up Helly Aa",
       "en": "Up Helly Aa",
@@ -134,6 +150,15 @@
       "en": "World Bog Snorkelling Championships",
       "why_da": "Llanwrtyd Wells i Wales, den mindste by i Storbritannien. To længder à 55 meter gennem en rende gravet i en tørvemose, med snorkel og svømmefødder. Almindelig svømning er forbudt — man må kun bruge fødderne.",
       "why_en": "Llanwrtyd Wells in Wales, the smallest town in Britain. Two lengths of a 60-yard trench cut through a peat bog, in a snorkel and flippers. Conventional swimming strokes are banned — you may only use your feet."
+    },
+    {
+      "key": "worcestershire",
+      "tier": 3,
+      "when": "02-29",
+      "da": "Tjek-holdbarheden-på-din-worcestershiresauce-dagen",
+      "en": "Check the Date on Your Worcestershire Sauce Day",
+      "why_da": "Den her dag har jeg selv fundet på — der findes ingen rigtig af slagsen, og det burde der. Datoen er valgt: en uåbnet flaske holder tre til fem år, og en skuddag kommer hvert fjerde. Dagen rammer altså cirka én gang pr. flaske. At den i forvejen er en dag, de fleste år glemmer at have, gør den kun mere passende. Og saucen selv skylder sin eksistens til, at ingen kiggede: den første portion blev kaldt udrikkelig og stillet i en kælder, hvor den stod glemt i halvandet år, inden nogen smagte igen.",
+      "why_en": "I made this one up — there is no real day of the kind, and there ought to be. The date is chosen: an unopened bottle keeps three to five years, and a leap day comes round every four. So the day falls roughly once per bottle. That it is already a day most years forget to have only makes it fitter. And the sauce owes its existence to nobody checking: the first batch was declared undrinkable and left in a cellar, where it stood forgotten for eighteen months before anyone tasted it again."
     },
     {
       "key": "pepero",
