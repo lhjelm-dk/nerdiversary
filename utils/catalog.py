@@ -137,6 +137,11 @@ GROUPS: tuple[Group, ...] = (
     # kanoniske og et udvalg af resten.
     Group("fsm", "Pastafarianske helligdage", "Pastafarian holy days", "🍝",
           default_on=False),
+    # De dage fra samme kalender, der handler udtrykkeligt om sex eller
+    # afsondringer. De er ikke kasseret — kalenderen er kun hel med dem —
+    # men de staar for sig selv, saa appen kan aabnes foran andre.
+    Group("fsm18", "Spaghettimonsteret, uden bluser",
+          "The Spaghetti Monster, unabridged", "🔞", default_on=False),
     Group("fiction", "Fiktive helligdage", "Fictional holidays", "🎬",
           default_on=False),
     Group("chars", "Figurernes fødselsdage", "Characters' birthdays", "🦸",
@@ -353,12 +358,22 @@ BUNDLES: tuple[Bundle, ...] = (
     ),
     Bundle(
         "fsmbundle", "Spaghettimonsteret", "The Spaghetti Monster", "🍝",
-        "Hele den pastafarianske kalender — og den har en helligdag for hver "
-        "eneste dag i året. Pastover, Ramendan, dørslaget og 361 til.",
-        "The entire Pastafarian calendar — and it has a holy day for every "
-        "single day of the year. Pastover, Ramendan, the colander and 361 "
-        "more.",
+        "Den pastafarianske kalender, som har en helligdag for hver eneste "
+        "dag i året. Pastover, Ramendan, dørslaget og 333 til. De groveste "
+        "ligger i deres egen pakke ved siden af.",
+        "The Pastafarian calendar, which has a holy day for every single day "
+        "of the year. Pastover, Ramendan, the colander and 333 more. The "
+        "blunt ones sit in their own bundle alongside.",
         groups=("fsm",),
+    ),
+    Bundle(
+        "fsm18bundle", "Spaghettimonsteret, uden bluser",
+        "The Spaghetti Monster, unabridged", "🔞",
+        "De otteogtyve dage fra samme kalender, der ikke bør stå på skærmen, "
+        "når nogen kigger med. Kun hvis du selv beder om dem.",
+        "The twenty-eight days from the same calendar that should not be on "
+        "screen when somebody is looking over your shoulder. Only if you ask.",
+        groups=("fsm18",),
     ),
     Bundle(
         "partybundle", "Hele festkalenderen", "The whole party calendar", "🎉",

@@ -1316,12 +1316,17 @@ def test_a_missing_level_means_the_middle():
 # -------------------------------------------------------------------------
 
 
+FSM_GROUPS = ("fsm", "fsm18")
+
+
 def test_the_pastafarian_calendar_covers_every_day_of_the_year():
     """Kilden har en helligdag for HVER dag, og det er en del af vitsen.
 
-    Skudddagen er ikke med — kilden har 365, ikke 366.
+    De to grupper skal laegges sammen: de groveste dage staar for sig selv,
+    men de er stadig en del af aaret. Skuddagen er ikke med — kilden har
+    365, ikke 366.
     """
-    days = [m for m in load_days().milestones if m.group == "fsm"]
+    days = [m for m in load_days().milestones if m.group in FSM_GROUPS]
     assert len(days) == 365, len(days)
     dates = {m.when for m in days}
     assert len(dates) == 365, "to helligdage deler dato"
@@ -1331,9 +1336,30 @@ def test_the_pastafarian_calendar_covers_every_day_of_the_year():
     assert max(spec_days) == date(2027, 12, 31)
 
 
+def test_the_blunt_pastafarian_days_stand_on_their_own():
+    """Appen skal kunne aabnes, mens nogen kigger med.
+
+    Dagene er ikke kasseret — kalenderen er kun hel med dem — men de staar
+    i en gruppe, der er slaaet fra, og som den almindelige pastafarianske
+    pakke og hele festkalenderen ikke naevner.
+    """
+    blunt = [m for m in load_days().milestones if m.group == "fsm18"]
+    assert len(blunt) >= 25, len(blunt)
+    assert all(m.level == 3 for m in blunt)
+
+    assert GROUPS_BY_KEY["fsm18"].default_on is False
+
+    for key in ("fsmbundle", "partybundle"):
+        assert "fsm18" not in BUNDLES_BY_KEY[key].groups, key
+
+    # Og ingen af dem maa vaere blevet tilbage i den almindelige gruppe.
+    ordinary = {m.key for m in load_days().milestones if m.group == "fsm"}
+    assert not ordinary & {m.key for m in blunt}
+
+
 def test_the_pastafarian_days_mostly_hide_on_the_third_level():
     """Tre hundrede vitser maa ikke staa i vejen for resten af kataloget."""
-    days = [m for m in load_days().milestones if m.group == "fsm"]
+    days = [m for m in load_days().milestones if m.group in FSM_GROUPS]
     assert sum(1 for m in days if m.level == 1) <= 10
     assert sum(1 for m in days if m.level == 3) >= 330
 

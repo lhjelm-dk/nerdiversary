@@ -1,0 +1,202 @@
+{
+  "group": "fsm18",
+  "note": "Samme kalender, men de dage, der handler udtrykkeligt om sex, koensdele eller afsondringer — og den ene om at fejre et doedsfald. De er ikke kasseret, for kalenderen er kun hel med dem; de staar bare i en gruppe, der er slaaet fra, og som ingen af de almindelige pakker naevner. Listen staar i ADULT i tools/fetch_pastafarian.py og kan aendres dér.",
+  "days": [
+    {
+      "key": "fsm_cunning_linguine_day",
+      "tier": 3,
+      "when": "01-23",
+      "name": "Cunning Linguine Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_self_stimulation_day",
+      "tier": 3,
+      "when": "02-06",
+      "name": "Self Stimulation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_get_naked_day",
+      "tier": 3,
+      "when": "02-08",
+      "name": "Get Naked Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_erotic_dancing_day",
+      "tier": 3,
+      "when": "03-09",
+      "name": "Erotic Dancing Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_kinky_underwear_day",
+      "tier": 3,
+      "when": "03-16",
+      "name": "Kinky Underwear Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_celebrate_hitlers_death_day",
+      "tier": 3,
+      "when": "04-30",
+      "name": "Celebrate Hitlers Death Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_pussy_appreciation_day",
+      "tier": 3,
+      "when": "05-03",
+      "name": "Pussy Appreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_buttocks_day",
+      "tier": 3,
+      "when": "05-13",
+      "name": "Buttocks Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_advanced_tree_hugging_arborial_sex_day",
+      "tier": 3,
+      "when": "05-16",
+      "name": "Advanced Tree Hugging & Arborial Sex Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_find_a_new_fetish_day",
+      "tier": 3,
+      "when": "05-20",
+      "name": "Find a New Fetish Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_consensual_bum_biting_day",
+      "tier": 3,
+      "when": "05-29",
+      "name": "Consensual Bum Biting Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_sexual_fantasy_day",
+      "tier": 3,
+      "when": "06-24",
+      "name": "Sexual Fantasy Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_seamen_day",
+      "tier": 3,
+      "when": "06-25",
+      "name": "Seamen Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_intergalactic_intercourse_day",
+      "tier": 3,
+      "when": "08-07",
+      "name": "Intergalactic Intercourse Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_self_love_day",
+      "tier": 3,
+      "when": "08-13",
+      "name": "Self Love Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_condom_day",
+      "tier": 3,
+      "when": "08-15",
+      "name": "Condom Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_nipple_appreciation_day",
+      "tier": 3,
+      "when": "09-02",
+      "name": "Nipple Appreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_vicarious_sex_day",
+      "tier": 3,
+      "when": "09-08",
+      "name": "Vicarious Sex Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_nakedness_appreciation_day",
+      "tier": 3,
+      "when": "09-12",
+      "name": "Nakedness Appreciation Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_rub_things_on_your_lover_day",
+      "tier": 3,
+      "when": "10-10",
+      "name": "Rub Things on Your Lover Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_bottom_nibbling_day",
+      "tier": 3,
+      "when": "10-17",
+      "name": "Bottom Nibbling Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_intergalactic_peeing_competition",
+      "tier": 3,
+      "when": "10-22",
+      "name": "Intergalactic Peeing Competition",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_strip_for_your_lover_day",
+      "tier": 3,
+      "when": "10-23",
+      "name": "Strip for your Lover Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_extra_kinky_day",
+      "tier": 3,
+      "when": "10-28",
+      "name": "Extra Kinky Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_furry_animal_fondling_day",
+      "tier": 3,
+      "when": "10-30",
+      "name": "Furry Animal Fondling Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_oral_sex_day",
+      "tier": 3,
+      "when": "11-05",
+      "name": "Oral Sex Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_vibrator_day",
+      "tier": 3,
+      "when": "12-03",
+      "name": "Vibrator Day",
+      "medium": "fsm"
+    },
+    {
+      "key": "fsm_orgies_for_world_peace_day",
+      "tier": 3,
+      "when": "12-24",
+      "name": "Orgies For World Peace Day",
+      "medium": "fsm"
+    }
+  ]
+}

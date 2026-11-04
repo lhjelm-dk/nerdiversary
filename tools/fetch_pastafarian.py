@@ -103,8 +103,50 @@ def parse(text: str) -> dict[str, str]:
     return {md: name for md, (_, name) in sorted(best.items())}
 
 
-def build(names: dict[str, str]) -> dict:
+# De dage, der ikke skal staa i en kalender, man aabner foran andre.
+#
+# Grænsen er trukket ét sted og ikke efter smag: en dag ryger herover, hvis
+# den handler udtrykkeligt om sex, koensdele eller afsondringer — eller, i
+# ét tilfaelde, om at fejre et doedsfald. Antydninger og underbukser bliver,
+# hvor de er. Dagene bliver IKKE kasseret; de faar deres egen gruppe, som
+# er slaaet fra, og som ingen af de almindelige pakker naevner.
+ADULT: frozenset[str] = frozenset({
+    "01-23",  # Cunning Linguine Day
+    "02-06",  # Self Stimulation Day
+    "02-08",  # Get Naked Day
+    "03-09",  # Erotic Dancing Day
+    "03-16",  # Kinky Underwear Day
+    "04-30",  # Celebrate Hitlers Death Day
+    "05-03",  # Pussy Appreciation Day
+    "05-13",  # Buttocks Day
+    "05-16",  # Advanced Tree Hugging & Arborial Sex Day
+    "05-20",  # Find a New Fetish Day
+    "05-29",  # Consensual Bum Biting Day
+    "06-24",  # Sexual Fantasy Day
+    "06-25",  # Seamen Day
+    "08-07",  # Intergalactic Intercourse Day
+    "08-13",  # Self Love Day
+    "08-15",  # Condom Day
+    "09-02",  # Nipple Appreciation Day
+    "09-08",  # Vicarious Sex Day
+    "09-12",  # Nakedness Appreciation Day
+    "10-10",  # Rub Things on Your Lover Day
+    "10-17",  # Bottom Nibbling Day
+    "10-22",  # Intergalactic Peeing Competition
+    "10-23",  # Strip for your Lover Day
+    "10-28",  # Extra Kinky Day
+    "10-30",  # Furry Animal Fondling Day
+    "11-05",  # Oral Sex Day
+    "12-03",  # Vibrator Day
+    "12-24",  # Orgies For World Peace Day
+})
+
+ADULT_OUT = OUT.with_name("13b_pastafarian_adult.json")
+
+
+def build(names: dict[str, str]) -> tuple[dict, dict]:
     days: list[dict] = []
+    adult: list[dict] = []
     used: set[str] = set()
     for month_day, raw in names.items():
         clean = _DECOR.sub("", raw).strip()
@@ -126,8 +168,8 @@ def build(names: dict[str, str]) -> dict:
             entry = {"key": key, "tier": 3, "when": month_day,
                      "name": clean, "medium": "fsm"}
         used.add(entry["key"])
-        days.append(entry)
-    return {
+        (adult if month_day in ADULT else days).append(entry)
+    main_file = {
         "group": "fsm",
         "note": (
             "Det Flyvende Spaghettimonsters kalender, hentet fra "
@@ -135,10 +177,24 @@ def build(names: dict[str, str]) -> dict:
             "har en helligdag for HVER eneste dag i aaret, og det er en del "
             "af vitsen. De kanoniske helligdage og et udvalg af de bedste "
             "har faaet en forklaring skrevet i haanden og staar paa niveau "
-            "1 og 2; resten baerer kildens eget navn og staar paa niveau 3."
+            "1 og 2; resten baerer kildens eget navn og staar paa niveau 3. "
+            "De groveste staar i 13b_pastafarian_adult.json."
         ),
         "days": days,
     }
+    adult_file = {
+        "group": "fsm18",
+        "note": (
+            "Samme kalender, men de dage, der handler udtrykkeligt om sex, "
+            "koensdele eller afsondringer — og den ene om at fejre et "
+            "doedsfald. De er ikke kasseret, for kalenderen er kun hel med "
+            "dem; de staar bare i en gruppe, der er slaaet fra, og som ingen "
+            "af de almindelige pakker naevner. Listen staar i ADULT i "
+            "tools/fetch_pastafarian.py og kan aendres dér."
+        ),
+        "days": adult,
+    }
+    return main_file, adult_file
 
 
 def main() -> int:
@@ -151,12 +207,24 @@ def main() -> int:
     if len(names) < 360:
         print(f"kun {len(names)} dage i feedet — det ser forkert ud", file=sys.stderr)
         return 1
-    OUT.write_text(
-        json.dumps(build(names), ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
-    )
+    missing = ADULT - set(names)
+    if missing:
+        # En dag, der er flyttet eller omdoebt i kilden, maa ikke stille og
+        # roligt dukke op igen i den almindelige gruppe.
+        print(f"dage i ADULT, der ikke findes i feedet: {sorted(missing)}", file=sys.stderr)
+        return 1
+
+    main_file, adult_file = build(names)
+    for path, doc in ((OUT, main_file), (ADULT_OUT, adult_file)):
+        path.write_text(
+            json.dumps(doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        )
     written = sum(1 for md in names if md in WRITTEN)
-    print(f"{len(names)} dage skrevet til {OUT.name} — {written} med egen forklaring")
+    print(
+        f"{len(names)} dage i alt — {len(main_file['days'])} i {OUT.name} "
+        f"({written} med egen forklaring) og "
+        f"{len(adult_file['days'])} i {ADULT_OUT.name}"
+    )
     return 0
 
 

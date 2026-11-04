@@ -1,6 +1,6 @@
 {
   "group": "fsm",
-  "note": "Det Flyvende Spaghettimonsters kalender, hentet fra pastafariancalendar.com med tools/fetch_pastafarian.py. Kilden har en helligdag for HVER eneste dag i aaret, og det er en del af vitsen. De kanoniske helligdage og et udvalg af de bedste har faaet en forklaring skrevet i haanden og staar paa niveau 1 og 2; resten baerer kildens eget navn og staar paa niveau 3.",
+  "note": "Det Flyvende Spaghettimonsters kalender, hentet fra pastafariancalendar.com med tools/fetch_pastafarian.py. Kilden har en helligdag for HVER eneste dag i aaret, og det er en del af vitsen. De kanoniske helligdage og et udvalg af de bedste har faaet en forklaring skrevet i haanden og staar paa niveau 1 og 2; resten baerer kildens eget navn og staar paa niveau 3. De groveste staar i 13b_pastafarian_adult.json.",
   "days": [
     {
       "key": "fsm_another_friggin_year_day",
@@ -170,13 +170,6 @@
       "medium": "fsm"
     },
     {
-      "key": "fsm_cunning_linguine_day",
-      "tier": 3,
-      "when": "01-23",
-      "name": "Cunning Linguine Day",
-      "medium": "fsm"
-    },
-    {
       "key": "fsm_invent_a_god",
       "tier": 3,
       "when": "01-24",
@@ -272,24 +265,10 @@
       "medium": "fsm"
     },
     {
-      "key": "fsm_self_stimulation_day",
-      "tier": 3,
-      "when": "02-06",
-      "name": "Self Stimulation Day",
-      "medium": "fsm"
-    },
-    {
       "key": "fsm_just_another_day_day",
       "tier": 3,
       "when": "02-07",
       "name": "Just Another Day Day",
-      "medium": "fsm"
-    },
-    {
-      "key": "fsm_get_naked_day",
-      "tier": 3,
-      "when": "02-08",
-      "name": "Get Naked Day",
       "medium": "fsm"
     },
     {
@@ -492,13 +471,6 @@
       "medium": "fsm"
     },
     {
-      "key": "fsm_erotic_dancing_day",
-      "tier": 3,
-      "when": "03-09",
-      "name": "Erotic Dancing Day",
-      "medium": "fsm"
-    },
-    {
       "key": "fsm_wooden_leg_polishing_day",
       "tier": 3,
       "when": "03-10",
@@ -540,13 +512,6 @@
       "tier": 3,
       "when": "03-15",
       "name": "Aardvark Appreciation Day",
-      "medium": "fsm"
-    },
-    {
-      "key": "fsm_kinky_underwear_day",
-      "tier": 3,
-      "when": "03-16",
-      "name": "Kinky Underwear Day",
       "medium": "fsm"
     },
     {
@@ -865,13 +830,6 @@
       "medium": "fsm"
     },
     {
-      "key": "fsm_celebrate_hitlers_death_day",
-      "tier": 3,
-      "when": "04-30",
-      "name": "Celebrate Hitlers Death Day",
-      "medium": "fsm"
-    },
-    {
       "key": "fsm_no_pants_day",
       "tier": 3,
       "when": "05-01",
@@ -883,13 +841,6 @@
       "tier": 3,
       "when": "05-02",
       "name": "Scurvy Awareness Day",
-      "medium": "fsm"
-    },
-    {
-      "key": "fsm_pussy_appreciation_day",
-      "tier": 3,
-      "when": "05-03",
-      "name": "Pussy Appreciation Day",
       "medium": "fsm"
     },
     {
@@ -958,13 +909,6 @@
       "medium": "fsm"
     },
     {
-      "key": "fsm_buttocks_day",
-      "tier": 3,
-      "when": "05-13",
-      "name": "Buttocks Day",
-      "medium": "fsm"
-    },
-    {
       "key": "fsm_monty_python_day",
       "tier": 3,
       "when": "05-14",
@@ -979,13 +923,6 @@
       "en": "Welcome Time Travellers Yesterday",
       "why_da": "Modtagelsen blev holdt dagen før. Enhver rigtig tidsrejsende kunne have nået den.",
       "why_en": "The reception was held the day before. Any genuine time traveller could have made it."
-    },
-    {
-      "key": "fsm_advanced_tree_hugging_arborial_sex_day",
-      "tier": 3,
-      "when": "05-16",
-      "name": "Advanced Tree Hugging & Arborial Sex Day",
-      "medium": "fsm"
     },
     {
       "key": "fsm_single_malt_whisky_day",
@@ -1008,13 +945,6 @@
       "tier": 3,
       "when": "05-19",
       "name": "World Pasta Championship Day",
-      "medium": "fsm"
-    },
-    {
-      "key": "fsm_find_a_new_fetish_day",
-      "tier": 3,
-      "when": "05-20",
-      "name": "Find a New Fetish Day",
       "medium": "fsm"
     },
     {
@@ -1071,13 +1001,6 @@
       "tier": 3,
       "when": "05-28",
       "name": "Amnesty International Day",
-      "medium": "fsm"
-    },
-    {
-      "key": "fsm_consensual_bum_biting_day",
-      "tier": 3,
-      "when": "05-29",
-      "name": "Consensual Bum Biting Day",
       "medium": "fsm"
     },
     {
@@ -1255,20 +1178,6 @@
       "tier": 3,
       "when": "06-23",
       "name": "Parrot Pondering Day",
-      "medium": "fsm"
-    },
-    {
-      "key": "fsm_sexual_fantasy_day",
-      "tier": 3,
-      "when": "06-24",
-      "name": "Sexual Fantasy Day",
-      "medium": "fsm"
-    },
-    {
-      "key": "fsm_seamen_day",
-      "tier": 3,
-      "when": "06-25",
-      "name": "Seamen Day",
       "medium": "fsm"
     },
     {
@@ -1570,13 +1479,6 @@
       "medium": "fsm"
     },
     {
-      "key": "fsm_intergalactic_intercourse_day",
-      "tier": 3,
-      "when": "08-07",
-      "name": "Intergalactic Intercourse Day",
-      "medium": "fsm"
-    },
-    {
       "key": "fsm_international_goat_day",
       "tier": 3,
       "when": "08-08",
@@ -1612,24 +1514,10 @@
       "medium": "fsm"
     },
     {
-      "key": "fsm_self_love_day",
-      "tier": 3,
-      "when": "08-13",
-      "name": "Self Love Day",
-      "medium": "fsm"
-    },
-    {
       "key": "fsm_think_about_infinity_day",
       "tier": 3,
       "when": "08-14",
       "name": "Think about Infinity Day",
-      "medium": "fsm"
-    },
-    {
-      "key": "fsm_condom_day",
-      "tier": 3,
-      "when": "08-15",
-      "name": "Condom Day",
       "medium": "fsm"
     },
     {
@@ -1755,13 +1643,6 @@
       "medium": "fsm"
     },
     {
-      "key": "fsm_nipple_appreciation_day",
-      "tier": 3,
-      "when": "09-02",
-      "name": "Nipple Appreciation Day",
-      "medium": "fsm"
-    },
-    {
       "key": "fsm_say_no_to_haggis_day",
       "tier": 3,
       "when": "09-03",
@@ -1799,13 +1680,6 @@
       "why_en": "“If the one in January was a dud.” Neither has happened yet, but the year is not over."
     },
     {
-      "key": "fsm_vicarious_sex_day",
-      "tier": 3,
-      "when": "09-08",
-      "name": "Vicarious Sex Day",
-      "medium": "fsm"
-    },
-    {
       "key": "fsm_be_irritatingly_nice_day",
       "tier": 3,
       "when": "09-09",
@@ -1827,13 +1701,6 @@
       "en": "Tinfoil Hat Day",
       "why_da": "En gruppe fra MIT målte i 2005 faktisk efter, om sølvpapirshatte skærmer mod radiobølger. Svaret var nej: ved visse frekvenser forstærker hatten dem.",
       "why_en": "A group at MIT actually measured in 2005 whether tinfoil hats shield against radio waves. The answer was no: at certain frequencies the hat amplifies them."
-    },
-    {
-      "key": "fsm_nakedness_appreciation_day",
-      "tier": 3,
-      "when": "09-12",
-      "name": "Nakedness Appreciation Day",
-      "medium": "fsm"
     },
     {
       "key": "fsm_mosquito_avoidance_day",
@@ -2025,13 +1892,6 @@
       "medium": "fsm"
     },
     {
-      "key": "fsm_rub_things_on_your_lover_day",
-      "tier": 3,
-      "when": "10-10",
-      "name": "Rub Things on Your Lover Day",
-      "medium": "fsm"
-    },
-    {
       "key": "fsm_no_falling_down_day",
       "tier": 3,
       "when": "10-11",
@@ -2076,13 +1936,6 @@
       "medium": "fsm"
     },
     {
-      "key": "fsm_bottom_nibbling_day",
-      "tier": 3,
-      "when": "10-17",
-      "name": "Bottom Nibbling Day",
-      "medium": "fsm"
-    },
-    {
       "key": "fsm_irony",
       "tier": 3,
       "when": "10-18",
@@ -2110,20 +1963,6 @@
       "tier": 3,
       "when": "10-21",
       "name": "Try Thinking Day",
-      "medium": "fsm"
-    },
-    {
-      "key": "fsm_intergalactic_peeing_competition",
-      "tier": 3,
-      "when": "10-22",
-      "name": "Intergalactic Peeing Competition",
-      "medium": "fsm"
-    },
-    {
-      "key": "fsm_strip_for_your_lover_day",
-      "tier": 3,
-      "when": "10-23",
-      "name": "Strip for your Lover Day",
       "medium": "fsm"
     },
     {
@@ -2159,24 +1998,10 @@
       "why_en": "The Ministry of Silly Walks, Monty Python, 1970. John Cleese has since said the sketch was unpleasant to film, because it hurt his legs."
     },
     {
-      "key": "fsm_extra_kinky_day",
-      "tier": 3,
-      "when": "10-28",
-      "name": "Extra Kinky Day",
-      "medium": "fsm"
-    },
-    {
       "key": "fsm_nut_day",
       "tier": 3,
       "when": "10-29",
       "name": "Nut Day",
-      "medium": "fsm"
-    },
-    {
-      "key": "fsm_furry_animal_fondling_day",
-      "tier": 3,
-      "when": "10-30",
-      "name": "Furry Animal Fondling Day",
       "medium": "fsm"
     },
     {
@@ -2212,13 +2037,6 @@
       "tier": 3,
       "when": "11-04",
       "name": "Listen to Sea Shanties and Dance Like A Pirate",
-      "medium": "fsm"
-    },
-    {
-      "key": "fsm_oral_sex_day",
-      "tier": 3,
-      "when": "11-05",
-      "name": "Oral Sex Day",
       "medium": "fsm"
     },
     {
@@ -2415,13 +2233,6 @@
       "medium": "fsm"
     },
     {
-      "key": "fsm_vibrator_day",
-      "tier": 3,
-      "when": "12-03",
-      "name": "Vibrator Day",
-      "medium": "fsm"
-    },
-    {
       "key": "fsm_chocolate_anything_day",
       "tier": 3,
       "when": "12-04",
@@ -2561,13 +2372,6 @@
       "tier": 3,
       "when": "12-23",
       "name": "Festivus",
-      "medium": "fsm"
-    },
-    {
-      "key": "fsm_orgies_for_world_peace_day",
-      "tier": 3,
-      "when": "12-24",
-      "name": "Orgies For World Peace Day",
       "medium": "fsm"
     },
     {
