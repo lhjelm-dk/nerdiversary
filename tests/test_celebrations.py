@@ -27,6 +27,7 @@ from utils.celebrations import (
     PREFIX,
     SpecError,
     celebration_milestones,
+    easter_sunday,
     format_note,
     load_days,
     load_dir,
@@ -1079,3 +1080,133 @@ def test_no_widget_gets_both_a_value_and_a_key():
         found = re.search(r"\bkey=([^,\n]+)", body)
         if found and found.group(1).strip() in managed:
             assert "value=" not in body, f"både value og key: {body[:90]!r}"
+
+
+# -------------------------------------------------------------------------
+# Paaskereglen
+# -------------------------------------------------------------------------
+#
+# En hel familie af skaeve dage haenger i paaskens snor og flytter sig med
+# den: store bededag er den fjerde fredag efter paaske, Corpus Christi den
+# tresindstyvende dag efter, luilak dagen foer pinse, fastelavnstirsdag
+# syvogfyrre dage foer. De kan ikke skrives som en fast dato.
+
+
+def test_easter_sunday_matches_the_church_calendar():
+    """Computus efterproevet mod kendte paaskesoendage.
+
+    Datoerne staar i kirkeaaret og er ikke til forhandling. De spaender over
+    fem hundrede aar, saa baade aarhundredereglerne og de to yderpunkter —
+    22. marts og 25. april — bliver proevet af.
+    """
+    known = {
+        1818: date(1818, 3, 22),     # Tidligst mulige paaske.
+        1943: date(1943, 4, 25),     # Senest mulige paaske.
+        2020: date(2020, 4, 12),
+        2021: date(2021, 4, 4),
+        2022: date(2022, 4, 17),
+        2023: date(2023, 4, 9),
+        2024: date(2024, 3, 31),
+        2025: date(2025, 4, 20),
+        2026: date(2026, 4, 5),
+        2027: date(2027, 3, 28),
+        2028: date(2028, 4, 16),
+        2029: date(2029, 4, 1),
+        2030: date(2030, 4, 21),
+        2038: date(2038, 4, 25),
+        2285: date(2285, 3, 22),
+    }
+    for year, expected in known.items():
+        assert easter_sunday(year) == expected, f"påsken {year}"
+
+
+def test_easter_always_falls_on_a_sunday():
+    for year in range(1900, 2200):
+        assert easter_sunday(year).weekday() == 6, f"påsken {year} er ikke en søndag"
+
+
+def test_easter_stays_between_22_march_and_25_april():
+    """Paaskens vindue er fast — den kan ikke falde uden for det."""
+    for year in range(1583, 2500):
+        day = easter_sunday(year)
+        assert date(year, 3, 22) <= day <= date(year, 4, 25), f"påsken {year}"
+
+
+def test_the_easter_rule_lands_on_the_right_days():
+    """De fire forskydninger, datafilerne bruger, proevet mod kendte aar.
+
+    Kilderne er uafhaengige af koden her: store bededag 2023 var den 5. maj
+    (den sidste som helligdag), Kristi legemsfest 2026 er 4. juni, pinse
+    2026 er 24. maj, og fastelavnstirsdag 2027 er 9. februar.
+    """
+    cases = [
+        ("easter:+26", 2023, date(2023, 5, 5)),    # Store bededag.
+        ("easter:+25", 2023, date(2023, 5, 4)),    # Hvedeaften.
+        ("easter:+60", 2026, date(2026, 6, 4)),    # Kristi legemsfest.
+        ("easter:+63", 2026, date(2026, 6, 7)),    # El Colacho.
+        ("easter:+63", 2027, date(2027, 5, 30)),
+        ("easter:+49", 2026, date(2026, 5, 24)),   # Pinsedag.
+        ("easter:+48", 2026, date(2026, 5, 23)),   # Luilak.
+        ("easter:-47", 2026, date(2026, 2, 17)),   # Fastelavnstirsdag.
+        ("easter:-47", 2027, date(2027, 2, 9)),
+    ]
+    for text, year, expected in cases:
+        assert spec_in_year(parse_spec(text), year) == expected, f"{text} i {year}"
+
+
+def test_shrove_tuesday_can_land_on_29_february():
+    """Pandekagelsesloebet i Olney faldt paa en skuddag i 2028.
+
+    Det er ikke en kuriositet, men en kontrol af, at paaskereglen regner i
+    rigtige datoer og ikke i dagnumre: 16. april minus syvogfyrre dage er
+    den 29. februar, netop fordi 2028 er et skudaar.
+    """
+    assert spec_in_year(parse_spec("easter:-47"), 2028) == date(2028, 2, 29)
+
+
+def test_a_broken_easter_rule_is_reported_and_not_swallowed():
+    for text in ("easter:", "easter:x", "easter:+500", "easter:-61"):
+        with pytest.raises(SpecError):
+            parse_spec(text)
+
+
+def test_an_easter_day_gets_no_date_format_note():
+    """"Femogtyve dage efter paaske" kan ikke laeses i amerikansk orden."""
+    assert format_note(parse_spec("easter:+25")) == ("", "")
+
+
+# -------------------------------------------------------------------------
+# Verdens skaeve dage
+# -------------------------------------------------------------------------
+
+
+def test_the_wacky_group_is_loaded_and_every_day_can_be_placed():
+    days = [m for m in load_days().milestones if m.group == "wacky"]
+    assert len(days) >= 18, "gruppen er skrumpet"
+    profile = profile_at()
+    now = datetime(2026, 11, 4, 12, tzinfo=timezone.utc)
+    for milestone in days:
+        assert milestone_instant(milestone, profile, now) is not None, milestone.key
+
+
+def test_the_wacky_days_land_where_the_sources_say():
+    """Datoer, efterproevet mod kilder uden for programmet.
+
+    Up Helly Aa 2027 er den 26. januar, osterullet den 31. maj, La Tomatina
+    den 25. august, abernes buffet den 29. november 2026 og El Colacho den
+    30. maj 2027.
+    """
+    by_key = {m.key: m for m in load_days().milestones if m.group == "wacky"}
+    expected = {
+        "cel_uphellyaa": (2027, date(2027, 1, 26)),
+        "cel_cheeseroll": (2027, date(2027, 5, 31)),
+        "cel_tomatina": (2027, date(2027, 8, 25)),
+        "cel_monkey": (2026, date(2026, 11, 29)),
+        "cel_colacho": (2027, date(2027, 5, 30)),
+        "cel_oranges": (2027, date(2027, 2, 9)),
+        "cel_radish": (2026, date(2026, 12, 23)),
+        "cel_beerday": (2027, date(2027, 3, 1)),
+    }
+    for key, (year, day) in expected.items():
+        assert key in by_key, f"{key} mangler i gruppen"
+        assert spec_in_year(parse_spec(by_key[key].when), year) == day, key

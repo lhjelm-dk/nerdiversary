@@ -1,0 +1,155 @@
+{
+  "group": "wacky",
+  "note": "Skaeve maerkedage fra hele verden. Kravet for at staa her er ikke, at dagen er stor, men at den er maerkelig: en helligdag, der opstod af en hoerefejl, en by der kaster appelsiner efter hinanden, en dag for at mislykkes. Rene festdage uden skaevhed hoerer i 01_pop.json.",
+  "days": [
+    {
+      "key": "waffle",
+      "when": "03-25",
+      "da": "Vaffeldagen",
+      "en": "Waffle Day",
+      "why_da": "Norge og Sverige. Dagen hed Vårfrudagen — Marias bebudelse — men udtalt hurtigt lyder det som våffeldagen. Hele helligdagen er en hørefejl, der har holdt i århundreder, og nu spises der vafler.",
+      "why_en": "Norway and Sweden. The day was Vårfrudagen — the Annunciation — but said quickly it sounds like våffeldagen. The whole holiday is a mishearing that stuck for centuries, and now there are waffles."
+    },
+    {
+      "key": "hveder",
+      "when": "easter:+25",
+      "da": "Store hvededag",
+      "en": "Great Wheat Bun Day",
+      "why_da": "Danmark, aftenen før store bededag. Al handel var forbudt på selve dagen, så hvederne blev købt dagen før og lunet. Siden 2024 er store bededag ikke længere en helligdag — så det her er aftenen før en dag, der ikke er der mere, og hvederne holder stadig.",
+      "why_en": "Denmark, the evening before Store Bededag. All trading was banned on the day itself, so the buns were bought the day before and warmed through. Since 2024 Store Bededag is no longer a holiday — so this is the eve of a day that is no longer there, and the buns carry on regardless."
+    },
+    {
+      "key": "colacho",
+      "when": "easter:+63",
+      "da": "El Colacho",
+      "en": "El Colacho",
+      "why_da": "Castrillo de Murcia i Spanien, søndagen efter Kristi legemsfest. Mænd klædt ud som djævelen springer hen over nyfødte, der ligger på madrasser i gaden. Det skal rense børnene for arvesynd. Kirken har bedt dem lade være; byen springer videre.",
+      "why_en": "Castrillo de Murcia in Spain, the Sunday after Corpus Christi. Men dressed as the devil leap over newborns laid on mattresses in the street. It is meant to clear the babies of original sin. The Church has asked them to stop; the village goes on jumping."
+    },
+    {
+      "key": "cheeseroll",
+      "when": "nth:05:mon:-1",
+      "da": "Osterullet ned ad Cooper's Hill",
+      "en": "Cooper's Hill Cheese Rolling",
+      "why_da": "Gloucestershire i England. En fire kilos ost sendes ned ad en bakke så stejl, at man ikke kan løbe ned ad den, og folk kaster sig efter den. Osten når omkring 110 km/t og bliver aldrig indhentet, så i praksis er det en konkurrence i at falde hurtigst.",
+      "why_en": "Gloucestershire, England. A nine-pound wheel of Double Gloucester is sent down a hill too steep to run down, and people throw themselves after it. The cheese reaches about 70 mph and is never caught, so in practice it is a contest in falling fastest."
+    },
+    {
+      "key": "failure",
+      "when": "10-13",
+      "da": "Dagen for at mislykkes",
+      "en": "International Day for Failure",
+      "why_da": "Fundet på af studerende ved Aalto Universitet i Finland i 2010. Pointen er at fortælle om sine fiaskoer højt, fordi frygten for at fejle holdt folk fra at prøve noget. Dagen bredte sig til en håndfuld lande — hvilket på en måde også er dens eget bevis.",
+      "why_en": "Dreamt up by students at Aalto University in Finland in 2010. The point is to tell the story of your failures out loud, because the fear of failing was stopping people from trying anything. The day spread to a handful of countries — which is, in a way, its own proof.",
+      "since": 2010
+    },
+    {
+      "key": "morse_name",
+      "when": "01-11",
+      "da": "Lær dit navn i morse-dagen",
+      "en": "Learn Your Name in Morse Code Day",
+      "why_da": "Datoen er ikke tilfældig: den 11. januar 1838 viste Samuel Morse og Alfred Vail telegrafen frem offentligt for første gang. Hvem af dem der fandt på selve koden, er der stadig strid om — og derfor står dagen på demonstrationen, som de lavede sammen.",
+      "why_en": "The date is no accident: on 11 January 1838 Samuel Morse and Alfred Vail gave the first public demonstration of the telegraph. Which of them devised the code itself is still disputed — so the day marks the demonstration, which they did together."
+    },
+    {
+      "key": "radish",
+      "when": "12-23",
+      "da": "Radisernes nat",
+      "en": "Night of the Radishes",
+      "why_da": "Oaxaca i Mexico. Siden 1897 er kæmperadiser blevet skåret ud i hele scener — julekrybber, aztekiske guder, hele landsbyer — og stillet op på torvet. Hele udstillingen er rådnet inden for et døgn, og det er en del af pointen.",
+      "why_en": "Oaxaca, Mexico. Since 1897 oversized radishes have been carved into whole scenes — nativities, Aztec gods, entire villages — and set out in the square. The entire exhibition has rotted within a day, and that is part of the point.",
+      "since": 1897
+    },
+    {
+      "key": "monkey",
+      "when": "nth:11:sun:-1",
+      "da": "Abernes buffet",
+      "en": "Monkey Buffet Festival",
+      "why_da": "Lopburi i Thailand. Byens makakaber får dækket op med flere tons frugt og grønt foran et tempelruin fra 1200-tallet. En hotelejer fandt på det i 1989. Aberne bestyrer i forvejen byen; den her dag er mest en officiel anerkendelse.",
+      "why_en": "Lopburi, Thailand. The town's macaques are served a couple of tonnes of fruit and vegetables in front of a 13th-century temple ruin. A local hotelier started it in 1989. The monkeys already run the town; the day is mostly an official acknowledgement.",
+      "since": 1989
+    },
+    {
+      "key": "beerday",
+      "when": "03-01",
+      "da": "Øldagen",
+      "en": "Beer Day",
+      "why_da": "Island. Øl var forbudt fra 1915 til den 1. marts 1989 — mens spiritus var lovligt det meste af tiden. Logikken var, at øl ville friste til hverdagsdrikkeri. Forbuddet holdt i 74 år, og dagen det faldt, drikkes der øl.",
+      "why_en": "Iceland. Beer was banned from 1915 until 1 March 1989 — while spirits were legal for most of that time. The reasoning was that beer would tempt people into everyday drinking. The ban lasted 74 years, and the day it fell is spent drinking beer.",
+      "since": 1989
+    },
+    {
+      "key": "enfarinats",
+      "when": "12-28",
+      "da": "Els Enfarinats",
+      "en": "Els Enfarinats",
+      "why_da": "Ibi i Spanien, på de uskyldige børns dag — den spanske pendant til 1. april. En gruppe iscenesætter et statskup, overtager byen for en dag og udsteder tåbelige bøder. Modstanden består af mel, æg og brandslukkere. Pengene går til velgørenhed.",
+      "why_en": "Ibi, Spain, on Holy Innocents' Day — the Spanish equivalent of April Fools'. A group stages a coup, takes over the town for a day and issues absurd fines. The opposition fights back with flour, eggs and fire extinguishers. The money goes to charity."
+    },
+    {
+      "key": "tomatina",
+      "when": "nth:08:wed:-1",
+      "da": "La Tomatina",
+      "en": "La Tomatina",
+      "why_da": "Buñol i Spanien. En time, hvor tyve tusind mennesker kaster modne tomater efter hinanden. Det begyndte som et slagsmål blandt nogle unge i 1945 og er aldrig holdt op igen. Reglen er, at tomaten skal mases først, så den ikke gør ondt.",
+      "why_en": "Buñol, Spain. One hour in which twenty thousand people throw ripe tomatoes at each other. It began as a scuffle among some youngsters in 1945 and has never stopped since. The rule is that you must squash the tomato first, so it does not hurt.",
+      "since": 1945
+    },
+    {
+      "key": "oranges",
+      "when": "easter:-47",
+      "da": "Appelsinslaget i Ivrea",
+      "en": "Battle of the Oranges",
+      "why_da": "Ivrea i Norditalien, de tre dage op til fastelavnstirsdag. Hold til fods kaster appelsiner efter hold på hestevogne. Det forestiller et oprør mod en tyran i middelalderen. Tilskuere med rød hue er fredede — nogenlunde.",
+      "why_en": "Ivrea in northern Italy, the three days up to Shrove Tuesday. Teams on foot hurl oranges at teams on horse-drawn carts. It re-enacts a medieval revolt against a tyrant. Onlookers in a red cap are off limits — more or less."
+    },
+    {
+      "key": "pancakerace",
+      "when": "easter:-47",
+      "da": "Pandekageløbet i Olney",
+      "en": "Olney Pancake Race",
+      "why_da": "England, fastelavnstirsdag. 415 meter med en stegepande i hånden, og pandekagen skal vendes både ved start og i mål. Traditionen regnes tilbage til 1445. Siden 1950 har byen Liberal i Kansas løbet det samme løb samme dag og sammenlignet tider.",
+      "why_en": "England, Shrove Tuesday. 415 yards with a frying pan in hand, and the pancake must be tossed at both the start and the finish. The tradition is dated to 1445. Since 1950 the town of Liberal, Kansas has run the same race on the same day and compared times."
+    },
+    {
+      "key": "uphellyaa",
+      "when": "nth:01:tue:-1",
+      "da": "Up Helly Aa",
+      "en": "Up Helly Aa",
+      "why_da": "Lerwick på Shetlandsøerne. Op mod tusind fakkelbærere går gennem byen og brænder et fuldstørrelses vikingeskib af, som de selv har bygget i løbet af året. Derefter danses der til morgen i elleve forskellige haller. Festen er fra 1880'erne, ikke fra vikingetiden.",
+      "why_en": "Lerwick in Shetland. Up to a thousand torchbearers march through town and burn a full-size replica longship they built themselves over the year. Then they dance until morning across eleven different halls. The festival is Victorian, not Viking."
+    },
+    {
+      "key": "luilak",
+      "when": "easter:+48",
+      "da": "Luilak",
+      "en": "Luilak",
+      "why_da": "Holland, lørdagen før pinse. Børn står op før daggry og larmer så meget de kan, for at vække alle andre. Den, der stadig sover, får navnet dovendyr hængende på sig. I Zaan-egnen satte man endda møllerne i en særlig larmende gænge.",
+      "why_en": "The Netherlands, the Saturday before Pentecost. Children get up before dawn and make as much noise as they possibly can, to wake everybody else. Anyone still asleep is branded a lazybones. In the Zaan region they even set the windmills to a specially noisy setting."
+    },
+    {
+      "key": "bogsnorkel",
+      "when": "nth:08:mon:-1",
+      "da": "VM i mosesnorkling",
+      "en": "World Bog Snorkelling Championships",
+      "why_da": "Llanwrtyd Wells i Wales, den mindste by i Storbritannien. To længder à 55 meter gennem en rende gravet i en tørvemose, med snorkel og svømmefødder. Almindelig svømning er forbudt — man må kun bruge fødderne.",
+      "why_en": "Llanwrtyd Wells in Wales, the smallest town in Britain. Two lengths of a 60-yard trench cut through a peat bog, in a snorkel and flippers. Conventional swimming strokes are banned — you may only use your feet."
+    },
+    {
+      "key": "pepero",
+      "when": "11-11",
+      "da": "Pepero-dagen",
+      "en": "Pepero Day",
+      "why_da": "Sydkorea. 11.11 ser ud som fire kiksestænger ved siden af hinanden, og så forærer man hinanden chokoladeovertrukne Pepero-stænger. Japan har sin egen 11.11 med Pocky. Hele helligdagen hviler på, at datoen ligner varen.",
+      "why_en": "South Korea. 11/11 looks like four biscuit sticks side by side, so people give each other chocolate-dipped Pepero sticks. Japan has its own 11/11 with Pocky. The entire holiday rests on the date resembling the product."
+    },
+    {
+      "key": "blackday",
+      "when": "04-14",
+      "da": "Den sorte dag",
+      "en": "Black Day",
+      "why_da": "Sydkorea. To måneder efter valentinsdag og en måned efter den hvide dag mødes de, der ikke fik noget nogen af gangene, klæder sig i sort og spiser jajangmyeon — nudler i sort bønnesauce. Det er en helligdag for at være single, og den tages ikke tungt.",
+      "why_en": "South Korea. Two months after Valentine's Day and one month after White Day, those who got nothing either time meet up, dress in black and eat jajangmyeon — noodles in black bean sauce. It is a holiday for being single, and nobody takes it heavily."
+    }
+  ]
+}

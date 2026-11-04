@@ -18,9 +18,16 @@ Fire slags datoangivelser:
 ``"05-04"``            hvert aar den 4. maj
 ``"11-05 20:59"``      hvert aar, paa klokkeslaettet
 ``"nth:11:fri:1"``     den foerste fredag i november (``-1`` = den sidste)
+``"easter:+26"``       seksogtyve dage efter paaskesoendag
 ``"1969-07-21"``       én gang, den dag
 ``"1955-11-12 22:04"`` én gang, paa minuttet
 ====================== ==================================================
+
+``easter`` er der, fordi en hel familie af dage haenger i paaskens snor og
+derfor flytter sig med den: store bededag er den fjerde fredag efter paaske,
+Corpus Christi den tresindstyvende dag efter, luilak dagen foer pinse. De kan
+ikke skrives som en fast dato, og uden dem maatte de dage staa i kalenderen
+som et forkert tal.
 
 De tilbagevendende dage vises som den naeste gang, de falder. Alt andet ville
 drukne kalenderen: hver aarlig dag ville ellers optraede hundrede gange i et
@@ -75,7 +82,8 @@ class DaySpec:
     """En datoangivelse, oversat til noget, der kan regnes paa.
 
     ``kind`` er ``"annual"`` (samme dato hvert aar), ``"nth"`` (den n'te
-    ugedag i en maaned) eller ``"once"`` (én bestemt dag i historien).
+    ugedag i en maaned), ``"easter"`` (saa og saa mange dage fra paaske)
+    eller ``"once"`` (én bestemt dag i historien).
     """
 
     kind: str
@@ -86,6 +94,7 @@ class DaySpec:
     nth: int = 0
     hour: int = 0
     minute: int = 0
+    offset: int = 0      # Dage fra paaskesoendag, kun for ``kind="easter"``.
 
     @property
     def recurring(self) -> bool:
@@ -133,6 +142,15 @@ def parse_spec(text: str) -> DaySpec:
             raise SpecError(f"{nth} er ikke en brugbar ugedag i måneden ({text!r})")
         return DaySpec("nth", month, weekday=weekday, nth=nth, hour=hour, minute=minute)
 
+    if body.startswith("easter:"):
+        offset = _as_int(body[len("easter:"):], text)
+        # Graensen er sat, saa en tastefejl ikke kan sende en dag over i et
+        # andet aar. Den rummer alt fra fastelavn til Kristi legemsfest med
+        # rigelig luft: fra fyrre dage foer til hundrede efter.
+        if not -60 <= offset <= 100:
+            raise SpecError(f"{offset} dage fra påske er for langt væk ({text!r})")
+        return DaySpec("easter", 0, offset=offset, hour=hour, minute=minute)
+
     fields = body.split("-")
     if len(fields) == 2:
         month, day = (_as_int(field, text) for field in fields)
@@ -148,11 +166,38 @@ def parse_spec(text: str) -> DaySpec:
         _valid_day(year, month, day, text)
         return DaySpec("once", month, day=day, year=year, hour=hour, minute=minute)
 
-    raise SpecError(f"{text!r} er hverken MM-DD, ÅÅÅÅ-MM-DD eller en nth-regel")
+    raise SpecError(
+        f"{text!r} er hverken MM-DD, ÅÅÅÅ-MM-DD, en nth-regel eller en easter-regel"
+    )
+
+
+def easter_sunday(year: int) -> date:
+    """Paaskesoendag i den gregorianske kalender.
+
+    Den anonyme gregorianske computus. Paasken er den foerste soendag efter
+    den foerste fuldmaane paa eller efter den 21. marts — men "fuldmaane" er
+    her en kirkelig tabel og ikke himlen, saa den regnes og observeres ikke.
+    """
+    a = year % 19
+    b, c = divmod(year, 100)
+    d, e = divmod(b, 4)
+    g = (8 * b + 13) // 25
+    h = (19 * a + b - d - g + 15) % 30
+    i, k = divmod(c, 4)
+    el = (32 + 2 * e + 2 * i - h - k) % 7
+    m = (a + 11 * h + 19 * el) // 433
+    month = (h + el - 7 * m + 90) // 25
+    day = (h + el - 7 * m + 33 * month + 19) % 32
+    return date(year, month, day)
 
 
 def _as_int(text: str, whole: str) -> int:
     stripped = text.strip()
+    if not stripped:
+        # Et tomt tal skal sige fra som alt andet skaevt i en datafil. Uden
+        # det her slap en IndexError forbi SpecError, og saa ville hele
+        # indlaesningen vaelte i stedet for at lade posten gaa i Skipped.
+        raise SpecError(f"der mangler et tal i {whole!r}")
     sign = -1 if stripped.startswith("-") else 1
     digits = stripped[1:] if stripped[0] in "+-" else stripped
     if not digits.isdigit():
@@ -182,6 +227,9 @@ def spec_in_year(spec: DaySpec, year: int) -> date | None:
             return date(year, spec.month, spec.day)
         except ValueError:
             return None
+
+    if spec.kind == "easter":
+        return easter_sunday(year) + timedelta(days=spec.offset)
 
     first = date(year, spec.month, 1)
     if spec.nth > 0:
@@ -251,8 +299,10 @@ def format_note(spec: DaySpec) -> tuple[str, str]:
     En dato med en dag over den tolvte kan ikke laeses forkert, og saa staar
     der ingenting. Det er flertallet, og en note paa dem alle ville kun stoeje.
     """
-    if spec.kind == "nth":
-        return "", ""        # "foerste fredag i november" kan ikke vendes om.
+    if spec.kind in ("nth", "easter"):
+        # "Foerste fredag i november" og "fire dage efter paaske" har ingen
+        # talrepraesentation, der kan vendes om.
+        return "", ""
 
     day, month = spec.day, spec.month
     written = f"{day:02d}.{month:02d}"

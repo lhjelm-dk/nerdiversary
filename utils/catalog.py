@@ -103,6 +103,11 @@ GROUPS: tuple[Group, ...] = (
           default_on=False),
     Group("dkday", "Danske skæve dage", "Danish odd days", "🇩🇰",
           default_on=False),
+    # Kravet for at staa her er ikke, at dagen er stor, men at den er skaev:
+    # en helligdag opstaaet af en hoerefejl, en by der kaster appelsiner, en
+    # dag for at mislykkes.
+    Group("wacky", "Verdens skæve dage", "The world's odd days", "🤪",
+          default_on=False),
     Group("fiction", "Fiktive helligdage", "Fictional holidays", "🎬",
           default_on=False),
     Group("chars", "Figurernes fødselsdage", "Characters' birthdays", "🦸",
@@ -310,13 +315,21 @@ BUNDLES: tuple[Bundle, ...] = (
                 "sqrtday", "fibday", "product", "sumday"),
     ),
     Bundle(
+        "wackybundle", "Verden rundt på det skæve", "Round the world sideways", "🤪",
+        "Vaffeldagen, der opstod af en hørefejl. Byen, der kaster appelsiner "
+        "efter hinanden. Osten, ingen kan indhente. Dagen for at mislykkes.",
+        "The waffle holiday that began as a mishearing. The town that pelts "
+        "itself with oranges. The cheese nobody can catch. The day for failing.",
+        groups=("wacky",),
+    ),
+    Bundle(
         "partybundle", "Hele festkalenderen", "The whole party calendar", "🎉",
         "Alle de skrevne festdage på én gang: popkultur, dansk, fiktion, "
         "figurer, science fiction, videnskab og nørdehistorie.",
         "Every written celebration day at once: pop culture, Danish, fiction, "
         "characters, science fiction, science and nerd history.",
-        groups=("pop", "dkday", "techday", "birthdays", "fiction", "chars",
-                "scifi", "sciday", "scihist", "nerdhist", "geoyear",
+        groups=("pop", "dkday", "wacky", "techday", "birthdays", "fiction",
+                "chars", "scifi", "sciday", "scihist", "nerdhist", "geoyear",
                 "anniversary"),
     ),
 )
