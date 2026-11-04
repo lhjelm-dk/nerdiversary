@@ -416,22 +416,21 @@ T: dict[str, dict[str, str]] = {
         "en": "Cuts by time rather than by kind, and draws on the whole "
               "catalogue.",
     },
-    "select_more": {
-        "da": "… og {n} til i gruppen. Knapperne ovenfor tager dem alle; "
-              "søgefeltet finder de enkelte.",
-        "en": "… and {n} more in this group. The buttons above take all of "
-              "them; the search box finds individual ones.",
-    },
-    "select_capped": {
-        "da": "Viser de første {shown} af {total} fund. Skriv mere for at "
-              "indsnævre.",
-        "en": "Showing the first {shown} of {total} matches. Type more to "
-              "narrow it down.",
-    },
     "select_all": {"da": "Vælg alle", "en": "Select all"},
     "clear_all": {"da": "Ryd alle", "en": "Clear all"},
-    "group_all": {"da": "Alle i gruppen", "en": "All in group"},
-    "group_none": {"da": "Ingen", "en": "None"},
+    "select_groups": {"da": "Afgræns til grupper", "en": "Narrow to groups"},
+    "select_groups_placeholder": {
+        "da": "Alle grupper",
+        "en": "All groups",
+    },
+    "select_showing": {
+        "da": "{n} af {total} mærkedage i tabellen — {picked} af dem valgt.",
+        "en": "{n} of {total} milestones in the table — {picked} of them on.",
+    },
+    "shown_all": {"da": "Vælg alle i tabellen", "en": "Select all in table"},
+    "shown_none": {"da": "Fravælg alle i tabellen", "en": "Clear all in table"},
+    "col_pick": {"da": "Med", "en": "On"},
+    "col_why": {"da": "Forklaring", "en": "Explanation"},
     "selected_count": {
         "da": "{n} af {total} mærkedage valgt",
         "en": "{n} of {total} milestones selected",
@@ -447,20 +446,12 @@ T: dict[str, dict[str, str]] = {
         "en": "Searches the name, the explanation, the group and the raw number "
               "without thousands separators.",
     },
-    "select_matches": {
-        "da": "{n} af {total} mærkedage matcher — de står samlet nedenfor, "
-              "uanset hvilken gruppe de hører til.",
-        "en": "{n} of {total} milestones match — they are listed together "
-              "below, whatever group they belong to.",
-    },
     "select_no_matches": {
-        "da": "Ingen mærkedage matcher. Søgningen leder i navn, forklaring, "
-              "gruppe og tal.",
-        "en": "No milestones match. The search looks at the name, the "
-              "explanation, the group and the number.",
+        "da": "Ingen mærkedage tilbage efter de to filtre. Søgningen leder i "
+              "navn, forklaring, gruppe og tal.",
+        "en": "No milestones left after the two filters. The search looks at "
+              "the name, the explanation, the group and the number.",
     },
-    "match_all": {"da": "Slå alle fundne til", "en": "Turn all matches on"},
-    "match_none": {"da": "Slå alle fundne fra", "en": "Turn all matches off"},
     # --- Jer to ---
     "pair_section": {"da": "Jer to", "en": "The two of you"},
     "pair_hint": {

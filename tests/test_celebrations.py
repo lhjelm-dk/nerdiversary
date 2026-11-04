@@ -855,37 +855,6 @@ def test_a_pattern_label_carries_the_whole_year():
     assert '04.03.2005' in label
 
 
-def test_the_app_never_draws_a_checkbox_for_every_milestone():
-    """Streamlit laver ét widget pr. felt, og kataloget er paa knap tre tusind.
-
-    Tegnes de alle, bliver koerslen aldrig faerdig, og saa naar ingen vaerdi
-    fra brugerfladen frem til serveren: sproget kan ikke skiftes, pakke-
-    knapperne svarer ikke, og intet af det giver en fejlbesked. Det skete, da
-    festdagsgrupperne kom frem i listen, og det tog lang tid at finde, fordi
-    appen saa helt rask ud.
-
-    Maalt: 2.772 felter = doed brugerflade. 1.041 = alt virker.
-    """
-    import re
-
-    source = (pathlib.Path(__file__).resolve().parent.parent / "streamlit_app.py").read_text(
-        encoding="utf-8"
-    )
-    budget = int(re.search(r"CHECKBOX_BUDGET = (\d+)", source).group(1))
-    limit = int(re.search(r"GROUP_CHECKBOX_LIMIT = (\d+)", source).group(1))
-    assert budget <= 900, "budgettet er sat for tæt på grænsen"
-
-    # Samme regnestykke som brugerfladen: grupperne traekker paa budgettet i
-    # raekkefoelge, og ingen enkelt gruppe tager mere end loftet.
-    by_group = milestones_by_group()
-    left, drawn = budget, 0
-    for group in GROUPS:
-        take = min(limit, len(by_group.get(group.key, [])), left)
-        left -= take
-        drawn += take
-    assert drawn <= budget, f"brugerfladen ville tegne {drawn} afkrydsningsfelter"
-
-
 # -------------------------------------------------------------------------
 # De runde aarsdage
 # -------------------------------------------------------------------------
@@ -988,25 +957,125 @@ def test_nothing_counts_from_a_year_that_has_not_happened_yet():
         assert build_label(milestone, profile_at(), "da", early) == milestone.label_da
 
 
+def test_the_app_never_draws_a_widget_per_milestone():
+    """Streamlit laver ét widget pr. kald, og kataloget er paa knap to tusind.
+
+    Tegnes der et felt pr. maerkedag, bliver koerslen aldrig faerdig, og saa
+    naar ingen vaerdi fra brugerfladen frem til serveren: sproget kan ikke
+    skiftes, pakkeknapperne svarer ikke, og intet af det giver en
+    fejlbesked. Det skete, da festdagsgrupperne kom frem i listen, og det
+    tog lang tid at finde, fordi appen saa helt rask ud.
+
+    Maalt: 2.772 felter = doed brugerflade. 1.041 = alt virker. Med 705
+    felter var Vaelg-fanen 5.324 af sidens 6.209 elementer, og appen var
+    sytten sekunder om at aabne.
+
+    Kuren er, at kataloget overhovedet ikke loebes igennem med en widget i
+    kroppen. Hele valget ligger i én ``st.data_editor``, som er én widget,
+    uanset hvor mange raekker den har. Denne test holder oeje med, at det
+    bliver ved at vaere saadan: de loekker, der laver widgets, maa kun loebe
+    over noget, der er lille og bliver lille — pakkerne, grupperne, hylderne
+    — og aldrig over maerkedagene selv.
+    """
+    import ast
+
+    source = (
+        pathlib.Path(__file__).resolve().parent.parent / "streamlit_app.py"
+    ).read_text(encoding="utf-8")
+    tree = ast.parse(source)
+
+    widgets = {
+        "button", "checkbox", "radio", "selectbox", "multiselect", "slider",
+        "text_input", "number_input", "toggle", "date_input", "time_input",
+        "data_editor", "download_button", "segmented_control", "metric",
+        "text_area", "pills", "feedback", "color_picker", "file_uploader",
+    }
+    # Det, en widget-loekke gerne maa loebe over. Hver af dem har en kendt,
+    # lille oevre graense: to hylder, seksten pakker i en hylde, fire
+    # levetidsfaktorer. Listen er kort med vilje — skal der en ny slags
+    # loekke til, skal man skrive den her og dermed sige, hvad dens loft er.
+    allowed = {"shelves.items()", "shelf", "lt.FACTORS"}
+
+    def direct(node: ast.AST) -> bool:
+        """Et kald som ``st.button(...)`` eller ``rows.button(...)``."""
+        for inner in ast.walk(node):
+            if isinstance(inner, ast.Call) and isinstance(inner.func, ast.Attribute):
+                if inner.func.attr in widgets:
+                    return True
+        return False
+
+    # En hjaelpefunktion, der selv laver en widget, taeller med. Uden det
+    # her slap den gamle hylde igennem: loekken kaldte ``draw_checkbox``, og
+    # saa stod der ikke et ``st.checkbox`` i selve loekkens krop.
+    helpers = {
+        node.name
+        for node in tree.body
+        if isinstance(node, ast.FunctionDef) and direct(node)
+    }
+
+    def makes_widget(node: ast.AST) -> bool:
+        if direct(node):
+            return True
+        for inner in ast.walk(node):
+            if isinstance(inner, ast.Call) and isinstance(inner.func, ast.Name):
+                if inner.func.id in helpers:
+                    return True
+        return False
+
+    offenders = []
+    for node in ast.walk(tree):
+        if not isinstance(node, (ast.For, ast.comprehension)):
+            continue
+        body = node.body if isinstance(node, ast.For) else []
+        if not any(makes_widget(statement) for statement in body):
+            continue
+        over = ast.unparse(node.iter)
+        if over not in allowed:
+            offenders.append((getattr(node, "lineno", 0), over))
+
+    assert not offenders, (
+        "en løkke med en widget i kroppen løber over noget ubegrænset: "
+        + ", ".join(f"linje {line}: {over}" for line, over in offenders)
+    )
+
+
 def test_no_widget_gets_both_a_value_and_a_key():
     """Streamlit advarer — med et helt stakspor — og det er dyrt.
 
-    Giver man en widget baade ``value`` og en ``key``, der allerede staar i
-    session state, logger Streamlit en advarsel med fuld stak. Én gang pr.
-    widget. Med hundredvis af afkrydsningsfelter tog den opskrivning laengere
-    tid end alt andet i appen til sammen, og koerslen blev aldrig faerdig:
-    liste, kalender og tidslinje stod tomme uden en eneste fejl.
+    Giver man en widget baade ``value`` og en ``key``, der appen selv
+    skriver i session state, logger Streamlit en advarsel med fuld stak. Én
+    gang pr. widget. Med hundredvis af afkrydsningsfelter tog den
+    opskrivning laengere tid end alt andet i appen til sammen, og koerslen
+    blev aldrig faerdig: liste, kalender og tidslinje stod tomme uden en
+    eneste fejl.
 
-    Den rigtige vej er at saette ``st.session_state[key]`` lige foer widgeten
-    og lade ``value`` vaere.
+    Den rigtige vej er at vaelge ÉN af de to: enten ``value`` paa en noegle,
+    appen ikke roerer, eller ``st.session_state[key]`` sat lige foer
+    widgeten og slet ingen ``value``.
     """
     source = (
         pathlib.Path(__file__).resolve().parent.parent / "streamlit_app.py"
     ).read_text(encoding="utf-8")
 
+    # Noeglerne, appen selv skriver — baade ``st.session_state[x] = ...`` og
+    # ``st.session_state.setdefault(x, ...)``.
+    managed = {
+        match.strip()
+        for match in re.findall(r"st\.session_state\[([^\]]+)\]\s*=[^=]", source)
+    }
+    managed |= {
+        match.strip()
+        for match in re.findall(r"st\.session_state\.setdefault\(([^,]+),", source)
+    }
+    assert managed, "fandt ingen nøgler, appen selv skriver — er mønsteret ændret?"
+
     # Et widget-kald slutter, hvor parentesen lukkes igen.
-    opener = r"st\.(?:checkbox|radio|selectbox|multiselect)\("
+    opener = (
+        r"st\.(?:checkbox|radio|selectbox|multiselect|slider|text_input"
+        r"|number_input|toggle|date_input|time_input|data_editor)\("
+    )
     for call in re.split(opener, source)[1:]:
         body = call[: call.find("\n    )")]
-        if "key=_cb(" in body or "key=box" in body:
+        found = re.search(r"\bkey=([^,\n]+)", body)
+        if found and found.group(1).strip() in managed:
             assert "value=" not in body, f"både value og key: {body[:90]!r}"

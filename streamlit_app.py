@@ -76,28 +76,6 @@ DEFAULT_BIRTH_DATE = date(2018, 6, 3)
 DEFAULT_BIRTH_TIME = time(7, 10, 0)
 
 # Farver til kalenderen — én pr. gruppe, valgt så de kan skelnes fra hinanden.
-# Hvor mange afkrydsningsfelter brugerfladen maa tegne i alt.
-#
-# Det er ikke pynt. Streamlit laver ét widget pr. felt, og kataloget er paa
-# over halvandet tusind maerkedage. Tegnes de alle, bliver koerslen aldrig
-# faerdig, og saa naar ingen af brugerfladens vaerdier frem til serveren:
-# sproget kan ikke skiftes, knapperne svarer ikke, og der kommer ingen fejl.
-#
-# Maalt: ved 1.041 felter virker alt. Ved 1.100 er den marginal — den klarer
-# det foerste klik og gaar saa i staa. Ved 2.772 er den doed fra start.
-# Budgettet er sat med rigelig luft under det.
-#
-# Et loft pr. gruppe er ikke nok i sig selv: kataloget vokser, og saa vokser
-# summen med det. Derfor er der et samlet budget, som grupperne traekker paa
-# i raekkefoelge. De foerste er dem, der er slaaet til fra start — altsaa dem,
-# man faktisk arbejder i. Resten viser en smagsproeve og et tal.
-#
-# Grupperne kan stadig slaas til og fra under ét, og soegefeltet finder de
-# enkelte.
-CHECKBOX_BUDGET = 700
-GROUP_CHECKBOX_LIMIT = 60
-SEARCH_CHECKBOX_LIMIT = 150
-
 GROUP_COLORS: dict[str, str] = {
     "sec": "#3b7dd8",
     "minhour": "#4aa3a2",
@@ -470,18 +448,13 @@ GROUP_OF = {m.key: m.group for m in CATALOGUE}
 DEFAULT_ON = {g.key: g.default_on for g in GROUPS}
 
 
-def _cb(key: str) -> str:
-    """Session state-nøglen for ét afkrydsningsfelt."""
-    return f"cb_{key}"
-
-
-# Valget ligger i ét sæt, der overlever, at et afkrydsningsfelt ikke bliver
-# tegnet. Det er nødvendigt nu, hvor søgningen skjuler de felter, der ikke
-# matcher: Streamlit rydder op i tilstanden for widgets, der forsvinder, og
-# et valg, der kun lå i widgetnøglerne, ville gå tabt hver gang man søgte.
+# Valget ligger i ét sæt, der overlever, at en mærkedag ikke er synlig.
+# Det er nødvendigt, fordi valgtabellen kun viser det, gruppefilteret og
+# søgefeltet har sluppet igennem: et valg, der kun lå i widgetnøglerne,
+# ville gå tabt hver gang man søgte.
 #
-# Felterne skriver derfor deres svar ind i sættet gennem ``_remember``, og
-# ``_set_keys`` sætter begge steder, så de to aldrig kan komme ud af trit.
+# Sættet er kilden. Tabellen læser fra det, når den tegnes, og skriver
+# tilbage gennem ``_apply_table_edits``, når nogen sætter et flueben.
 seen_keys: set[str] = st.session_state.setdefault("seen_keys", set())
 chosen: set[str] = st.session_state.setdefault("chosen", set())
 
@@ -494,21 +467,11 @@ for milestone in CATALOGUE:
             chosen.add(milestone.key)
 
 
-def _remember(key: str) -> None:
-    """Flyt et afkrydsningsfelts svar over i det varige valg."""
-    if st.session_state[_cb(key)]:
-        st.session_state.chosen.add(key)
-    else:
-        st.session_state.chosen.discard(key)
-
-
 def _set_keys(keys, value: bool) -> None:
     """Sæt en hel flok på én gang.
 
-    Kun det varige sæt røres. Felternes egen tilstand sættes, når de bliver
-    tegnet — og mange af dem bliver slet ikke tegnet, fordi budgettet er
-    brugt (se ``CHECKBOX_BUDGET``). Skrev vi deres nøgler her, ville vi
-    efterlade tilstand for widgets, der ikke findes.
+    Kun det varige sæt røres. Valgtabellen læser sættet, hver gang den
+    tegnes, så den viser svaret af sig selv.
     """
     if value:
         st.session_state.chosen.update(keys)
@@ -1159,10 +1122,6 @@ with tab_time:
 # --- Valg ----------------------------------------------------------------
 
 
-def set_group(group_key: str, value: bool) -> None:
-    _set_keys([m.key for m in CATALOGUE if m.group == group_key], value)
-
-
 def set_all(value: bool) -> None:
     _set_keys([m.key for m in CATALOGUE], value)
 
@@ -1193,31 +1152,48 @@ def matches_search(milestone, needle: str) -> bool:
     return any(needle in field for field in haystack)
 
 
-def draw_checkbox(milestone) -> None:
-    """Ét afkrydsningsfelt, bundet til det varige valg.
+# =========================================================================
+# Vælg mærkedage
+# =========================================================================
+#
+# Kataloget står i ÉN tabel, ikke i halvandet tusind afkrydsningsfelter.
+#
+# Det er ikke en smagssag. Streamlit bygger indholdet i ALLE faneblade, hver
+# gang siden tegnes — også de faneblade, man ikke ser på. Med ét felt pr.
+# mærkedag udgjorde denne fane 5.324 af sidens 6.209 elementer og 15.884 af
+# dens 18.303 DOM-knuder, og appen var sytten sekunder om at åbne. Vi havde
+# oven i købet måttet sætte et loft på syv hundrede felter, og det betød, at
+# over tusind mærkedage slet ikke kunne vælges enkeltvis.
+#
+# Én ``st.data_editor`` er én widget, uanset om den har tre eller tre tusind
+# rækker, og den ruller, sorterer og kan søges i af sig selv. Loftet er væk,
+# og hele kataloget kan vælges.
 
-    Feltets tilstand sættes HER, i session state, lige før widgeten laves —
-    og ikke med ``value``. Det er ikke en smagssag.
+PICK, GROUP_COL, NAME_COL, WHY_COL = "pick", "group", "name", "why"
 
-    Giver man en widget både ``value`` og en nøgle, der allerede står i
-    session state, advarer Streamlit. Advarslen kommer med et helt stakspor,
-    og den kommer én gang pr. felt. Med hundredvis af felter tog den
-    opskrivning længere tid end alt andet i appen til sammen, og kørslen
-    blev aldrig færdig: listen, kalenderen og tidslinjen stod tomme, uden at
-    der kom en fejl.
 
-    Sættet ``chosen`` er kilden. ``_remember`` fører svaret den anden vej,
-    når nogen klikker.
+def _apply_table_edits(table_key: str) -> None:
+    """Flyt tabellens rettelser over i det varige valg.
+
+    ``st.data_editor`` leverer kun de celler, der faktisk blev rettet, med
+    rækkens nummer som nøgle. Rækkefølgen ligger i session state ved siden
+    af tabellen, og tabellens egen nøgle skifter, når rækkerne skifter — så
+    et gammelt rækkenummer aldrig kan ramme en ny mærkedag.
     """
-    box = _cb(milestone.key)
-    st.session_state[box] = milestone.key in st.session_state.chosen
-    st.checkbox(
-        build_label(milestone, profile, lang),
-        key=box,
-        on_change=_remember,
-        args=(milestone.key,),
-        help=explanation(milestone, lang) or None,
-    )
+    state = st.session_state.get(table_key)
+    edited = state.get("edited_rows", {}) if isinstance(state, dict) else {}
+    order = st.session_state.get(f"{table_key}__order", [])
+    for row, changes in edited.items():
+        if PICK not in changes:
+            continue
+        try:
+            key = order[int(row)]
+        except (IndexError, ValueError, TypeError):
+            continue
+        if changes[PICK]:
+            st.session_state.chosen.add(key)
+        else:
+            st.session_state.chosen.discard(key)
 
 
 with tab_select:
@@ -1280,127 +1256,128 @@ with tab_select:
         t("selected_count", lang, n=len(selected_keys), total=len(CATALOGUE))
     )
 
-    select_query = st.text_input(
+    # --- De to filtre ----------------------------------------------------
+    #
+    # Gruppevalget og soegefeltet afgraenser den SAMME tabel. Derfor betyder
+    # de to knapper nedenfor altid det samme — "det du kan se" — uanset om
+    # man er naaet dertil gennem en gruppe, en soegning eller begge.
+    #
+    # Opslaget skal kunne se hele kataloget. Gjorde det ikke det, stod en
+    # gruppe i filteret foroven uden at kunne vaelges hernede — og det er
+    # praecis, hvad der skete for baade legenderne og festdagene.
+    members_by_group = milestones_by_group()
+    scopes = group_scopes()
+
+    group_options: list[str] = []
+    group_titles: dict[str, str] = {}
+    for scope in SCOPES:
+        scope_name = t(f"scope_{scope}", lang)
+        for group in GROUPS:
+            members = members_by_group.get(group.key, [])
+            if not members or scopes.get(group.key, "birth") != scope:
+                continue
+            on_count = sum(1 for m in members if m.key in chosen)
+            group_options.append(group.key)
+            group_titles[group.key] = (
+                f"{group.title(lang)} ({on_count}/{len(members)})"
+                f"  ·  {scope_name}"
+            )
+
+    narrow = st.container(horizontal=True)
+    picked_groups = narrow.multiselect(
+        t("select_groups", lang),
+        options=group_options,
+        format_func=lambda key: group_titles[key],
+        placeholder=t("select_groups_placeholder", lang),
+        key="select_groups",
+    )
+    select_query = narrow.text_input(
         t("select_search", lang),
         placeholder=t("select_search_placeholder", lang),
         help=t("select_search_help", lang),
         key="select_query",
     )
 
-    # Opslaget skal kunne se hele kataloget. Gjorde det ikke det, stod en
-    # gruppe i filteret foroven uden at kunne foldes ud hernede — og det er
-    # praecis, hvad der skete for baade legenderne og festdagene.
-    members_by_group = milestones_by_group()
-
-    def group_members(group_key: str) -> list:
-        return members_by_group.get(group_key, [])
-
+    pool = list(CATALOGUE)
+    if picked_groups:
+        wanted_groups = set(picked_groups)
+        pool = [m for m in pool if m.group in wanted_groups]
     needle = select_query.strip().lower()
-
     if needle:
-        # Under en søgning ophæves grupperingen. At skulle lede gennem seksten
-        # foldede grupper efter de tre, der matcher, er netop det, søgefeltet
-        # skal løse — så de fundne står samlet, med gruppens emoji som spor.
-        matches = [m for m in CATALOGUE if matches_search(m, needle)]
-        if not matches:
-            st.info(t("select_no_matches", lang), icon=":material/search_off:")
-        else:
-            st.caption(
-                t("select_matches", lang, n=len(matches), total=len(CATALOGUE))
-            )
-            found = st.container(horizontal=True)
-            found.button(
-                t("match_all", lang),
-                icon=":material/select_all:",
-                on_click=_set_keys,
-                args=([m.key for m in matches], True),
-                key="btn_match_all",
-            )
-            found.button(
-                t("match_none", lang),
-                icon=":material/deselect:",
-                on_click=_set_keys,
-                args=([m.key for m in matches], False),
-                key="btn_match_none",
-            )
-            shown = matches[:SEARCH_CHECKBOX_LIMIT]
-            if len(shown) < len(matches):
-                st.caption(
-                    t(
-                        "select_capped",
-                        lang,
-                        shown=len(shown),
-                        total=len(matches),
-                    )
-                )
-            columns = st.columns(3)
-            for index, milestone in enumerate(shown):
-                with columns[index % 3]:
-                    # Samme mønster som ``draw_checkbox``: tilstanden sættes i
-                    # session state før widgeten og ikke med ``value``. Her er
-                    # etiketten den eneste forskel — gruppens emoji sættes
-                    # foran, fordi søgningen ophæver grupperingen.
-                    box = _cb(milestone.key)
-                    st.session_state[box] = milestone.key in st.session_state.chosen
-                    emoji = GROUPS_BY_KEY[milestone.group].emoji
-                    st.checkbox(
-                        f"{emoji} {build_label(milestone, profile, lang)}",
-                        key=box,
-                        on_change=_remember,
-                        args=(milestone.key,),
-                        help=explanation(milestone, lang) or None,
-                    )
-    else:
-        # Gruppelisten deles efter samme skel som pakkerne ovenfor: det, der
-        # kun findes fordi DU blev foedt, og det, der falder paa samme dato
-        # for alle. Med seksogtredive grupper var raekkefoelgen ellers kun
-        # den, de tilfaeldigvis staar i i kataloget.
-        scopes = group_scopes()
-        budget = CHECKBOX_BUDGET
-        shelves: dict[str, list] = {scope: [] for scope in SCOPES}
-        for group in GROUPS:
-            if group_members(group.key):
-                shelves[scopes.get(group.key, "birth")].append(group)
+        pool = [m for m in pool if matches_search(m, needle)]
 
-        for scope, shelf in shelves.items():
-            if not shelf:
-                continue
-            on_shelf = [m for group in shelf for m in group_members(group.key)]
-            picked = sum(1 for m in on_shelf if m.key in chosen)
-            st.markdown(
-                f"**{t(f'scope_{scope}', lang)}** — "
-                f"{t('selected_count', lang, n=picked, total=len(on_shelf))}"
+    if not pool:
+        st.info(t("select_no_matches", lang), icon=":material/search_off:")
+    else:
+        shown_keys = [m.key for m in pool]
+        picked_here = sum(1 for key in shown_keys if key in chosen)
+        st.caption(
+            t(
+                "select_showing",
+                lang,
+                n=len(pool),
+                total=len(CATALOGUE),
+                picked=picked_here,
             )
-            for group in shelf:
-                members = group_members(group.key)
-                on_count = sum(1 for m in members if m.key in chosen)
-                with st.expander(
-                    f"{group.title(lang)}  ({on_count}/{len(members)})"
-                ):
-                    toggles = st.container(horizontal=True)
-                    toggles.button(
-                        t("group_all", lang),
-                        on_click=set_group,
-                        args=(group.key, True),
-                        key=f"all_{group.key}",
-                    )
-                    toggles.button(
-                        t("group_none", lang),
-                        on_click=set_group,
-                        args=(group.key, False),
-                        key=f"none_{group.key}",
-                    )
-                    take = min(GROUP_CHECKBOX_LIMIT, len(members), budget)
-                    budget -= take
-                    shown = members[:take]
-                    columns = st.columns(3)
-                    for index, milestone in enumerate(shown):
-                        with columns[index % 3]:
-                            draw_checkbox(milestone)
-                    if len(shown) < len(members):
-                        st.caption(
-                            t("select_more", lang, n=len(members) - len(shown))
-                        )
+        )
+        sweep = st.container(horizontal=True)
+        sweep.button(
+            t("shown_all", lang),
+            icon=":material/select_all:",
+            on_click=_set_keys,
+            args=(shown_keys, True),
+            key="btn_shown_all",
+        )
+        sweep.button(
+            t("shown_none", lang),
+            icon=":material/deselect:",
+            on_click=_set_keys,
+            args=(shown_keys, False),
+            key="btn_shown_none",
+        )
+
+        # Tabellens noegle foelger raekkerne. Skifter filteret, er det en ny
+        # widget, og ``edited_rows`` starter forfra — ellers kunne en gammel
+        # rettelse til "raekke 5" ramme en helt anden maerkedag.
+        digest = hashlib.sha1(
+            "\x00".join([lang] + shown_keys).encode()
+        ).hexdigest()[:12]
+        table_key = f"select_table_{digest}"
+        st.session_state[f"{table_key}__order"] = shown_keys
+
+        st.data_editor(
+            pd.DataFrame(
+                {
+                    PICK: [key in chosen for key in shown_keys],
+                    # ``title`` har allerede gruppens emoji foran sig.
+                    GROUP_COL: [
+                        GROUPS_BY_KEY[m.group].title(lang) for m in pool
+                    ],
+                    NAME_COL: [build_label(m, profile, lang) for m in pool],
+                    WHY_COL: [explanation(m, lang) for m in pool],
+                }
+            ),
+            key=table_key,
+            on_change=_apply_table_edits,
+            args=(table_key,),
+            hide_index=True,
+            height=520,
+            disabled=[GROUP_COL, NAME_COL, WHY_COL],
+            column_config={
+                PICK: st.column_config.CheckboxColumn(
+                    t("col_pick", lang), width="small"
+                ),
+                GROUP_COL: st.column_config.TextColumn(
+                    t("col_group", lang), width="small"
+                ),
+                NAME_COL: st.column_config.TextColumn(
+                    t("col_milestone", lang), width="medium"
+                ),
+                WHY_COL: st.column_config.TextColumn(
+                    t("col_why", lang), width="large"
+                ),
+            },
+        )
 
 
 # --- Eksport -------------------------------------------------------------
