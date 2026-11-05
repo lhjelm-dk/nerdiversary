@@ -705,25 +705,15 @@ def live_panel() -> None:
             help=t("calendar_year_help", lang),
         )
 
-        technical = st.container(horizontal=True)
-        # Unix-tiden lige nu hoerer til i den tikkende del og ingen andre
-        # steder: den er kun interessant, mens den loeber. Teksten til den
-        # laa i ordlisten uden at blive brugt.
-        technical.metric(
-            t("unix_now", lang),
-            fmt.fmt_int(int(now.timestamp()), lang),
-            help=t("unix_now_help", lang),
-        )
-        technical.metric(t("unix_birth", lang), fmt.fmt_int(profile.unix_birth, lang))
-        technical.metric(
+        # Kun skudsekunderne staar tilbage her. Unix-tiden lige nu,
+        # foedselsstemplet og stjernedatoen er taget ud: de to foerste er
+        # raatal, man laeser én gang, og alle tre skubbede det, der faktisk
+        # tikker, ned ad skaermen. Stjernedatoen staar fortsat som kolonne
+        # i listen, hvor den hoerer til hver enkelt maerkedag.
+        st.metric(
             t("leap_seconds", lang),
             leap_seconds_since_birth(profile.birth_utc, now),
             help=t("leap_help", lang),
-        )
-        technical.metric(
-            t("stardate_now", lang),
-            sd.format_tng(now_local),
-            help=t("stardate_help", lang),
         )
 
         if born_before_utc(profile.birth_utc):

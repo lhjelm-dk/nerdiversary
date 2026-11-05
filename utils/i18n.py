@@ -65,20 +65,11 @@ T: dict[str, dict[str, str]] = {
         "da": "Kalenderår, ikke tropiske år. 8,00 betyder, at du fyldte 8 i dag.",
         "en": "Calendar years, not tropical years. 8.00 means you turned 8 today.",
     },
-    "unix_now": {"da": "Unix-tid lige nu", "en": "Unix time right now"},
-    "unix_now_help": {
-        "da": "Sekunder siden 1. januar 1970 kl. 00.00 UTC. Den tæller videre, "
-              "mens du kigger.",
-        "en": "Seconds since 1 January 1970 at 00:00 UTC. It keeps counting "
-              "while you watch.",
-    },
-    "unix_birth": {"da": "Dit fødselstidsstempel", "en": "Your birth timestamp"},
     "leap_seconds": {"da": "Skudsekunder siden fødslen", "en": "Leap seconds since birth"},
     "leap_help": {
         "da": "Ekstra sekunder indsat i UTC for at følge Jordens uregelmæssige rotation.",
         "en": "Extra seconds added to UTC to account for Earth's irregular rotation.",
     },
-    "stardate_now": {"da": "Stjernedato", "en": "Stardate"},
     "stardate_help": {
         "da": "Ja, Star Trek. Der findes ingen officiel formel — Paramount har "
               "aldrig udgivet en. Her bruges TNG-konventionen, hvor 1000 "
