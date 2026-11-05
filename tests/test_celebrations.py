@@ -1425,21 +1425,32 @@ def app_source() -> str:
     ).read_text(encoding="utf-8")
 
 
-def test_both_group_pickers_come_from_the_same_function():
+def test_there_is_exactly_one_of_each_narrowing_control():
+    """Alt, der skjuler noget, staar ét sted: i Udsnit-raekken.
+
+    Der var to gruppevaelgere og to soegefelter, der hed naesten det samme
+    og gjorde hver sit. Og niveauet laa i Vaelg-fanen, hvor man ikke kunne
+    se det, mens det skar i listen paa en helt anden fane.
+
+    Raekken staar OVER fanebladene og er derfor paa skaermen, uanset hvilken
+    fane man er paa. Det er hele grunden til, at én kopi er nok.
+    """
     import ast
 
-    tree = ast.parse(app_source())
-    calls = [
+    source = app_source()
+    tree = ast.parse(source)
+    pickers = [
         node
         for node in ast.walk(tree)
         if isinstance(node, ast.Call)
         and isinstance(node.func, ast.Name)
         and node.func.id == "draw_group_picker"
     ]
-    assert len(calls) == 2, f"{len(calls)} gruppevælgere — der skal være to"
+    assert len(pickers) == 1, f"{len(pickers)} gruppevælgere — der skal være én"
 
-    slugs = sorted(ast.unparse(call.args[1]).strip("'\"") for call in calls)
-    assert slugs == ["filter", "select"], slugs
+    assert source.count('key="query"') == 1, "mere end ét søgefelt"
+    assert "select_query" not in source, "det andet søgefelt er tilbage"
+    assert source.count('key="level_widget"') == 1
 
 
 def test_the_group_picker_never_carries_its_own_default():
@@ -1468,45 +1479,32 @@ def test_the_filtering_reads_the_set_and_not_a_widget():
     assert "options=group_options" not in source
 
 
-def test_the_level_lives_in_the_choose_tab():
-    """Niveauet hoerer til, hvor man bestemmer hvad der er med.
+def test_every_narrowing_control_is_drawn_before_it_is_used():
+    """Ellers kan knappen og virkningen komme ud af trit — og det gjorde de.
 
-    Laa det i filterraekken, loej raekkens egen overskrift: den sagde, at den
-    kun gjaldt liste, kalender og eksport, mens niveauet ogsaa styrede
-    valgtabellen.
+    Niveauet blev laest i toppen af koerslen, mens skydeknappen blev tegnet
+    langt senere inde i Vaelg-fanen. Skifter man sprog, skifter knappens
+    etiket, og saa nulstiller Streamlit den til foerste trin — men vaerdien
+    var allerede laest. Skydeknappen stod paa ① Kendte, mens tabellen
+    filtrerede paa ②, og de blev ved med at vaere uenige, til man roerte
+    noget andet.
+
+    Nu staar alle fire i filterraekken, som tegnes FOER noget filtreres, og
+    saa kan problemet ikke opstaa. Testen holder oeje med, at det bliver ved
+    at vaere saadan.
     """
     source = app_source()
-    after_tab = source[source.index("with tab_select:"):]
-    assert 'key="level_widget"' in after_tab, "skydeknappen er ikke i Vælg-fanen"
-    before_tabs = source[: source.index("tab_list, tab_cal")]
-    assert 'key="level_widget"' not in before_tabs
+    filtering = source.index("filtered = apply_filters(occasions)")
+    for key in ('key="level_widget"', 'key="query"', 'key="when_filter"',
+                'key="filter_window"'):
+        assert source.index(key) < filtering, f"{key} tegnes for sent"
+    assert source.index("draw_group_picker(row") < filtering
 
-
-def test_a_value_read_before_its_widget_is_driven_from_a_separate_key():
-    """Ellers kan de to komme ud af trit — og det gjorde de.
-
-    Niveauet laeses i toppen af kørslen, fordi liste, kalender og tidslinje
-    skal filtrere paa det, laenge foer Vaelg-fanen tegner skydeknappen.
-    Skifter man sprog, skifter knappens etiket, og saa nulstiller Streamlit
-    den til foerste trin — men vaerdien er allerede laest. Skydeknappen stod
-    paa ① Kendte, mens tabellen filtrerede paa ②, og de blev ved med at vaere
-    uenige, indtil man roerte noget.
-
-    Kuren er den samme som ved grupperne: et saet i session state er kilden,
-    widgetens tilstand saettes fra det lige foer den tegnes, og et klik
-    foeres tilbage med en tilbagekaldelse.
-    """
-    source = app_source()
-
-    # Vaerdien, resten af appen filtrerer paa, maa ikke vaere en widgetnoegle.
-    assert "level_cap = int(st.session_state.level_cap)" in source
-    assert 'key="level_cap"' not in source
-
-    # Og widgeten skal saettes fra den, lige foer den tegnes.
-    start = source.index('st.session_state["level_widget"] = level_cap')
+    # Og niveauet saettes fra det huskede tal, lige foer det tegnes, saa et
+    # sprogskifte ikke kan nulstille det.
+    start = source.index('st.session_state["level_widget"] =')
     window = source[start : start + 400]
-    assert "st.select_slider(" in window
-    assert "on_change=_sync_level" in window
+    assert "select_slider(" in window
     assert "value=" not in window, "både value og en styret nøgle"
 
 

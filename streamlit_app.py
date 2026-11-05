@@ -646,24 +646,10 @@ def draw_group_picker(parent, slug: str, help_text: str) -> None:
                 draw_pills(list(family.groups), f"{slug}_{family.key}_pills")
 
 
-# Niveauet laeses her, fordi listen, kalenderen og tidslinjen skal filtrere
-# paa det, laenge foer Vaelg-fanen naar at tegne selve skydeknappen.
-#
-# Og netop derfor maa sandheden ikke bo i widgeten. Skifter man sprog,
-# skifter skydeknappens etiket, og saa nulstiller Streamlit den til foerste
-# trin — men vaerdien her er allerede laest. Resultatet var en skydeknap,
-# der stod paa ① Kendte, mens tabellen filtrerede paa ②, og de to blev ved
-# med at vaere uenige, til man roerte noget.
-#
-# Saettet er kilden, praecis som ved grupperne: widgetens tilstand saettes
-# fra det, lige foer den tegnes, og ``_sync_level`` foerer svaret tilbage.
+# Niveauet huskes her og saettes i widgeten, lige foer den tegnes. Ellers
+# nulstiller Streamlit den til foerste trin, naar sproget skifter, fordi
+# etiketten er en del af widgetens identitet.
 st.session_state.setdefault("level_cap", 2)
-level_cap = int(st.session_state.level_cap)
-
-
-def _sync_level() -> None:
-    """Flyt skydeknappens svar over i det, hele appen læser fra."""
-    st.session_state.level_cap = int(st.session_state.level_widget)
 
 
 # =========================================================================
@@ -833,6 +819,29 @@ with st.container(border=True):
     )
     window = st.session_state.filter_window
 
+    # Niveauet staar HER, sammen med alt det andet, der skjuler noget.
+    #
+    # Det laa i Vaelg-fanen, fordi det foeltes som et spoergsmaal om, hvad
+    # der er med. Men niveauet aendrer ikke ``chosen`` — det skjuler, helt
+    # som gruppefilteret — og stod man paa Liste og saa "Viser 245", var der
+    # intet paa skaermen, der forklarede hvorfor. Den skjulte kontakt med
+    # den synlige virkning er netop den fejl, vi lige havde rettet ét sted.
+    #
+    # At den staar her, fjerner ogsaa et stykke maskineri: vaerdien blev
+    # laest i toppen af koerslen og widgeten tegnet langt senere, og de to
+    # kunne komme ud af trit. Nu tegnes den, foer noget filtreres.
+    st.session_state["level_widget"] = int(st.session_state.level_cap)
+    level_cap = int(
+        row.select_slider(
+            t("filter_level", lang),
+            options=[1, 2, 3],
+            format_func=lambda n: t(f"level_{n}", lang),
+            help=t("filter_level_help", lang),
+            key="level_widget",
+        )
+    )
+    st.session_state.level_cap = level_cap
+
     second_row = st.container(horizontal=True)
     when_filter = second_row.segmented_control(
         t("when", lang),
@@ -845,11 +854,17 @@ with st.container(border=True):
         default="future",
         key="when_filter",
     ) or "future"
+    # ÉT soegefelt. Der var to, der hed naesten det samme og brugte "maane"
+    # i begge eksempler. Dette ene skaerer baade i det, du kigger paa, og i
+    # valgtabellen — og i tabellen leder det i HELE kataloget, saa man kan
+    # finde noget, man endnu ikke har valgt.
     query = second_row.text_input(
         t("search", lang),
         placeholder=t("search_placeholder", lang),
+        help=t("search_help", lang),
         key="query",
     )
+    needle = query.strip().lower()
 
 tab_list, tab_cal, tab_time, tab_select, tab_export, tab_notes = st.tabs(
     [
@@ -861,6 +876,23 @@ tab_list, tab_cal, tab_time, tab_select, tab_export, tab_notes = st.tabs(
         t("tab_notes", lang),
     ]
 )
+
+
+def matches_search(milestone, needle: str) -> bool:
+    """Om en mærkedag passer på søgeteksten.
+
+    Tallet søges ogsaa uden tusindtalsskilletegn, saa "5318008" finder den
+    maerkedag, der staar som "5.318.008 minutter" i etiketten.
+    """
+    haystack = [
+        build_label(milestone, profile, lang).lower(),
+        explanation(milestone, lang).lower(),
+        GROUPS_BY_KEY[milestone.group].name(lang).lower(),
+        milestone.key.lower(),
+    ]
+    if float(milestone.amount).is_integer():
+        haystack.append(str(int(milestone.amount)))
+    return any(needle in field for field in haystack)
 
 
 def apply_scope_filters(items: list[Occasion]) -> list[Occasion]:
@@ -877,15 +909,8 @@ def apply_scope_filters(items: list[Occasion]) -> list[Occasion]:
         if o.milestone.group in st.session_state.groups_on
         and o.milestone.level <= level_cap
     ]
-    if query.strip():
-        needle = query.strip().lower()
-        out = [
-            o
-            for o in out
-            if needle in o.label.lower()
-            or needle in explanation(o.milestone, lang).lower()
-            or needle in o.group.name(lang).lower()
-        ]
+    if needle:
+        out = [o for o in out if matches_search(o.milestone, needle)]
     return out
 
 
@@ -903,6 +928,46 @@ def apply_filters(items: list[Occasion]) -> list[Occasion]:
         out = [o for o in out if o.when_utc <= horizon]
 
     return out
+
+
+def narrowing_note(*, in_table: bool = False) -> str:
+    """Hvad der er skruet ned ad lige nu, som én laesbar linje.
+
+    "Viser 245 maerkedage" og "Ingen maerkedage matcher filtrene" sagde
+    ingenting om HVILKE filtre, og saa var der ikke andet at goere end at
+    proeve sig frem. Linjen staar nu under hver eneste taelling — liste,
+    kalender, tidslinje, eksport og valgtabellen — og er den samme saetning
+    alle fem steder.
+    """
+    parts: list[str] = []
+    if level_cap < 3:
+        parts.append(t("narrowed_level", lang, level=t(f"level_{level_cap}", lang)))
+    if len(st.session_state.groups_on) < len(GROUP_KEYS):
+        parts.append(
+            t("narrowed_groups", lang, n=len(st.session_state.groups_on),
+              total=len(GROUP_KEYS))
+        )
+    if needle:
+        parts.append(t("narrowed_search", lang, needle=query.strip()))
+    if in_table:
+        # Tabellen viser hele kataloget og rammes derfor ikke af "hvornaar"
+        # og "tidsrum" — men den har sin egen til/fra.
+        if st.session_state.get("only_chosen"):
+            parts.append(t("narrowed_only_chosen", lang))
+    else:
+        if when_filter != "both":
+            parts.append(
+                t("narrowed_when", lang,
+                  when=t("only_future" if when_filter == "future" else "only_past", lang))
+            )
+        if window != "all":
+            parts.append(t("narrowed_window", lang, window=t(f"window_{window}", lang)))
+    return "  ·  ".join(parts)
+
+
+def with_note(line: str, *, in_table: bool = False) -> str:
+    note = narrowing_note(in_table=in_table)
+    return f"{line}  ·  {note}" if note else line
 
 
 filtered = apply_filters(occasions)
@@ -959,9 +1024,9 @@ def detail_text(occasion: Occasion) -> str:
 
 with tab_list:
     if not filtered:
-        st.info(t("no_results", lang), icon=":material/search_off:")
+        st.info(with_note(t("no_results", lang)), icon=":material/search_off:")
     else:
-        st.caption(t("showing_n", lang, n=len(filtered)))
+        st.caption(with_note(t("showing_n", lang, n=len(filtered))))
         st.dataframe(
             to_frame(filtered),
             hide_index=True,
@@ -1040,7 +1105,7 @@ with tab_cal:
     st.caption(t("calendar_hint", lang))
 
     if not filtered:
-        st.info(t("calendar_empty", lang), icon=":material/event_busy:")
+        st.info(with_note(t("calendar_empty", lang)), icon=":material/event_busy:")
     else:
         view_key = st.segmented_control(
             t("cal_view", lang),
@@ -1208,7 +1273,7 @@ with tab_time:
     scope = apply_scope_filters(occasions)
 
     if not scope:
-        st.info(t("tl_empty", lang), icon=":material/timeline:")
+        st.info(with_note(t("tl_empty", lang)), icon=":material/timeline:")
     else:
         life_start = profile.birth_local
         life_end = life_start + relativedelta(years=int(max_age))
@@ -1330,10 +1395,6 @@ with tab_time:
 # --- Valg ----------------------------------------------------------------
 
 
-def set_all(value: bool) -> None:
-    _set_keys([m.key for m in CATALOGUE], value)
-
-
 def apply_bundle(bundle_key: str) -> None:
     """Slå en færdigpakket udvælgelse til — oven i det, der er valgt i forvejen.
 
@@ -1351,23 +1412,6 @@ def apply_bundle(bundle_key: str) -> None:
     _set_keys(wanted, True)
     added = len(st.session_state.chosen) - before
     st.session_state.last_bundle = (bundle.name(lang), len(wanted), added)
-
-
-def matches_search(milestone, needle: str) -> bool:
-    """Om en mærkedag passer på søgeteksten.
-
-    Tallet søges ogsaa uden tusindtalsskilletegn, saa "5318008" finder den
-    maerkedag, der staar som "5.318.008 minutter" i etiketten.
-    """
-    haystack = [
-        build_label(milestone, profile, lang).lower(),
-        explanation(milestone, lang).lower(),
-        GROUPS_BY_KEY[milestone.group].name(lang).lower(),
-        milestone.key.lower(),
-    ]
-    if float(milestone.amount).is_integer():
-        haystack.append(str(int(milestone.amount)))
-    return any(needle in field for field in haystack)
 
 
 # =========================================================================
@@ -1456,66 +1500,17 @@ with tab_select:
 
     st.divider()
     st.caption(t("select_hint", lang))
-    buttons = st.container(horizontal=True)
-    buttons.button(
-        t("select_all", lang),
-        icon=":material/select_all:",
-        on_click=set_all,
-        args=(True,),
-        key="btn_all",
-    )
-    buttons.button(
-        t("clear_all", lang),
-        icon=":material/deselect:",
-        on_click=set_all,
-        args=(False,),
-        key="btn_none",
-    )
-    st.caption(
+    st.markdown(
         t("selected_count", lang, n=len(selected_keys), total=len(CATALOGUE))
     )
 
-    st.divider()
-
-    # --- Niveauet --------------------------------------------------------
+    # Her staar KUN det, der aendrer dit valg. Alt, der blot skjuler —
+    # niveau, grupper, tid, soegning — staar i Udsnit-raekken foroven og
+    # gaelder ogsaa tabellen hernede. Det er hele skellet mellem de to
+    # steder, og det var det, der manglede: en skydeknap i denne fane
+    # skar i en liste paa en helt anden fane, uden at nogen kunne se det.
     #
-    # Den staar HER og ikke i filterraekken foroven. Niveauet handler om,
-    # hvad der overhovedet er med i kalenderen — ikke om hvilket udsnit af
-    # tiden man kigger paa — og det er netop skellet mellem de to steder.
-    # Da den laa foroven, sagde filterraekkens egen overskrift, at den kun
-    # gjaldt liste, kalender og eksport, mens den i virkeligheden ogsaa
-    # styrede tabellen hernede.
-    #
-    # Vaerdien blev laest langt foer, ved ``level_cap``, fordi listen og
-    # kalenderen skal filtrere paa den, inden dette faneblad bliver tegnet.
-    st.session_state["level_widget"] = level_cap
-    st.select_slider(
-        t("filter_level", lang),
-        options=[1, 2, 3],
-        format_func=lambda n: t(f"level_{n}", lang),
-        help=t("filter_level_help", lang),
-        key="level_widget",
-        on_change=_sync_level,
-    )
-
-    # --- De to afgraensninger --------------------------------------------
-    #
-    # Gruppevaelgeren er den SAMME som i filterraekken foroven — samme saet,
-    # to vinduer ind til det. Foer var de to uafhaengige filtre, der hed
-    # naesten det samme, og man kunne saette den ene til Sekunder og den
-    # anden til Popkultur og faa en tom liste ved siden af en fuld tabel.
-    #
-    # Opslaget skal kunne se hele kataloget. Gjorde det ikke det, stod en
-    # gruppe i filteret foroven uden at kunne vaelges hernede — og det er
-    # praecis, hvad der skete for baade legenderne og festdagene.
-    narrow = st.container(horizontal=True)
-    draw_group_picker(narrow, "select", t("select_groups_help", lang))
-    select_query = narrow.text_input(
-        t("select_search", lang),
-        placeholder=t("select_search_placeholder", lang),
-        help=t("select_search_help", lang),
-        key="select_query",
-    )
+    # Den ene undtagelse hoerer til her, fordi den kun handler om tabellen.
     only_chosen = st.toggle(
         t("only_chosen", lang),
         key="only_chosen",
@@ -1529,39 +1524,23 @@ with tab_select:
     ]
     if only_chosen:
         pool = [m for m in pool if m.key in chosen]
-    needle = select_query.strip().lower()
     if needle:
         pool = [m for m in pool if matches_search(m, needle)]
 
-    # Hvad der er skruet ned ad, staar skrevet. Tabellen kunne foer staa tom
-    # af fire forskellige grunde uden at sige hvilken, og saa var der ikke
-    # andet at goere end at proeve sig frem.
-    narrowed: list[str] = []
-    if level_cap < 3:
-        narrowed.append(t("narrowed_level", lang, level=t(f"level_{level_cap}", lang)))
-    if len(st.session_state.groups_on) < len(GROUP_KEYS):
-        narrowed.append(
-            t("narrowed_groups", lang, n=len(st.session_state.groups_on),
-              total=len(GROUP_KEYS))
-        )
-    if needle:
-        narrowed.append(t("narrowed_search", lang, needle=select_query.strip()))
-    if only_chosen:
-        narrowed.append(t("narrowed_only_chosen", lang))
-
     if not pool:
         st.info(
-            t("select_no_matches", lang)
-            + ("  " + " · ".join(narrowed) if narrowed else ""),
+            with_note(t("select_no_matches", lang), in_table=True),
             icon=":material/search_off:",
         )
     else:
         shown_keys = [m.key for m in pool]
         picked_here = sum(1 for key in shown_keys if key in chosen)
-        line = t("select_showing", lang, n=len(pool), picked=picked_here)
-        if narrowed:
-            line = f"{line}  ·  {' · '.join(narrowed)}"
-        st.caption(line)
+        st.caption(
+            with_note(
+                t("select_showing", lang, n=len(pool), picked=picked_here),
+                in_table=True,
+            )
+        )
         sweep = st.container(horizontal=True)
         sweep.button(
             t("shown_all", lang),
@@ -1687,7 +1666,7 @@ def export_files(
 
 with tab_export:
     st.caption(t("export_hint", lang))
-    st.caption(t("export_count", lang, n=len(filtered)))
+    st.caption(with_note(t("export_count", lang, n=len(filtered))))
 
     with st.container(border=True):
         st.subheader(t("export_settings", lang), anchor=False)

@@ -154,7 +154,22 @@ T: dict[str, dict[str, str]] = {
     "only_past": {"da": "Kun passerede", "en": "Past only"},
     "both": {"da": "Begge", "en": "Both"},
     "search": {"da": "Søg", "en": "Search"},
-    "search_placeholder": {"da": "fx gigasekund, 73, måne", "en": "e.g. gigasecond, 73, moon"},
+    "search_help": {
+        "da": "Det ene søgefelt. Det skærer både i det, du kigger på, og i "
+              "tabellen under Vælg mærkedage — og dér leder det i HELE "
+              "kataloget, så du kan finde noget, du endnu ikke har valgt. "
+              "Søger i navn, forklaring, gruppe og i selve tallet uden "
+              "tusindtalsskilletegn.",
+        "en": "The one search box. It narrows both what you are looking at "
+              "and the table under Choose milestones — and there it searches "
+              "the WHOLE catalogue, so you can find something you have not "
+              "chosen yet. Looks in the name, the explanation, the group and "
+              "the raw number without thousands separators.",
+    },
+    "search_placeholder": {
+        "da": "fx gigasekund, måne, fibonacci, 5318008",
+        "en": "e.g. gigasecond, moon, fibonacci, 5318008",
+    },
     "col_milestone": {"da": "Mærkedag", "en": "Milestone"},
     "col_date": {"da": "Dato (DD.MM.ÅÅÅÅ)", "en": "Date (DD.MM.YYYY)"},
     "col_estimate": {"da": "Skøn", "en": "Est."},
@@ -290,14 +305,18 @@ T: dict[str, dict[str, str]] = {
     },
     # --- Valg ---
     "select_hint": {
-        "da": "Her bestemmes, hvad der overhovedet er med. Grupperne, der "
-              "regnes fra din fødsel, er slået til fra start — undtagen "
-              "legenderne. Festdagene er slået fra, fordi de er mange gange "
-              "flere; tænd dem med en pakke ovenfor.",
-        "en": "This is where you decide what is in at all. The groups counted "
-              "from your birth are on by default — except the legends. The "
-              "calendar days are off, because there are many times more of "
-              "them; switch them on with a bundle above.",
+        "da": "Her bestemmes, hvad der er med i din kalender. Det bliver "
+              "stående. Alt, der blot skjuler noget — niveau, grupper, tid, "
+              "søgning — står i Udsnit-rækken foroven og kan fortrydes.\n\n"
+              "Fra start er mærkedagene, der regnes fra din fødsel, med "
+              "undtagen legenderne; festdagene er ikke, fordi de er mange "
+              "gange flere.",
+        "en": "This is where you decide what is in your calendar. It stays. "
+              "Everything that merely hides something — level, groups, time, "
+              "search — is in the View row above and can be undone.\n\n"
+              "To begin with, the milestones counted from your birth are in, "
+              "except the legends; the calendar days are not, because there "
+              "are many times more of them.",
     },
     # --- Levetidsberegneren ---
     "calc_title": {"da": "Levetidsberegner", "en": "Life expectancy calculator"},
@@ -462,6 +481,8 @@ T: dict[str, dict[str, str]] = {
     },
     "narrowed_search": {"da": "søgning: „{needle}“", "en": "search: “{needle}”"},
     "narrowed_only_chosen": {"da": "kun de valgte", "en": "only the chosen"},
+    "narrowed_when": {"da": "{when}", "en": "{when}"},
+    "narrowed_window": {"da": "{window}", "en": "{window}"},
     "only_chosen": {"da": "Vis kun det, jeg har valgt", "en": "Show only what I chose"},
     "only_chosen_help": {
         "da": "Skjuler alt, der ikke er sat flueben ved, så du kan se din "
@@ -470,14 +491,6 @@ T: dict[str, dict[str, str]] = {
         "en": "Hides everything without a tick, so you can read your calendar "
               "as a list instead of hunting for the ticks through the whole "
               "catalogue.",
-    },
-    "select_all": {"da": "Vælg alle", "en": "Select all"},
-    "clear_all": {"da": "Ryd alle", "en": "Clear all"},
-    "select_groups_help": {
-        "da": "Den samme vælger som i Udsnit foroven — ændrer du den ét sted, "
-              "følger den anden med.",
-        "en": "The same picker as in View above — change it in one place and "
-              "the other follows.",
     },
     "select_showing": {
         "da": "Tabellen viser {n} mærkedage · {picked} af dem er med",
@@ -491,17 +504,6 @@ T: dict[str, dict[str, str]] = {
         "da": "**{n}** mærkedage er med i din kalender, ud af {total} i kataloget",
         "en": "**{n}** milestones are in your calendar, out of {total} in the "
               "catalogue",
-    },
-    "select_search": {"da": "Søg i kataloget", "en": "Search the catalogue"},
-    "select_search_placeholder": {
-        "da": "fx fibonacci, hexadecimal, måne, 5318008",
-        "en": "e.g. fibonacci, hexadecimal, moon, 5318008",
-    },
-    "select_search_help": {
-        "da": "Søger i navn, forklaring, gruppe og i selve tallet uden "
-              "tusindtalsskilletegn.",
-        "en": "Searches the name, the explanation, the group and the raw number "
-              "without thousands separators.",
     },
     "select_no_matches": {
         "da": "Ingen mærkedage tilbage efter de to filtre. Søgningen leder i "
