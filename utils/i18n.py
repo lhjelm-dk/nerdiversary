@@ -30,8 +30,12 @@ T: dict[str, dict[str, str]] = {
     "assumptions": {"da": "Antagelser og satser", "en": "Assumptions and rates"},
     "lifespan": {"da": "Forventet levetid (år)", "en": "Assumed lifespan (years)"},
     "lifespan_help": {
-        "da": "Bruges til den geologiske tidslinje og til procent-af-et-liv.",
-        "en": "Used for the geological timeline and percent-of-a-life milestones.",
+        "da": "Bruges til den geologiske tidslinje og til procent-af-et-liv. "
+              "Levetidsberegneren står under sekundtælleren og har en knap, "
+              "der sætter tallet her.",
+        "en": "Used for the geological timeline and percent-of-a-life "
+              "milestones. The life expectancy calculator sits under the "
+              "seconds counter and has a button that sets this.",
     },
     "bpm": {"da": "Hjerteslag pr. minut", "en": "Heartbeats per minute"},
     "breaths": {"da": "Åndedrag pr. minut", "en": "Breaths per minute"},
@@ -313,11 +317,11 @@ T: dict[str, dict[str, str]] = {
     "calc_title": {"da": "Levetidsberegner", "en": "Life expectancy calculator"},
     "calc_intro": {
         "da": "Regnet på officielle dødelighedstavler i stedet for gættet. "
-              "Tallet flytter ikke noget af sig selv — det er et bud at "
-              "stille skyderen herunder efter.",
+              "Tallet flytter ikke noget af sig selv — det er et bud, du "
+              "kan tage i brug med knappen nederst.",
         "en": "Worked out from official life tables instead of guessed. The "
-              "number changes nothing by itself — it is a suggestion for "
-              "where to put the slider below.",
+              "number changes nothing by itself — it is a suggestion you "
+              "can put to use with the button at the bottom.",
     },
     "calc_country": {"da": "Land", "en": "Country"},
     "calc_sex": {"da": "Køn", "en": "Sex"},
@@ -343,25 +347,86 @@ T: dict[str, dict[str, str]] = {
               "This assumes {pct}% improvement a year — an assumption, not a "
               "measurement.",
     },
-    "calc_spread": {
-        "da": "Halvdelen når **{median} år**. Den midterste halvdel ligger "
-              "mellem **{low}** og **{high} år**.",
-        "en": "Half reach **{median}**. The middle half fall between "
-              "**{low}** and **{high}**.",
+    "calc_reach": {
+        "da": "Chancen for at leve længere end",
+        "en": "Chance of living beyond age",
     },
-    "calc_reach": {"da": "Chancen for at nå alderen", "en": "Chance of reaching age"},
     "calc_reach_result": {
-        "da": "Chancen for at nå **{age} år** er **{pct} %**.",
-        "en": "The chance of reaching **{age}** is **{pct}%**.",
+        "da": "Chancen for at leve længere end **{age} år** er **{pct} %**.",
+        "en": "The chance of living beyond **{age}** is **{pct}%**.",
     },
-    "calc_seeds": {
-        "da": "Skyderen nedenfor starter på **{years} år** — kohortetallet, "
-              "rundet af. Træk i den, hvis du hellere vil regne med noget "
-              "andet; resten af appen følger skyderen og ikke beregneren.",
-        "en": "The slider below starts at **{years}** — the cohort figure, "
-              "rounded. Drag it if you would rather reckon with something "
-              "else; the rest of the app follows the slider, not the "
-              "calculator.",
+
+    # --- Kurven ----------------------------------------------------------
+    "calc_axis_age": {"da": "Alder", "en": "Age"},
+    "calc_axis_p": {
+        "da": "Chance for at leve længere",
+        "en": "Chance of living beyond",
+    },
+    "calc_curve_help": {
+        "da": "Hold musen over kurven for at læse chancen for at leve "
+              "længere end en hvilken som helst alder. Den lodrette streg "
+              "er den alder, skyderen står på.",
+        "en": "Hover over the curve to read the chance of living beyond any "
+              "age. The vertical line is the age the slider is set to.",
+    },
+    "calc_band": {
+        "da": "Det tonede bånd er det samme regnestykke med livsstilens "
+              "virkning sat til det halve. Faktorerne overlapper hinanden, "
+              "så svaret er et spænd og ikke en streg.",
+        "en": "The shaded band is the same calculation with the lifestyle "
+              "effect halved. The factors overlap one another, so the "
+              "answer is a span and not a line.",
+    },
+    "calc_p90": {"da": "P90 — 9 ud af 10 når", "en": "P90 — 9 in 10 reach"},
+    "calc_p90_help": {
+        "da": "Den alder, ni ud af ti med din profil lever længere end. I "
+              "et overskridelsesplot ER tallet sandsynligheden og ikke "
+              "fraktilen — derfor er P90 den lave alder og P10 den høje.",
+        "en": "The age nine in ten with your profile live beyond. On an "
+              "exceedance plot the number IS the probability, not the "
+              "percentile — which is why P90 is the low age and P10 the "
+              "high one.",
+    },
+    "calc_p50": {"da": "P50 — halvdelen når", "en": "P50 — half reach"},
+    "calc_p50_help": {
+        "da": "Medianen. Halvdelen dør før, halvdelen efter.",
+        "en": "The median. Half die before it, half after.",
+    },
+    "calc_pmean": {"da": "Pmean — gennemsnittet", "en": "Pmean — the mean"},
+    "calc_pmean_help": {
+        "da": "Den forventede restlevetid lagt til din alder. Det er den, "
+              "de to tal foroven viser.",
+        "en": "The expected remaining years added to your age. It is what "
+              "the two figures above show.",
+    },
+    "calc_p10": {"da": "P10 — 1 ud af 10 når", "en": "P10 — 1 in 10 reach"},
+    "calc_p10_help": {
+        "da": "Den alder, kun én ud af ti lever længere end.",
+        "en": "The age only one in ten lives beyond.",
+    },
+    "calc_pmean_note": {
+        "da": "Læg mærke til, at gennemsnittet og medianen ikke er det "
+              "samme: chancen for at overskride gennemsnittet på **{age} "
+              "år** er **{pct} %** og altså ikke 50. Kurven er skæv — nogle "
+              "få dør meget tidligt og trækker gennemsnittet ned under "
+              "medianen.",
+        "en": "Note that the mean and the median are not the same thing: "
+              "the chance of exceeding the mean of **{age}** is **{pct}%**, "
+              "not 50. The curve is skewed — a few die very early and drag "
+              "the mean below the median.",
+    },
+    "calc_use": {
+        "da": "Brug {years} år som antaget levetid",
+        "en": "Use {years} as the assumed lifespan",
+    },
+    "calc_use_now": {
+        "da": "Antaget levetid står på **{years} år** lige nu. Den styrer "
+              "den geologiske tidslinje og procent-af-et-liv, og skyderen "
+              "sidder i sidepanelet under Antagelser og rater.",
+        "en": "The assumed lifespan is **{years}** right now. It drives the "
+              "geological timeline and the percent-of-a-life milestones, "
+              "and its slider is in the sidebar under Assumptions and "
+              "rates.",
     },
     "calc_source": {"da": "Kilde", "en": "Source"},
     "calc_fetched": {"da": "hentet {date}", "en": "fetched {date}"},

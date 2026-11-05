@@ -339,3 +339,81 @@ def test_every_other_table_falls_all_the_way_to_the_top():
         if lt.load().get(country, sex).ex[-1] > lt.load().get(country, sex).ex[-6]
     ]
     assert wobbly == ["SK/M"]
+
+
+# -------------------------------------------------------------------------
+# Overskridelseskurven
+# -------------------------------------------------------------------------
+
+
+def test_the_curve_can_be_read_between_two_whole_years():
+    """Gennemsnitsalderen lander naesten aldrig paa et helt aar.
+
+    ``chance_of_reaching`` springer i hele trin, fordi tavlen goer det. Skal
+    gennemsnittet afsaettes paa kurven dér, hvor det faktisk ligger, skal
+    der kunne laeses imellem to trin.
+    """
+    curve = lt.survival_curve("DK", "M", 46)
+    low = lt.exceedance_at(curve, 46, 80)
+    high = lt.exceedance_at(curve, 46, 81)
+    middle = lt.exceedance_at(curve, 46, 80.5)
+    assert high < middle < low
+    assert middle == pytest.approx((low + high) / 2, abs=1e-9)
+
+
+def test_the_whole_years_agree_with_the_old_answer():
+    """Den nye laesning maa ikke sige noget andet end den gamle."""
+    curve = lt.survival_curve("DK", "F", 30)
+    for age in range(30, 115):
+        assert lt.exceedance_at(curve, 30, age) == pytest.approx(
+            lt.chance_of_reaching(curve, 30, age), abs=1e-12
+        )
+
+
+def test_the_curve_only_falls_and_starts_whole():
+    curve = lt.survival_curve("DK", "M", 46)
+    assert lt.exceedance_at(curve, 46, 46) == 1.0
+    assert lt.exceedance_at(curve, 46, 20) == 1.0
+    steps = [lt.exceedance_at(curve, 46, 46 + n / 2) for n in range(0, 140)]
+    assert all(b <= a for a, b in zip(steps, steps[1:]))
+
+
+def test_an_unknown_country_still_gives_nothing_rather_than_a_crash():
+    assert lt.exceedance_at((), 40, 80) == 0.0
+    assert lt.last_age_above((), 40) == 40
+
+
+@pytest.mark.parametrize(("country", "sex"), PAIRS)
+def test_the_plot_stops_before_the_flat_tail(country, sex):
+    """Halen af naesten-nuller skal vaere klippet af, men ikke mere end det.
+
+    Stopper plottet for tidligt, falder P10 uden for billedet; stopper det
+    altid ved ``MAX_AGE``, fylder en tom tredjedel af x-aksen.
+
+    At det for en del tavler ENDER ved ``MAX_AGE`` er ikke en fejl i
+    klipningen, men en graense i modellen: med 1 % bedring om aaret er der
+    stadig en procent eller to tilbage ved 120, hvor regnestykket stopper.
+    Det staar der ogsaa noget om i Noter.
+    """
+    curve = lt.survival_curve(country, sex, 40, improvement=lt.IMPROVEMENT)
+    top = lt.last_age_above(curve, 40)
+    assert top <= lt.MAX_AGE
+    assert top > lt.age_at_quantile(curve, 40, 0.90)
+    assert lt.exceedance_at(curve, 40, top) >= 0.005
+    if top < lt.MAX_AGE:
+        assert lt.exceedance_at(curve, 40, top + 1) < 0.005
+
+
+def test_the_mean_is_not_the_median():
+    """Og chancen for at overskride gennemsnittet er derfor ikke 50 %.
+
+    Kurven er skaev: de faa, der doer tidligt, traekker gennemsnittet ned
+    under medianen. Det er hele pointen med at vise baade Pmean og P50, saa
+    det skal staa fast, at de ikke er det samme tal.
+    """
+    for country, sex in PAIRS:
+        curve = lt.survival_curve(country, sex, 46, improvement=lt.IMPROVEMENT)
+        mean = 46 + lt.expectancy(curve)
+        median = lt.age_at_quantile(curve, 46, 0.50)
+        assert mean < median
+        assert lt.exceedance_at(curve, 46, mean) > 0.50

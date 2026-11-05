@@ -14,6 +14,7 @@ from datetime import date, datetime, time, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo, available_timezones
 
+import altair as alt
 import pandas as pd
 import streamlit as st
 import streamlit.components.v1 as components
@@ -156,17 +157,271 @@ def _fetch_lifetables() -> None:
     st.session_state.lifetable_fetch = ("ok", len(lt.load().countries))
 
 
-def life_expectancy_calculator(birth: date, lang: str) -> int | None:
-    """Et kvalificeret bud paa levetiden, regnet paa officielle tavler.
+def _use_lifespan(years: int) -> None:
+    """Flyt beregnerens tal over i den antagne levetid.
 
-    Returnerer kohortetallet rundet af, saa skyderen nedenunder kan starte
-    dér i stedet for paa et rundt hundrede. Det er med vilje en *startvaerdi*
-    og ikke en knap: skyderen ejer tallet bagefter, og resten af appen
-    foelger skyderen.
+    Foer skete det af sig selv: skyderen fik tallet som ``value``. Det
+    virkede praecis én gang — saa snart ``lifespan`` stod i session state,
+    blev ``value`` ignoreret, og skiftede man derefter land eller livsstil,
+    rykkede skyderen sig aldrig igen. Nu er flytningen en knap, saa den
+    sker, naar man beder om den, og kan ses, naar den sker.
     """
-    with st.container(border=True):
-        st.caption(t("calc_title", lang).upper())
+    st.session_state.lifespan = int(years)
 
+
+def seed_lifespan() -> int:
+    """Skyderens startvaerdi: beregnerens tal for standardprofilen.
+
+    Den saettes ÉN gang, foer noget er tegnet. Paa foerste koersel ER
+    standardprofilen den, der staar i felterne, saa tallet passer; bagefter
+    ejer skyderen det, og knappen i beregneren er vejen til at flytte det.
+    """
+    catalogue = lt.load()
+    if not catalogue.countries:
+        return 100
+    country = (
+        catalogue.default
+        if catalogue.default in catalogue.countries
+        else catalogue.countries[0]
+    )
+    age_now = relativedelta(date.today(), DEFAULT_BIRTH_DATE).years
+    curve = lt.survival_curve(
+        country, lt.SEXES[0], age_now, improvement=lt.IMPROVEMENT
+    )
+    if not curve:
+        return 100
+    return int(min(120, max(60, round(age_now + lt.expectancy(curve)))))
+
+
+# Kurvens farver. Ét datasaet, saa én kuloer — og de er valgt ved at regne
+# kontrasten mod den hvide bund ud, ikke ved at kigge paa dem: #1F6F8B
+# giver 5,7:1, #5A5A5A 6,9:1 og #8A8A8A 3,5:1, alle over de 3:1, en tynd
+# streg skal have. Appens egen koralfarve naaede 2,8:1 og bruges derfor
+# ikke til en streg her.
+CURVE_INK = "#1F6F8B"
+TARGET_INK = "#5A5A5A"
+HOVER_INK = "#8A8A8A"
+GRID_INK = "#E8E8E8"
+TEXT_INK = "#1E1E1E"
+
+
+def exceedance_chart(
+    curve: tuple[float, ...],
+    softer: tuple[float, ...] | None,
+    age_now: int,
+    target: int,
+    lang: str,
+) -> alt.LayerChart:
+    """Overskridelseskurven: chancen for at leve laengere end hver alder.
+
+    Det er praecis den kurve, modulet i forvejen regner paa —
+    ``survival_curve`` ER overskridelsessandsynligheden — men som to
+    noegletal sagde den ingenting om formen. Tegnet kan man se, hvor stejlt
+    det gaar ned, og hvor langt de fire pejlemaerker ligger fra hinanden.
+
+    Baandet er det samme regnestykke med livsstilens virkning sat til det
+    halve. Modulet siger selv, at faktorerne overlapper hinanden, saa svaret
+    er et spaend — og saa skal spaendet ogsaa kunne ses.
+    """
+    top = max(lt.last_age_above(curve, age_now) + 1, int(target) + 1)
+    ages = list(range(int(age_now), top + 1))
+
+    def pct(from_curve: tuple[float, ...], age: float) -> float:
+        return lt.exceedance_at(from_curve, age_now, age) * 100.0
+
+    frame = pd.DataFrame(
+        {
+            "age": ages,
+            "p": [pct(curve, age) for age in ages],
+            # Teksten til tooltippet skrives her og ikke i Vega, fordi tallet
+            # skal have dansk komma som alle andre tal i appen.
+            "age_text": [str(age) for age in ages],
+            "p_text": [f"{fmt.fmt_num(pct(curve, age), lang, 1)} %" for age in ages],
+        }
+    )
+
+    x = alt.X(
+        "age:Q",
+        title=t("calc_axis_age", lang),
+        scale=alt.Scale(domain=[ages[0], ages[-1]], nice=False),
+        axis=alt.Axis(format="d", tickMinStep=10, gridColor=GRID_INK),
+    )
+    # Gitteret ligger paa 10, 50 og 90, saa P90, P50 og P10 falder praecis
+    # paa en linje i stedet for at svaeve mellem to.
+    y_axis = alt.Axis(
+        values=[0, 10, 25, 50, 75, 90, 100],
+        labelExpr="datum.value + ' %'",
+        gridColor=GRID_INK,
+    )
+    y = alt.Y(
+        "p:Q",
+        title=t("calc_axis_p", lang),
+        scale=alt.Scale(domain=[0, 100], nice=False),
+        axis=y_axis,
+    )
+
+    layers: list[alt.Chart] = []
+
+    if softer is not None:
+        spans = [sorted((pct(curve, age), pct(softer, age))) for age in ages]
+        band = pd.DataFrame(
+            {"age": ages, "lo": [s[0] for s in spans], "hi": [s[1] for s in spans]}
+        )
+        layers.append(
+            alt.Chart(band)
+            .mark_area(color=CURVE_INK, opacity=0.14)
+            .encode(
+                x=x,
+                y=alt.Y(
+                    "lo:Q",
+                    title=t("calc_axis_p", lang),
+                    scale=alt.Scale(domain=[0, 100], nice=False),
+                    axis=y_axis,
+                ),
+                y2="hi:Q",
+            )
+        )
+
+    # Skyderens alder som en lodret streg — med sit svar skrevet paa.
+    # Stregen alene sagde kun, HVOR man spurgte, ikke hvad svaret var, og
+    # saa skulle man laese procenten i saetningen under plottet i stedet
+    # for dér, hvor man i forvejen kiggede.
+    #
+    # Prikken og tallet er i blaek og ikke i kurvens kuloer: det er din
+    # markoer og ikke et femte pejlemaerke.
+    target_p = pct(curve, target)
+    aimed = pd.DataFrame(
+        [
+            {
+                "age": int(target),
+                "p": target_p,
+                "label": f"{fmt.fmt_num(target_p, lang, 1)} %",
+            }
+        ]
+    )
+    layers.append(
+        alt.Chart(aimed).mark_rule(color=TARGET_INK, strokeWidth=1.5).encode(x=x)
+    )
+    layers.append(
+        alt.Chart(frame).mark_line(color=CURVE_INK, strokeWidth=2).encode(x=x, y=y)
+    )
+    layers.append(
+        alt.Chart(aimed)
+        .mark_point(
+            size=110, filled=True, color=TARGET_INK, stroke="white", strokeWidth=2
+        )
+        .encode(x=x, y=y)
+    )
+    layers.append(
+        alt.Chart(aimed)
+        .mark_text(
+            align="right", dx=-11, dy=-13, fontWeight="bold", fontSize=12,
+            color=TARGET_INK,
+        )
+        .encode(x=x, y=y, text="label:N")
+    )
+
+    # De fire pejlemaerker. P90 er den alder, ni ud af ti overskrider, og
+    # P10 den, kun én ud af ti goer: i et overskridelsesplot er tallet
+    # sandsynligheden og ikke fraktilen, saa P90 er den lave alder.
+    #
+    # Hver etiket peger sin egen vej. De blev foerst tegnet i ét lag med én
+    # forskydning, og saa laa "P50" oven i "Pmean" — de to ligger kun otte
+    # procentpoint fra hinanden — mens "Pmean" samtidig haengte ud over
+    # hoejre kant af feltet. De to i midten peger derfor hver sin vej, og
+    # P10 peger indad, fordi den ligger yderst til hoejre.
+    mean_age = age_now + lt.expectancy(curve)
+    spots = (
+        ("P90", lt.age_at_quantile(curve, age_now, 0.10), 90.0, "left", 10, -8),
+        ("P50", lt.age_at_quantile(curve, age_now, 0.50), 50.0, "left", 10, 16),
+        ("Pmean", mean_age, pct(curve, mean_age), "right", -10, -8),
+        ("P10", lt.age_at_quantile(curve, age_now, 0.90), 10.0, "right", -10, -8),
+    )
+
+    layers.append(
+        alt.Chart(
+            pd.DataFrame([{"age": spot[1], "p": spot[2]} for spot in spots])
+        )
+        .mark_point(
+            size=110, filled=True, color=CURVE_INK, stroke="white", strokeWidth=2
+        )
+        .encode(x=x, y=y)
+    )
+    for label, age, share, align, dx, dy in spots:
+        layers.append(
+            alt.Chart(pd.DataFrame([{"age": age, "p": share, "label": label}]))
+            .mark_text(
+                align=align, dx=dx, dy=dy, fontWeight="bold", fontSize=12,
+                color=TEXT_INK,
+            )
+            .encode(x=x, y=y, text="label:N")
+        )
+
+    # Musen skal kun ramme den rigtige ALDER, ikke selve stregen: Vega
+    # laegger et naermeste-punkt-net ud over feltet, saa markoeren bare skal
+    # vaere taettest paa.
+    hover = alt.selection_point(
+        name="peek",
+        nearest=True,
+        on="pointerover",
+        fields=["age"],
+        empty=False,
+        clear="pointerout",
+    )
+    layers.append(
+        alt.Chart(frame)
+        .mark_point()
+        .encode(
+            x=x,
+            opacity=alt.value(0),
+            tooltip=[
+                alt.Tooltip("age_text:N", title=t("calc_axis_age", lang)),
+                alt.Tooltip("p_text:N", title=t("calc_axis_p", lang)),
+            ],
+        )
+        .add_params(hover)
+    )
+    layers.append(
+        alt.Chart(frame)
+        .mark_rule(color=HOVER_INK, strokeWidth=1)
+        .encode(x=x)
+        .transform_filter(hover)
+    )
+    layers.append(
+        alt.Chart(frame)
+        .mark_point(
+            size=120, filled=True, color=CURVE_INK, stroke="white", strokeWidth=2
+        )
+        .encode(x=x, y=y)
+        .transform_filter(hover)
+    )
+
+    return (
+        alt.layer(*layers)
+        .properties(height=300)
+        .configure_view(strokeWidth=0)
+        .configure_axis(
+            domainColor=GRID_INK,
+            tickColor=GRID_INK,
+            labelColor=TARGET_INK,
+            titleColor=TARGET_INK,
+            labelFontSize=11,
+            titleFontSize=11,
+        )
+    )
+
+
+def life_expectancy_panel(birth: date, lang: str) -> None:
+    """Levetidsberegneren, med overskridelseskurven.
+
+    Den laa i sidepanelet under "Antagelser og rater", side om side med
+    skyderne for puls og skridt pr. doegn. Det var forkert paa to maader:
+    den er ikke en antagelse, man skruer paa, men et svar, man laeser — og
+    den er det mest omfangsrige i appen, gemt bag to klik i en skuffe. Nu
+    staar den under sekundtaelleren, foldet sammen, hvor man kan se, at den
+    er der.
+    """
+    with st.expander(t("calc_title", lang), icon=":material/stacked_line_chart:"):
         note = st.session_state.pop("lifetable_fetch", None)
         if note and note[0] == "ok":
             st.success(
@@ -184,7 +439,7 @@ def life_expectancy_calculator(birth: date, lang: str) -> int | None:
                 help=t("calc_refresh_help", lang),
                 key="calc_refresh_empty",
             )
-            return None
+            return
 
         st.caption(t("calc_intro", lang))
 
@@ -210,7 +465,7 @@ def life_expectancy_calculator(birth: date, lang: str) -> int | None:
         age_now = relativedelta(date.today(), birth).years
         if table is None or age_now < 0:
             st.info(t("calc_no_data", lang))
-            return None
+            return
 
         st.caption(t("calc_lifestyle", lang))
         choices: dict[str, str] = {}
@@ -248,19 +503,10 @@ def life_expectancy_calculator(birth: date, lang: str) -> int | None:
             ),
         )
 
-        st.markdown(
-            t(
-                "calc_spread",
-                lang,
-                median=fmt.fmt_num(lt.age_at_quantile(cohort, age_now, 0.50), lang, 1),
-                low=fmt.fmt_num(lt.age_at_quantile(cohort, age_now, 0.25), lang, 1),
-                high=fmt.fmt_num(lt.age_at_quantile(cohort, age_now, 0.75), lang, 1),
-            )
-        )
-
         # Faktorerne overlapper hinanden, saa produktet overdriver. Det
         # uddaempede tal er den samme udregning med halv kraft, og de to
         # spaender svaret ud i stedet for at foregive en praecision.
+        softer: tuple[float, ...] | None = None
         if abs(hazard - 1.0) > 1e-9:
             softer = lt.survival_curve(
                 country,
@@ -279,6 +525,12 @@ def life_expectancy_calculator(birth: date, lang: str) -> int | None:
                 )
             )
 
+        # --- Kurven -------------------------------------------------------
+        #
+        # Skyderen tegnes FOER kurven, fordi kurven skal vise, hvor den
+        # staar. Den er samtidig den vej til det samme tal, der ikke
+        # kraever en mus: et tooltip maa gerne vaere en genvej, men det maa
+        # ikke vaere den eneste adgang til et tal.
         target = st.slider(
             t("calc_reach", lang),
             min_value=age_now + 1,
@@ -286,19 +538,70 @@ def life_expectancy_calculator(birth: date, lang: str) -> int | None:
             value=min(110, max(age_now + 1, 90)),
             key="calc_target",
         )
+        st.altair_chart(
+            exceedance_chart(cohort, softer, age_now, target, lang),
+            width="stretch",
+        )
+        st.caption(t("calc_curve_help", lang))
+        if softer is not None:
+            st.caption(t("calc_band", lang))
+
         st.markdown(
             t(
                 "calc_reach_result",
                 lang,
                 age=target,
                 pct=fmt.fmt_num(
-                    lt.chance_of_reaching(cohort, age_now, target) * 100, lang, 1
+                    lt.exceedance_at(cohort, age_now, target) * 100, lang, 1
                 ),
             )
         )
 
+        # De fire tal staar ogsaa skrevet. Kurven er den hurtige vej, men
+        # den skal ikke vaere den eneste.
+        mean_age = age_now + lt.expectancy(cohort)
+        marks = st.container(horizontal=True)
+        marks.metric(
+            t("calc_p90", lang),
+            fmt.fmt_num(lt.age_at_quantile(cohort, age_now, 0.10), lang, 1),
+            help=t("calc_p90_help", lang),
+        )
+        marks.metric(
+            t("calc_p50", lang),
+            fmt.fmt_num(lt.age_at_quantile(cohort, age_now, 0.50), lang, 1),
+            help=t("calc_p50_help", lang),
+        )
+        marks.metric(
+            t("calc_pmean", lang),
+            fmt.fmt_num(mean_age, lang, 1),
+            help=t("calc_pmean_help", lang),
+        )
+        marks.metric(
+            t("calc_p10", lang),
+            fmt.fmt_num(lt.age_at_quantile(cohort, age_now, 0.90), lang, 1),
+            help=t("calc_p10_help", lang),
+        )
+        st.caption(
+            t(
+                "calc_pmean_note",
+                lang,
+                age=fmt.fmt_num(mean_age, lang, 1),
+                pct=fmt.fmt_num(
+                    lt.exceedance_at(cohort, age_now, mean_age) * 100, lang, 1
+                ),
+            )
+        )
+
+        # --- Ud i resten af appen -----------------------------------------
         suggested = int(min(120, max(60, round(cohort_age))))
-        st.markdown(t("calc_seeds", lang, years=suggested))
+        st.button(
+            t("calc_use", lang, years=suggested),
+            icon=":material/arrow_outward:",
+            on_click=_use_lifespan,
+            args=(suggested,),
+            key="calc_use",
+        )
+        st.caption(t("calc_use_now", lang, years=st.session_state.lifespan))
 
         st.button(
             t("calc_refresh", lang),
@@ -312,12 +615,17 @@ def life_expectancy_calculator(birth: date, lang: str) -> int | None:
             f"{t('calc_fetched', lang, date=catalogue.fetched)}"
         )
         st.caption(t("calc_caveat", lang))
-        return suggested
 
 
 # =========================================================================
 # Sidepanel
 # =========================================================================
+
+# Skyderens startvaerdi er beregnerens tal og ikke et rundt hundrede. Den
+# saettes her, foer en eneste widget er tegnet, saa skyderen kan noejes med
+# sin ``key`` og slippe for et ``value``, Streamlit alligevel ignorerer,
+# saa snart noeglen staar i session state.
+st.session_state.setdefault("lifespan", seed_lifespan())
 
 with st.sidebar:
     lang = st.segmented_control(
@@ -396,15 +704,13 @@ with st.sidebar:
         )
 
     with st.expander(t("assumptions", lang), icon=":material/tune:"):
-        # Beregnerens tal bliver skyderens udgangspunkt. Det virker kun
-        # foerste gang: naar brugeren selv har flyttet skyderen, er det
-        # deres tal, der gaelder, og beregneren rykker det ikke igen.
-        suggested_lifespan = life_expectancy_calculator(birth_date, lang)
+        # Her staar kun det, man selv skruer paa. Levetidsberegneren laa
+        # ogsaa her og fyldte skuffen; den staar nu under sekundtaelleren,
+        # hvor den kan ses, og den har en knap, der flytter sit tal herind.
         lifespan = st.slider(
             t("lifespan", lang),
             min_value=60,
             max_value=120,
-            value=suggested_lifespan or 100,
             step=1,
             help=t("lifespan_help", lang),
             key="lifespan",
@@ -672,10 +978,9 @@ if time_unknown:
 
 
 @st.fragment(run_every="1s")
-def live_panel() -> None:
-    """Tæller, der tikker uden at genberegne resten af siden."""
+def live_age_panel() -> None:
+    """Alderen, der tikker uden at genberegne resten af siden."""
     now = datetime.now(timezone.utc)
-    now_local = now.astimezone(tz)
     seconds_old = age_seconds(profile, now)
 
     with st.container(border=True):
@@ -730,6 +1035,18 @@ def live_panel() -> None:
                     f"**{fmt.fmt_relativedelta(gap, lang)}**"
                 )
 
+
+@st.fragment(run_every="1s")
+def live_next_panel() -> None:
+    """Det naeste, der sker.
+
+    Egen fragment, saa levetidsfeltet kan ligge mellem de to uden at blive
+    tegnet om hvert sekund — en kurve, der blinker én gang i sekundet, kan
+    man ikke holde musen hen over.
+    """
+    now = datetime.now(timezone.utc)
+    now_local = now.astimezone(tz)
+
     upcoming = next_occasions(occasions, now, count=4)
     if not upcoming:
         st.info(t("nothing_ahead", lang), icon=":material/hourglass_empty:")
@@ -772,7 +1089,13 @@ def live_panel() -> None:
         )
 
 
-live_panel()
+live_age_panel()
+
+# Levetiden staar mellem de to: lige under sekundtaelleren, hvor spoergsmaalet
+# "hvor mange af dem faar jeg?" melder sig af sig selv.
+life_expectancy_panel(birth_date, lang)
+
+live_next_panel()
 
 
 # =========================================================================

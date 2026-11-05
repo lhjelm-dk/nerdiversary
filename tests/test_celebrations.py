@@ -1107,7 +1107,12 @@ def test_no_widget_gets_both_a_value_and_a_key():
         body = call[: end.start()] if end else call[:400]
         found = re.search(r"\bkey=([^,\n]+)", body)
         if found and same_key(found.group(1)) in managed:
-            assert "value=" not in body, f"både value og key: {body[:90]!r}"
+            # ``min_value=`` og ``max_value=`` indeholder ordet, men er ikke
+            # det. Testen raabte op over den foerste skyder, der havde baade
+            # et spaend og en noegle, appen selv skriver.
+            assert not re.search(r"(?<![a-z_])value=", body), (
+                f"både value og key: {body[:90]!r}"
+            )
 
 
 # -------------------------------------------------------------------------

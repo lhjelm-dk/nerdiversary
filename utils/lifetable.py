@@ -387,3 +387,40 @@ def age_at_quantile(curve: tuple[float, ...], from_age: float, share: float) -> 
             part = (before - wanted) / spread if spread > 0 else 0.0
             return start + step - 1 + part
     return float(start + len(curve) - 1)
+
+
+def exceedance_at(curve: tuple[float, ...], from_age: float, age: float) -> float:
+    """Chancen for at leve *laengere* end en alder, der ikke er et helt tal.
+
+    ``chance_of_reaching`` springer i hele aar, fordi tavlen goer det. Her
+    interpoleres der lineaert inden for aaret. Det skal der, fordi
+    gennemsnitsalderen naesten aldrig lander paa et helt aar, og den skal
+    kunne saettes paa kurven dér, hvor den faktisk ligger, i stedet for at
+    hoppe til naermeste trin.
+    """
+    if not curve:
+        return 0.0
+    offset = float(age) - int(from_age)
+    if offset <= 0.0:
+        return 1.0
+    if offset >= len(curve) - 1:
+        return curve[-1]
+    step = int(offset)
+    return curve[step] + (curve[step + 1] - curve[step]) * (offset - step)
+
+
+def last_age_above(
+    curve: tuple[float, ...], from_age: float, floor: float = 0.005
+) -> int:
+    """Den sidste alder, hvor chancen stadig er over ``floor``.
+
+    Kurven har en lang, flad hale af naesten-nuller op mod ``MAX_AGE``.
+    Tegnet med fylder den en tredjedel af x-aksen uden at sige noget, saa
+    plottet stopper her i stedet.
+    """
+    start = int(from_age)
+    last = start
+    for step, alive in enumerate(curve):
+        if alive >= floor:
+            last = start + step
+    return last
