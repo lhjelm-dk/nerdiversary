@@ -28,11 +28,15 @@ from utils import timeline as tl
 from utils.catalog import (
     BUNDLES,
     BUNDLES_BY_KEY,
+    FAMILIES,
+    FAMILIES_BY_KEY,
+    FAMILY_OF,
     GROUPS,
     GROUPS_BY_KEY,
     Bundle,
 )
 from utils.engine import (
+    BIRTH_SCOPE,
     SCOPES,
     Occasion,
     Profile,
@@ -509,31 +513,137 @@ groups_on |= {key for key in GROUP_KEYS if key not in st.session_state.setdefaul
     "groups_seen", set())}
 st.session_state.groups_seen.update(GROUP_KEYS)
 
+# --- Hvad vaelgeren viser -------------------------------------------------
+#
+# Fyrre grupper som chips i et flervalgsfelt var 862 tegn i et felt paa
+# tres: det scrollede sidelaens, den ufiltrerede tilstand var den mest
+# stoejende, og skulle man beholde tre grupper, skulle syvogtredive kryds
+# rammes ét ad gangen.
+#
+# Nu staar de som knapper i en popover, delt i de samme to hylder som
+# pakkerne, og de ni talmoensterfamilier staar som ÉN knap med de enkelte
+# bag en udfoldning. Det bringer fyrre kontakter ned paa toogtredive, og
+# ingen af dem skal rammes paa et lille kryds.
 
-def _sync_groups(widget_key: str) -> None:
-    """Flyt den ene gruppevælgers svar over i det, begge læser fra."""
-    st.session_state.groups_on = set(st.session_state[widget_key])
+PICKER_BY_SCOPE: dict[str, list[str]] = {scope: [] for scope in SCOPES}
+for _group in GROUPS:
+    _family = FAMILY_OF.get(_group.key)
+    _entry = _family or _group.key
+    _shelf = PICKER_BY_SCOPE[group_scopes().get(_group.key, BIRTH_SCOPE)]
+    if _entry not in _shelf:
+        _shelf.append(_entry)
 
 
-def draw_group_picker(parent, widget_key: str, label: str, help_text: str):
-    """Tegn en gruppevælger, der deler tilstand med den anden.
+def option_groups(option: str) -> tuple[str, ...]:
+    """Grupperne bag ét punkt i vælgeren — familien eller gruppen selv."""
+    family = FAMILIES_BY_KEY.get(option)
+    return family.groups if family else (option,)
+
+
+def option_label(option: str) -> str:
+    """Navnet på punktet, med tal nok til at kunne skimmes.
+
+    En familie viser, hvor mange af sine grupper der er tændt, men kun når
+    den er delt — ellers er tallet kun støj. En enkelt gruppe viser, hvor
+    mange mærkedage den rummer, fordi 🎊 Runde årsdage er 624 og 🎰
+    Repunitdage er 3, og det kunne man ikke se før.
+    """
+    family = FAMILIES_BY_KEY.get(option)
+    if family is None:
+        count = len(milestones_by_group().get(option, []))
+        return f"{GROUPS_BY_KEY[option].title(lang)} · {count}"
+    inside = sum(1 for key in family.groups if key in st.session_state.groups_on)
+    if inside in (0, len(family.groups)):
+        return family.title(lang)
+    return f"{family.title(lang)} · {inside}/{len(family.groups)}"
+
+
+def _sync_picker(widget_key: str) -> None:
+    """Flyt knappernes svar over i det sæt, hele appen læser fra.
+
+    Kun det, der FAKTISK blev ændret, røres. Det er ikke pedanteri: en
+    familie, hvor fire af ni er tændt, står ikke som valgt, og skrev vi hele
+    valget ned i ét hug, ville den blive slukket, hver gang man rørte en
+    helt anden knap.
+    """
+    before = set(st.session_state.get(f"{widget_key}__before", ()))
+    after = set(st.session_state[widget_key])
+    for option in after - before:
+        st.session_state.groups_on.update(option_groups(option))
+    for option in before - after:
+        st.session_state.groups_on.difference_update(option_groups(option))
+
+
+def _set_groups(keys, value: bool) -> None:
+    if value:
+        st.session_state.groups_on.update(keys)
+    else:
+        st.session_state.groups_on.difference_update(keys)
+
+
+def draw_pills(options: list[str], widget_key: str) -> None:
+    """Én række knapper, bundet til ``groups_on``.
 
     Tilstanden sættes her og ikke med ``default``. Gav vi begge dele, ville
     Streamlit advare med et helt stakspor — se ``_apply_table_edits``.
     """
-    st.session_state[widget_key] = [
-        key for key in GROUP_KEYS if key in st.session_state.groups_on
+    picked = [
+        option
+        for option in options
+        if all(key in st.session_state.groups_on for key in option_groups(option))
     ]
-    return parent.multiselect(
-        label,
-        options=list(GROUP_KEYS),
-        format_func=lambda key: GROUPS_BY_KEY[key].title(lang),
+    st.session_state[widget_key] = picked
+    st.session_state[f"{widget_key}__before"] = list(picked)
+    st.pills(
+        widget_key,
+        options=options,
+        selection_mode="multi",
+        format_func=option_label,
         key=widget_key,
-        on_change=_sync_groups,
+        on_change=_sync_picker,
         args=(widget_key,),
-        help=help_text,
-        placeholder=t("groups_none_placeholder", lang),
+        label_visibility="collapsed",
     )
+
+
+def draw_group_picker(parent, slug: str, help_text: str) -> None:
+    """Gruppevælgeren, som den står begge steder.
+
+    Lukket er den én knap med tallet på. Det er hele pointen: tilstanden
+    "jeg filtrerer ingenting" skal være den roligste, og det var den stik
+    modsatte, da alle fyrre stod som chips.
+    """
+    on_count = len(st.session_state.groups_on)
+    label = t("groups_button", lang, n=on_count, total=len(GROUP_KEYS))
+    # Bredden er sat i punkter og ikke overladt til indholdet: den vandrette
+    # beholder klemmer ellers knappen sammen, saa der staar "Grupper 40…".
+    with parent.popover(label, help=help_text, width=190):
+        for scope, options in PICKER_BY_SCOPE.items():
+            if not options:
+                continue
+            inside = [key for option in options for key in option_groups(option)]
+            st.caption(
+                f"**{t(f'scope_{scope}', lang)}** — "
+                f"{sum(1 for k in inside if k in st.session_state.groups_on)}"
+                f"/{len(inside)}"
+            )
+            toggles = st.container(horizontal=True)
+            toggles.button(
+                t("group_all", lang), key=f"{slug}_{scope}_all",
+                on_click=_set_groups, args=(inside, True),
+            )
+            toggles.button(
+                t("group_none", lang), key=f"{slug}_{scope}_none",
+                on_click=_set_groups, args=(inside, False),
+            )
+            draw_pills(options, f"{slug}_{scope}_pills")
+
+        # Finjusteringen. Den er foldet sammen, fordi den sjaeldent skal
+        # bruges — men den skal findes, for ellers kunne man ikke slaa
+        # palindromerne til uden ogsaa at faa de 108 binaere dage.
+        for family in FAMILIES:
+            with st.expander(t("family_detail", lang, name=family.name(lang))):
+                draw_pills(list(family.groups), f"{slug}_{family.key}_pills")
 
 
 # Niveauet laeses her, fordi listen, kalenderen og tidslinjen skal filtrere
@@ -714,9 +824,7 @@ now_local = now_utc.astimezone(tz)
 with st.container(border=True):
     st.caption(t("filters_scope", lang).upper())
     row = st.container(horizontal=True)
-    group_choices = draw_group_picker(
-        row, "filter_groups", t("filter_groups", lang), t("filter_groups_help", lang)
-    )
+    draw_group_picker(row, "filter", t("filter_groups_help", lang))
     row.selectbox(
         t("filter_window", lang),
         options=["all", "1", "5", "10", "25"],
@@ -766,7 +874,7 @@ def apply_scope_filters(items: list[Occasion]) -> list[Occasion]:
     out = [
         o
         for o in items
-        if o.milestone.group in set(group_choices)
+        if o.milestone.group in st.session_state.groups_on
         and o.milestone.level <= level_cap
     ]
     if query.strip():
@@ -1401,10 +1509,7 @@ with tab_select:
     # gruppe i filteret foroven uden at kunne vaelges hernede — og det er
     # praecis, hvad der skete for baade legenderne og festdagene.
     narrow = st.container(horizontal=True)
-    draw_group_picker(
-        narrow, "select_groups", t("select_groups", lang),
-        t("select_groups_help", lang),
-    )
+    draw_group_picker(narrow, "select", t("select_groups_help", lang))
     select_query = narrow.text_input(
         t("select_search", lang),
         placeholder=t("select_search_placeholder", lang),

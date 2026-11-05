@@ -188,6 +188,47 @@ GROUPS_BY_KEY: dict[str, Group] = {g.key: g for g in GROUPS}
 
 
 @dataclass(frozen=True)
+class Family:
+    """En flok grupper, der i brugerfladen staar som ÉN.
+
+    Familien findes kun i gruppevaelgeren. Kataloget, pakkerne og datafilerne
+    kender den ikke — en maerkedag hoerer stadig til én gruppe, og
+    ``milestone.group`` er uaendret. Det er med vilje: familien er et svar
+    paa, at fyrre kontakter er for mange at skimme, ikke en ny inddeling af
+    selve kataloget.
+    """
+
+    key: str
+    da: str
+    en: str
+    emoji: str
+    groups: tuple[str, ...]
+
+    def name(self, lang: str) -> str:
+        return self.da if lang == "da" else self.en
+
+    def title(self, lang: str) -> str:
+        return f"{self.emoji} {self.name(lang)}"
+
+
+# De ni talmoensterfamilier er reelt én ting: datoer, hvor tallene selv gaar
+# op. Ingen vil slaa kvadratrodsdagene til uden ogsaa at ville have
+# palindromerne, og den, der vil, kan folde familien ud.
+FAMILIES: tuple[Family, ...] = (
+    Family(
+        "patterns", "Talmønstre", "Number patterns", "🔢",
+        ("palindrome", "sequence", "repunit", "binday", "pyth",
+         "sqrtday", "fibday", "product", "sumday"),
+    ),
+)
+
+FAMILIES_BY_KEY: dict[str, Family] = {f.key: f for f in FAMILIES}
+FAMILY_OF: dict[str, str] = {
+    group: family.key for family in FAMILIES for group in family.groups
+}
+
+
+@dataclass(frozen=True)
 class Bundle:
     """En faerdigpakket udvaelgelse, man kan slaa til med ét klik.
 

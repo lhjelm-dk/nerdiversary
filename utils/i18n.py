@@ -121,20 +121,27 @@ T: dict[str, dict[str, str]] = {
         "da": "Udsnit — hvad du kigger på lige nu",
         "en": "View — what you are looking at right now",
     },
-    "filter_groups": {"da": "Grupper", "en": "Groups"},
     "filter_groups_help": {
-        "da": "Den samme vælger står i Vælg mærkedage. Slukker du en gruppe "
-              "her, forsvinder den fra listen, kalenderen, tidslinjen og "
-              "eksporten — men du mister ikke dine flueben, og den kommer "
-              "tilbage som den var, når du tænder den igen.",
-        "en": "The same picker sits in Choose milestones. Switch a group off "
-              "here and it leaves the list, the calendar, the timeline and "
-              "the export — but you do not lose your ticks, and it comes "
-              "back as it was when you switch it on again.",
+        "da": "Den samme vælger står i Vælg mærkedage — ændrer du den ét "
+              "sted, følger den anden med. Slukker du en gruppe, forsvinder "
+              "den fra listen, kalenderen, tidslinjen og eksporten, men du "
+              "mister ikke dine flueben: den kommer tilbage, som den var, "
+              "når du tænder den igen.",
+        "en": "The same picker sits in Choose milestones — change it in one "
+              "place and the other follows. Switch a group off and it leaves "
+              "the list, the calendar, the timeline and the export, but you "
+              "do not lose your ticks: it comes back as it was when you "
+              "switch it on again.",
     },
-    "groups_none_placeholder": {
-        "da": "Ingen grupper — intet vises",
-        "en": "No groups — nothing shown",
+    "groups_button": {
+        "da": "Grupper {n}/{total}",
+        "en": "Groups {n}/{total}",
+    },
+    "group_all": {"da": "Alle", "en": "All"},
+    "group_none": {"da": "Ingen", "en": "None"},
+    "family_detail": {
+        "da": "{name} enkeltvis",
+        "en": "{name} one by one",
     },
     "filter_window": {"da": "Tidsrum", "en": "Time window"},
     "window_all": {"da": "Alt", "en": "Everything"},
@@ -466,7 +473,6 @@ T: dict[str, dict[str, str]] = {
     },
     "select_all": {"da": "Vælg alle", "en": "Select all"},
     "clear_all": {"da": "Ryd alle", "en": "Clear all"},
-    "select_groups": {"da": "Grupper", "en": "Groups"},
     "select_groups_help": {
         "da": "Den samme vælger som i Udsnit foroven — ændrer du den ét sted, "
               "følger den anden med.",

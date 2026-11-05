@@ -1004,7 +1004,11 @@ def test_the_app_never_draws_a_widget_per_milestone():
     # lille oevre graense: to hylder, seksten pakker i en hylde, fire
     # levetidsfaktorer. Listen er kort med vilje — skal der en ny slags
     # loekke til, skal man skrive den her og dermed sige, hvad dens loft er.
-    allowed = {"shelves.items()", "shelf", "lt.FACTORS"}
+    allowed = {
+        "shelves.items()", "shelf", "lt.FACTORS",
+        # Gruppevaelgeren: to hylder, og én familie med ni grupper i.
+        "PICKER_BY_SCOPE.items()", "FAMILIES",
+    }
 
     def direct(node: ast.AST) -> bool:
         """Et kald som ``st.button(...)`` eller ``rows.button(...)``."""
@@ -1434,8 +1438,8 @@ def test_both_group_pickers_come_from_the_same_function():
     ]
     assert len(calls) == 2, f"{len(calls)} gruppevælgere — der skal være to"
 
-    keys = sorted(ast.unparse(call.args[1]).strip("'\"") for call in calls)
-    assert keys == ["filter_groups", "select_groups"], keys
+    slugs = sorted(ast.unparse(call.args[1]).strip("'\"") for call in calls)
+    assert slugs == ["filter", "select"], slugs
 
 
 def test_the_group_picker_never_carries_its_own_default():
@@ -1445,11 +1449,14 @@ def test_the_group_picker_never_carries_its_own_default():
     oven i koebet advare, fordi noeglen allerede staar i session state.
     """
     source = app_source()
-    start = source.index("def draw_group_picker")
+    start = source.index("def draw_pills")
     body = source[start : source.index("\n\n\n", start)]
     assert "default=" not in body
-    assert "on_change=_sync_groups" in body
+    assert "on_change=_sync_picker" in body
     assert "st.session_state[widget_key] =" in body
+    # Og det, der blev vist FOER klikket. Uden det ville en halvt taendt
+    # familie blive slukket, hver gang man roerte en helt anden knap.
+    assert 'st.session_state[f"{widget_key}__before"] =' in body
 
 
 def test_the_filtering_reads_the_set_and_not_a_widget():
