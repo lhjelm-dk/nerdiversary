@@ -325,3 +325,13 @@ tests/
 `streamlit-calendar` melder ikke sin højde til Streamlit 1.62, så iframen
 sættes med én regel CSS i `streamlit_app.py`. Komponenten bruger FullCalendars
 gratis licens (CC BY-NC-ND), som dækker privat brug.
+
+## Licens
+
+Koden her er MIT — se [LICENSE](LICENSE). Brug den til hvad du vil, så længe
+navnet følger med.
+
+Det gælder koden i dette repo og ikke dens afhængigheder. Særligt
+`streamlit-calendar`, som nævnt ovenfor: FullCalendars gratis licens er
+CC BY-NC-ND, så kalenderfanen må ikke uden videre køre i et kommercielt
+produkt. Resten af appen virker uden den.
