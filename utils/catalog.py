@@ -116,72 +116,63 @@ GROUPS: tuple[Group, ...] = (
     Group("geo", "Jordens historie", "Earth's history", "🌋"),
     Group("body", "Kroppen", "The body", "❤️"),
     Group("century", "Procent af et liv", "Percent of a life", "📊"),
-    # Par-gruppen giver kun noget, naar der er indtastet en anden foedselsdato.
-    # Derfor er den slaaet til fra start: den fylder ingenting, saa laenge
-    # feltet staar tomt, og virker med det samme, naar det bliver udfyldt.
+    # Par-gruppen giver kun noget, naar der er indtastet en anden
+    # foedselsdato. Den har altid vaeret slaaet til, fordi den fylder
+    # ingenting, saa laenge feltet staar tomt — og appen udfylder det nu selv
+    # fra start, saa regnestykket kan ses uden at man foerst skal gaette, at
+    # det findes.
     Group("pair", "Jer to", "The two of you", "👥"),
-    Group("legend", "Legender", "Legends", "🎸", default_on=False),
+    Group("legend", "Legender", "Legends", "🎸"),
     # Festdagene ligger paa kalenderen i stedet for i dit liv (se
-    # ``utils.celebrations``). De er slaaet fra fra start: der er flere
-    # hundrede af dem, og de ville drukne de maerkedage, appen handler om.
-    Group("pop", "Popkulturens festdage", "Pop culture celebrations", "🍿",
-          default_on=False),
-    Group("dkday", "Danske skæve dage", "Danish odd days", "🇩🇰",
-          default_on=False),
+    # ``utils.celebrations``). De var slaaet fra fra start, fordi der er flere
+    # hundrede af dem. Nu staar de til: en app, der aabner halvtom, siger
+    # ikke hvad den kan, og den, der vil have roen tilbage, slaar en hel
+    # familie fra med ét klik under *Vaelg maerkedage*.
+    Group("pop", "Popkulturens festdage", "Pop culture celebrations", "🍿"),
+    Group("dkday", "Danske skæve dage", "Danish odd days", "🇩🇰"),
     # Kravet for at staa her er ikke, at dagen er stor, men at den er skaev:
     # en helligdag opstaaet af en hoerefejl, en by der kaster appelsiner, en
     # dag for at mislykkes.
-    Group("wacky", "Verdens skæve dage", "The world's odd days", "🤪",
-          default_on=False),
+    Group("wacky", "Verdens skæve dage", "The world's odd days", "🤪"),
     # Kilden har en helligdag for hver eneste dag i aaret. Her staar de
     # kanoniske og et udvalg af resten.
-    Group("fsm", "Pastafarianske helligdage", "Pastafarian holy days", "🍝",
-          default_on=False),
+    Group("fsm", "Pastafarianske helligdage", "Pastafarian holy days", "🍝"),
     # De dage fra samme kalender, der handler udtrykkeligt om sex eller
     # afsondringer. De er ikke kasseret — kalenderen er kun hel med dem —
-    # men de staar for sig selv, saa appen kan aabnes foran andre.
+    # men de staar for sig selv, saa appen kan aabnes foran andre. Det er
+    # den eneste gruppe i hele kataloget, der er slaaet fra fra start, og
+    # grunden er den og ikke antallet.
     Group("fsm18", "Spaghettimonsteret, uden bluser",
           "The Spaghetti Monster, unabridged", "🔞", default_on=False),
-    Group("fiction", "Fiktive helligdage", "Fictional holidays", "🎬",
-          default_on=False),
-    Group("chars", "Figurernes fødselsdage", "Characters' birthdays", "🦸",
-          default_on=False),
-    Group("scifi", "Science fiction-kanon", "Science fiction canon", "🛸",
-          default_on=False),
-    Group("sciday", "Videnskabens festdage", "Days of science", "🔭",
-          default_on=False),
-    Group("nerdhist", "Nørdehistorie", "Nerd history", "🕹️", default_on=False),
-    Group("scihist", "Videnskabens gennembrud", "Scientific breakthroughs", "💡",
-          default_on=False),
+    Group("fiction", "Fiktive helligdage", "Fictional holidays", "🎬"),
+    Group("chars", "Figurernes fødselsdage", "Characters' birthdays", "🦸"),
+    Group("scifi", "Science fiction-kanon", "Science fiction canon", "🛸"),
+    Group("sciday", "Videnskabens festdage", "Days of science", "🔭"),
+    Group("nerdhist", "Nørdehistorie", "Nerd history", "🕹️"),
+    Group("scihist", "Videnskabens gennembrud", "Scientific breakthroughs", "💡"),
     # Talmoensterdagene. De staar ikke skrevet ned noget sted, men bliver
     # regnet ud af ``utils.datepatterns`` — én gruppe pr. moenster, saa man kan
     # slaa palindromerne til uden ogsaa at faa flere hundrede sumdage.
-    Group("palindrome", "Palindromdage", "Palindrome days", "🔁",
-          default_on=False),
-    Group("sequence", "Sekvensdage", "Sequence days", "🪜", default_on=False),
-    Group("repunit", "Repunitdage", "Repdigit days", "🎰", default_on=False),
-    Group("binday", "Binære dage", "Binary days", "💾", default_on=False),
-    Group("pyth", "Pythagoræiske dage", "Pythagorean days", "📐",
-          default_on=False),
-    Group("sqrtday", "Kvadratrodsdage", "Square root days", "√",
-          default_on=False),
-    Group("fibday", "Fibonacci-datoer", "Fibonacci dates", "🌀",
-          default_on=False),
-    Group("product", "Produktdage", "Product days", "✖️", default_on=False),
-    Group("sumday", "Sumdage", "Sum days", "➕", default_on=False),
+    Group("palindrome", "Palindromdage", "Palindrome days", "🔁"),
+    Group("sequence", "Sekvensdage", "Sequence days", "🪜"),
+    Group("repunit", "Repunitdage", "Repdigit days", "🎰"),
+    Group("binday", "Binære dage", "Binary days", "💾"),
+    Group("pyth", "Pythagoræiske dage", "Pythagorean days", "📐"),
+    Group("sqrtday", "Kvadratrodsdage", "Square root days", "√"),
+    Group("fibday", "Fibonacci-datoer", "Fibonacci dates", "🌀"),
+    Group("product", "Produktdage", "Product days", "✖️"),
+    Group("sumday", "Sumdage", "Sum days", "➕"),
     Group("techday", "Teknologiens mærkedage", "Technology's red-letter days",
-          "💻", default_on=False),
-    Group("birthdays", "Nørdernes fødselsdage", "Nerd birthdays", "🎂",
-          default_on=False),
+          "💻"),
+    Group("birthdays", "Nørdernes fødselsdage", "Nerd birthdays", "🎂"),
     # Den anden maade at gribe Jordens historie an paa. ``geo`` klemmer de 4,54
     # milliarder aar ned i *dit* liv; her klemmes de ned i et kalenderaar, som
     # alle har det samme af (se ``utils.geoyear``).
-    Group("geoyear", "Jordens år", "Earth's year", "🌍", default_on=False),
+    Group("geoyear", "Jordens år", "Earth's year", "🌍"),
     # Runde aarsdage for alt det daterede. De udledes i
     # ``utils.celebrations.round_anniversaries`` og staar ikke skrevet
     # nogen steder.
-    Group("anniversary", "Runde årsdage", "Round anniversaries", "🎊",
-          default_on=False),
+    Group("anniversary", "Runde årsdage", "Round anniversaries", "🎊"),
 )
 
 GROUPS_BY_KEY: dict[str, Group] = {g.key: g for g in GROUPS}

@@ -303,15 +303,14 @@ T: dict[str, dict[str, str]] = {
         "da": "Her bestemmes, hvad der er med i din kalender. Det bliver "
               "stående. Alt, der blot skjuler noget — niveau, grupper, tid, "
               "søgning — står i Udsnit-rækken foroven og kan fortrydes.\n\n"
-              "Fra start er mærkedagene, der regnes fra din fødsel, med "
-              "undtagen legenderne; festdagene er ikke, fordi de er mange "
-              "gange flere.",
+              "Fra start er alt med på nær 🔞-pakken. Det er mange — slå en "
+              "hel familie fra her, hvis du hellere vil begynde i det små.",
         "en": "This is where you decide what is in your calendar. It stays. "
               "Everything that merely hides something — level, groups, time, "
               "search — is in the View row above and can be undone.\n\n"
-              "To begin with, the milestones counted from your birth are in, "
-              "except the legends; the calendar days are not, because there "
-              "are many times more of them.",
+              "To begin with, everything is in except the 🔞 pack. That is a "
+              "lot — switch a whole family off here if you would rather start "
+              "small.",
     },
     # --- Levetidsberegneren ---
     "calc_title": {"da": "Levetidsberegner", "en": "Life expectancy calculator"},
@@ -570,14 +569,15 @@ T: dict[str, dict[str, str]] = {
     # --- Jer to ---
     "pair_section": {"da": "Jer to", "en": "The two of you"},
     "pair_hint": {
-        "da": "Udfyld en anden fødselsdato, og gruppen 👥 Jer to vågner: "
-              "det ene øjeblik, hvor den ene er dobbelt så gammel som den "
-              "anden, og de datoer hvor jeres to aldre lagt sammen runder et "
-              "pænt tal.",
-        "en": "Fill in a second date of birth and the 👥 The two of you group "
-              "wakes up: the single moment one of you is twice as old as the "
-              "other, and the dates where your two ages added together reach a "
-              "round number.",
+        "da": "Gruppen 👥 Jer to regner på to fødselsdatoer: det ene øjeblik, "
+              "hvor den ene er dobbelt så gammel som den anden, og de datoer "
+              "hvor jeres to aldre lagt sammen runder et pænt tal. Der står "
+              "nogen i feltet fra start — ret datoen til den, det skal være.",
+        "en": "The 👥 The two of you group reckons on two dates of birth: the "
+              "single moment one of you is twice as old as the other, and the "
+              "dates where your two ages added together reach a round number. "
+              "Someone is filled in to begin with — change the date to the one "
+              "you mean.",
     },
     "pair_use": {"da": "Sammenlign med en anden", "en": "Compare with someone else"},
     "pair_name": {"da": "Den andens navn", "en": "Their name"},

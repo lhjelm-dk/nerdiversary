@@ -15,7 +15,14 @@ from dateutil.relativedelta import relativedelta
 
 from utils import timeline as tl
 from utils.catalog import GROUPS
-from utils.engine import Profile, all_milestones, compute, explanation
+from utils.engine import (
+    BIRTH_SCOPE,
+    Profile,
+    all_milestones,
+    compute,
+    explanation,
+    group_scope,
+)
 
 CPH = ZoneInfo("Europe/Copenhagen")
 
@@ -219,15 +226,22 @@ def test_the_axis_ticks_come_in_order():
 
 @pytest.fixture(scope="module")
 def real_entries() -> list[tl.Entry]:
-    """Det udvalg, appen aabner med: grupperne, der er slaaet til fra start.
+    """De maerkedage, der regnes fra foedslen — kataloget uden festdagene.
 
-    Festdagene er slaaet fra, og det er med vilje ogsaa her. De ligger paa
-    kalenderen i stedet for i livet og kan falde hvor som helst — ogsaa paa
-    ens tiende levedoegn. Hvordan tidslinjen klarer *dem*, staar i sin egen
-    test laengere nede.
+    Festdagene er holdt ude med vilje. De ligger paa kalenderen i stedet for
+    i livet og kan falde hvor som helst — ogsaa paa ens tiende levedoegn.
+    Hvordan tidslinjen klarer *dem*, staar i sin egen test laengere nede.
+
+    Udvalget stod foer paa ``default_on``, og det holdt, saa laenge kun de
+    personlige grupper var slaaet til fra start. Nu er alt paa naer
+    18-pakken taendt, saa det ville traekke hele kalenderen med ind her.
+    Skellet, testen er ude efter, er hvad maerkedagen haenger paa, og det
+    kan motoren selv svare paa.
     """
     profile = Profile(birth_local=BIRTH)
-    switched_on = {group.key for group in GROUPS if group.default_on}
+    switched_on = {
+        group.key for group in GROUPS if group_scope(group.key) == BIRTH_SCOPE
+    }
     occasions = compute(
         profile,
         keys={m.key for m in all_milestones() if m.group in switched_on},

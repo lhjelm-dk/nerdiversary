@@ -85,6 +85,14 @@ DEFAULT_NAME = "Bossie Bossman"
 DEFAULT_BIRTH_DATE = date(1981, 6, 3)
 DEFAULT_BIRTH_TIME = time(7, 10, 0)
 
+# Og den anden. Gruppen "Jer to" har hele tiden vaeret slaaet til, men den gav
+# ingenting, saa laenge feltet stod tomt — saa det, der er appens mest
+# overraskende regnestykke, var det, faerrest fik at se. Nu er der nogen i
+# feltet fra start.
+DEFAULT_PARTNER_NAME = "Chefy Sherif"
+DEFAULT_PARTNER_DATE = date(1986, 10, 9)
+DEFAULT_PARTNER_TIME = time(12, 23, 30)
+
 # Farver til kalenderen — én pr. gruppe, valgt så de kan skelnes fra hinanden.
 GROUP_COLORS: dict[str, str] = {
     "sec": "#3b7dd8",
@@ -684,16 +692,17 @@ with st.sidebar:
 
     with st.expander(t("pair_section", lang), icon=":material/group:"):
         st.caption(t("pair_hint", lang))
-        use_pair = st.checkbox(t("pair_use", lang), key="use_pair")
+        use_pair = st.checkbox(t("pair_use", lang), value=True, key="use_pair")
         partner_name = st.text_input(
             t("pair_name", lang),
+            value=DEFAULT_PARTNER_NAME,
             placeholder=t("name_placeholder", lang),
             disabled=not use_pair,
             key="partner_name",
         )
         partner_date = st.date_input(
             t("pair_date", lang),
-            value=date(1973, 10, 9),
+            value=DEFAULT_PARTNER_DATE,
             min_value=date(1900, 1, 1),
             max_value=date.today(),
             format="DD.MM.YYYY",
@@ -702,7 +711,7 @@ with st.sidebar:
         )
         partner_time = st.time_input(
             t("pair_time", lang),
-            value=time(12, 0, 0),
+            value=DEFAULT_PARTNER_TIME,
             step=1,
             help=t("pair_time_help", lang),
             disabled=not use_pair,

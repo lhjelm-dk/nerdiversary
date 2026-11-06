@@ -11,3 +11,4 @@ __pycache__/
 # Claude Codes lokale indstillinger. launch.json er med med vilje:
 # den er det, der starter appen.
 .claude/settings.local.json
+linkedin/

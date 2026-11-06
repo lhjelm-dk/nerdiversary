@@ -23,13 +23,19 @@ python -m venv --system-site-packages .venv
 
 ## Hvad den kan
 
-**390 mærkedage i 16 grupper.** Alle er slået til fra start undtagen
-legenderne. Du vælger selv i fanen *Vælg mærkedage*, hvor et søgefelt leder
+**390 mærkedage i 16 grupper** — plus 1.739 festdage, som har deres eget
+afsnit længere nede. I alt 2.129 i 40 grupper, og **alle er slået til fra
+start** på nær 🔞-pakken, den eneste, der kan overraske nogen, der kigger med
+over skulderen. En app, der åbner halvtom, viser ikke hvad den kan, og en hel
+familie slukkes med ét klik. Du vælger selv i fanen *Vælg mærkedage*, hvor et
+søgefelt leder
 gennem navn, forklaring, gruppe og selve tallet — også uden tusindtalsskilletegn,
 så `5318008` finder "5.318.008 minutter". Under en søgning ophæves
 grupperingen, så de fundne står samlet.
 
-**Jer to.** Udfyld en anden fødselsdato i sidepanelet, og gruppen 👥 vågner:
+**Jer to.** Gruppen 👥 regner på to fødselsdatoer, og den anden står udfyldt
+fra start — Chefy Sherif, født 09.10.1986 — så regnestykket kan ses uden først
+at gætte, at det findes. Skift datoen i sidepanelet til den, det skal være:
 det ene øjeblik i livet, hvor den ene er dobbelt så gammel som den anden, og
 de datoer hvor jeres to aldre lagt sammen runder et pænt tal. Begge dele har
 en lukket formel. Kalder vi den ældstes fødsel *a* og den yngstes *b*:
@@ -108,9 +114,11 @@ begge går til roden af det:
 | 📈 Logaritmisk | Aksen i tierpotenser fra fødslen, så 10⁶, 10⁷, 10⁸ og 10⁹ sekunder ligger lige langt fra hinanden. Det virker, fordi kataloget i forvejen er bygget på tierpotenser. |
 
 For standardprofilen — Bossie Bossman, født 3. juni 1981 — fordeler kaskaden
-sig 289 → 65 → 13 → 2 mærkedage ned gennem rækkerne, når man står i dag.
-Tallene flytter sig med kalenderen og med den antagne levetid; det er
-forholdet mellem rækkerne, der er pointen. Skydeknapperne styrer, hvor i livet
+sig 1.342 → 769 → 589 → 307 mærkedage ned gennem rækkerne, når man står i dag.
+Med alt slået til er den nederste række for tæt til, at navnene kan stå der;
+de fleste bliver talt op i hjørnet, og rækken fortæller med sine mærker i
+stedet. Slå en familie fra, og navnene kommer igen. Tallene flytter sig med
+kalenderen og med den antagne levetid. Skydeknapperne styrer, hvor i livet
 der zoomes ind, hvor tæt den nederste række går, og hvor mange trin der er
 imellem. Forholdet mellem to naborækker er det samme hele vejen ned, og
 mellemrækkerne rundes bagefter til noget læseligt, så der står "10 år" og ikke
@@ -158,8 +166,8 @@ hver gang man satte et flueben et helt andet sted i appen.
 Resten af kataloget regner fremad fra fødselsøjeblikket: et gigasekund, 10.000
 døgn. Festdagene gør det omvendte. De ligger fast på kalenderen — den 4. maj,
 den 11.11., den første fredag i november — og det personlige er, hvor gammel du
-er, når de falder. Alle tyve grupper er slået **fra** fra start; de tændes med
-ét klik fra en pakke under *Vælg mærkedage*.
+er, når de falder. De er slået **til** fra start som resten — kun 🔞-pakken er
+ikke — og en hel familie slukkes med ét klik under *Vælg mærkedage*.
 
 De har to kilder, og det er det skarpe snit:
 

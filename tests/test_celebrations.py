@@ -348,11 +348,18 @@ def test_every_celebration_is_named_and_explained_in_both_languages(lang):
         assert milestone.why(lang).strip(), milestone.key
 
 
-def test_the_celebration_groups_are_all_switched_off_to_begin_with():
-    """Der er flere tusind festdage. De maa ikke drukne de maerkedage, appen handler om."""
-    groups = {m.group for m in celebration_milestones()}
-    for key in groups:
-        assert not GROUPS_BY_KEY[key].default_on, f"{key} er slaaet til fra start"
+def test_only_the_unabridged_pack_is_switched_off_to_begin_with():
+    """Én gruppe er slukket fra start. Resten er taendt.
+
+    Foer var det omvendt: festdagene var slaaet fra, fordi der er flere
+    tusind af dem, og de ville drukne de maerkedage, appen handler om. Men en
+    app, der aabner halvtom, viser ikke hvad den kan, og en hel familie kan
+    slaas fra med ét klik. Tilbage staar 18-pakken, og den staar der ikke for
+    antallets skyld, men fordi appen skal kunne aabnes foran andre.
+    """
+    off = {group.key for group in GROUPS if not group.default_on}
+    assert off == {"fsm18"}, f"forkert sat fra start: {off}"
+    assert "fsm18" in {m.group for m in celebration_milestones()}
 
 
 def test_every_new_bundle_points_at_groups_that_exist():
@@ -924,10 +931,9 @@ def test_no_anniversary_of_a_recurring_day():
         assert f"{PREFIX}{stem}" not in recurring
 
 
-def test_the_anniversaries_are_all_in_one_group_and_switched_off():
+def test_the_anniversaries_are_all_in_one_group():
     groups = {m.group for m in round_anniversaries()}
     assert groups == {"anniversary"}
-    assert not GROUPS_BY_KEY["anniversary"].default_on
 
 
 # --- Taellingen paa de aarlige dage --------------------------------------
