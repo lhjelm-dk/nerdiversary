@@ -77,7 +77,12 @@ st.set_page_config(
 )
 
 DEFAULT_TZ = "Europe/Copenhagen"
-DEFAULT_BIRTH_DATE = date(2018, 6, 3)
+
+# Standardprofilen er en opdigtet person og ikke en rigtig. Den skal vaere
+# voksen: et barn paa faa aar har hverken naaet sit gigasekund eller sine
+# 10.000 doegn, saa den halve app staar tom, foerste gang nogen aabner den.
+DEFAULT_NAME = "Bossie Bossman"
+DEFAULT_BIRTH_DATE = date(1981, 6, 3)
 DEFAULT_BIRTH_TIME = time(7, 10, 0)
 
 # Farver til kalenderen — én pr. gruppe, valgt så de kan skelnes fra hinanden.
@@ -639,6 +644,7 @@ with st.sidebar:
     st.subheader(t("who", lang))
     person_name = st.text_input(
         t("name_label", lang),
+        value=DEFAULT_NAME,
         placeholder=t("name_placeholder", lang),
         key="person_name",
     )

@@ -107,11 +107,14 @@ begge går til roden af det:
 | 🪜 Kaskade | Den geologiske tidsskalas opbygning: Æon → Æra → Periode → Epoke → Alder. Fire rækker over hinanden, hvor hver zoomer ind på et udsnit af rækken over. Du ser helheden og detaljen på samme tid uden at trække i noget. |
 | 📈 Logaritmisk | Aksen i tierpotenser fra fødslen, så 10⁶, 10⁷, 10⁸ og 10⁹ sekunder ligger lige langt fra hinanden. Det virker, fordi kataloget i forvejen er bygget på tierpotenser. |
 
-For standardprofilen fordeler kaskaden sig 370 → 143 → 30 → 10 mærkedage ned
-gennem rækkerne. Skydeknapperne styrer, hvor i livet der zoomes ind, hvor tæt
-den nederste række går, og hvor mange trin der er imellem. Forholdet mellem to
-naborækker er det samme hele vejen ned, og mellemrækkerne rundes bagefter til
-noget læseligt, så der står "10 år" og ikke "11,4 år".
+For standardprofilen — Bossie Bossman, født 3. juni 1981 — fordeler kaskaden
+sig 289 → 65 → 13 → 2 mærkedage ned gennem rækkerne, når man står i dag.
+Tallene flytter sig med kalenderen og med den antagne levetid; det er
+forholdet mellem rækkerne, der er pointen. Skydeknapperne styrer, hvor i livet
+der zoomes ind, hvor tæt den nederste række går, og hvor mange trin der er
+imellem. Forholdet mellem to naborækker er det samme hele vejen ned, og
+mellemrækkerne rundes bagefter til noget læseligt, så der står "10 år" og ikke
+"11,4 år".
 
 Etiketterne fordeles på baner med henvisningslinjer, som på Wikipedias
 livstidslinjer: kan to navne ikke stå ved siden af hinanden, ryger det ene en
